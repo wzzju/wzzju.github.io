@@ -40,7 +40,7 @@ disqus:
 # https://imsun.net/posts/gitment-introduction/
 gitment:
     owner: wzzju
-    repo: wzzju.github.io
+    repo: blog-comments
     oauth:
         client_id: 19e95a40843e60c10539
         client_secret: e54ae9b5f55a2e3b51e8ec897b80c918f335736b
