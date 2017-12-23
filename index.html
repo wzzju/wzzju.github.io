@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted on {{ post.date | date_to_string }}
+    </p>
+</div>
+<hr>
+{% endfor %}
+
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="/page{{paginator.next_page}}">前一页</a>
+  {% else %}
+    <span class="pagination-item older">前一页</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="/">后一页</a>
+    {% else %}
+      <a class="pagination-item newer" href="/page{{paginator.previous_page}}">后一页</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">后一页</span>
+  {% endif %}
+</div>

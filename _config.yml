@@ -1,0 +1,55 @@
+﻿# ---------------- #
+#   Main Configs   #
+# ---------------- #
+baseurl:
+url:              https://wzzju.github.io
+date_format:      "ordinal"
+title:            王震的博客
+tagline:          '记录生活点滴，分享学习心得'
+description:      '自助者天助之 自弃者天弃之'
+keywords:         ["AI", "DeepLearning", "Android", "人工智能", "深度学习", "编程", "教程", "学习", "文章" ]
+encoding:         "utf-8"
+# ---------------- #
+#      Jekyll      #
+# ---------------- #
+markdown:         kramdown
+kramdown:
+    input:        GFM
+highlighter:      rouge
+paginate:         5
+plugins:             [jekyll-paginate, jekyll-gist, jekyll-sitemap, jekyll-feed, jemoji]
+# Permalinks
+permalink:        /:year/:month/:day/:title.html
+
+author:
+  name:           'YuChen'
+  url:            http://weibo.com/u/5586980218
+
+# Custom vars
+version:          2.0.0
+
+github:
+  repo:           https://github.com/wzzju/wzzju.github.io
+# ---------------- #
+#      Comments    #
+# ---------------- #
+# support provider: disqus, gitment, gitalk
+comments_provider: gitalk
+disqus:
+    username: yuchen112358
+# https://imsun.net/posts/gitment-introduction/
+gitment:
+    owner: wzzju
+    repo: wzzju.github.io
+    oauth:
+        client_id: 19e95a40843e60c10539
+        client_secret: e54ae9b5f55a2e3b51e8ec897b80c918f335736b
+# https://github.com/gitalk/gitalk#install
+gitalk:
+    owner: wzzju
+    repo: blog-comments
+    clientID: e5a8aeb6ac781df840ff
+    clientSecret: a65b7ee305064fff7a4da078236e1e12461096a1      
+# 在使用其它评论组件时可点击显示 Disqus
+lazy_load_disqus : false
+
