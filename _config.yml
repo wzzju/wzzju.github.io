@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url:              https://wzzju.github.io
+url:              http://wzzju.github.io
 date_format:      "ordinal"
 title:            王震的博客
 tagline:          '记录生活点滴，分享学习心得'
@@ -20,6 +20,7 @@ paginate:         5
 plugins:             [jekyll-paginate, jekyll-gist, jekyll-sitemap, jekyll-feed, jemoji]
 # Permalinks
 permalink:        /:year/:month/:day/:title.html
+safe: false
 
 author:
   name:           'YuChen'
