@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url:              https://www.wzzju.top
+url:              https://wzzju.top
 date_format:      "ordinal"
 title:            王震的博客
 tagline:          '记录生活点滴，分享学习心得'
