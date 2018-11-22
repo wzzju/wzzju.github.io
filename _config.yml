@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url:              http://wzzju.github.io
+url:              http://wzzju.top
 date_format:      "ordinal"
 title:            王震的博客
 tagline:          '记录生活点滴，分享学习心得'
@@ -24,7 +24,7 @@ safe: false
 
 author:
   name:           'YuChen'
-  url:            http://weibo.com/u/5586980218
+  url:            https://weibo.com/u/6833407977
 
 # Custom vars
 version:          2.0.0
