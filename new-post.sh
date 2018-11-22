@@ -16,11 +16,11 @@ cat >$FNAME <<EOL
 layout: post
 title: $@
 date: $DATE_SLUG
-comments: false
+comments: true
 categories: [ "" ]
 ---
 
 EOL
 
-vim $FNAME
+typora $FNAME
 
