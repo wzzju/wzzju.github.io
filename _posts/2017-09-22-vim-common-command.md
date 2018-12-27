@@ -72,8 +72,7 @@ categories: [ "VIM" ]
     :q = 退出，有改动未保存时退出失败
     :q! = 强制退出
 
-- - -
+-------
 
-[VIM CheetSheet](/images/posts/vim.png)
+![VIM CheetSheet](/images/posts/vim.png)
 
-- - -

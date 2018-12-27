@@ -1,12 +1,14 @@
 ---
 layout: post
-title: How to add a new operation in Paddle Mobile?
+title: 如何在paddle-mobile中添加一个新的Op？
 date: 2018-11-28
 comments: true
 categories: [ "AI Framework", "Paddle Mobile" ]
 ---
 
-##  1. 需要修改的文件
+## 需要修改的文件
+
+依次修改如下文件内容：
 
 ```bash
 tools/op.cmake --> 
@@ -22,3 +24,4 @@ test/operators/test_fusion_conv_add_relu_int8_op.cpp(新增) -->
 test/CMakeLists.txt
 ```
 
+详细文件修改内容请参考[FusionFcInt8Op的实现](https://github.com/PaddlePaddle/paddle-mobile/pull/1336/files).

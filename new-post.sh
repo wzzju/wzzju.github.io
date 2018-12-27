@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # ----------------------------------------------------
-# Template blogpost setup script
+# Template blog post setup script
 #
 # Creates a new template markdown file for yuchen's blog and opens the file automatically in
-# emacs.
+# vim.
 # ---------------------------------------------------
 
 DATE_SLUG=$(date +%Y-%m-%d)
@@ -22,5 +22,5 @@ categories: [ "" ]
 
 EOL
 
-typora $FNAME
+vim $FNAME
 
