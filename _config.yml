@@ -49,8 +49,10 @@ gitment:
 gitalk:
     owner: wzzju
     repo: blog-comments
-    clientID: e5a8aeb6ac781df840ff
-    clientSecret: a65b7ee305064fff7a4da078236e1e12461096a1      
+    # clientID: e5a8aeb6ac781df840ff
+    clientID: 4c82493eafbbdb4546bc
+    # clientSecret: a65b7ee305064fff7a4da078236e1e12461096a1
+    clientSecret: 0fa9d6f39c0d69aa2b4f886aa8f02a88f4ef36f5
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
