@@ -1,137 +1,145 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="description" content="浪漫满屋"/>
-<meta name="keywords" content="love,little,girl"/>
-<title>致亲爱的爽宝宝</title>
-<link href="css/default.css" type="text/css" rel="stylesheet"/>
-<link rel="shortcut icon" href="/img/favicon.ico">
-
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js" ></script>
-<script type="text/javascript" src="js/functions.js" ></script>
-<script type="text/javascript" src="js/min.js"></script>
-</head>
+    <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content="情意绵绵"/>
+    <meta name="keywords" content="love"/>
+    <title>致亲爱的爽宝宝</title>
+    <link href="css/default.css" type="text/css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/garden.js" ></script>
+    <script type="text/javascript" src="js/functions.js" ></script>
+    <script type="text/javascript" src="js/min.js"></script>
+    </head>
 
 <body>
-<!--<audio autoplay="autopaly" controls="controls">-->
-<audio autoplay="autopaly" loop>
-<source src="resources/music.mp3" type="audio/mp3" />
-</audio>
-<script type="text/javascript">
-(function($){
-	$.fn.snow = function(options){
-	var $flake = $('<div id="snowbox" />').css({'position': 'absolute','z-index':'9999', 'top': '-50px'}).html('&#10052;'),
-	documentHeight 	= $(document).height(),
-	documentWidth	= $(document).width(),
-	defaults = {
-		minSize		: 10,
-		maxSize		: 20,
-		newOn		: 1000,
-		flakeColor	: "#AFDAEF" /* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */
-	},
-	options	= $.extend({}, defaults, options);
-	var interval= setInterval( function(){
-	var startPositionLeft = Math.random() * documentWidth - 100,
-	startOpacity = 0.5 + Math.random(),
-	sizeFlake = options.minSize + Math.random() * options.maxSize,
-	endPositionTop = documentHeight - 200,
-	endPositionLeft = startPositionLeft - 500 + Math.random() * 500,
-	durationFall = documentHeight * 10 + Math.random() * 5000;
-	$flake.clone().appendTo('body').css({
-		left: startPositionLeft,
-		opacity: startOpacity,
-		'font-size': sizeFlake,
-		color: options.flakeColor
-	}).animate({
-		top: endPositionTop,
-		left: endPositionLeft,
-		opacity: 0.2
-	},durationFall,'linear',function(){
-		$(this).remove()
-	});
-	}, options.newOn);
-    };
-})(jQuery);
-$(function(){
-    $.fn.snow({ 
-	    minSize: 5, /* 定义雪花最小尺寸 */
-	    maxSize: 50,/* 定义雪花最大尺寸 */
-	    newOn: 300  /* 定义密集程度，数字越小越密集 */
+    <audio autoplay="autoplay" loop="loop">
+        <source src="resources/music.mp3" type="audio/mp3" />
+    </audio>
+
+    <script type="text/javascript">
+    (function($){
+        $.fn.snow = function(options){
+        var $flake = $('<div id="snowbox" />').css({'position': 'absolute','z-index':'9999', 'top': '-50px'}).html('&#10052;'),
+        documentHeight  = $(document).height(),
+        documentWidth   = $(document).width(),
+        defaults = {
+            minSize     : 10,
+            maxSize     : 20,
+            newOn       : 1000,
+            flakeColor  : "#AFDAEF" /* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */
+        },
+        options = $.extend({}, defaults, options);
+        var interval= setInterval( function(){
+        var startPositionLeft = Math.random() * documentWidth - 100,
+        startOpacity = 0.5 + Math.random(),
+        sizeFlake = options.minSize + Math.random() * options.maxSize,
+        endPositionTop = documentHeight - 200,
+        endPositionLeft = startPositionLeft - 500 + Math.random() * 500,
+        durationFall = documentHeight * 10 + Math.random() * 5000;
+        $flake.clone().appendTo('body').css({
+            left: startPositionLeft,
+            opacity: startOpacity,
+            'font-size': sizeFlake,
+            color: options.flakeColor
+        }).animate({
+            top: endPositionTop,
+            left: endPositionLeft,
+            opacity: 0.2
+        },durationFall,'linear',function(){
+            $(this).remove()
+        });
+        }, options.newOn);
+        };
+    })(jQuery);
+    $(function(){
+        $.fn.snow({ 
+            minSize: 5, /* 定义雪花最小尺寸 */
+            maxSize: 50,/* 定义雪花最大尺寸 */
+            newOn: 300  /* 定义密集程度，数字越小越密集 */
+        });
     });
-});
-</script>
-
-<div id="mainDiv">
-<div id="content">
-<div id="code">
-<span class="space"/><span class="comments">愿得一人心，白首不相离。</span><br />
-<span class="space"/><span class="comments">遇一人白首，择一城终老，予一己真心，盼一生偕老。</span><br />
-
-</div>
-
-<div id="loveHeart">
-<canvas id="garden"></canvas>
-<div id="words">
-<div id="messages"><script language="JavaScript" type="text/javascript" src="js/clock.js"></script><br>
-<div id="love">
-<script type="text/javascript">
-document.write('<font  color=#00ffff>'+getUrlParam1("y")+'：'+'</font>');
-</SCRIPT><script type="text/javascript">
-document.write('<font  color=#00ffff>'+getUrlParam3("w")+'</font>');
-</SCRIPT>
-</div>
-</div>
-
-<div id="loveu">
-<div class="signature"><script type="text/javascript">
-document.write('<font  color=#00ffff>'+'——From'+getUrlParam2("m")+'</font>');
-</SCRIPT>
-</div>
-</div>
-</div>
-<script type="text/javascript">
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();	
-if (!document.createElement('canvas').getContext) {
-var msg = document.createElement("div");
-msg.id = "errorMsg";
-msg.innerHTML = "提醒您：IE浏览器版本过低！<br/>"+
-"推荐使用浏览器 <a href='http://dl.pconline.com.cn/download/51614.html' target='_blank'>Chrome 14+</a>"+
-"/<a href='http://download.microsoft.com/download/0/4/9/049A037E-B6B4-4303-90BE-BA6CAE979674/IE10-Windows6.1-x86-zh-cn.exe' target='_blank'>IE 9+</a>"+
-"/<a href='http://download.firefox.com.cn/releases/partners/baidu/webins3.0/zh-CN/Firefox-setup.exe' target='_blank'>Firefox 7+</a>"+
-"/Safari 4+<br/>请先升级您的浏览器！"; 
-document.body.appendChild(msg);
-$("#code").css("display", "none")
-$("#copyright").css("position", "absolute");
-$("#copyright").css("bottom", "10px");
-document.execCommand("stop");
-} else {
-setTimeout(function () {
-adjustWordsPosition();
-startHeartAnimation();
-}, 5000);
-
-timeElapse(together);
-setInterval(function () {
-timeElapse(together);
-}, 500);
-
-adjustCodePosition();
-$("#code").typewriter();
-}
-</script> 
-
-<br> 
-<!--<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#119;&#122;&#122;&#106;&#117;&#064;&#109;&#097;&#105;&#108;&#046;&#117;&#115;&#116;&#099;&#046;&#101;&#100;&#117;&#046;&#099;&#110;">制作人:雨辰</a>-->
-<!--小圆图，鼠标停留旋转-->
-<div class="zzsc">
-</div>
-<div style="text-align:center;clear:both;">
-</div>
-</body>
+    </script>
+    
+    <div id="mainDiv">
+    <div id="content">
+    <div id="code">
+    <span class="space"/><span class="comments">我如果爱你 绝不学攀援的凌霄花，借你的高枝炫耀自己；</span><br />
+    <span class="space"/><span class="comments">我如果爱你 绝不学痴情的鸟儿，为绿荫重复单调的歌曲；</span><br />
+    <span class="space"/><span class="comments">也不止像泉源，常年送来清凉的慰藉；也不止像险峰，增加你的高度，衬托你的威仪。甚至日光，甚至春雨。</span><br />
+    <span class="space"/><span class="comments">我必须是你近旁的一株木棉，作为树的形象和你站在一起。根，紧握在地下；叶，相触在云里。每一阵风过，我们都互相致意，但没有人，听懂我们的言语。</span><br />
+    <span class="space"/><span class="comments">你有你的铜枝铁干，像刀，像剑，也像戟；</span><br />
+    <span class="space"/><span class="comments">我有我红硕的花朵，像沉重的叹息，又像英勇的火炬。</span><br />
+    <span class="space"/><span class="comments">我们分担寒潮、风雷、霹雳；我们共享雾霭、流岚、虹霓。</span><br />
+    <span class="space"/><span class="comments">仿佛永远分离，却又终身相依。</span><br />
+    
+    </div>
+    
+    <div id="loveHeart">
+    <canvas id="garden"></canvas>
+    <div id="words">
+    <div id="messages"><script language="JavaScript" type="text/javascript" src="js/clock.js"></script><br>
+    <div id="love">
+    <script type="text/javascript">
+    document.write('<font  color=#00ffff>'+getUrlParam1("y")+'：'+'</font>');
+    </SCRIPT><script type="text/javascript">
+    document.write('<font  color=#00ffff>'+getUrlParam3("w")+'</font>');
+    </SCRIPT>
+    </div>
+    </div>
+    
+    <div id="loveu">
+    <div class="signature"><script type="text/javascript">
+    document.write('<font  color=#00ffff>'+'——From'+getUrlParam2("m")+'</font>');
+    </SCRIPT>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+    var offsetX = $("#loveHeart").width() / 2;
+    var offsetY = $("#loveHeart").height() / 2 - 55;
+    var together = new Date();  
+    if (!document.createElement('canvas').getContext) {
+    var msg = document.createElement("div");
+    msg.id = "errorMsg";
+    msg.innerHTML = "提醒您：IE浏览器版本过低！<br/>"+
+    "推荐使用浏览器 <a href='http://dl.pconline.com.cn/download/51614.html' target='_blank'>Chrome 14+</a>"+
+    "/<a href='http://download.microsoft.com/download/0/4/9/049A037E-B6B4-4303-90BE-BA6CAE979674/IE10-Windows6.1-x86-zh-cn.exe' target='_blank'>IE 9+</a>"+
+    "/<a href='http://download.firefox.com.cn/releases/partners/baidu/webins3.0/zh-CN/Firefox-setup.exe' target='_blank'>Firefox 7+</a>"+
+    "/Safari 4+<br/>请先升级您的浏览器！"; 
+    document.body.appendChild(msg);
+    $("#code").css("display", "none")
+    $("#copyright").css("position", "absolute");
+    $("#copyright").css("bottom", "10px");
+    document.execCommand("stop");
+    } else {
+    setTimeout(function () {
+    adjustWordsPosition();
+    startHeartAnimation();
+    }, 5000);
+    
+    timeElapse(together);
+    setInterval(function () {
+    timeElapse(together);
+    }, 500);
+    
+    adjustCodePosition();
+    $("#code").typewriter();
+    }
+    </script> 
+    
+    <br> 
+    <!--小圆图，鼠标停留旋转-->
+    <div class="zzsc">
+    </div>
+    <div style="text-align:center;clear:both;">
+    </div>
+    </body>
+    <footer>
+        <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#119;&#122;&#122;&#106;&#117;&#064;&#109;&#097;&#105;&#108;&#046;&#117;&#115;&#116;&#099;&#046;&#101;&#100;&#117;&#046;&#099;&#110;">制作人：雨辰</a>
+    </footer>
 </html>
