@@ -4,7 +4,7 @@
 baseurl:
 url:              https://wzzju.github.io
 date_format:      "ordinal"
-title:            王震的博客
+title:            北冥有鱼
 tagline:          '记录生活点滴，分享学习心得'
 description:      '自助者天助之 自弃者天弃之'
 keywords:         ["AI", "DeepLearning", "Android", "人工智能", "深度学习", "编程", "教程", "学习", "文章" ]
