@@ -126,7 +126,7 @@ os.system("read _")
 (gdb) ...
 ```
 
-为了方便起见，可以选择将[libpython.py](/assets/tensorflow/libpython.py)文件拷贝到tensorflow源码根目录下，然后执行如下命令完成python调试指令的加载（请在tensorflow源码根目录下执行gdb调试命令）:
+为了方便起见，可以选择将[libpython.py](/assets/tensorflow/libpython.py)文件拷贝到执行gdb命令时所处目录下，然后执行如下命令完成python调试指令的加载:
 
 ```python
 (gdb) python
@@ -143,7 +143,7 @@ os.system("read _")
 #### gdb调试时注意事项：
 
 * 运行python脚本不能在tensorflow源码根目录下，否则会出错。但是需要在tensorflow源码根目录下存放一个对应的软连接文件(`ln -s python脚本文件 tensorflow/python脚本文件`)，以便使用`py-list`时可以查看脚本源码内容。
-* 执行`gdb -p PID`命令最佳方案：**在tensorflow源码根目录下运行gdb**。否则，需要在gdb模式下使用`set substitute-path`指令修改源码搜索路径，详见[此处](https://scc.ustc.edu.cn/zlsc/sugon/intel/debugger/cl/commandref/gdb_mode/cmd_set_substitu.htm)。
+* 执行`gdb -p PID`命令最佳方案：**在tensorflow源码根目录下运行gdb**。否则，需要在gdb模式下使用`set directories /work/study/tf-learn/tensorflow/`指令设置tensorflow源码根目录路径。
 * TensorFlow的gdb调试方法详见[此文档](/assets/tensorflow/TensorFlow-SourceCode-Reading.pdf)[^1]。
 
 ## 8. docker容器中的一些配置文件
