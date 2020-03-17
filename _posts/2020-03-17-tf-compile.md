@@ -104,7 +104,7 @@ pip install -U /tmp/tensorflow_pkg/tensorflow-*.whl
 
 ## 7. gdb调试python代码方法
 
-在要调的 python 代码前面加上如下一段代码，用于获取待调试的python脚本进程号。
+在要调的 python 代码前面加上如下一段代码，用于获取待调试的python脚本进程号，点击查看[示例](/assets/tensorflow/test_debug.py)。
 
 ```python
 import os
@@ -114,7 +114,7 @@ print('Pause here to enter DBG')
 os.system("read _")
 ```
 
-接着执行`gdb -p PID`即可进行调试。为了可以使用`py-list`之类的python调试命令，进入gdb模式后，需要执行如下代码：
+接着执行`gdb -p PID`即可进行调试。为了可以使用`py-list`之类的python调试指令，进入gdb模式后，需要执行如下代码：
 
 ```python
 (gdb) python
@@ -126,7 +126,25 @@ os.system("read _")
 (gdb) ...
 ```
 
-`os.system("read _")`相当于人为地打了一处断点，设置完python调试命令后，在gdb模式中输入`c`指令（可在输入`c`指令前设置一些C/C++文件中的断点），然后再在python脚本运行窗口中按Enter键即可让python程序继续运行。
+为了方便起见，可以选择将[libpython.py](/assets/tensorflow/libpython.py)文件拷贝到tensorflow源码根目录下，然后执行如下命令完成python调试指令的加载（请在tensorflow源码根目录下执行gdb调试命令）:
+
+```python
+(gdb) python
+>import sys
+>sys.path.append('.')
+>import libpython
+>end
+(gdb) ...
+```
+
+
+`os.system("read _")`相当于人为地打了一处断点，设置完python调试命令后，在gdb模式中输入`c`指令（可在输入`c`指令前设置一些C/C++文件中的断点，如`break TF_NewBuffer`），然后再在python脚本运行窗口中按Enter键即可让python程序继续运行。
+
+#### gdb调试时注意事项：
+
+* 运行python脚本不能在tensorflow源码根目录下，否则会出错。但是需要在tensorflow源码根目录下存放一个对应的软连接文件(`ln -s python脚本文件 tensorflow/python脚本文件`)，以便使用`py-list`时可以查看脚本源码内容。
+* 执行`gdb -p PID`命令最佳方案：**在tensorflow源码根目录下运行gdb**。否则，需要在gdb模式下使用`set substitute-path`指令修改源码搜索路径，详见[此处](https://scc.ustc.edu.cn/zlsc/sugon/intel/debugger/cl/commandref/gdb_mode/cmd_set_substitu.htm)。
+* TensorFlow的gdb调试方法详见[此文档](/assets/tensorflow/TensorFlow-SourceCode-Reading.pdf)[^1]。
 
 ## 8. docker容器中的一些配置文件
 
@@ -182,3 +200,4 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 * [Python开发必备神器之一：virtualenv](https://codingpy.com/article/virtualenv-must-have-tool-for-python-development/)
 * [TensorFlow 拆包（一）：Session.Run ()](http://jcf94.com/2018/01/13/2018-01-13-tfunpacking/)
 
+[^1]: 文档来源于[TensorFlow代码阅读指南](http://jcf94.com/download/TensorFlow-SourceCode-Reading.pdf)。
