@@ -198,6 +198,10 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 ## 参考资料
 
 * [Python开发必备神器之一：virtualenv](https://codingpy.com/article/virtualenv-must-have-tool-for-python-development/)
-* [TensorFlow 拆包（一）：Session.Run ()](http://jcf94.com/2018/01/13/2018-01-13-tfunpacking/)
+* [TensorFlow 拆包（一）：Session.Run](http://jcf94.com/2018/01/13/2018-01-13-tfunpacking/)
+* [从源代码构建TensorFlow](https://www.tensorflow.org/install/source?hl=zh-cn)
+* [Bazel安装方法](https://www.jianshu.com/p/bc542266aff3)
+* [gdb调试python进程(包括core dump调试)](https://blog.csdn.net/haima1998/article/details/89962435)
+* [gdb调试命令总结](https://www.cnblogs.com/wuyuegb2312/archive/2013/03/29/2987025.html)
 
 [^1]: 文档来源于[TensorFlow代码阅读指南](http://jcf94.com/download/TensorFlow-SourceCode-Reading.pdf)。
