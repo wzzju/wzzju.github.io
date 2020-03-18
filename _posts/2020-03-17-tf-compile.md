@@ -203,5 +203,6 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 * [Bazel安装方法](https://www.jianshu.com/p/bc542266aff3)
 * [gdb调试python进程(包括core dump调试)](https://blog.csdn.net/haima1998/article/details/89962435)
 * [gdb调试命令总结](https://www.cnblogs.com/wuyuegb2312/archive/2013/03/29/2987025.html)
+* [gdb在类成员函数上设置断点](https://menrfa.wordpress.com/2012/01/26/%E4%BD%BF%E7%94%A8gdb%E5%9C%A8%E6%9F%90%E5%87%BD%E6%95%B0%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/)
 
 [^1]: 文档来源于[TensorFlow代码阅读指南](http://jcf94.com/download/TensorFlow-SourceCode-Reading.pdf)。
