@@ -104,7 +104,9 @@ pip install -U /tmp/tensorflow_pkg/tensorflow-*.whl
 
 ## 7. gdb调试python代码方法
 
-在要调的 python 代码前面加上如下一段代码，用于获取待调试的python脚本进程号，点击查看[示例](/assets/tensorflow/test_debug.py)。
+#### 7.1 设置python脚本启动断点
+
+在要调的 python 代码前面加上如下一段代码，用于获取待调试的python脚本进程号并暂停脚本运行，点击查看[示例](/assets/tensorflow/test_debug.py)。
 
 ```python
 import os
@@ -114,7 +116,16 @@ print('Pause here to enter DBG')
 os.system("read _")
 ```
 
-接着执行`gdb -p PID`即可进行调试。为了可以使用`py-list`之类的python调试指令，进入gdb模式后，需要执行如下代码：
+接着执行`gdb -p PID`即可进行调试。
+
+
+> `os.system("read _")`相当于人为地打了一处断点，设置完python调试命令后，在gdb模式中输入`c`指令（可在输入`c`指令前设置一些C/C++文件中的断点，如`break TF_NewBuffer`），然后再在python脚本运行窗口中按Enter键即可让python程序继续运行。
+
+#### 7.2 加载python调试指令
+
+* 方法一：
+
+为了可以使用`py-list`之类的python调试指令，进入gdb模式后，需要执行如下代码：
 
 ```python
 (gdb) python
@@ -125,6 +136,8 @@ os.system("read _")
 >end
 (gdb) ...
 ```
+
+* 方法二：
 
 为了方便起见，可以选择将[libpython.py](/assets/tensorflow/libpython.py)文件拷贝到gdb命令执行时所在的目录下，然后执行如下命令完成python调试指令的加载:
 
@@ -137,11 +150,12 @@ os.system("read _")
 (gdb) ...
 ```
 
-为了省略每次运行gdb后都需要进行python调试指令的加载，可以在HOME目录添加`.gdbinit`配置文件，内容如下所示：
+* 方法三：
+
+为了省略每次运行gdb后都需要进行python调试指令的加载，可以在HOME目录下添加`.gdbinit`配置文件，内容如下所示：
 
 ```python
-# .gdbinit文件内容
-
+# 加载python调试指令
 python
 import sys
 sys.path.append('/Python-3.7.0/Tools/gdb')
@@ -154,7 +168,9 @@ set history save on
 
 这样每次运行gdb时，即可自动加载python调试指令。
 
-或者也可以在gdb命令执行时所处目录下新建`.gdbinit`配置文件，并将[libpython.py](/assets/tensorflow/libpython.py)放置在同一目录下，最后设置`.gdbinit`文件为如下内容:
+* 方法四（推荐）：
+
+为了最大化减少gdb启动后运行的设置命令数，可以在gdb命令执行时所处目录（一般为用户工程项目路径）下新建`.gdbinit`配置文件，并将[libpython.py](/assets/tensorflow/libpython.py)放置在同一目录下，最后设置`.gdbinit`文件为如下内容:
 
 ```python
 # 加载python调试指令
@@ -168,15 +184,35 @@ end
 set directories /work/study/tf-learn/tensorflow/
 ```
 
-`os.system("read _")`相当于人为地打了一处断点，设置完python调试命令后，在gdb模式中输入`c`指令（可在输入`c`指令前设置一些C/C++文件中的断点，如`break TF_NewBuffer`），然后再在python脚本运行窗口中按Enter键即可让python程序继续运行。
+设置上述gdb初始化配置文件后运行gdb命令时可能会出现如下类似警告（HOME目录下也存在`.gdbinit`文件时出现警告，此时当前目录下的`.gdbinit`文件配置命令并没有执行）:
 
-#### gdb调试时注意事项：
+```
+warning: File "/work/study/tf-learn/tf-test/.gdbinit" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load".
+To enable execution of this file add
+        add-auto-load-safe-path /work/study/tf-learn/tf-test/.gdbinit
+line to your configuration file "/root/.gdbinit".
+To completely disable this security protection add
+        set auto-load safe-path /
+line to your configuration file "/root/.gdbinit".
+```
+
+因此，需要将HOME目录下的`.gdbinit`配置文件内容修改为如下所示：
+
+```python
+# 保存历史命令
+set history filename ~/.gdb_history
+set history save on
+# 自动加载任意目录下的.gdbinit文件配置内容
+set auto-load safe-path /
+```
+
+#### 7.2 gdb调试时注意事项：
 
 * 运行python脚本不能在tensorflow源码根目录下，否则会出错。但是需要在tensorflow源码根目录下存放一个对应的软连接文件(`ln -s python脚本文件 tensorflow/python脚本文件`)，以便使用`py-list`时可以查看脚本源码内容。
 * 执行`gdb -p PID`命令最佳方案：**在tensorflow源码根目录下运行gdb**。否则，需要在gdb模式下使用`set directories /work/study/tf-learn/tensorflow/`指令设置tensorflow源码根目录路径。
 * TensorFlow的gdb调试方法详见[此文档](/assets/tensorflow/TensorFlow-SourceCode-Reading.pdf)[^1]。
 * 给类成员函数设置断点的方法：
-    - 需要加上命名空间，写法如`b tensorflow::ExecutorState::RunAsync`；
+    - 需要加上命名空间，写法如`b tensorflow::Executor::Run`；
     - 对于带有匿名命名空间的断点设置写法示例：`b tensorflow::(anonymous namespace)::ExecutorState::ScheduleReady`，其第二个命名空间为`namespace {}`。
 
 ## 8. docker容器中的一些配置文件
