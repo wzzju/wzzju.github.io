@@ -184,7 +184,7 @@ end
 set directories /work/study/tf-learn/tensorflow/
 ```
 
-设置上述gdb初始化配置文件后运行gdb命令时可能会出现如下类似警告（HOME目录下也存在`.gdbinit`文件时出现警告，此时当前目录下的`.gdbinit`文件配置命令并没有执行）:
+设置上述gdb初始化配置文件后运行gdb命令时会出现如下类似警告（此时亦可发现当前目录下的`.gdbinit`文件配置命令并没有执行）:
 
 ```
 warning: File "/work/study/tf-learn/tf-test/.gdbinit" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load".
@@ -196,7 +196,7 @@ To completely disable this security protection add
 line to your configuration file "/root/.gdbinit".
 ```
 
-因此，需要将HOME目录下的`.gdbinit`配置文件内容修改为如下所示：
+根据警告提示，需要在HOME目录下也新建一个`.gdbinit`配置文件，其内容如下所示：
 
 ```python
 # 保存历史命令
@@ -212,7 +212,7 @@ set auto-load safe-path /
 * 执行`gdb -p PID`命令最佳方案：**在tensorflow源码根目录下运行gdb**。否则，需要在gdb模式下使用`set directories /work/study/tf-learn/tensorflow/`指令设置tensorflow源码根目录路径。
 * TensorFlow的gdb调试方法详见[此文档](/assets/tensorflow/TensorFlow-SourceCode-Reading.pdf)[^1]。
 * 给类成员函数设置断点的方法：
-    - 需要加上命名空间，写法如`b tensorflow::Executor::Run`；
+    - 需要加上命名空间，写法如`b tensorflow::DirectSession::Run`；
     - 对于带有匿名命名空间的断点设置写法示例：`b tensorflow::(anonymous namespace)::ExecutorState::ScheduleReady`，其第二个命名空间为`namespace {}`。
 
 ## 8. docker容器中的一些配置文件
@@ -274,5 +274,6 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 * [gdb调试命令总结](https://www.cnblogs.com/wuyuegb2312/archive/2013/03/29/2987025.html)
 * [gdb在类成员函数上设置断点](https://menrfa.wordpress.com/2012/01/26/%E4%BD%BF%E7%94%A8gdb%E5%9C%A8%E6%9F%90%E5%87%BD%E6%95%B0%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/)
 * [100个gdb小技巧](https://wizardforcel.gitbooks.io/100-gdb-tips/content/)
+* [编译并安装GDB 8.3](https://medium.com/@simonconnah/compiling-and-installing-gdb-8-3-on-ubuntu-19-04-eac597e4cfb8)
 
 [^1]: 文档来源于[TensorFlow代码阅读指南](http://jcf94.com/download/TensorFlow-SourceCode-Reading.pdf)。
