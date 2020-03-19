@@ -126,7 +126,7 @@ os.system("read _")
 (gdb) ...
 ```
 
-为了方便起见，可以选择将[libpython.py](/assets/tensorflow/libpython.py)文件拷贝到执行gdb命令时所处目录下，然后执行如下命令完成python调试指令的加载:
+为了方便起见，可以选择将[libpython.py](/assets/tensorflow/libpython.py)文件拷贝到gdb命令执行时所在的目录下，然后执行如下命令完成python调试指令的加载:
 
 ```python
 (gdb) python
@@ -137,6 +137,36 @@ os.system("read _")
 (gdb) ...
 ```
 
+为了省略每次运行gdb后都需要进行python调试指令的加载，可以在HOME目录添加`.gdbinit`配置文件，内容如下所示：
+
+```python
+# .gdbinit文件内容
+
+python
+import sys
+sys.path.append('/Python-3.7.0/Tools/gdb')
+import libpython
+end
+# 保存历史命令
+set history filename ~/.gdb_history
+set history save on
+```
+
+这样每次运行gdb时，即可自动加载python调试指令。
+
+或者也可以在gdb命令执行时所处目录下新建`.gdbinit`配置文件，并将[libpython.py](/assets/tensorflow/libpython.py)放置在同一目录下，最后设置`.gdbinit`文件为如下内容:
+
+```python
+# 加载python调试指令
+python
+import sys
+sys.path.insert(0, ".")
+import libpython
+end
+
+# 设置tensorflow源码目录，以便查找代码
+set directories /work/study/tf-learn/tensorflow/
+```
 
 `os.system("read _")`相当于人为地打了一处断点，设置完python调试命令后，在gdb模式中输入`c`指令（可在输入`c`指令前设置一些C/C++文件中的断点，如`break TF_NewBuffer`），然后再在python脚本运行窗口中按Enter键即可让python程序继续运行。
 
