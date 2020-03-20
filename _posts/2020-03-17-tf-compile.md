@@ -104,7 +104,7 @@ pip install -U /tmp/tensorflow_pkg/tensorflow-*.whl
 
 ## 7. gdb调试python代码方法
 
-#### 7.1 设置python脚本启动断点
+### 7.1 设置python脚本启动断点
 
 在要调的 python 代码前面加上如下一段代码，用于获取待调试的python脚本进程号并暂停脚本运行，点击查看[示例](/assets/tensorflow/test_debug.py)。
 
@@ -121,7 +121,7 @@ os.system("read _")
 
 > `os.system("read _")`相当于人为地打了一处断点，设置完python调试命令后，在gdb模式中输入`c`指令（可在输入`c`指令前设置一些C/C++文件中的断点，如`break TF_NewBuffer`），然后再在python脚本运行窗口中按Enter键即可让python程序继续运行。
 
-#### 7.2 加载python调试指令
+### 7.2 加载python调试指令
 
 * 方法一：
 
@@ -206,7 +206,7 @@ set history save on
 set auto-load safe-path /
 ```
 
-#### 7.2 gdb调试时注意事项：
+### 7.3 gdb调试时注意事项：
 
 * 运行python脚本不能在tensorflow源码根目录下，否则会出错。但是需要在tensorflow源码根目录下存放一个对应的软连接文件(`ln -s python脚本文件 tensorflow/python脚本文件`)，以便使用`py-list`时可以查看脚本源码内容。
 * 执行`gdb -p PID`命令最佳方案：**在tensorflow源码根目录下运行gdb**。否则，需要在gdb模式下使用`set directories /work/study/tf-learn/tensorflow/`指令设置tensorflow源码根目录路径。
@@ -215,9 +215,71 @@ set auto-load safe-path /
     - 需要加上命名空间，写法如`b tensorflow::DirectSession::Run`；
     - 对于带有匿名命名空间的断点设置写法示例：`b tensorflow::(anonymous namespace)::ExecutorState::ScheduleReady`，其第二个命名空间为`namespace {}`。
 
-## 8. docker容器中的一些配置文件
 
-#### 8.1 apt软件包中国源(`/etc/apt/sources.list`的内容)
+## 8. 安装GDB 8.3并高亮显示源码
+
+### 8.1 安装支持source-highlight的GDB 8.3
+
+* 源码编译并安装source-highlight
+
+```shell
+apt install libboost-dev
+ln -s /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0 /usr/lib/x86_64-linux-gnu/libboost_regex.so
+
+wget http://ftp.gnu.org/gnu/src-highlite/source-highlight-3.1.8.tar.gz
+tar zxvf source-highlight-3.1.8.tar.gz
+
+cd source-highlight-3.1.8
+autoreconf -i
+mkdir build
+cd build
+../configure
+make -j
+make install
+```
+
+* 源码编译并安装GDB 8.3[^2]
+
+```shell
+apt install texinfo wget
+
+wget http://ftp.gnu.org/gnu/gdb/gdb-8.3.tar.gz
+tar zxvf gdb-8.3.tar.gz
+cd gdb-8.3
+
+mkdir build && cd build/
+../configure --prefix=/usr/local/gdb83 --enable-source-highlight=yes --enable-tui=yes --enable-gold=yes --enable-ld=yes --enable-libada --enable-libssp --enable-lto --enable-vtable-verify --enable-werror
+
+make -j
+make install
+ln -s /usr/local/gdb83/bin/gdb  /usr/bin/gdb
+ln -s /usr/local/gdb83/bin/gdbserver  /usr/bin/gdbserver
+```
+
+### 8.2 使用gdb的tui模式
+
+直接使用`gdb -p PID`调试代码，在需要的时候使用切换键`ctrl+x a`调出gdbtui，再次使用`ctrl+x a`则退出gdbtui模式[^3]。
+
+## 9. Q&A
+
+* Q: 运行`build_pip_package`命令时出现`OverflowError: Size does not fit in an unsigned int`错误。
+  A: 需要使用python3.7+进行打包。操作命令如下：
+
+  ```bash
+  which python3.7 # /usr/local/bin/python3.7
+  # 编辑tools/python_bin_path.sh，将其内容修改为：
+  # export PYTHON_BIN_PATH="/usr/local/bin/python3.7"
+  ```
+  然后再执行打包命令：
+  ```python
+  ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+  # 这样得到的结果为：tensorflow-1.14.1-cp37-cp37m-linux_x86_64.whl
+  ```
+  然而这样打包得到的`whl`包只能在python3.7环境中进行安装，所以编译时使用python3.7是最好的选择。
+
+## 10 附录（docker容器中的一些配置文件）
+
+### 10.1. apt软件包中国源(`/etc/apt/sources.list`的内容)
 
 ```bash
 deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties
@@ -239,30 +301,13 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
 deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse
 ```
 
-#### 8.2 pip中国源(`~/.pip/pip.conf`内容)
+### 10.2. pip中国源(`~/.pip/pip.conf`内容)
 
 ```bash
 [global]
 trusted-host = mirrors.aliyun.com
 index-url = https://mirrors.aliyun.com/pypi/simple
 ```
-
-## 9. Q&A
-
-* Q: 运行`build_pip_package`命令时出现`OverflowError: Size does not fit in an unsigned int`错误。
-  A: 需要使用python3.7+进行打包。操作命令如下：
-
-  ```bash
-  which python3.7 # /usr/local/bin/python3.7
-  # 编辑tools/python_bin_path.sh，将其内容修改为：
-  # export PYTHON_BIN_PATH="/usr/local/bin/python3.7"
-  ```
-  然后再执行打包命令：
-  ```python
-  ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-  # 这样得到的结果为：tensorflow-1.14.1-cp37-cp37m-linux_x86_64.whl
-  ```
-  然而这样打包得到的`whl`包只能在python3.7环境中进行安装，所以编译时使用python3.7是最好的选择。
 
 ## 参考资料
 
@@ -274,6 +319,7 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 * [gdb调试命令总结](https://www.cnblogs.com/wuyuegb2312/archive/2013/03/29/2987025.html)
 * [gdb在类成员函数上设置断点](https://menrfa.wordpress.com/2012/01/26/%E4%BD%BF%E7%94%A8gdb%E5%9C%A8%E6%9F%90%E5%87%BD%E6%95%B0%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/)
 * [100个gdb小技巧](https://wizardforcel.gitbooks.io/100-gdb-tips/content/)
-* [编译并安装GDB 8.3](https://medium.com/@simonconnah/compiling-and-installing-gdb-8-3-on-ubuntu-19-04-eac597e4cfb8)
 
 [^1]: 文档来源于[TensorFlow代码阅读指南](http://jcf94.com/download/TensorFlow-SourceCode-Reading.pdf)。
+[^2]: 此处参考[编译并安装GDB 8.3](https://medium.com/@simonconnah/compiling-and-installing-gdb-8-3-on-ubuntu-19-04-eac597e4cfb8)。
+[^3]: 此处参考[在gdb中显示源码(gdbtui使用方法)](http://mingxinglai.com/cn/2013/07/gdbtui)。
