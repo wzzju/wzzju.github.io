@@ -8,7 +8,7 @@
 # ---------------------------------------------------
 
 DATE_SLUG=$(date +%Y-%m-%d)
-TITLE=$(echo "$@" | tr -s '[:space:]' '\n' | tr '[:upper:]' '[:lower:]' | paste -sd-)
+TITLE=$(echo "$@" | tr -s '[:space:]' '\n' | tr '[:upper:]' '[:lower:]' > /tmp/title.txt && paste -s -d '-' /tmp/title.txt)
 FNAME=_posts/$DATE_SLUG-$TITLE.md
 
 cat >$FNAME <<EOL

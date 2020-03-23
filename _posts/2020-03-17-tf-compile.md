@@ -258,7 +258,11 @@ ln -s /usr/local/gdb83/bin/gdbserver  /usr/bin/gdbserver
 
 ### 8.2 使用gdb的tui模式
 
-直接使用`gdb -p PID`调试代码，在需要的时候使用切换键`ctrl+x a`调出gdbtui，再次使用`ctrl+x a`则退出gdbtui模式[^3]。
+直接使用`gdb -p PID`调试代码，在需要的时候使用切换键`ctrl+x a`调出gdbtui，再次使用`ctrl+x a`则退出gdbtui模式[^3]。示例图如下所示：
+
+<center>
+    <img src="/images/posts/tensorflow/gdb.png" width="90%" alt="gdb tui模式"/>
+</center>
 
 ## 9. Q&A
 
