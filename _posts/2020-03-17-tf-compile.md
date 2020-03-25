@@ -88,6 +88,7 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 
   ```bash
   bazel build -c opt --config=cuda --copt="-g" --cxxopt="-g" //tensorflow/tools/pip_package:build_pip_package
+  # tf 2.x: bazel build -c opt --config=cuda --copt="-g" --cxxopt="-g" --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" //tensorflow/tools/pip_package:build_pip_package
   ```
 
 ## 5. 构建`whl`软件包
