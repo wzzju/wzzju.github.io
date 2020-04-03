@@ -117,8 +117,9 @@ print('Pause here to enter DBG')
 os.system("read _")
 ```
 
-接着执行`gdb -p PID`即可进行调试。
+使用`python -m pdb test_debug.py`命令执行python脚本，接着执行`gdb -p PID`即可进行调试。
 
+> 使用pdd可对python脚本进行调试，使用gdb可对c++库文件进行调试。
 
 > `os.system("read _")`相当于人为地打了一处断点，设置完python调试命令后，在gdb模式中输入`c`指令（可在输入`c`指令前设置一些C/C++文件中的断点，如`break TF_NewBuffer`），然后再在python脚本运行窗口中按Enter键即可让python程序继续运行。
 
@@ -324,6 +325,7 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 * [gdb调试命令总结](https://www.cnblogs.com/wuyuegb2312/archive/2013/03/29/2987025.html)
 * [gdb在类成员函数上设置断点](https://menrfa.wordpress.com/2012/01/26/%E4%BD%BF%E7%94%A8gdb%E5%9C%A8%E6%9F%90%E5%87%BD%E6%95%B0%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/)
 * [100个gdb小技巧](https://wizardforcel.gitbooks.io/100-gdb-tips/content/)
+* [10分钟教程掌握Python调试器pdb](https://zhuanlan.zhihu.com/p/37294138)
 
 [^1]: 文档来源于[TensorFlow代码阅读指南](http://jcf94.com/download/TensorFlow-SourceCode-Reading.pdf)。
 [^2]: 此处参考[编译并安装GDB 8.3](https://medium.com/@simonconnah/compiling-and-installing-gdb-8-3-on-ubuntu-19-04-eac597e4cfb8)。
