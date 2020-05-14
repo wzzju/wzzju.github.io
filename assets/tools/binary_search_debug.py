@@ -2,19 +2,34 @@ import os
 import sys
 import subprocess
 
+# Run: nohup python -u binary_search_debug.py >log_0515.txt 2>&1 &
+
 def compile(commit):
     cmake = 'cmake .. -DPY_VERSION=3.7 -DWITH_GPU=ON -DWITH_DISTRIBUTE=OFF -DWITH_TESTING=OFF -DWITH_INFERENCE_API_TEST=OFF -DON_INFER=OFF -DCMAKE_BUILD_TYPE=Release'
     command = 'git reset --hard %s' % commit
     os.system(command)
-    build = 'build_%s' % commit
+    build = os.path.join(os.getcwd(), 'build_%s' % commit)
     print(build)
     if not os.path.exists(build):
         os.system("mkdir %s" % build)
     sys.stdout.write("-----------------------------Compile and Install Commit ID: -----------------------------\n".format(commit))
     sys.stdout.flush()
-    command = 'cd %s && %s && make -j && pip install -U python/dist/paddlepaddle_gpu-0.0.0-cp37-cp37m-linux_x86_64.whl' %(build, cmake)
-    print(command)
-    os.system(command)
+    start_cmd= 'cd %s && %s && make -j' %(build, cmake)
+    print(start_cmd)
+    repeat_cmd= 'cd %s && make -j' % build
+    print(repeat_cmd)
+    rc = os.system(start_cmd)
+    while rc != 0:
+        sys.stdout.write("-----------------------------Repeat to make-----------------------------\n".format(commit))
+        sys.stdout.flush()
+        rc = os.system(repeat_cmd)
+
+    install_cmd = 'cd %s && pip install -U python/dist/paddlepaddle_gpu-0.0.0-cp37-cp37m-linux_x86_64.whl' % build
+    rc = os.system(install_cmd)
+    while rc != 0:
+        sys.stdout.write("-----------------------------Repeat to install-----------------------------\n".format(commit))
+        sys.stdout.flush()
+        rc = os.system(install_cmd)
 
 def is_bad_version(commit):
     print("process the commit: {}".format(commit))
@@ -23,7 +38,7 @@ def is_bad_version(commit):
     print(cmd)
     with open("fp16_log_{}.txt".format(commit), "w") as log:
         child = subprocess.Popen(cmd.split(), stdout=log, stderr=log)
-        stream_data = child.communicate()[0]
+        child.communicate()
         rc = child.returncode
         print(commit, rc)
         if rc == 0:
@@ -36,14 +51,20 @@ def get_candidates(start, end):
     p = os.popen(cmd)
     text = p.read()
     commits = []
-    for line in text.splitlines():
-        if line:
-            commits.append((line.split()[0]))
+    with open("commits_info.txt", "w") as f:
+        for line in text.splitlines():
+            if line:
+                cmt = line.split()[0]
+                commits.append(cmt)
+                f.write(cmt + "\n")
     p.close()
+    commits.reverse()
     return commits
 
 def binary_search(candidates, cond):
     with open("process_log.txt", "w") as f:
+        f.write("-------------------------Record Process-------------------------\n")
+        f.flush()
         left, right = 0, len(candidates) - 1
         while left + 1 < right:
             mid = (left + right) // 2
@@ -69,14 +90,14 @@ def init_start(commit):
 
 if __name__ == "__main__":
     init_start("853f2e5272ce3a52cf96c818d64c8274307be8d0")
-    candidates = get_candidates(start="2020-01-15 2:45:00",
+    candidates = get_candidates(start="2020-02-20 5:00:00",
                                 end="2020-03-18 23:59:59")
     index = binary_search(candidates, is_bad_version)
 
     assert index != -1, "Not find any bad version."
 
     with open("process_log.txt", "a") as f:
-        f.write("-------------------------------------------------------------------------------\n")
+        f.write("----------------------------------------------------------------\n")
         f.write("Find the target commit index = {}.\n".format(index))
         f.write("Find the target commit = {}.\n".format(candidates[index]))
         f.flush()
