@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import sys
 import subprocess
@@ -89,7 +91,9 @@ def init_start(commit):
     os.system(command)
 
 if __name__ == "__main__":
+    # 每次运行脚本须确保commit id起点不变，因为脚本运行过程中会reset commit id
     init_start("853f2e5272ce3a52cf96c818d64c8274307be8d0")
+    # 设置问题pr大致出现的时间段
     candidates = get_candidates(start="2020-02-20 5:00:00",
                                 end="2020-03-18 23:59:59")
     index = binary_search(candidates, is_bad_version)
