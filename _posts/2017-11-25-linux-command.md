@@ -122,13 +122,13 @@ gzip [选项] 压缩（解压缩）的文件名该命令的各选项含义如下
 * gzip -l *    #详细显示例1中每个压缩的文件的信息，并不解压。
 * gzip usr.tar #压缩 tar 备份文件 usr.tar，此时压缩文件的扩展名为.tar.gz。  
 
-### 二. 求某个文件的SHA256(256-bit) 校验和：
+### 二. 求某个文件的SHA256(256-bit) 校验和
 
 ```bash
 sha256sum gpslogger-78.zip > gpslogger-78.zip.SHA256
 ```
 
-### 三. 检查 SHA256(256-bit) 校验和：
+### 三. 检查 SHA256(256-bit) 校验和
 
 ```bash
 sha256sum -c gpslogger-78.zip.SHA256
@@ -145,19 +145,19 @@ sha256sum -c gpslogger-78.zip.SHA256
 gpg --verify ~/Downloads/gpslogger-71.apk.asc
 ```
 
-### 四. 查看文件大小（目录下所有文件）：
+### 四. 查看文件大小（目录下所有文件）
 
 ```bash
 du -sh
 ```
 
-### 五. 查看磁盘情况：
+### 五. 查看磁盘情况
 
 ```bash
 df -hl
 ```
 
-### 六. 查看System.map中的符号信息的方法如下：
+### 六. 查看System.map中的符号信息的方法如下
 
 ##### 6.1第一种方法
 
@@ -355,11 +355,53 @@ scp user@host:/dir/文件名 要拷贝到的地方
 scp -P 2222 user@host:/dir   要拷贝到的地方
 ```
 
+### 十. 使用update-alternatives切换默认程序
+
+##### 设置默认gcc
+
+```shell
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/local/gcc-8.2/bin/gcc 82 --slave /usr/bin/g++ g++ /usr/local/gcc-8.2/bin/g++
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 10 --slave /usr/bin/g++ g++ /usr/bin/g++-10
+```
+
+
+##### 设置默认cmake
+
+```shell
+sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/cmake-3.5.0-Linux-x86_64/bin/cmake 305 --slave /usr/bin/ctest ctest /usr/local/cmake-3.5.0-Linux-x86_64/bin/ctest --slave /usr/bin/ccmake ccmake /usr/local/cmake-3.5.0-Linux-x86_64/bin/ccmake --slave /usr/bin/cmake-gui cmake-gui /usr/local/cmake-3.5.0-Linux-x86_64/bin/cmake-gui --slave /usr/bin/cpack cpack /usr/local/cmake-3.5.0-Linux-x86_64/bin/cpack
+sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/cmake-3.10.0-Linux-x86_64/bin/cmake 310 --slave /usr/bin/ctest ctest /usr/local/cmake-3.10.0-Linux-x86_64/bin/ctest --slave /usr/bin/ccmake ccmake /usr/local/cmake-3.10.0-Linux-x86_64/bin/ccmake --slave /usr/bin/cmake-gui cmake-gui /usr/local/cmake-3.10.0-Linux-x86_64/bin/cmake-gui --slave /usr/bin/cpack cpack /usr/local/cmake-3.10.0-Linux-x86_64/bin/cpack
+```
+
+### 十一. 从apt安装gcc-10
+
+* 编辑`/etc/apt/sources.list`，加入如下语句：
+
+```shell
+deb http://ftp.hk.debian.org/debian sid main
+```
+
+* 运行`sudo apt update`更新安装源，出现密钥验证错误，使用如下命令解决[^gpgerr]：
+
+```
+gpg --keyserver hkp://pool.sks-keyservers.net:80 --recv-key 04EE7237B7D453EC
+# gpg --keyserver pgpkeys.mit.edu --recv-key 04EE7237B7D453EC
+gpg -a --export 04EE7237B7D453EC | sudo apt-key add -
+```
+
+之后再次运行`sudo apt update`命令。
+
+* 安装gcc-10
+
+```
+sudo apt install gcc-10 g++-10
+```
 
 ### 参考资料
 
 * [Establishing a Build Environment](http://source.android.com/source/initializing.html)
 * [Ubuntu中用apt安装和卸载软件](http://blog.csdn.net/ludonghai715/article/details/5657724)
 * [Ubuntu .deb包安装方法](http://blog.csdn.net/zhaoyang22/article/details/4235596)
+* [Installing newer GCC versions in Ubuntu](https://tuxamito.com/wiki/index.php/Installing_newer_GCC_versions_in_Ubuntu)
 
-[^compress]:内容引自[inux下解压命令大全](http://www.cnblogs.com/eoiioe/archive/2008/09/20/1294681.html)
+[^compress]: 内容引自[inux下解压命令大全](http://www.cnblogs.com/eoiioe/archive/2008/09/20/1294681.html)
+[^gpgerr]: [What's the best way to install apt packages from Debian Stretch on Raspbian Jessie?](https://unix.stackexchange.com/questions/274053/whats-the-best-way-to-install-apt-packages-from-debian-stretch-on-raspbian-jess)
