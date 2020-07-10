@@ -225,8 +225,8 @@ set auto-load safe-path /
 * 源码编译并安装source-highlight
 
 ```shell
-apt install libboost-dev
-ln -s /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0 /usr/lib/x86_64-linux-gnu/libboost_regex.so
+apt install libboost-dev libboost-regex-dev
+# ln -s /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0 /usr/lib/x86_64-linux-gnu/libboost_regex.so
 
 wget http://ftp.gnu.org/gnu/src-highlite/source-highlight-3.1.8.tar.gz
 tar zxvf source-highlight-3.1.8.tar.gz
@@ -254,8 +254,9 @@ mkdir build && cd build/
 
 make -j
 make install
-ln -s /usr/local/gdb83/bin/gdb  /usr/bin/gdb
-ln -s /usr/local/gdb83/bin/gdbserver  /usr/bin/gdbserver
+update-alternatives --install /usr/bin/gdb gdb /usr/local/gdb83/bin/gdb 83 --slave /usr/bin/gdbserver gdbserver /usr/local/gdb83/bin/gdbserver --slave /usr/bin/gdb-add-index gdb-add-index /usr/local/gdb83/bin/gdb-add-index
+# ln -s /usr/local/gdb83/bin/gdb  /usr/bin/gdb
+# ln -s /usr/local/gdb83/bin/gdbserver  /usr/bin/gdbserver
 ```
 
 ### 8.2 使用gdb的tui模式
