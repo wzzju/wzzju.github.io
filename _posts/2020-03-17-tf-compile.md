@@ -69,7 +69,8 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 * 安装TensorFlow编译依赖包（python包）
 
   ```bash
-  pip install -U pip six numpy wheel setuptools mock 'future>=0.17.1'
+  pip install numpy==1.18.5
+  pip install -U pip six wheel setuptools mock 'future>=0.17.1'
   pip install -U keras_applications --no-deps
   pip install -U keras_preprocessing --no-deps
   ```
@@ -90,6 +91,7 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
   bazel build -c opt --config=cuda --copt="-g" --cxxopt="-g" //tensorflow/tools/pip_package:build_pip_package
   # tf 2.x: bazel build -c opt --config=cuda --copt="-g" --cxxopt="-g" --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" //tensorflow/tools/pip_package:build_pip_package
   ```
+  **注意:** 编译遇到`C++ compilation of rule '//tensorflow/python:bfloat16_lib' failed`错误，需要将numpy版本降到`1.18.5`版本(`<1.19.0`)，然后使用`bazel clean`命令清空之前的编译结果，最后再重新编译。
 
 ## 5. 构建`whl`软件包
 
