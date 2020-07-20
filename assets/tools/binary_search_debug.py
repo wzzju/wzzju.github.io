@@ -67,24 +67,28 @@ def binary_search(candidates, cond):
     with open("process_log.txt", "w") as f:
         f.write("-------------------------Record Process-------------------------\n")
         f.flush()
+
+        if len(candidates) == 0:
+            return -1
+
         left, right = 0, len(candidates) - 1
-        while left + 1 < right:
-            mid = (left + right) // 2
+        while left <= right:
+            mid = left + (right - left) // 2
             commit = candidates[mid]
             if cond(commit):
                 f.write("The commit {} is failed.\n".format(commit))
                 f.flush()
-                right = mid
+                right = mid - 1
             else:
                 f.write("The commit {} is passed.\n".format(commit))
                 f.flush()
-                left = mid
+                left = mid + 1
 
-        if cond(candidates[left]):
-            return left
-        if cond(candidates[right]):
-            return right
-        return -1
+        # if left >= len(candidates) or not cond(candidates[left]):
+        if left >= len(candidates):
+            return -1
+
+        return left
 
 def init_start(commit):
     command = 'git reset --hard %s' % commit
