@@ -219,6 +219,38 @@ set auto-load safe-path /
     - 需要加上命名空间，写法如`b tensorflow::DirectSession::Run`；
     - 对于带有匿名命名空间的断点设置写法示例：`b tensorflow::(anonymous namespace)::ExecutorState::ScheduleReady`，其第二个命名空间为`namespace {}`。
 
+### 7.4 使用GDB dashboard
+
+#### 7.4.1 设置GDB dashboard
+执行如下命令，在home目录下设置dashboard配置文件(下载`.gdbinit`文件到home目录)：
+```shell
+rm -f ~/.gdbinit
+wget -P ~ https://git.io/.gdbinit
+```
+为了可以加载任意目录下的`.gdbinit`文件，需要在`~/.gdbinit`文件中新增如下内容：
+```shell
+set auto-load safe-path /
+```
+[点击此处](/assets/tools/home_gdbinit)下载修改后的主目录`.gdbinit`文件。
+
+#### 7.4.2 打印stl容器的内容
+从[https://sourceware.org/gdb/wiki/STLSupport](https://sourceware.org/gdb/wiki/STLSupport)网站下载[stl-views-1.0.3.gdb](/assets/tools/stl-views-1.0.3.gdb)文件并将其放到所在工作目录下。然后，修改所在工作目录下的`.gdbinit`内容如下(即增加`source stl-views-1.0.3.gdb`语句)：
+
+```python
+# 加载python调试指令
+python
+import sys
+sys.path.insert(0, ".")
+import libpython
+end
+
+# 设置tensorflow源码目录，以便查找代码
+set directories /work/study/tf-learn/tensorflow/
+
+# 设置后可查看stl容器内容
+source stl-views-1.0.3.gdb
+```
+[点击此处](/assets/tools/local_gdbinit)下载修改后的工作目录`.gdbinit`文件。
 
 ## 8. 安装GDB 8.3并高亮显示源码
 

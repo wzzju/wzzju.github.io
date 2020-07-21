@@ -1,0 +1,11 @@
+# 加载python调试指令
+python
+import sys
+sys.path.append('/Python-3.7.0/Tools/gdb')
+import libpython
+end
+
+# 设置tensorflow源码目录，以便查找代码
+set directories /work/sync_work/Paddle/
+
+source stl-views-1.0.3.gdb
