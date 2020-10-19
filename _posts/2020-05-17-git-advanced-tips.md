@@ -59,7 +59,7 @@ git log #（Optional）验证cherry-pick成功与否
 git diff HEAD^ # （Optional）查看cherry-pick的内容
 
 # 5. 提交cherry-pick代码
-git push origin fix_quantize_op
+git push origin fuse_bn_act
 ```
 
 ### 5.  cherry-pick一个PR
