@@ -62,7 +62,7 @@ git diff HEAD^ # （Optional）查看cherry-pick的内容
 git push origin fuse_bn_act
 ```
 
-### 5.  cherry-pick一个PR
+### 5. cherry-pick一个PR
 
 下面以pr链接 [https://github.com/PaddlePaddle/Paddle/pull/24602](https://github.com/PaddlePaddle/Paddle/pull/24602) 为例进行讲解。
 
@@ -78,9 +78,60 @@ git checkout fix_amp
 curl https://patch-diff.githubusercontent.com/raw/PaddlePaddle/Paddle/pull/24602.patch | git am
 ```
 
+### 6. git tag用法
 
+```shell
+# 1. 查看本地分支标签
+git tag / git tag -l / git tag --list
 
-### 6. 删除本地/远程分支
+# 2. 查看远程所有标签
+git ls-remote --tags
+
+# 3. 给当前分支打标签
+git tag v1.0.0
+
+# 4. 给特定的某个commit版本打标签
+git tag v1.0.0 039bf8b
+# 4.1 打tag时添加注释
+git tag v1.0.0 039bf8b -m "add tags information"
+
+# 5. 删除本地某个标签
+git tag -d v1.0.0 / git tag --delete v1.0.0
+
+# 6. 删除远程的某个标签
+git push origin :v1.0.0 / git push origin -d v1.0.0
+
+# 7. 将本地标签一次性推送到远程
+git push origin --tags
+
+# 8. 将本地某个特定标签推送到远程
+git push origin v1.0.0
+
+# 9. 查看某一个标签的提交信息
+git show v1.0.0
+
+```
+
+### 7. 创建新分支
+
+```shell
+# 基于当前分支创建新分支
+git checkout -b newBranch
+
+# 根据某个commit创建本地分支
+git checkout db5d3131 -b newBranch
+
+# 根据某个tag创建本地分支
+git checkout v2.4.1 -b newBranch
+
+# 根据某个远程分支创建本地分支方法1(自动切换到新分支)
+git checkout remotes/origin/r2.2 -b newBranch
+
+# 根据某个远程分支创建本地分支方法2(不会自动切换到新分支)
+git fetch upstream release/1.7:newBranch
+```
+
+### 8. 删除本地/远程分支
 
 * 删除本地分支
 
@@ -98,7 +149,7 @@ curl https://patch-diff.githubusercontent.com/raw/PaddlePaddle/Paddle/pull/24602
   git push origin :my-branch
   ```
 
-### 7. 减少commit数到方法
+### 9. 减少commit数到方法
 
 * 使用`git commit --amend`补充上次的commit。
 
@@ -111,17 +162,17 @@ curl https://patch-diff.githubusercontent.com/raw/PaddlePaddle/Paddle/pull/24602
   git push origin +master
   ```
 
-### 8. \-\-force 和 + 的不同之处
+### 10. \-\-force 和 + 的不同之处
 
 引用自 [`git push`](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force) 文档:
 
 > Note that `--force` applies to all the refs that are pushed, hence using it with `push.default` set to `matching` or with multiple push destinations configured with `remote.*.push` may overwrite refs other than the current branch (including local refs that are strictly behind their remote counterpart). To force a push to only one branch, use a `+` in front of the refspec to push (e.g `git push origin +master` to force a push to the `master` branch).
 
-### 9. 将PR与Issue相关联
+### 11. 将PR与Issue相关联
 
 若PR解决了某个Issue问题，可在该PR的**第一个**评论框中加上：`fix #issue_number`，这样当该PR被合并后，会自动关闭对应的Issue。关键词包括：close, closes, closed, fix, fixes, fixed, resolve, resolves, resolved，可自行选择合适的词汇。
 
-### 10. 使用二分法和git定位引入bug的PR
+### 12. 使用二分法和git定位引入bug的PR
 
 详见[二分法调试脚本](/assets/tools/binary_search_debug.py)。
 
