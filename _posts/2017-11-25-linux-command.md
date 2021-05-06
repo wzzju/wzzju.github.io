@@ -396,6 +396,12 @@ gpg -a --export 04EE7237B7D453EC | sudo apt-key add -
 sudo apt install gcc-10 g++-10
 ```
 
+### 十二. 使用grep和xargs过滤文件
+
+```bash
+ls | grep -v -E "\.py$|doc" | xargs -I {} mv {} ./doc
+```
+
 ### 参考资料
 
 * [Establishing a Build Environment](http://source.android.com/source/initializing.html)
