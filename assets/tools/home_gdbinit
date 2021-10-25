@@ -1261,7 +1261,7 @@ class Source(Dashboard.Module):
                 'doc': '''Height of the module.
 
 A value of 0 uses the whole height.''',
-                'default': 10,
+                'default': 20,
                 'type': int,
                 'check': check_ge_zero
             },
@@ -1280,7 +1280,9 @@ A value of 0 uses the whole height.''',
         else:
             self.offset = 0
 
-class Assembly(Dashboard.Module):
+
+# class Assembly(Dashboard.Module):
+class Assembly:
     '''Show the disassembled code surrounding the program counter.
 
 The instructions constituting the current statement are marked, if available.'''
@@ -1505,7 +1507,8 @@ A value of 0 uses the whole height.''',
                 instr['asm'] = highlighter.process(instr['asm'])
         return asm
 
-class Variables(Dashboard.Module):
+# class Variables(Dashboard.Module):
+class Variables:
     '''Show arguments and locals of the selected frame.'''
 
     def label(self):
@@ -1714,7 +1717,8 @@ Optionally list the frame arguments and locals too.'''
             info += ' at {}:{}'.format(file_name, file_line)
         return info
 
-class History(Dashboard.Module):
+# class History(Dashboard.Module):
+class History:
     '''List the last entries of the value history.'''
 
     def label(self):
@@ -1744,7 +1748,8 @@ class History(Dashboard.Module):
             }
         }
 
-class Memory(Dashboard.Module):
+# class Memory(Dashboard.Module):
+class Memory:
     '''Allow to inspect memory regions.'''
 
     DEFAULT_LENGTH = 16
@@ -1909,7 +1914,8 @@ The length defaults to 16 bytes.''',
         value = gdb.parse_and_eval(expression)
         return to_unsigned(value)
 
-class Registers(Dashboard.Module):
+# class Registers(Dashboard.Module):
+class Registers:
     '''Show the CPU registers and their values.'''
 
     def __init__(self):
@@ -2025,7 +2031,8 @@ The empty list (default) causes to show all the available registers.''',
                     break
         return names
 
-class Threads(Dashboard.Module):
+# class Threads(Dashboard.Module):
+class Threads:
     '''List the currently available threads.'''
 
     def label(self):
@@ -2088,7 +2095,8 @@ class Threads(Dashboard.Module):
             },
         }
 
-class Expressions(Dashboard.Module):
+# class Expressions(Dashboard.Module):
+class Expressions:
     '''Watch user expressions.'''
 
     def __init__(self):
@@ -2176,7 +2184,8 @@ class Expressions(Dashboard.Module):
             match = re.match('^Default output radix for printing of values is (\d+)\.$', message)
             return match.groups()[0] if match else 10  # fallback
 
-class Breakpoints(Dashboard.Module):
+# class Breakpoints(Dashboard.Module):
+class Breakpoints:
     '''Display the breakpoints list.'''
 
     NAMES = {
