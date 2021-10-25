@@ -272,12 +272,13 @@ cd build
 ../configure
 make -j
 make install
+# export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 ```
 
 * 源码编译并安装GDB 8.3[^2]
 
 ```shell
-apt install texinfo wget
+apt install texinfo wget ncurses-dev
 
 wget http://ftp.gnu.org/gnu/gdb/gdb-8.3.tar.gz
 tar zxvf gdb-8.3.tar.gz
