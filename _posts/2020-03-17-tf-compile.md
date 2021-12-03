@@ -351,6 +351,22 @@ trusted-host = mirrors.aliyun.com
 index-url = https://mirrors.aliyun.com/pypi/simple
 ```
 
+## 11 Ubuntu 18.04 LTS系统安装gdb10和python3.7-dbg
+
+```bash
+# 安装gdb10
+apt-get install software-properties-common && \
+    apt-get update && \
+    add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+    apt-get update -y && \
+    apt install gdb -y
+
+# 安装python3.7-dbg
+apt install python3.7-dbg
+# /usr/share/gdb/auto-load/usr/bin/python3.7m-gdb.py即为所需libpython.py
+
+```
+
 ## 参考资料
 
 * [Python开发必备神器之一：virtualenv](https://codingpy.com/article/virtualenv-must-have-tool-for-python-development/)
