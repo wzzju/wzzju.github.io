@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="2023.9583px" preserveAspectRatio="none" style="width:1004px;height:2023px;background:#00000000;" version="1.1" viewBox="0 0 1004 2023" width="1004.1667px" zoomAndPan="magnify"><defs/><g><!--MD5=[ee79cccfc377e37c00dfe257dadc9824]
+class AlgebraicSimplifierOptions--><rect codeLine="3" height="457.491" id="AlgebraicSimplifierOptions" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="343.75" x="261.4583" y="1554.1667"/><ellipse cx="348.9583" cy="1571.3308" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M350.8687,1575.7558 Q350.4415,1575.9755 349.9715,1576.0854 Q349.5015,1576.1953 348.9827,1576.1953 Q347.1395,1576.1953 346.169,1574.9807 Q345.1986,1573.7661 345.1986,1571.4712 Q345.1986,1569.1701 346.169,1567.9555 Q347.1395,1566.7409 348.9827,1566.7409 Q349.5015,1566.7409 349.9776,1566.8508 Q350.4537,1566.9607 350.8687,1567.1804 L350.8687,1569.1823 Q350.4049,1568.7551 349.9685,1568.5567 Q349.5321,1568.3584 349.0682,1568.3584 Q348.0794,1568.3584 347.5759,1569.1427 Q347.0723,1569.927 347.0723,1571.4712 Q347.0723,1573.0092 347.5759,1573.7935 Q348.0794,1574.5778 349.0682,1574.5778 Q349.5321,1574.5778 349.9685,1574.3795 Q350.4049,1574.1811 350.8687,1573.7539 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="150" x="373.9583" y="1575.6612">AlgebraicSimplifierOptions</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="262.5" x2="604.1667" y1="1588.4949" y2="1588.4949"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1596.8282"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="307.2917" x="286.4583" y="1608.9478">reshape_is_bitcast_callback_: ReshapeIsBitcastCallback</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1620.7397"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="307.2917" x="286.4583" y="1632.8593">conv_is_lowerable_callback_: ConvIsLowerableCallback</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1644.6513"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="142.7083" x="286.4583" y="1656.7708">is_layout_sensitive_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1668.5628"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="213.5417" x="286.4583" y="1680.6824">enable_dot_strength_reduction_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1692.4744"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="212.5" x="286.4583" y="1704.5939">enable_dot_to_multiply_rewrite_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1716.3859"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="188.5417" x="286.4583" y="1728.5055">enable_conv_simplification_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1740.2974"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="194.7917" x="286.4583" y="1752.417">enable_conv_operand_swap_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1764.209"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="225" x="286.4583" y="1776.3285">enable_scalar_multiply_reduction_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1788.1205"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="162.5" x="286.4583" y="1800.2401">enable_floats_are_real_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1812.0321"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="304.1667" x="286.4583" y="1824.1516">enable_window_reduce_to_reduce_replacement_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1835.9436"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="187.5" x="286.4583" y="1848.0632">enable_reduce_of_reshape_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1859.8551"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="254.1667" x="286.4583" y="1871.9747">enable_negative_padding_replacement_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1883.7667"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="165.625" x="286.4583" y="1895.8862">enable_sink_broadcast_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1907.6782"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="213.5417" x="286.4583" y="1919.7978">replace_transpose_with_bitcast_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1931.5898"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="182.2917" x="286.4583" y="1943.7093">very_small_gather_size_: int64_t</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1955.5013"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="172.9167" x="286.4583" y="1967.6208">minmax_propagate_nan_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="269.7917" y="1979.4128"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="113.5417" x="286.4583" y="1991.5324">metadata_: Metadata</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="262.5" x2="604.1667" y1="2003.3244" y2="2003.3244"/><!--MD5=[b464d64499d8b416c5119eeca9dec549]
+class AlgebraicSimplifierOptions::Metadata--><rect codeLine="23" height="74.9064" id="AlgebraicSimplifierOptions::Metadata" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="360.4167" x="17.7083" y="1352.6042"/><ellipse cx="85.4167" cy="1369.7683" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M87.3271,1374.1933 Q86.8998,1374.413 86.4299,1374.5229 Q85.9599,1374.6328 85.4411,1374.6328 Q83.5978,1374.6328 82.6274,1373.4182 Q81.6569,1372.2036 81.6569,1369.9087 Q81.6569,1367.6076 82.6274,1366.393 Q83.5978,1365.1784 85.4411,1365.1784 Q85.9599,1365.1784 86.436,1365.2883 Q86.912,1365.3982 87.3271,1365.6179 L87.3271,1367.6198 Q86.8632,1367.1926 86.4268,1366.9942 Q85.9904,1366.7959 85.5265,1366.7959 Q84.5378,1366.7959 84.0342,1367.5802 Q83.5307,1368.3645 83.5307,1369.9087 Q83.5307,1371.4467 84.0342,1372.231 Q84.5378,1373.0153 85.5265,1373.0153 Q85.9904,1373.0153 86.4268,1372.817 Q86.8632,1372.6186 87.3271,1372.1914 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="206.25" x="110.4167" y="1374.0987">AlgebraicSimplifierOptions::Metadata</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="18.75" x2="377.0833" y1="1386.9324" y2="1386.9324"/><ellipse cx="29.1667" cy="1398.3907" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;fill:none;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="323.9583" x="42.7083" y="1407.3853">cudnn_batchnorm_forward_training_metadata: std::string</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="18.75" x2="377.0833" y1="1419.1772" y2="1419.1772"/><!--MD5=[0f727e651a9f1681443e9658d859fd87]
+class AlgebraicSimplifier--><rect codeLine="28" height="146.641" id="AlgebraicSimplifier" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="503.125" x="489.0625" y="1316.6667"/><ellipse cx="678.6458" cy="1333.8308" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M680.5562,1338.2558 Q680.129,1338.4755 679.659,1338.5854 Q679.189,1338.6953 678.6702,1338.6953 Q676.827,1338.6953 675.8565,1337.4807 Q674.8861,1336.2661 674.8861,1333.9712 Q674.8861,1331.6701 675.8565,1330.4555 Q676.827,1329.2409 678.6702,1329.2409 Q679.189,1329.2409 679.6651,1329.3508 Q680.1412,1329.4607 680.5562,1329.6804 L680.5562,1331.6823 Q680.0924,1331.2551 679.656,1331.0567 Q679.2196,1330.8584 678.7557,1330.8584 Q677.7669,1330.8584 677.2634,1331.6427 Q676.7598,1332.427 676.7598,1333.9712 Q676.7598,1335.5092 677.2634,1336.2935 Q677.7669,1337.0778 678.7557,1337.0778 Q679.2196,1337.0778 679.656,1336.8795 Q680.0924,1336.6811 680.5562,1336.2539 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="105.2083" x="703.6458" y="1338.1612">AlgebraicSimplifier</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="490.1042" x2="991.1458" y1="1350.9949" y2="1350.9949"/><polygon fill="none" points="500.5208,1357.2449,504.6875,1361.4115,500.5208,1365.5782,496.3542,1361.4115" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="205.2083" x="514.0625" y="1371.4478">options_: AlgebraicSimplifierOptions</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="490.1042" x2="991.1458" y1="1383.2397" y2="1383.2397"/><ellipse cx="500.5208" cy="1394.6981" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="355.2083" x="514.0625" y="1403.6926">AlgebraicSimplifier(options: const AlgebraicSimplifierOptions&amp;)</text><ellipse cx="500.5208" cy="1418.6096" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="241.6667" x="514.0625" y="1427.6042">Run(module: HloModule*): StatusOr&lt;bool&gt;</text><ellipse cx="500.5208" cy="1442.5212" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="466.6667" x="514.0625" y="1451.5157">CreateConstantWithLayoutUpdated(literal: Literal): std::unique_ptr&lt;HloInstruction&gt;</text><!--MD5=[e22db3cdfc2212a25ee9b52de5a4b213]
+class DfsHloVisitorBase--><rect codeLine="35" height="266.1987" id="DfsHloVisitorBase" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="504.1667" x="202.0833" y="141.6667"/><ellipse cx="395.3125" cy="158.8308" fill="#D2494E" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M392.1956,155.9926 L392.1956,154.4057 L397.6217,154.4057 L397.6217,155.9926 L395.8089,155.9926 L395.8089,161.9314 L397.6217,161.9314 L397.6217,163.5183 L392.1956,163.5183 L392.1956,161.9314 L394.0084,161.9314 L394.0084,155.9926 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="98.9583" x="420.3125" y="163.1612">DfsHloVisitorBase</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="203.125" x2="705.2083" y1="175.9949" y2="175.9949"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="203.125" x2="705.2083" y1="184.3282" y2="184.3282"/><ellipse cx="213.5417" cy="195.7865" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="305.2083" x="227.0833" y="204.7811">HandleElementwiseUnary(hlo: HloInstruction*): Status (</text><text fill="#FF0000" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="157.2917" x="532.2917" y="204.7811">return unimplemented error</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="4.1667" x="689.5833" y="204.7811">)</text><ellipse cx="213.5417" cy="219.6981" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="306.25" x="227.0833" y="228.6926">HandleElementwiseBinary(hlo: HloInstruction*): Status (</text><text fill="#FF0000" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="157.2917" x="533.3333" y="228.6926">return unimplemented error</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="4.1667" x="690.625" y="228.6926">)</text><ellipse cx="213.5417" cy="243.6096" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="219.7917" x="227.0833" y="252.6042">HandleSqrt(hlo: HloInstruction*): Status</text><ellipse cx="213.5417" cy="267.5212" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="240.625" x="227.0833" y="276.5157">HandleMultiply(hlo: HloInstruction*): Status</text><ellipse cx="213.5417" cy="291.4327" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="305.2083" x="227.0833" y="300.4272">HandleBatchNormTraining(hlo: HloInstruction*): Status</text><ellipse cx="213.5417" cy="315.3442" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="216.6667" x="227.0833" y="324.3388">HandleDot(hlo: HloInstruction*): Status</text><ellipse cx="213.5417" cy="339.2558" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="265.625" x="227.0833" y="348.2503">HandleConvolution(hlo: HloInstruction*): Status</text><ellipse cx="213.5417" cy="363.1673" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="215.625" x="227.0833" y="372.1619">FinishVisit(hlo: HloInstruction*): Status</text><ellipse cx="213.5417" cy="387.0789" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="18.75" x="227.0833" y="396.0734">......</text><!--MD5=[e327024629bf60f36927bb55c7d703f5]
+class DfsHloVisitorWithDefaultBase--><rect codeLine="49" height="242.2872" id="DfsHloVisitorWithDefaultBase" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="338.5417" x="284.8958" y="469.7917"/><ellipse cx="363.5417" cy="486.9558" fill="#8FB961" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M363.6556,483.6578 L362.8072,487.3871 L364.5101,487.3871 Z M362.557,482.0099 L364.7603,482.0099 L367.2201,491.1224 L365.4195,491.1224 L364.858,488.8702 L362.4471,488.8702 L361.8978,491.1224 L360.0972,491.1224 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="162.5" x="388.5417" y="491.2862">DfsHloVisitorWithDefaultBase</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="285.9375" x2="622.3958" y1="504.1199" y2="504.1199"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="285.9375" x2="622.3958" y1="512.4532" y2="512.4532"/><ellipse cx="296.3542" cy="523.9115" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="302.0833" x="309.8958" y="532.9061">DefaultAction(hlo_instruction: HloInstruction*): Status</text><ellipse cx="296.3542" cy="547.8231" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="142.7083" x="309.8958" y="556.8176">HandleElementwiseUnary:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="455.7292" y="556.8176">override</text><ellipse cx="296.3542" cy="571.7346" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="143.75" x="309.8958" y="580.7292">HandleElementwiseBinary:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="456.7708" y="580.7292">override</text><ellipse cx="296.3542" cy="595.6462" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="150" x="309.8958" y="604.6407">HandleBatchNormTraining:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="463.0208" y="604.6407">override</text><ellipse cx="296.3542" cy="619.5577" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="61.4583" x="309.8958" y="628.5522">HandleDot:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="374.4792" y="628.5522">override</text><ellipse cx="296.3542" cy="643.4692" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="110.4167" x="309.8958" y="652.4638">HandleConvolution:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="423.4375" y="652.4638">override</text><ellipse cx="296.3542" cy="667.3808" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="60.4167" x="309.8958" y="676.3753">FinishVisit:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="373.4375" y="676.3753">override</text><ellipse cx="296.3542" cy="691.2923" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="18.75" x="309.8958" y="700.2869">......</text><!--MD5=[a7b53e3f6267f27b7a4ce77cb159826b]
+class DfsHloRewriteVisitor--><rect codeLine="60" height="170.5526" id="DfsHloRewriteVisitor" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="700" x="104.1667" y="776.0417"/><ellipse cx="387.5" cy="793.2058" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M389.4104,797.6308 Q388.9832,797.8505 388.5132,797.9604 Q388.0432,798.0703 387.5244,798.0703 Q385.6812,798.0703 384.7107,796.8557 Q383.7402,795.6411 383.7402,793.3462 Q383.7402,791.0451 384.7107,789.8305 Q385.6812,788.6159 387.5244,788.6159 Q388.0432,788.6159 388.5193,788.7258 Q388.9954,788.8357 389.4104,789.0554 L389.4104,791.0573 Q388.9465,790.6301 388.5101,790.4317 Q388.0737,790.2334 387.6099,790.2334 Q386.6211,790.2334 386.1176,791.0177 Q385.614,791.802 385.614,793.3462 Q385.614,794.8842 386.1176,795.6685 Q386.6211,796.4528 387.6099,796.4528 Q388.0737,796.4528 388.5101,796.2545 Q388.9465,796.0561 389.4104,795.6289 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="114.5833" x="412.5" y="797.5362">DfsHloRewriteVisitor</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="105.2083" x2="803.125" y1="810.3699" y2="810.3699"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="112.5" y="818.7032"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="85.4167" x="129.1667" y="830.8228">changed_: bool</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="105.2083" x2="803.125" y1="842.6147" y2="842.6147"/><ellipse cx="115.625" cy="854.0731" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="298.9583" x="129.1667" y="863.0676">RunOnModule(module: HloModule*): StatusOr&lt;bool&gt;</text><ellipse cx="115.625" cy="877.9846" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="79.1667" x="129.1667" y="886.9792">DefaultAction:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="211.4583" y="886.9792">override</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="4.1667" x="263.5417" y="886.9792">(</text><text fill="#FF0000" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="61.4583" x="267.7083" y="886.9792">do nothing</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="4.1667" x="329.1667" y="886.9792">)</text><polygon fill="#FFFF44" points="115.625,896.6878,119.7917,900.8545,115.625,905.0212,111.4583,900.8545" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="663.5417" x="129.1667" y="910.8907">ReplaceWithNewInstruction(old_instruction: HloInstruction*, new_instruction: std::unique_ptr&lt;HloInstruction&gt;): Status</text><polygon fill="#FFFF44" points="115.625,920.5994,119.7917,924.766,115.625,928.9327,111.4583,924.766" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="517.7083" x="129.1667" y="934.8022">ReplaceInstruction(old_instruction: HloInstruction*, new_instruction: HloInstruction*): Status</text><!--MD5=[2345db810a8924848db2e850feae2330]
+class AlgebraicSimplifierVisitor--><rect codeLine="69" height="242.2872" id="AlgebraicSimplifierVisitor" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="694.7917" x="106.7708" y="1010.4167"/><ellipse cx="373.9583" cy="1027.5808" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M375.8687,1032.0058 Q375.4415,1032.2255 374.9715,1032.3354 Q374.5015,1032.4453 373.9827,1032.4453 Q372.1395,1032.4453 371.169,1031.2307 Q370.1986,1030.0161 370.1986,1027.7212 Q370.1986,1025.4201 371.169,1024.2055 Q372.1395,1022.9909 373.9827,1022.9909 Q374.5015,1022.9909 374.9776,1023.1008 Q375.4537,1023.2107 375.8687,1023.4304 L375.8687,1025.4323 Q375.4049,1025.0051 374.9685,1024.8067 Q374.5321,1024.6084 374.0682,1024.6084 Q373.0794,1024.6084 372.5759,1025.3927 Q372.0723,1026.177 372.0723,1027.7212 Q372.0723,1029.2592 372.5759,1030.0435 Q373.0794,1030.8278 374.0682,1030.8278 Q374.5321,1030.8278 374.9685,1030.6295 Q375.4049,1030.4311 375.8687,1030.0039 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="141.6667" x="398.9583" y="1031.9112">AlgebraicSimplifierVisitor</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="107.8125" x2="800.5208" y1="1044.7449" y2="1044.7449"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="115.1042" y="1053.0782"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="180.2083" x="131.7708" y="1065.1978">computation_: HloComputation*</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="115.1042" y="1076.9897"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="247.9167" x="131.7708" y="1089.1093">options_: const AlgebraicSimplifierOptions&amp;</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="115.1042" y="1100.9013"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="175" x="131.7708" y="1113.0208">simplifier_: AlgebraicSimplifier*</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="107.8125" x2="800.5208" y1="1124.8128" y2="1124.8128"/><ellipse cx="118.2292" cy="1136.2712" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="566.6667" x="131.7708" y="1145.2657">AlgebraicSimplifierVisitor(options: const AlgebraicSimplifierOptions&amp;, simplifier: AlgebraicSimplifier*)</text><ellipse cx="118.2292" cy="1160.1827" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="658.3333" x="131.7708" y="1169.1772">Run(computation: HloComputation*, options: const AlgebraicSimplifierOptions&amp;, simplifier: AlgebraicSimplifier*): bool</text><ellipse cx="118.2292" cy="1184.0942" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="63.5417" x="131.7708" y="1193.0888">HandleAbs:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="198.4375" y="1193.0888">override</text><ellipse cx="118.2292" cy="1208.0058" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="64.5833" x="131.7708" y="1217.0003">HandleAdd:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="199.4792" y="1217.0003">override</text><ellipse cx="118.2292" cy="1231.9173" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="64.5833" x="131.7708" y="1240.9119">HandleAnd:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="199.4792" y="1240.9119">override</text><!--MD5=[7d9adc02f512422c836c62da64d627d1]
+link DfsHloVisitorBase to DfsHloVisitorBase--><path codeLine="46" d="M456.8958,233.0104 C472.3438,160.5208 471.4375,55.2083 454.1667,55.2083 C437.375,55.2083 436.0521,115.9271 450.1979,181.9583 " fill="none" id="DfsHloVisitorBase-to-DfsHloVisitorBase" style="stroke:#008000;stroke-width:1.0416666666666667;stroke-dasharray:7.0,7.0;"/><polygon fill="#008000" points="451.3438,187.125,453.4055,177.0751,450.2281,182.0376,445.2656,178.8601,451.3438,187.125" style="stroke:#008000;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="13.5417" lengthAdjust="spacing" textLength="22.9167" x="442.7083" y="41.217">call</text><!--MD5=[7d9adc02f512422c836c62da64d627d1]
+link DfsHloVisitorBase to DfsHloVisitorBase--><path codeLine="47" d="M456.8021,256.2083 C472.3438,181.6042 471.4688,55.2083 454.1667,55.2083 C437.3333,55.2083 436.0417,135.7083 450.2917,204.8958 " fill="none" id="DfsHloVisitorBase-to-DfsHloVisitorBase-1" style="stroke:#FF0000;stroke-width:1.0416666666666667;stroke-dasharray:1.0,3.0;"/><polygon fill="#FF0000" points="451.4375,210.2812,453.5554,200.243,450.3503,205.1877,445.4056,201.9826,451.4375,210.2812" style="stroke:#FF0000;stroke-width:1.0416666666666667;"/><!--MD5=[fc4558050a61724b189f92101a813a86]
+reverse link AlgebraicSimplifier to AlgebraicSimplifierOptions--><path codeLine="80" d="M675.1146,1474.4167 C654.2604,1500.9375 630.125,1531.6146 605.3438,1563.1146 " fill="none" id="AlgebraicSimplifier-backto-AlgebraicSimplifierOptions" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="683.5417,1463.7083,676.4015,1466.0411,675.8086,1473.5292,682.9488,1471.1965,683.5417,1463.7083" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[f9331aebbd99371b53a40b83dfee5269]
+reverse link AlgebraicSimplifierVisitor to AlgebraicSimplifierOptions--><path codeLine="81" d="M449.8646,1266.9271 C447.2083,1349.6667 443.7292,1457.9479 440.6458,1553.8438 " fill="none" id="AlgebraicSimplifierVisitor-backto-AlgebraicSimplifierOptions" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon points="450.3021,1253.3542,445.9385,1259.4683,449.9039,1265.8478,454.2676,1259.7337,450.3021,1253.3542" style="stroke:#2FA4E7;stroke-width:3.125;fill:none;"/><!--MD5=[73b0cbfd1b8e7ac24a104efe20a7b20a]
+reverse link AlgebraicSimplifierVisitor to AlgebraicSimplifier--><path codeLine="82" d="M599.1771,1262.5313 C619.9167,1281.0833 640.5938,1299.5833 659.4896,1316.4792 " fill="none" id="AlgebraicSimplifierVisitor-backto-AlgebraicSimplifier" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon points="589.0104,1253.4375,590.893,1260.7093,598.3295,1261.7684,596.4469,1254.4966,589.0104,1253.4375" style="stroke:#2FA4E7;stroke-width:3.125;fill:none;"/><!--MD5=[017280b4de802315b98fce77201384cc]
+reverse link DfsHloRewriteVisitor to AlgebraicSimplifierVisitor--><path codeLine="83" d="M454.1667,968.2708 C454.1667,982.0833 454.1667,996.3125 454.1667,1010.3438 " fill="none" id="DfsHloRewriteVisitor-backto-AlgebraicSimplifierVisitor" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="446.875,967.8333,454.1667,947,461.4583,967.8333,446.875,967.8333" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[320398d2ef9f1ec8b191dd8e9ab75045]
+link AlgebraicSimplifierOptions::Metadata to AlgebraicSimplifierOptions--><path codeLine="84" d="M198.5417,1427.8646 C200.2083,1455.1563 205.1146,1492.7396 218.75,1522.9167 C229.5729,1546.8542 243.2188,1570.375 258.3542,1592.8854 " fill="none" id="AlgebraicSimplifierOptions::Metadata-to-AlgebraicSimplifierOptions" style="stroke:#2FA4E7;stroke-width:3.125;stroke-dasharray:7.0,7.0;"/><polygon fill="#2FA4E7" points="261.4063,1597.375,259.6087,1587.2745,258.4898,1593.0598,252.7044,1591.9408,261.4063,1597.375" style="stroke:#2FA4E7;stroke-width:3.125;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="13.5417" lengthAdjust="spacing" textLength="175" x="225" y="1514.1337">Defined in its private field.</text><!--MD5=[6922935cf66944a96a8ee337850dc6ee]
+reverse link DfsHloVisitorWithDefaultBase to DfsHloRewriteVisitor--><path codeLine="85" d="M454.1667,733.625 C454.1667,747.9896 454.1667,762.2396 454.1667,775.7188 " fill="none" id="DfsHloVisitorWithDefaultBase-backto-DfsHloRewriteVisitor" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="446.875,733.4063,454.1667,712.5729,461.4583,733.4063,446.875,733.4063" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[6bd35b402feab494697ebf7ffa18b60b]
+reverse link DfsHloVisitorBase to DfsHloVisitorWithDefaultBase--><path codeLine="86" d="M454.1667,427.8125 C454.1667,441.9167 454.1667,456.0417 454.1667,469.7708 " fill="none" id="DfsHloVisitorBase-backto-DfsHloVisitorWithDefaultBase" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="446.875,427.3438,454.1667,406.5104,461.4583,427.3438,446.875,427.3438" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[b807e0a02efc336bfcd0b3efd29a49bb]
+@startuml AlgebraicSimplifier
+!theme cerulean-outline
+
+class AlgebraicSimplifierOptions {
+    - {field} reshape_is_bitcast_callback_: ReshapeIsBitcastCallback
+    - {field} conv_is_lowerable_callback_: ConvIsLowerableCallback
+    - {field} is_layout_sensitive_: bool
+    - {field} enable_dot_strength_reduction_: bool
+    - {field} enable_dot_to_multiply_rewrite_: bool
+    - {field} enable_conv_simplification_: bool
+    - {field} enable_conv_operand_swap_: bool
+    - {field} enable_scalar_multiply_reduction_: bool
+    - {field} enable_floats_are_real_: bool
+    - {field} enable_window_reduce_to_reduce_replacement_: bool
+    - {field} enable_reduce_of_reshape_: bool
+    - {field} enable_negative_padding_replacement_: bool
+    - {field} enable_sink_broadcast_: bool
+    - {field} replace_transpose_with_bitcast_: bool
+    - {field} very_small_gather_size_: int64_t
+    - {field} minmax_propagate_nan_: bool
+    - {field} metadata_: Metadata
+}
+
+class AlgebraicSimplifierOptions::Metadata {
+  + cudnn_batchnorm_forward_training_metadata: std::string
+}
+
+
+class AlgebraicSimplifier {
+    + AlgebraicSimplifier(options: const AlgebraicSimplifierOptions&)
+    + Run(module: HloModule*): StatusOr<bool>
+    + CreateConstantWithLayoutUpdated(literal: Literal): std::unique_ptr<HloInstruction>
+    # {field} options_: AlgebraicSimplifierOptions
+}
+
+Interface DfsHloVisitorBase {
+    + {method} HandleElementwiseUnary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleElementwiseBinary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleSqrt(hlo: HloInstruction*): Status
+    + {method} HandleMultiply(hlo: HloInstruction*): Status
+    + {abstract} HandleBatchNormTraining(hlo: HloInstruction*): Status
+    + {abstract} HandleDot(hlo: HloInstruction*): Status
+    + {abstract} HandleConvolution(hlo: HloInstruction*): Status
+    + {abstract} FinishVisit(hlo: HloInstruction*): Status
+    + {method} ......
+}
+DfsHloVisitorBase::HandleSqrt -[#green,dashed,thickness=1]-> DfsHloVisitorBase::HandleElementwiseUnary : call
+DfsHloVisitorBase::HandleMultiply -[#red,dotted,thickness=1]-> DfsHloVisitorBase::HandleElementwiseBinary
+
+abstract class DfsHloVisitorWithDefaultBase {
+    + {abstract} DefaultAction(hlo_instruction: HloInstruction*): Status
+    + {method} HandleElementwiseUnary: <b><color:#008080>override</color></b>
+    + {method} HandleElementwiseBinary: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+    + {method} HandleDot: <b><color:#008080>override</color></b>
+    + {method} HandleConvolution: <b><color:#008080>override</color></b>
+    + {method} FinishVisit: <b><color:#008080>override</color></b>
+    + {method} ......
+}
+
+class DfsHloRewriteVisitor {
+    + {method} RunOnModule(module: HloModule*): StatusOr<bool>
+    + {method} DefaultAction: <b><color:#008080>override</color></b> (<color:Red>do nothing</color>)
+    # {method} ReplaceWithNewInstruction(old_instruction: HloInstruction*, new_instruction: std::unique_ptr<HloInstruction>): Status
+    # {method} ReplaceInstruction(old_instruction: HloInstruction*, new_instruction: HloInstruction*): Status
+    - {field} changed_: bool
+
+}
+
+class AlgebraicSimplifierVisitor {
+  + {method} AlgebraicSimplifierVisitor(options: const AlgebraicSimplifierOptions&, simplifier: AlgebraicSimplifier*)
+  + {method} Run(computation: HloComputation*, options: const AlgebraicSimplifierOptions&, simplifier: AlgebraicSimplifier*): bool
+  + {method} HandleAbs: <b><color:#008080>override</color></b>
+  + {method} HandleAdd: <b><color:#008080>override</color></b>
+  + {method} HandleAnd: <b><color:#008080>override</color></b>
+  - {field} computation_: HloComputation*
+  - {field} options_: const AlgebraicSimplifierOptions&
+  - {field} simplifier_: AlgebraicSimplifier*
+}
+
+AlgebraicSimplifier *- - AlgebraicSimplifierOptions
+AlgebraicSimplifierVisitor o- - AlgebraicSimplifierOptions
+AlgebraicSimplifierVisitor o- - AlgebraicSimplifier
+DfsHloRewriteVisitor <|- - AlgebraicSimplifierVisitor
+AlgebraicSimplifierOptions::Metadata -[dashed]-> AlgebraicSimplifierOptions : Defined in its private field.
+DfsHloVisitorWithDefaultBase <|- - DfsHloRewriteVisitor
+DfsHloVisitorBase <|- - DfsHloVisitorWithDefaultBase
+@enduml
+
+@startuml AlgebraicSimplifier
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor transparent
+    FontColor #2FA4E7
+    HyperLinkColor #FD7E14
+    LineColor #2683B9
+    LineThickness 1
+    Margin 10
+    Padding 6
+    Shadowing 0.0
+  }
+  node {
+   Padding 15
+   roundcorner 20
+   BackgroundColor transparent
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  groupHeader {
+    BackgroundColor #E9ECEF
+    FontColor #033C73
+    FontStyle bold
+  }
+  header {
+    LineThickness 0
+  }
+  referenceHeader {
+    BackgroundColor transparent
+    FontColor #343A40
+    FontStyle bold
+  }
+  separator {
+    BackgroundColor #343A40
+    FontColor transparent
+    FontStyle bold
+  }
+  title {
+	FontSize 20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor  transparent
+	FontColor #2FA4E7
+	BorderColor #E9ECEF
+  }
+  nwdiagDiagram {
+	network {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent    
+		LineColor #2FA4E7
+		LineThickness 1.0
+		FontColor #2683B9
+	}
+	server {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	}
+	arrow {
+		FontColor #2683B9
+		LineColor #2683B9
+	}
+	group {
+		BackGroundColor #F8F9FA
+		LineColor $LIGHT_DARK
+		LineThickness 2.0
+		Margin 5
+		Padding 5
+	}
+  }
+  ganttDiagram {
+	task {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+		LineColor #2FA4E7
+		Margin 10
+		Padding 6
+	}
+	note {
+		FontColor #033C73
+		LineColor $INFO_DARK
+		BackGroundColor transparent
+	}
+	separator {
+		LineColor #BABDBF
+		BackGroundColor transparent
+		FontColor #BABDBF
+	}
+	milestone {
+		FontColor #033C73
+		FontSize 16
+		FontStyle italic
+		BackGroundColor #E9ECEF
+		LineColor #BABDBF
+	}
+	timeline {
+		BackgroundColor #E9ECEF
+		FontColor #BABDBF
+	}
+	closed {
+		BackgroundColor $WARNING_DARK
+		FontColor #DD5600
+	}
+  }
+</style>
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            #868E96
+skinparam stereotype {
+    CBackgroundColor #EDF0F2
+    CBorderColor #BABDBF
+    ABackgroundColor #8FB961
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor #D2494E
+    IBorderColor $DANGER_DARK
+    EBackgroundColor #E47833
+    EBorderColor $WARNING_DARK
+    NBackgroundColor #35638F
+    NBorderColor $INFO_DARK
+}
+skinparam title {
+	FontColor	                 #2FA4E7
+	BorderColor	                 #BABDBF
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              transparent
+}
+
+skinparam legend {
+	BackgroundColor transparent
+	BorderColor #BABDBF
+	FontColor #343A40
+}
+
+skinparam swimlane {
+	BorderColor #033C73
+	BorderThickness 2
+	TitleBackgroundColor  #EDF0F2-#E9ECEF
+	TitleFontColor #2FA4E7
+}
+
+
+skinparam activity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BarColor #73A839
+	StartColor #033C73
+	EndColor #033C73
+	DiamondBackgroundColor transparent
+  	DiamondBorderColor #BABDBF
+	DiamondFontColor #BABDBF
+}
+
+
+skinparam participant {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #2FA4E7
+	FontColor #343A40
+}
+
+
+skinparam sequence {
+	BorderColor #2FA4E7
+	TitleFontColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #2FA4E7
+	EndColor #2FA4E7
+	BoxBackgroundColor transparent
+	BoxBorderColor #868E96
+	BoxFontColor #343A40
+	DelayFontColor #343A40
+	LifeLineBorderColor #BABDBF
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor transparent
+	GroupBorderColor #868E96
+	GroupFontColor #343A40
+	GroupHeaderFontColor #033C73
+	DividerBackgroundColor transparent
+    DividerBorderColor #868E96
+    DividerBorderThickness 2
+    DividerFontColor #343A40
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #868E96
+	ReferenceFontColor #343A40
+	ReferenceHeaderFontColor #033C73
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam partition {
+	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam control {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam entity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam boundary {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam agent {
+	BackgroundColor transparent
+	BorderColor #999999
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam artifact {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam component {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam interface {
+	BackgroundColor  transparent
+	BorderColor  #C71C22
+	FontColor #343A40
+}
+
+
+skinparam storage {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+}
+
+
+skinparam node {
+	BackgroundColor transparent
+	BorderColor #343A40
+	FontColor #343A40
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #343A40
+}
+
+
+skinparam database {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam class {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	FontColor #F8F9FA
+	HeaderBackgroundColor #2FA4E7-#2683B9
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #343A40
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam rectangle {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam package {
+	BackgroundColor transparent
+  	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor transparent
+  	BorderColor #033C73
+	FontColor #033C73
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #033C73
+	EndColor #033C73
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam card {
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam file {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam stack {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+
+
+class AlgebraicSimplifierOptions {
+    - {field} reshape_is_bitcast_callback_: ReshapeIsBitcastCallback
+    - {field} conv_is_lowerable_callback_: ConvIsLowerableCallback
+    - {field} is_layout_sensitive_: bool
+    - {field} enable_dot_strength_reduction_: bool
+    - {field} enable_dot_to_multiply_rewrite_: bool
+    - {field} enable_conv_simplification_: bool
+    - {field} enable_conv_operand_swap_: bool
+    - {field} enable_scalar_multiply_reduction_: bool
+    - {field} enable_floats_are_real_: bool
+    - {field} enable_window_reduce_to_reduce_replacement_: bool
+    - {field} enable_reduce_of_reshape_: bool
+    - {field} enable_negative_padding_replacement_: bool
+    - {field} enable_sink_broadcast_: bool
+    - {field} replace_transpose_with_bitcast_: bool
+    - {field} very_small_gather_size_: int64_t
+    - {field} minmax_propagate_nan_: bool
+    - {field} metadata_: Metadata
+}
+
+class AlgebraicSimplifierOptions::Metadata {
+  + cudnn_batchnorm_forward_training_metadata: std::string
+}
+
+
+class AlgebraicSimplifier {
+    + AlgebraicSimplifier(options: const AlgebraicSimplifierOptions&)
+    + Run(module: HloModule*): StatusOr<bool>
+    + CreateConstantWithLayoutUpdated(literal: Literal): std::unique_ptr<HloInstruction>
+    # {field} options_: AlgebraicSimplifierOptions
+}
+
+Interface DfsHloVisitorBase {
+    + {method} HandleElementwiseUnary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleElementwiseBinary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleSqrt(hlo: HloInstruction*): Status
+    + {method} HandleMultiply(hlo: HloInstruction*): Status
+    + {abstract} HandleBatchNormTraining(hlo: HloInstruction*): Status
+    + {abstract} HandleDot(hlo: HloInstruction*): Status
+    + {abstract} HandleConvolution(hlo: HloInstruction*): Status
+    + {abstract} FinishVisit(hlo: HloInstruction*): Status
+    + {method} ......
+}
+DfsHloVisitorBase::HandleSqrt -[#green,dashed,thickness=1]-> DfsHloVisitorBase::HandleElementwiseUnary : call
+DfsHloVisitorBase::HandleMultiply -[#red,dotted,thickness=1]-> DfsHloVisitorBase::HandleElementwiseBinary
+
+abstract class DfsHloVisitorWithDefaultBase {
+    + {abstract} DefaultAction(hlo_instruction: HloInstruction*): Status
+    + {method} HandleElementwiseUnary: <b><color:#008080>override</color></b>
+    + {method} HandleElementwiseBinary: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+    + {method} HandleDot: <b><color:#008080>override</color></b>
+    + {method} HandleConvolution: <b><color:#008080>override</color></b>
+    + {method} FinishVisit: <b><color:#008080>override</color></b>
+    + {method} ......
+}
+
+class DfsHloRewriteVisitor {
+    + {method} RunOnModule(module: HloModule*): StatusOr<bool>
+    + {method} DefaultAction: <b><color:#008080>override</color></b> (<color:Red>do nothing</color>)
+    # {method} ReplaceWithNewInstruction(old_instruction: HloInstruction*, new_instruction: std::unique_ptr<HloInstruction>): Status
+    # {method} ReplaceInstruction(old_instruction: HloInstruction*, new_instruction: HloInstruction*): Status
+    - {field} changed_: bool
+
+}
+
+class AlgebraicSimplifierVisitor {
+  + {method} AlgebraicSimplifierVisitor(options: const AlgebraicSimplifierOptions&, simplifier: AlgebraicSimplifier*)
+  + {method} Run(computation: HloComputation*, options: const AlgebraicSimplifierOptions&, simplifier: AlgebraicSimplifier*): bool
+  + {method} HandleAbs: <b><color:#008080>override</color></b>
+  + {method} HandleAdd: <b><color:#008080>override</color></b>
+  + {method} HandleAnd: <b><color:#008080>override</color></b>
+  - {field} computation_: HloComputation*
+  - {field} options_: const AlgebraicSimplifierOptions&
+  - {field} simplifier_: AlgebraicSimplifier*
+}
+
+AlgebraicSimplifier *- - AlgebraicSimplifierOptions
+AlgebraicSimplifierVisitor o- - AlgebraicSimplifierOptions
+AlgebraicSimplifierVisitor o- - AlgebraicSimplifier
+DfsHloRewriteVisitor <|- - AlgebraicSimplifierVisitor
+AlgebraicSimplifierOptions::Metadata -[dashed]-> AlgebraicSimplifierOptions : Defined in its private field.
+DfsHloVisitorWithDefaultBase <|- - DfsHloRewriteVisitor
+DfsHloVisitorBase <|- - DfsHloVisitorWithDefaultBase
+@enduml
+
+PlantUML version 1.2021.16(Thu Dec 09 01:25:22 CST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: zh
+Country: CN
+--></g></svg>
