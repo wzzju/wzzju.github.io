@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1302.0833px" preserveAspectRatio="none" style="width:1330px;height:1302px;background:#00000000;" version="1.1" viewBox="0 0 1330 1302" width="1330.2083px" zoomAndPan="magnify"><defs/><g><!--MD5=[106a0b1016e6f44db1bbc9f6790d9e67]
+class HloModulePass--><rect codeLine="3" height="50.9949" id="HloModulePass" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="126.0417" x="978.6458" y="565.625"/><ellipse cx="993.2292" cy="582.7891" fill="#8FB961" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M993.3431,579.4912 L992.4947,583.2204 L994.1976,583.2204 Z M992.2445,577.8432 L994.4478,577.8432 L996.9076,586.9558 L995.107,586.9558 L994.5455,584.7036 L992.1346,584.7036 L991.5853,586.9558 L989.7847,586.9558 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="84.375" x="1011.9792" y="587.1195">HloModulePass</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="979.6875" x2="1103.6458" y1="599.9532" y2="599.9532"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="979.6875" x2="1103.6458" y1="608.2865" y2="608.2865"/><!--MD5=[31bca82c7a8fd95d82b9ec33684b26a4]
+class BatchNormExpander--><rect codeLine="5" height="194.4641" id="BatchNormExpander" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="553.125" x="765.1042" y="780.2083"/><ellipse cx="975" cy="797.3724" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M976.9104,801.7975 Q976.4832,802.0172 976.0132,802.1271 Q975.5432,802.2369 975.0244,802.2369 Q973.1812,802.2369 972.2107,801.0223 Q971.2402,799.8077 971.2402,797.5128 Q971.2402,795.2118 972.2107,793.9972 Q973.1812,792.7826 975.0244,792.7826 Q975.5432,792.7826 976.0193,792.8925 Q976.4954,793.0023 976.9104,793.222 L976.9104,795.224 Q976.4465,794.7968 976.0101,794.5984 Q975.5737,794.4 975.1099,794.4 Q974.1211,794.4 973.6176,795.1843 Q973.114,795.9686 973.114,797.5128 Q973.114,799.0509 973.6176,799.8352 Q974.1211,800.6195 975.1099,800.6195 Q975.5737,800.6195 976.0101,800.4211 Q976.4465,800.2228 976.9104,799.7955 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="114.5833" x="1000" y="801.7029">BatchNormExpander</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="766.1458" x2="1317.1875" y1="814.5365" y2="814.5365"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="773.4375" y="822.8699"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="146.875" x="790.1042" y="834.9894">rewrite_training_op_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="773.4375" y="846.7814"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="155.2083" x="790.1042" y="858.901">rewrite_inference_op_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="773.4375" y="870.693"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="129.1667" x="790.1042" y="882.8125">rewrite_grad_op_: bool</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="766.1458" x2="1317.1875" y1="894.6045" y2="894.6045"/><ellipse cx="776.5625" cy="906.0628" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="516.6667" x="790.1042" y="915.0574">BatchNormExpander(rewrite_training_op: bool, rewrite_inference_op, rewrite_grad_op: bool)</text><ellipse cx="776.5625" cy="929.9744" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="137.5" x="790.1042" y="938.9689">name(): absl::string_view</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="930.7292" y="938.9689">override</text><ellipse cx="776.5625" cy="953.8859" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="241.6667" x="790.1042" y="962.8805">Run(module: HloModule*): StatusOr&lt;bool&gt;</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="1034.8958" y="962.8805">override</text><!--MD5=[e22db3cdfc2212a25ee9b52de5a4b213]
+class DfsHloVisitorBase--><rect codeLine="14" height="266.1987" id="DfsHloVisitorBase" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="504.1667" x="117.7083" y="141.6667"/><ellipse cx="310.9375" cy="158.8308" fill="#D2494E" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M307.8206,155.9926 L307.8206,154.4057 L313.2467,154.4057 L313.2467,155.9926 L311.4339,155.9926 L311.4339,161.9314 L313.2467,161.9314 L313.2467,163.5183 L307.8206,163.5183 L307.8206,161.9314 L309.6334,161.9314 L309.6334,155.9926 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="98.9583" x="335.9375" y="163.1612">DfsHloVisitorBase</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="118.75" x2="620.8333" y1="175.9949" y2="175.9949"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="118.75" x2="620.8333" y1="184.3282" y2="184.3282"/><ellipse cx="129.1667" cy="195.7865" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="305.2083" x="142.7083" y="204.7811">HandleElementwiseUnary(hlo: HloInstruction*): Status (</text><text fill="#FF0000" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="157.2917" x="447.9167" y="204.7811">return unimplemented error</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="4.1667" x="605.2083" y="204.7811">)</text><ellipse cx="129.1667" cy="219.6981" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="306.25" x="142.7083" y="228.6926">HandleElementwiseBinary(hlo: HloInstruction*): Status (</text><text fill="#FF0000" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="157.2917" x="448.9583" y="228.6926">return unimplemented error</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="4.1667" x="606.25" y="228.6926">)</text><ellipse cx="129.1667" cy="243.6096" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="219.7917" x="142.7083" y="252.6042">HandleSqrt(hlo: HloInstruction*): Status</text><ellipse cx="129.1667" cy="267.5212" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="240.625" x="142.7083" y="276.5157">HandleMultiply(hlo: HloInstruction*): Status</text><ellipse cx="129.1667" cy="291.4327" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="305.2083" x="142.7083" y="300.4272">HandleBatchNormTraining(hlo: HloInstruction*): Status</text><ellipse cx="129.1667" cy="315.3442" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="216.6667" x="142.7083" y="324.3388">HandleDot(hlo: HloInstruction*): Status</text><ellipse cx="129.1667" cy="339.2558" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="265.625" x="142.7083" y="348.2503">HandleConvolution(hlo: HloInstruction*): Status</text><ellipse cx="129.1667" cy="363.1673" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="215.625" x="142.7083" y="372.1619">FinishVisit(hlo: HloInstruction*): Status</text><ellipse cx="129.1667" cy="387.0789" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="18.75" x="142.7083" y="396.0734">......</text><!--MD5=[e327024629bf60f36927bb55c7d703f5]
+class DfsHloVisitorWithDefaultBase--><rect codeLine="28" height="242.2872" id="DfsHloVisitorWithDefaultBase" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="338.5417" x="200.5208" y="469.7917"/><ellipse cx="279.1667" cy="486.9558" fill="#8FB961" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M279.2806,483.6578 L278.4322,487.3871 L280.1351,487.3871 Z M278.182,482.0099 L280.3853,482.0099 L282.8451,491.1224 L281.0445,491.1224 L280.483,488.8702 L278.0721,488.8702 L277.5228,491.1224 L275.7222,491.1224 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="162.5" x="304.1667" y="491.2862">DfsHloVisitorWithDefaultBase</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="201.5625" x2="538.0208" y1="504.1199" y2="504.1199"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="201.5625" x2="538.0208" y1="512.4532" y2="512.4532"/><ellipse cx="211.9792" cy="523.9115" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="302.0833" x="225.5208" y="532.9061">DefaultAction(hlo_instruction: HloInstruction*): Status</text><ellipse cx="211.9792" cy="547.8231" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="142.7083" x="225.5208" y="556.8176">HandleElementwiseUnary:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="371.3542" y="556.8176">override</text><ellipse cx="211.9792" cy="571.7346" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="143.75" x="225.5208" y="580.7292">HandleElementwiseBinary:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="372.3958" y="580.7292">override</text><ellipse cx="211.9792" cy="595.6462" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="150" x="225.5208" y="604.6407">HandleBatchNormTraining:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="378.6458" y="604.6407">override</text><ellipse cx="211.9792" cy="619.5577" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="61.4583" x="225.5208" y="628.5522">HandleDot:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="290.1042" y="628.5522">override</text><ellipse cx="211.9792" cy="643.4692" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="110.4167" x="225.5208" y="652.4638">HandleConvolution:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="339.0625" y="652.4638">override</text><ellipse cx="211.9792" cy="667.3808" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="60.4167" x="225.5208" y="676.3753">FinishVisit:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="289.0625" y="676.3753">override</text><ellipse cx="211.9792" cy="691.2923" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="18.75" x="225.5208" y="700.2869">......</text><!--MD5=[a7b53e3f6267f27b7a4ce77cb159826b]
+class DfsHloRewriteVisitor--><rect codeLine="39" height="170.5526" id="DfsHloRewriteVisitor" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="700" x="19.7917" y="791.1458"/><ellipse cx="303.125" cy="808.3099" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M305.0354,812.735 Q304.6082,812.9547 304.1382,813.0646 Q303.6682,813.1744 303.1494,813.1744 Q301.3062,813.1744 300.3357,811.9598 Q299.3652,810.7452 299.3652,808.4503 Q299.3652,806.1493 300.3357,804.9347 Q301.3062,803.7201 303.1494,803.7201 Q303.6682,803.7201 304.1443,803.83 Q304.6204,803.9398 305.0354,804.1595 L305.0354,806.1615 Q304.5715,805.7343 304.1351,805.5359 Q303.6987,805.3375 303.2349,805.3375 Q302.2461,805.3375 301.7426,806.1218 Q301.239,806.9061 301.239,808.4503 Q301.239,809.9884 301.7426,810.7727 Q302.2461,811.557 303.2349,811.557 Q303.6987,811.557 304.1351,811.3586 Q304.5715,811.1603 305.0354,810.733 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="114.5833" x="328.125" y="812.6404">DfsHloRewriteVisitor</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="20.8333" x2="718.75" y1="825.474" y2="825.474"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="28.125" y="833.8074"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="85.4167" x="44.7917" y="845.9269">changed_: bool</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="20.8333" x2="718.75" y1="857.7189" y2="857.7189"/><ellipse cx="31.25" cy="869.1772" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="298.9583" x="44.7917" y="878.1718">RunOnModule(module: HloModule*): StatusOr&lt;bool&gt;</text><ellipse cx="31.25" cy="893.0888" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="79.1667" x="44.7917" y="902.0833">DefaultAction:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="127.0833" y="902.0833">override</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="4.1667" x="179.1667" y="902.0833">(</text><text fill="#FF0000" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="61.4583" x="183.3333" y="902.0833">do nothing</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="4.1667" x="244.7917" y="902.0833">)</text><polygon fill="#FFFF44" points="31.25,911.792,35.4167,915.9587,31.25,920.1253,27.0833,915.9587" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="663.5417" x="44.7917" y="925.9949">ReplaceWithNewInstruction(old_instruction: HloInstruction*, new_instruction: std::unique_ptr&lt;HloInstruction&gt;): Status</text><polygon fill="#FFFF44" points="31.25,935.7035,35.4167,939.8702,31.25,944.0369,27.0833,939.8702" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="517.7083" x="44.7917" y="949.9064">ReplaceInstruction(old_instruction: HloInstruction*, new_instruction: HloInstruction*): Status</text><!--MD5=[3de13b3cd15939574a72d20a61ee3695]
+class BatchNormExpanderVisitor--><rect codeLine="48" height="218.3757" id="BatchNormExpanderVisitor" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="703.125" x="353.6458" y="1071.875"/><ellipse cx="620.3125" cy="1089.0391" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M622.2229,1093.4642 Q621.7957,1093.6839 621.3257,1093.7937 Q620.8557,1093.9036 620.3369,1093.9036 Q618.4937,1093.9036 617.5232,1092.689 Q616.5527,1091.4744 616.5527,1089.1795 Q616.5527,1086.8785 617.5232,1085.6639 Q618.4937,1084.4493 620.3369,1084.4493 Q620.8557,1084.4493 621.3318,1084.5591 Q621.8079,1084.669 622.2229,1084.8887 L622.2229,1086.8907 Q621.759,1086.4634 621.3226,1086.2651 Q620.8862,1086.0667 620.4224,1086.0667 Q619.4336,1086.0667 618.9301,1086.851 Q618.4265,1087.6353 618.4265,1089.1795 Q618.4265,1090.7176 618.9301,1091.5019 Q619.4336,1092.2862 620.4224,1092.2862 Q620.8862,1092.2862 621.3226,1092.0878 Q621.759,1091.8894 622.2229,1091.4622 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="151.0417" x="645.3125" y="1093.3695">BatchNormExpanderVisitor</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="354.6875" x2="1055.7292" y1="1106.2032" y2="1106.2032"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="361.9792" y="1114.5365"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="146.875" x="378.6458" y="1126.6561">rewrite_training_op_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="361.9792" y="1138.4481"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="155.2083" x="378.6458" y="1150.5676">rewrite_inference_op_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="361.9792" y="1162.3596"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="129.1667" x="378.6458" y="1174.4792">rewrite_grad_op_: bool</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="354.6875" x2="1055.7292" y1="1186.2712" y2="1186.2712"/><ellipse cx="365.1042" cy="1197.7295" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="150" x="378.6458" y="1206.724">HandleBatchNormTraining:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="531.7708" y="1206.724">override</text><ellipse cx="365.1042" cy="1221.641" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="155.2083" x="378.6458" y="1230.6356">HandleBatchNormInference:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="536.9792" y="1230.6356">override</text><ellipse cx="365.1042" cy="1245.5526" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="130.2083" x="378.6458" y="1254.5471">HandleBatchNormGrad:</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="511.9792" y="1254.5471">override</text><ellipse cx="365.1042" cy="1269.4641" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" text-decoration="underline" textLength="666.6667" x="378.6458" y="1278.4587">Run(computation: HloComputation*, rewrite_training_op: bool, rewrite_inference_op: bool, rewrite_grad_op: bool): bool</text><!--MD5=[7d9adc02f512422c836c62da64d627d1]
+link DfsHloVisitorBase to DfsHloVisitorBase--><path codeLine="25" d="M372.5208,233.0104 C387.9688,160.5208 387.0625,55.2083 369.7917,55.2083 C353,55.2083 351.6771,115.9271 365.8229,181.9583 " fill="none" id="DfsHloVisitorBase-to-DfsHloVisitorBase" style="stroke:#008000;stroke-width:1.0416666666666667;stroke-dasharray:7.0,7.0;"/><polygon fill="#008000" points="366.9688,187.125,369.0305,177.0751,365.8531,182.0376,360.8906,178.8601,366.9688,187.125" style="stroke:#008000;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="13.5417" lengthAdjust="spacing" textLength="22.9167" x="358.3333" y="41.217">call</text><!--MD5=[7d9adc02f512422c836c62da64d627d1]
+link DfsHloVisitorBase to DfsHloVisitorBase--><path codeLine="26" d="M372.4271,256.2083 C387.9688,181.6042 387.0938,55.2083 369.7917,55.2083 C352.9583,55.2083 351.6667,135.7083 365.9167,204.8958 " fill="none" id="DfsHloVisitorBase-to-DfsHloVisitorBase-1" style="stroke:#FF0000;stroke-width:1.0416666666666667;stroke-dasharray:1.0,3.0;"/><polygon fill="#FF0000" points="367.0625,210.2812,369.1804,200.243,365.9753,205.1877,361.0306,201.9826,367.0625,210.2812" style="stroke:#FF0000;stroke-width:1.0416666666666667;"/><!--MD5=[8099f6b54ff42c2db137875f1202c23b]
+link BatchNormExpander to BatchNormExpanderVisitor--><path codeLine="58" d="M764.5833,957.8125 C756.0104,957.8125 760.3542,970.3125 765.625,977.0833 C849.0417,1084.1667 976.5208,958.6146 1057.2917,1067.7083 C1110.3958,1139.4375 1147.8958,1267.2708 1064.0313,1272.7396 " fill="none" id="BatchNormExpander-to-BatchNormExpanderVisitor" style="stroke:#008000;stroke-width:1.0416666666666667;stroke-dasharray:7.0,7.0;"/><polygon fill="#008000" points="1058.3333,1272.9167,1067.8346,1276.7868,1063.5391,1272.7531,1067.5728,1268.4576,1058.3333,1272.9167" style="stroke:#008000;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="13.5417" lengthAdjust="spacing" textLength="22.9167" x="1027.0833" y="1027.6754">call</text><!--MD5=[8416622863404f83d7b55a9fb6f9b370]
+reverse link HloModulePass to BatchNormExpander--><path codeLine="60" d="M1041.6667,637.875 C1041.6667,675.0729 1041.6667,728.9167 1041.6667,775.9583 " fill="none" id="HloModulePass-backto-BatchNormExpander" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="1034.375,637.6667,1041.6667,616.8333,1048.9583,637.6667,1034.375,637.6667" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[290bc6742076b471708361b7e3b909f6]
+reverse link DfsHloRewriteVisitor to BatchNormExpanderVisitor--><path codeLine="61" d="M479.3646,976.1146 C511.9167,1005.3854 547.8125,1037.6563 581.2188,1067.6979 " fill="none" id="DfsHloRewriteVisitor-backto-BatchNormExpanderVisitor" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="474.2917,981.3542,463.6667,962.0104,484.0417,970.5104,474.2917,981.3542" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[6922935cf66944a96a8ee337850dc6ee]
+reverse link DfsHloVisitorWithDefaultBase to DfsHloRewriteVisitor--><path codeLine="62" d="M369.7917,733.9063 C369.7917,753.4479 369.7917,773 369.7917,791.0625 " fill="none" id="DfsHloVisitorWithDefaultBase-backto-DfsHloRewriteVisitor" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="362.5,733.5938,369.7917,712.7604,377.0833,733.5938,362.5,733.5938" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[6bd35b402feab494697ebf7ffa18b60b]
+reverse link DfsHloVisitorBase to DfsHloVisitorWithDefaultBase--><path codeLine="63" d="M369.7917,427.8125 C369.7917,441.9167 369.7917,456.0417 369.7917,469.7708 " fill="none" id="DfsHloVisitorBase-backto-DfsHloVisitorWithDefaultBase" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="362.5,427.3438,369.7917,406.5104,377.0833,427.3438,362.5,427.3438" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[27d80bd17939684dc5c47ea7b769a015]
+@startuml batch_norm_expander
+!theme cerulean-outline
+
+abstract class HloModulePass
+
+class BatchNormExpander {
+    - rewrite_training_op_: bool
+    - rewrite_inference_op_: bool
+    - rewrite_grad_op_: bool
+    + {method} BatchNormExpander(rewrite_training_op: bool, rewrite_inference_op, rewrite_grad_op: bool)
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+}
+
+Interface DfsHloVisitorBase {
+    + {method} HandleElementwiseUnary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleElementwiseBinary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleSqrt(hlo: HloInstruction*): Status
+    + {method} HandleMultiply(hlo: HloInstruction*): Status
+    + {abstract} HandleBatchNormTraining(hlo: HloInstruction*): Status
+    + {abstract} HandleDot(hlo: HloInstruction*): Status
+    + {abstract} HandleConvolution(hlo: HloInstruction*): Status
+    + {abstract} FinishVisit(hlo: HloInstruction*): Status
+    + {method} ......
+}
+DfsHloVisitorBase::HandleSqrt -[#green,dashed,thickness=1]-> DfsHloVisitorBase::HandleElementwiseUnary : call
+DfsHloVisitorBase::HandleMultiply -[#red,dotted,thickness=1]-> DfsHloVisitorBase::HandleElementwiseBinary
+
+abstract class DfsHloVisitorWithDefaultBase {
+    + {abstract} DefaultAction(hlo_instruction: HloInstruction*): Status
+    + {method} HandleElementwiseUnary: <b><color:#008080>override</color></b>
+    + {method} HandleElementwiseBinary: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+    + {method} HandleDot: <b><color:#008080>override</color></b>
+    + {method} HandleConvolution: <b><color:#008080>override</color></b>
+    + {method} FinishVisit: <b><color:#008080>override</color></b>
+    + {method} ......
+}
+
+class DfsHloRewriteVisitor {
+    + {method} RunOnModule(module: HloModule*): StatusOr<bool>
+    + {method} DefaultAction: <b><color:#008080>override</color></b> (<color:Red>do nothing</color>)
+    # {method} ReplaceWithNewInstruction(old_instruction: HloInstruction*, new_instruction: std::unique_ptr<HloInstruction>): Status
+    # {method} ReplaceInstruction(old_instruction: HloInstruction*, new_instruction: HloInstruction*): Status
+    - {field} changed_: bool
+
+}
+
+class BatchNormExpanderVisitor {
+    - rewrite_training_op_: bool
+    - rewrite_inference_op_: bool
+    - rewrite_grad_op_: bool
+    + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormInference: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormGrad: <b><color:#008080>override</color></b>
+    + {static} Run(computation: HloComputation*, rewrite_training_op: bool, rewrite_inference_op: bool, rewrite_grad_op: bool): bool
+}
+
+BatchNormExpander::Run -[#green,dashed,thickness=1]-> BatchNormExpanderVisitor::Run : call
+
+HloModulePass <|- - BatchNormExpander
+DfsHloRewriteVisitor <|- - BatchNormExpanderVisitor
+DfsHloVisitorWithDefaultBase <|- - DfsHloRewriteVisitor
+DfsHloVisitorBase <|- - DfsHloVisitorWithDefaultBase
+@enduml
+
+@startuml batch_norm_expander
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor transparent
+    FontColor #2FA4E7
+    HyperLinkColor #FD7E14
+    LineColor #2683B9
+    LineThickness 1
+    Margin 10
+    Padding 6
+    Shadowing 0.0
+  }
+  node {
+   Padding 15
+   roundcorner 20
+   BackgroundColor transparent
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  groupHeader {
+    BackgroundColor #E9ECEF
+    FontColor #033C73
+    FontStyle bold
+  }
+  header {
+    LineThickness 0
+  }
+  referenceHeader {
+    BackgroundColor transparent
+    FontColor #343A40
+    FontStyle bold
+  }
+  separator {
+    BackgroundColor #343A40
+    FontColor transparent
+    FontStyle bold
+  }
+  title {
+	FontSize 20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor  transparent
+	FontColor #2FA4E7
+	BorderColor #E9ECEF
+  }
+  nwdiagDiagram {
+	network {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent    
+		LineColor #2FA4E7
+		LineThickness 1.0
+		FontColor #2683B9
+	}
+	server {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	}
+	arrow {
+		FontColor #2683B9
+		LineColor #2683B9
+	}
+	group {
+		BackGroundColor #F8F9FA
+		LineColor $LIGHT_DARK
+		LineThickness 2.0
+		Margin 5
+		Padding 5
+	}
+  }
+  ganttDiagram {
+	task {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+		LineColor #2FA4E7
+		Margin 10
+		Padding 6
+	}
+	note {
+		FontColor #033C73
+		LineColor $INFO_DARK
+		BackGroundColor transparent
+	}
+	separator {
+		LineColor #BABDBF
+		BackGroundColor transparent
+		FontColor #BABDBF
+	}
+	milestone {
+		FontColor #033C73
+		FontSize 16
+		FontStyle italic
+		BackGroundColor #E9ECEF
+		LineColor #BABDBF
+	}
+	timeline {
+		BackgroundColor #E9ECEF
+		FontColor #BABDBF
+	}
+	closed {
+		BackgroundColor $WARNING_DARK
+		FontColor #DD5600
+	}
+  }
+</style>
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            #868E96
+skinparam stereotype {
+    CBackgroundColor #EDF0F2
+    CBorderColor #BABDBF
+    ABackgroundColor #8FB961
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor #D2494E
+    IBorderColor $DANGER_DARK
+    EBackgroundColor #E47833
+    EBorderColor $WARNING_DARK
+    NBackgroundColor #35638F
+    NBorderColor $INFO_DARK
+}
+skinparam title {
+	FontColor	                 #2FA4E7
+	BorderColor	                 #BABDBF
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              transparent
+}
+
+skinparam legend {
+	BackgroundColor transparent
+	BorderColor #BABDBF
+	FontColor #343A40
+}
+
+skinparam swimlane {
+	BorderColor #033C73
+	BorderThickness 2
+	TitleBackgroundColor  #EDF0F2-#E9ECEF
+	TitleFontColor #2FA4E7
+}
+
+
+skinparam activity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BarColor #73A839
+	StartColor #033C73
+	EndColor #033C73
+	DiamondBackgroundColor transparent
+  	DiamondBorderColor #BABDBF
+	DiamondFontColor #BABDBF
+}
+
+
+skinparam participant {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #2FA4E7
+	FontColor #343A40
+}
+
+
+skinparam sequence {
+	BorderColor #2FA4E7
+	TitleFontColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #2FA4E7
+	EndColor #2FA4E7
+	BoxBackgroundColor transparent
+	BoxBorderColor #868E96
+	BoxFontColor #343A40
+	DelayFontColor #343A40
+	LifeLineBorderColor #BABDBF
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor transparent
+	GroupBorderColor #868E96
+	GroupFontColor #343A40
+	GroupHeaderFontColor #033C73
+	DividerBackgroundColor transparent
+    DividerBorderColor #868E96
+    DividerBorderThickness 2
+    DividerFontColor #343A40
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #868E96
+	ReferenceFontColor #343A40
+	ReferenceHeaderFontColor #033C73
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam partition {
+	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam control {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam entity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam boundary {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam agent {
+	BackgroundColor transparent
+	BorderColor #999999
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam artifact {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam component {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam interface {
+	BackgroundColor  transparent
+	BorderColor  #C71C22
+	FontColor #343A40
+}
+
+
+skinparam storage {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+}
+
+
+skinparam node {
+	BackgroundColor transparent
+	BorderColor #343A40
+	FontColor #343A40
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #343A40
+}
+
+
+skinparam database {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam class {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	FontColor #F8F9FA
+	HeaderBackgroundColor #2FA4E7-#2683B9
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #343A40
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam rectangle {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam package {
+	BackgroundColor transparent
+  	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor transparent
+  	BorderColor #033C73
+	FontColor #033C73
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #033C73
+	EndColor #033C73
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam card {
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam file {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam stack {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+
+
+abstract class HloModulePass
+
+class BatchNormExpander {
+    - rewrite_training_op_: bool
+    - rewrite_inference_op_: bool
+    - rewrite_grad_op_: bool
+    + {method} BatchNormExpander(rewrite_training_op: bool, rewrite_inference_op, rewrite_grad_op: bool)
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+}
+
+Interface DfsHloVisitorBase {
+    + {method} HandleElementwiseUnary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleElementwiseBinary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleSqrt(hlo: HloInstruction*): Status
+    + {method} HandleMultiply(hlo: HloInstruction*): Status
+    + {abstract} HandleBatchNormTraining(hlo: HloInstruction*): Status
+    + {abstract} HandleDot(hlo: HloInstruction*): Status
+    + {abstract} HandleConvolution(hlo: HloInstruction*): Status
+    + {abstract} FinishVisit(hlo: HloInstruction*): Status
+    + {method} ......
+}
+DfsHloVisitorBase::HandleSqrt -[#green,dashed,thickness=1]-> DfsHloVisitorBase::HandleElementwiseUnary : call
+DfsHloVisitorBase::HandleMultiply -[#red,dotted,thickness=1]-> DfsHloVisitorBase::HandleElementwiseBinary
+
+abstract class DfsHloVisitorWithDefaultBase {
+    + {abstract} DefaultAction(hlo_instruction: HloInstruction*): Status
+    + {method} HandleElementwiseUnary: <b><color:#008080>override</color></b>
+    + {method} HandleElementwiseBinary: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+    + {method} HandleDot: <b><color:#008080>override</color></b>
+    + {method} HandleConvolution: <b><color:#008080>override</color></b>
+    + {method} FinishVisit: <b><color:#008080>override</color></b>
+    + {method} ......
+}
+
+class DfsHloRewriteVisitor {
+    + {method} RunOnModule(module: HloModule*): StatusOr<bool>
+    + {method} DefaultAction: <b><color:#008080>override</color></b> (<color:Red>do nothing</color>)
+    # {method} ReplaceWithNewInstruction(old_instruction: HloInstruction*, new_instruction: std::unique_ptr<HloInstruction>): Status
+    # {method} ReplaceInstruction(old_instruction: HloInstruction*, new_instruction: HloInstruction*): Status
+    - {field} changed_: bool
+
+}
+
+class BatchNormExpanderVisitor {
+    - rewrite_training_op_: bool
+    - rewrite_inference_op_: bool
+    - rewrite_grad_op_: bool
+    + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormInference: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormGrad: <b><color:#008080>override</color></b>
+    + {static} Run(computation: HloComputation*, rewrite_training_op: bool, rewrite_inference_op: bool, rewrite_grad_op: bool): bool
+}
+
+BatchNormExpander::Run -[#green,dashed,thickness=1]-> BatchNormExpanderVisitor::Run : call
+
+HloModulePass <|- - BatchNormExpander
+DfsHloRewriteVisitor <|- - BatchNormExpanderVisitor
+DfsHloVisitorWithDefaultBase <|- - DfsHloRewriteVisitor
+DfsHloVisitorBase <|- - DfsHloVisitorWithDefaultBase
+@enduml
+
+PlantUML version 1.2021.16(Thu Dec 09 01:25:22 CST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: zh
+Country: CN
+--></g></svg>
