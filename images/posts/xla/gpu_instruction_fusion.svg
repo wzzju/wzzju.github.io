@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="920.8333px" preserveAspectRatio="none" style="width:692px;height:920px;background:#00000000;" version="1.1" viewBox="0 0 692 920" width="692.7083px" zoomAndPan="magnify"><defs/><g><!--MD5=[106a0b1016e6f44db1bbc9f6790d9e67]
+class HloModulePass--><rect codeLine="3" height="50.9949" id="HloModulePass" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="126.0417" x="263.0208" y="17.7083"/><ellipse cx="277.6042" cy="34.8724" fill="#8FB961" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M277.7181,31.5745 L276.8697,35.3038 L278.5726,35.3038 Z M276.6195,29.9266 L278.8228,29.9266 L281.2826,39.0391 L279.482,39.0391 L278.9205,36.7869 L276.5096,36.7869 L275.9603,39.0391 L274.1597,39.0391 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="84.375" x="296.3542" y="39.2029">HloModulePass</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="264.0625" x2="388.0208" y1="52.0365" y2="52.0365"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="264.0625" x2="388.0208" y1="60.3699" y2="60.3699"/><!--MD5=[6a5a1cbf15f57a243a08aef687cfd022]
+class InstructionFusion--><rect codeLine="5" height="409.668" id="InstructionFusion" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="568.75" x="41.6667" y="136.4583"/><ellipse cx="267.1875" cy="153.6224" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M269.0979,158.0475 Q268.6707,158.2672 268.2007,158.3771 Q267.7307,158.4869 267.2119,158.4869 Q265.3687,158.4869 264.3982,157.2723 Q263.4277,156.0577 263.4277,153.7628 Q263.4277,151.4618 264.3982,150.2472 Q265.3687,149.0326 267.2119,149.0326 Q267.7307,149.0326 268.2068,149.1425 Q268.6829,149.2523 269.0979,149.472 L269.0979,151.474 Q268.634,151.0468 268.1976,150.8484 Q267.7612,150.65 267.2974,150.65 Q266.3086,150.65 265.8051,151.4343 Q265.3015,152.2186 265.3015,153.7628 Q265.3015,155.3009 265.8051,156.0852 Q266.3086,156.8695 267.2974,156.8695 Q267.7612,156.8695 268.1976,156.6711 Q268.634,156.4728 269.0979,156.0455 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="98.9583" x="292.1875" y="157.9529">InstructionFusion</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="42.7083" x2="609.375" y1="170.7865" y2="170.7865"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="50" y="179.1199"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="394.7917" x="66.6667" y="191.2394">is_expensive_: std::function&lt;bool(const HloInstruction&amp; instruction)&gt;</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="50" y="203.0314"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="117.7083" x="66.6667" y="215.151">may_duplicate_: bool</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="18.75" x="66.6667" y="239.0625">......</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="42.7083" x2="609.375" y1="250.8545" y2="250.8545"/><ellipse cx="53.125" cy="262.3128" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="241.6667" x="66.6667" y="271.3074">Run(module: HloModule*): StatusOr&lt;bool&gt;</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="311.4583" y="271.3074">override</text><ellipse cx="53.125" cy="286.2244" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="137.5" x="66.6667" y="295.2189">name(): absl::string_view</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="207.2917" y="295.2189">override</text><ellipse cx="53.125" cy="310.1359" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" text-decoration="underline" textLength="295.8333" x="66.6667" y="319.1305">IsExpensive(instruction: const HloInstruction&amp;): bool</text><ellipse cx="53.125" cy="334.0474" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" text-decoration="underline" textLength="526.0417" x="66.6667" y="343.042">ShouldFuseInPlaceOp(producer: const HloInstruction*, consumer: const HloInstruction*): bool</text><polygon fill="#FFFF44" points="53.125,352.7507,57.2917,356.9173,53.125,361.084,48.9583,356.9173" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="437.5" x="66.6667" y="366.9535">GetFusionComputations(module: HloModule*): std::vector&lt;HloComputation*&gt;</text><polygon fill="#FFFF44" points="53.125,376.6622,57.2917,380.8289,53.125,384.9955,48.9583,380.8289" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="388.5417" x="66.6667" y="390.8651">ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool</text><polygon fill="#FFFF44" points="53.125,400.5737,57.2917,404.7404,53.125,408.9071,48.9583,404.7404" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="477.0833" x="66.6667" y="414.7766">ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool</text><polygon fill="#FFFF44" points="53.125,424.4853,57.2917,428.6519,53.125,432.8186,48.9583,428.6519" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="511.4583" x="66.6667" y="438.6882">ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind</text><polygon fill="#FFFF44" points="53.125,448.3968,57.2917,452.5635,53.125,456.7301,48.9583,452.5635" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="532.2917" x="66.6667" y="462.5997">FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction*</text><polygon fill="#FFFF44" points="53.125,472.3083,57.2917,476.475,53.125,480.6417,48.9583,476.475" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="423.9583" x="66.6667" y="486.5112">Fuse(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*</text><rect fill="#F24D5C" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="50" y="498.3032"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="519.7917" x="66.6667" y="510.4228">AddFusionInstruction(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*</text><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="18.75" x="66.6667" y="534.3343">......</text><!--MD5=[e5c4a8955999ad95f7bd7e3680fcfaf1]
+class GpuInstructionFusion--><rect codeLine="23" height="266.1987" id="GpuInstructionFusion" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="616.6667" x="17.7083" y="642.7083"/><ellipse cx="255.7292" cy="659.8724" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M257.6396,664.2975 Q257.2123,664.5172 256.7424,664.6271 Q256.2724,664.7369 255.7536,664.7369 Q253.9103,664.7369 252.9399,663.5223 Q251.9694,662.3077 251.9694,660.0128 Q251.9694,657.7118 252.9399,656.4972 Q253.9103,655.2826 255.7536,655.2826 Q256.2724,655.2826 256.7485,655.3925 Q257.2245,655.5023 257.6396,655.722 L257.6396,657.724 Q257.1757,657.2968 256.7393,657.0984 Q256.3029,656.9 255.839,656.9 Q254.8503,656.9 254.3467,657.6843 Q253.8432,658.4686 253.8432,660.0128 Q253.8432,661.5509 254.3467,662.3352 Q254.8503,663.1195 255.839,663.1195 Q256.3029,663.1195 256.7393,662.9211 Q257.1757,662.7228 257.6396,662.2955 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="121.875" x="280.7292" y="664.2029">GpuInstructionFusion</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="18.75" x2="633.3333" y1="677.0365" y2="677.0365"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="685.3699"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="580.2083" x="42.7083" y="697.4894">fusion_node_evaluations_: absl::flat_hash_map&lt;const HloInstruction*, FusionNodeIndexingEvaluation&gt;</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="18.75" x2="633.3333" y1="709.2814" y2="709.2814"/><ellipse cx="29.1667" cy="720.7397" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="241.6667" x="42.7083" y="729.7343">GpuInstructionFusion(may_duplicate: bool)</text><ellipse cx="29.1667" cy="744.6513" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" text-decoration="underline" textLength="295.8333" x="42.7083" y="753.6458">IsExpensive(instruction: const HloInstruction&amp;): bool</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" text-decoration="underline" textLength="48.9583" x="341.6667" y="753.6458">override</text><ellipse cx="29.1667" cy="768.5628" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="388.5417" x="42.7083" y="777.5574">ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="434.375" y="777.5574">override</text><ellipse cx="29.1667" cy="792.4744" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="477.0833" x="42.7083" y="801.4689">ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="522.9167" y="801.4689">override</text><ellipse cx="29.1667" cy="816.3859" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="511.4583" x="42.7083" y="825.3805">ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="557.2917" y="825.3805">override</text><ellipse cx="29.1667" cy="840.2974" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="241.6667" x="42.7083" y="849.292">Run(module: HloModule*): StatusOr&lt;bool&gt;</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="287.5" y="849.292">override</text><rect fill="#F24D5C" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="861.084"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="495.8333" x="42.7083" y="873.2035">ShouldFuseInexpensiveChecks(consumer: HloInstruction*, operand_index: int64_t): bool</text><rect fill="#F24D5C" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="884.9955"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="527.0833" x="42.7083" y="897.1151">FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="572.9167" y="897.1151">override</text><!--MD5=[88bdcddda9dfb41d135ab855a21ec859]
+link GpuInstructionFusion to InstructionFusion--><path codeLine="35" d="M635.4167,844.2708 C681.1354,844.2708 635.8958,684.2396 634.375,638.5417 C634.0521,628.8958 623.4375,314 613.6042,270.9896 " fill="none" id="GpuInstructionFusion-to-InstructionFusion" style="stroke:#008000;stroke-width:1.0416666666666667;stroke-dasharray:7.0,7.0;"/><polygon fill="#008000" points="611.4583,266.1458,611.4524,276.4051,613.5709,270.9065,619.0694,273.025,611.4583,266.1458" style="stroke:#008000;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="13.5417" lengthAdjust="spacing" textLength="22.9167" x="638.5417" y="598.5087">call</text><!--MD5=[2ba988fd607b4a3b8ab32f5437b005a4]
+reverse link InstructionFusion to GpuInstructionFusion--><path codeLine="38" d="M326.0417,568.9792 C326.0417,592.7083 326.0417,616.2396 326.0417,638.4375 " fill="none" id="InstructionFusion-backto-GpuInstructionFusion" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="318.75,568.9479,326.0417,548.1146,333.3333,568.9479,318.75,568.9479" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[6ac50017b6df27684a8c0d98a97b5a39]
+reverse link HloModulePass to InstructionFusion--><path codeLine="37" d="M326.0417,90.1875 C326.0417,102.5625 326.0417,116.7917 326.0417,132.0417 " fill="none" id="HloModulePass-backto-InstructionFusion" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="318.75,89.7292,326.0417,68.8958,333.3333,89.7292,318.75,89.7292" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[bdf56ae387be111461e866dc282e25b5]
+@startuml gpu_instruction_fusion
+!theme cerulean-outline
+
+abstract class HloModulePass
+
+class InstructionFusion {
+    - {field} is_expensive_: std::function<bool(const HloInstruction& instruction)>
+    - {field} may_duplicate_: bool
+    {field} ......
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    + {static} IsExpensive(instruction: const HloInstruction&): bool
+    + {static} ShouldFuseInPlaceOp(producer: const HloInstruction*, consumer: const HloInstruction*): bool
+    # {method} GetFusionComputations(module: HloModule*): std::vector<HloComputation*>
+    # {method} ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool
+    # {method} ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool
+    # {method} ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind
+    # {method} FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction*
+    # {method} Fuse(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*
+    - {method} AddFusionInstruction(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*
+    {method} ......
+}
+
+class GpuInstructionFusion {
+    - {field} fusion_node_evaluations_: absl::flat_hash_map<const HloInstruction*, FusionNodeIndexingEvaluation>
+    + {method} GpuInstructionFusion(may_duplicate: bool)
+    + {static} {method} IsExpensive(instruction: const HloInstruction&): bool <b><color:#008080>override</color></b>
+    + {method} ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool <b><color:#008080>override</color></b>
+    + {method} ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool <b><color:#008080>override</color></b>
+    + {method} ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind <b><color:#008080>override</color></b>
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    - ShouldFuseInexpensiveChecks(consumer: HloInstruction*, operand_index: int64_t): bool
+    - {method} FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction <b><color:#008080>override</color></b>
+}
+
+GpuInstructionFusion::Run -[#green,dashed,thickness=1]-> InstructionFusion::Run : call
+
+HloModulePass <|- - InstructionFusion
+InstructionFusion <|- - GpuInstructionFusion
+
+@enduml
+
+@startuml gpu_instruction_fusion
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor transparent
+    FontColor #2FA4E7
+    HyperLinkColor #FD7E14
+    LineColor #2683B9
+    LineThickness 1
+    Margin 10
+    Padding 6
+    Shadowing 0.0
+  }
+  node {
+   Padding 15
+   roundcorner 20
+   BackgroundColor transparent
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  groupHeader {
+    BackgroundColor #E9ECEF
+    FontColor #033C73
+    FontStyle bold
+  }
+  header {
+    LineThickness 0
+  }
+  referenceHeader {
+    BackgroundColor transparent
+    FontColor #343A40
+    FontStyle bold
+  }
+  separator {
+    BackgroundColor #343A40
+    FontColor transparent
+    FontStyle bold
+  }
+  title {
+	FontSize 20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor  transparent
+	FontColor #2FA4E7
+	BorderColor #E9ECEF
+  }
+  nwdiagDiagram {
+	network {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent    
+		LineColor #2FA4E7
+		LineThickness 1.0
+		FontColor #2683B9
+	}
+	server {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	}
+	arrow {
+		FontColor #2683B9
+		LineColor #2683B9
+	}
+	group {
+		BackGroundColor #F8F9FA
+		LineColor $LIGHT_DARK
+		LineThickness 2.0
+		Margin 5
+		Padding 5
+	}
+  }
+  ganttDiagram {
+	task {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+		LineColor #2FA4E7
+		Margin 10
+		Padding 6
+	}
+	note {
+		FontColor #033C73
+		LineColor $INFO_DARK
+		BackGroundColor transparent
+	}
+	separator {
+		LineColor #BABDBF
+		BackGroundColor transparent
+		FontColor #BABDBF
+	}
+	milestone {
+		FontColor #033C73
+		FontSize 16
+		FontStyle italic
+		BackGroundColor #E9ECEF
+		LineColor #BABDBF
+	}
+	timeline {
+		BackgroundColor #E9ECEF
+		FontColor #BABDBF
+	}
+	closed {
+		BackgroundColor $WARNING_DARK
+		FontColor #DD5600
+	}
+  }
+</style>
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            #868E96
+skinparam stereotype {
+    CBackgroundColor #EDF0F2
+    CBorderColor #BABDBF
+    ABackgroundColor #8FB961
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor #D2494E
+    IBorderColor $DANGER_DARK
+    EBackgroundColor #E47833
+    EBorderColor $WARNING_DARK
+    NBackgroundColor #35638F
+    NBorderColor $INFO_DARK
+}
+skinparam title {
+	FontColor	                 #2FA4E7
+	BorderColor	                 #BABDBF
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              transparent
+}
+
+skinparam legend {
+	BackgroundColor transparent
+	BorderColor #BABDBF
+	FontColor #343A40
+}
+
+skinparam swimlane {
+	BorderColor #033C73
+	BorderThickness 2
+	TitleBackgroundColor  #EDF0F2-#E9ECEF
+	TitleFontColor #2FA4E7
+}
+
+
+skinparam activity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BarColor #73A839
+	StartColor #033C73
+	EndColor #033C73
+	DiamondBackgroundColor transparent
+  	DiamondBorderColor #BABDBF
+	DiamondFontColor #BABDBF
+}
+
+
+skinparam participant {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #2FA4E7
+	FontColor #343A40
+}
+
+
+skinparam sequence {
+	BorderColor #2FA4E7
+	TitleFontColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #2FA4E7
+	EndColor #2FA4E7
+	BoxBackgroundColor transparent
+	BoxBorderColor #868E96
+	BoxFontColor #343A40
+	DelayFontColor #343A40
+	LifeLineBorderColor #BABDBF
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor transparent
+	GroupBorderColor #868E96
+	GroupFontColor #343A40
+	GroupHeaderFontColor #033C73
+	DividerBackgroundColor transparent
+    DividerBorderColor #868E96
+    DividerBorderThickness 2
+    DividerFontColor #343A40
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #868E96
+	ReferenceFontColor #343A40
+	ReferenceHeaderFontColor #033C73
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam partition {
+	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam control {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam entity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam boundary {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam agent {
+	BackgroundColor transparent
+	BorderColor #999999
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam artifact {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam component {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam interface {
+	BackgroundColor  transparent
+	BorderColor  #C71C22
+	FontColor #343A40
+}
+
+
+skinparam storage {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+}
+
+
+skinparam node {
+	BackgroundColor transparent
+	BorderColor #343A40
+	FontColor #343A40
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #343A40
+}
+
+
+skinparam database {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam class {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	FontColor #F8F9FA
+	HeaderBackgroundColor #2FA4E7-#2683B9
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #343A40
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam rectangle {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam package {
+	BackgroundColor transparent
+  	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor transparent
+  	BorderColor #033C73
+	FontColor #033C73
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #033C73
+	EndColor #033C73
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam card {
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam file {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam stack {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+
+
+abstract class HloModulePass
+
+class InstructionFusion {
+    - {field} is_expensive_: std::function<bool(const HloInstruction& instruction)>
+    - {field} may_duplicate_: bool
+    {field} ......
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    + {static} IsExpensive(instruction: const HloInstruction&): bool
+    + {static} ShouldFuseInPlaceOp(producer: const HloInstruction*, consumer: const HloInstruction*): bool
+    # {method} GetFusionComputations(module: HloModule*): std::vector<HloComputation*>
+    # {method} ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool
+    # {method} ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool
+    # {method} ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind
+    # {method} FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction*
+    # {method} Fuse(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*
+    - {method} AddFusionInstruction(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*
+    {method} ......
+}
+
+class GpuInstructionFusion {
+    - {field} fusion_node_evaluations_: absl::flat_hash_map<const HloInstruction*, FusionNodeIndexingEvaluation>
+    + {method} GpuInstructionFusion(may_duplicate: bool)
+    + {static} {method} IsExpensive(instruction: const HloInstruction&): bool <b><color:#008080>override</color></b>
+    + {method} ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool <b><color:#008080>override</color></b>
+    + {method} ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool <b><color:#008080>override</color></b>
+    + {method} ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind <b><color:#008080>override</color></b>
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    - ShouldFuseInexpensiveChecks(consumer: HloInstruction*, operand_index: int64_t): bool
+    - {method} FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction <b><color:#008080>override</color></b>
+}
+
+GpuInstructionFusion::Run -[#green,dashed,thickness=1]-> InstructionFusion::Run : call
+
+HloModulePass <|- - InstructionFusion
+InstructionFusion <|- - GpuInstructionFusion
+
+@enduml
+
+PlantUML version 1.2021.16(Thu Dec 09 01:25:22 CST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: zh
+Country: CN
+--></g></svg>

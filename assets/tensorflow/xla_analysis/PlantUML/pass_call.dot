@@ -1,0 +1,232 @@
+digraph "XLA Pass Calling Process" {
+	graph [rankdir=LR]
+	node [color="#00BFFF" fontcolor=white fontname="YaHei Consolas" fontsize=12 shape=box style="rounded,filled"]
+	edge [color="#999999" fontcolor="#888888" fontname="YaHei Consolas" fontsize=10]
+    // HLO Pipeline
+	a [label=optimization color="#FAFAD2" fontcolor="#999999"]
+	b [label=simplification color="#FAFAD2" fontcolor="#999999"]
+	c [label=collective_optimizations color="#FAFAD2" fontcolor="#999999"]
+	d [label=conv_canonicalization color="#FAFAD2" fontcolor="#999999"]
+	e [label=layout_assignment color="#FAFAD2" fontcolor="#999999"]
+	f [label=nvptx_post_layout_assignment_part_1 color="#FAFAD2" fontcolor="#999999"]
+	g [label=post_layout_assignment color="#FAFAD2" fontcolor="#999999"]
+	h [label=nvptx_post_layout_assignment_part_2 color="#FAFAD2" fontcolor="#999999"]
+	i [label=fusion color="#FAFAD2" fontcolor="#999999"]
+	j [label=horizontal_fusion color="#FAFAD2" fontcolor="#999999"]
+	l [label=post_fusion_optimization color="#FAFAD2" fontcolor="#999999"]
+	// HLO Pass
+	0 [label=HloVerifier]
+	1 [label=AllToAllDecomposer]
+	2 [label=OperandUpcaster]
+	3 [label=ResultCaster]
+	4 [label=RngExpander]
+	5 [label=RngBitGeneratorExpander]
+	6 [label=ComparisonExpander]
+	7 [label=ZeroSizedHloElimination]
+	8 [label=GpuScatterExpander]
+	9 [label=QrExpander]
+	10 [label=EighExpander]
+	11 [label=DynamicIndexSplitter]
+	12 [label=CallInliner]
+	13 [label=DotDecomposer]
+	14 [label=Convolution4DExpander]
+	15 [label=StableSortExpander]
+	16 [label=BFloat16Normalization]
+	17 [label=BatchNormExpander]
+	18 [label=LogisticExpander]
+	19 [label=ConditionalCanonicalizer]
+	20 [label=DynamicDimensionSimplifier]
+	21 [label=DynamicPadder]
+	22 [label=HloVerifier]
+	23 [label=ZeroSizedHloElimination]
+	24 [label=GatherExpander]
+	25 [label=ScatterExpander]
+	26 [label=AlgebraicSimplifier]
+	27 [label=BitcastDtypesExpander]
+	28 [label=DotDecomposer]
+	29 [label=DotMerger]
+	30 [label=SortSimplifier]
+	31 [label=TupleSimplifier]
+	32 [label=WhileLoopConstantSinking]
+	33 [label=WhileLoopSimplifier]
+	34 [label=ReshapeMover]
+	35 [label=HloConstantFolding]
+	36 [label=ConditionalSimplifier]
+	37 [label=RealImagExpander]
+	38 [label=TransposeFolding]
+	39 [label=HloCSE]
+	40 [label=HloDCE]
+	41 [label=WhileLoopTripCountAnnotator]
+	42 [label=AllReduceFolder]
+	43 [label=ReduceScatterCreator]
+	44 [label=AllReduceReassociate]
+	45 [label=AlgebraicSimplifier]
+	46 [label=AllGatherBroadcastReorder]
+	47 [label=HloVerifier]
+	48 [label=GpusolverRewriter]
+	49 [label=GpuConvRewriter]
+	50 [label=CudnnFusedConvRewriter]
+	51 [label=GpuConvPaddingLegalization]
+	52 [label=CudnnPadForConvolutions]
+	53 [label=CudnnVectorizeConvolutions]
+	54 [label=CallInliner]
+	55 [label=TupleSimplifier]
+	56 [label=AlgebraicSimplifier]
+	57 [label=HloConstantFolding]
+	58 [label=FlattenCallGraph]
+	59 [label=GpuLayoutAssignment]
+	60 [label=CublasPadForGemms]
+	61 [label=CublasPadForGemms]
+	62 [label=CublasPadForGemms]
+	63 [label=HloConstantFolding]
+	64 [label=HloVerifier]
+	65 [label=ReductionDegenerateDimRemover]
+	66 [label=ReductionLayoutNormalizer]
+	67 [label=ReductionDimensionGrouper]
+	68 [label=ReductionSplitter]
+	69 [label=GpuTreeReductionRewriter]
+	70 [label=AlgebraicSimplifier]
+	71 [label=TransposeFolding]
+	72 [label=GemmRewriter]
+	73 [label=GemmBroadcastFoldingRewriter]
+	74 [label=BFloat16Normalization]
+	75 [label=GpuConvAlgorithmPicker]
+	76 [label=TupleSimplifier]
+	77 [label=HloCSE]
+	78 [label=GemmAlgorithmPicker]
+	79 [label=VariadicOpSplitter]
+	80 [label=HloVerifier]
+	81 [label=GpuInstructionFusion]
+	82 [label=GpuInstructionFusion]
+	83 [label=FusionMerger]
+	84 [label=GpuMultiOutputFusion]
+	85 [label=HloCSE]
+	86 [label=HloDCE]
+	87 [label=GpuHorizontalLoopFusion]
+	88 [label=GpuHorizontalInputFusion]
+	89 [label=FusionBitcastLift]
+	90 [label=HloCSE]
+	91 [label=HloDCE]
+	92 [label=AllGatherCombiner]
+	93 [label=AllReduceCombiner]
+	94 [label=ReduceScatterCombiner]
+	95 [label=CollectivesScheduleLinearizer]
+	96 [label=AlgebraicSimplifier]
+	// nodes where the "new lines" begin
+    // connected invisibly to keep them in order
+    // a -> 11 ->  b -> 31 -> c -> d -> e -> f -> g -> h -> 80 -> 88 -> 96
+	{ rank = same; a -> 11 -> b -> 32 -> c -> d -> e -> f -> g -> 74->  h -> i -> j -> l [ style = invis ] }
+	// nodes that are to be in one line
+    // extra weight needed to keep the edges straight
+	edge[ weight = 5 ]
+    a -> 0 [color="#fa7d00"]
+    0 -> 1
+	1 -> 2
+	2 -> 3
+	3 -> 4
+	4 -> 5
+	5 -> 6
+	6 -> 7
+	7 -> 8
+	8 -> 9
+	9 -> 10
+	11 -> 12
+	12 -> 13
+	13 -> 14
+	14 -> 15
+	15 -> 16
+	16 -> 17
+	17 -> 18
+	18 -> 19
+	19 -> 20
+	20 -> 21
+    b -> 22 [color="#fa7d00"]
+	22 -> 23
+	23 -> 24
+	24 -> 25
+	25 -> 26
+	26 -> 27
+	27 -> 28
+	28 -> 29
+	29 -> 30
+	30 -> 31
+	32 -> 33
+	33 -> 34
+	34 -> 35
+	35 -> 36
+	36 -> 37
+	37 -> 38
+	38 -> 39
+	39 -> 40
+    40 -> 41
+    c -> 42 [color="#fa7d00"]
+	42 -> 43
+	43 -> 44
+	44 -> 45
+	45 -> 46
+    d -> 47 [color="#fa7d00"]
+	47 -> 48
+	48 -> 49
+	49 -> 50
+	50 -> 51
+	51 -> 52
+	52 -> 53
+	53 -> 54
+	54 -> 55
+	55 -> 56
+	56 -> 57
+    e -> 58 [color="#fa7d00"]
+	58 -> 59
+    f -> 60 [color="#fa7d00"]
+	60 -> 61
+	61 -> 62
+	62 -> 63
+    g -> 64 [color="#fa7d00"]
+	64 -> 65
+	65 -> 66
+	66 -> 67
+	67 -> 68
+	68 -> 69
+	69 -> 70
+	70 -> 71
+	71 -> 72
+	72 -> 73
+	74 -> 75
+	75 -> 76
+	76 -> 77
+    h -> 78 [color="#fa7d00"]
+    i -> 79 [color="#fa7d00"]
+	79 -> 80
+	80 -> 81
+	81 -> 82
+	82 -> 83
+	83 -> 84
+	84 -> 85
+	85 -> 86
+    j -> 87 [color="#fa7d00"]
+	87 -> 88
+	88 -> 89
+	89 -> 90
+	90 -> 91
+    l -> 92 [color="#fa7d00"]
+	92 -> 93
+	93 -> 94
+	94 -> 95
+	95 -> 96
+	// edges connecting the graph elements over the lines
+	edge[ weight = 1 ]
+	10 -> 11
+    21 -> b [color="#fa7d00"]
+    31 -> 32
+    41 -> c [color="#fa7d00"]
+    46 -> d [color="#fa7d00"]
+    57 -> e [color="#fa7d00"]
+    59 -> f [color="#fa7d00"]
+    63 -> g [color="#fa7d00"]
+    73 -> 74
+    77 -> h [color="#fa7d00"]
+    78 -> i [color="#fa7d00"]
+    86 -> j [color="#fa7d00"]
+    91 -> l [color="#fa7d00"]
+
+}

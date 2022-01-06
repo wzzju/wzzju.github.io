@@ -1,0 +1,114 @@
+'https://plantuml.com/class-diagram
+@startuml algebraic_simplifier
+!theme cerulean-outline
+
+class AlgebraicSimplifierOptions {
+    - struct_Metadata
+    - {field} reshape_is_bitcast_callback_: ReshapeIsBitcastCallback
+    - {field} conv_is_lowerable_callback_: ConvIsLowerableCallback
+    - {field} is_layout_sensitive_: bool
+    - {field} enable_dot_strength_reduction_: bool
+    - {field} enable_dot_to_multiply_rewrite_: bool
+    - {field} enable_conv_simplification_: bool
+    - {field} enable_conv_operand_swap_: bool
+    - {field} enable_scalar_multiply_reduction_: bool
+    - {field} enable_floats_are_real_: bool
+    - {field} enable_window_reduce_to_reduce_replacement_: bool
+    - {field} enable_reduce_of_reshape_: bool
+    - {field} enable_negative_padding_replacement_: bool
+    - {field} enable_sink_broadcast_: bool
+    - {field} replace_transpose_with_bitcast_: bool
+    - {field} very_small_gather_size_: int64_t
+    - {field} minmax_propagate_nan_: bool
+    - {field} metadata_: Metadata
+    + {method} setter & getter of private fields above
+}
+
+class AlgebraicSimplifierOptions::Metadata {
+  + cudnn_batchnorm_forward_training_metadata: std::string
+}
+
+
+class AlgebraicSimplifier {
+    + AlgebraicSimplifier(options: const AlgebraicSimplifierOptions&)
+    + Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + CreateConstantWithLayoutUpdated(literal: Literal): std::unique_ptr<HloInstruction>
+    # {field} options_: AlgebraicSimplifierOptions
+}
+
+Interface DfsHloVisitorBase
+
+' Interface DfsHloVisitorBase {
+'     + {method} HandleElementwiseUnary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+'     + {method} HandleElementwiseBinary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+'     + {method} HandleSqrt(hlo: HloInstruction*): Status
+'     + {method} HandleMultiply(hlo: HloInstruction*): Status
+'     + {abstract} HandleBatchNormTraining(hlo: HloInstruction*): Status
+'     + {abstract} HandleDot(hlo: HloInstruction*): Status
+'     + {abstract} HandleConvolution(hlo: HloInstruction*): Status
+'     + {abstract} FinishVisit(hlo: HloInstruction*): Status
+'     + {method} ......
+' }
+' DfsHloVisitorBase::HandleSqrt -[#green,dashed,thickness=1]-> DfsHloVisitorBase::HandleElementwiseUnary : call
+' DfsHloVisitorBase::HandleMultiply -[#red,dotted,thickness=1]-> DfsHloVisitorBase::HandleElementwiseBinary
+
+abstract class DfsHloVisitorWithDefaultBase
+
+' abstract class DfsHloVisitorWithDefaultBase {
+'     + {abstract} DefaultAction(hlo_instruction: HloInstruction*): Status
+'     + {method} HandleElementwiseUnary: <b><color:#008080>override</color></b>
+'     + {method} HandleElementwiseBinary: <b><color:#008080>override</color></b>
+'     + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+'     + {method} HandleDot: <b><color:#008080>override</color></b>
+'     + {method} HandleConvolution: <b><color:#008080>override</color></b>
+'     + {method} FinishVisit: <b><color:#008080>override</color></b>
+'     + {method} ......
+' }
+
+class DfsHloRewriteVisitor {
+    + {method} RunOnModule(module: HloModule*): StatusOr<bool>
+    + {method} DefaultAction(hlo_instruction: HloInstruction*): Status <b><color:#008080>override</color></b> (<color:Red>do nothing</color>)
+    # {method} ReplaceWithNewInstruction(old_instruction: HloInstruction*, new_instruction: std::unique_ptr<HloInstruction>): Status
+    # {method} ReplaceInstruction(old_instruction: HloInstruction*, new_instruction: HloInstruction*): Status
+    # {field} changed_: bool
+}
+
+class AlgebraicSimplifierVisitor {
+  + {method} AlgebraicSimplifierVisitor(options: const AlgebraicSimplifierOptions&, simplifier: AlgebraicSimplifier*)
+  + {method} Run(computation: HloComputation*, options: const AlgebraicSimplifierOptions&, simplifier: AlgebraicSimplifier*): bool
+  + {method} HandleAbs(abs: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleAdd(add: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleAnd(logical_and: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleBroadcast(broadcast: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleConcatenate(concatenate: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleCopy(copy: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleConvolution(convolution: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleDot(dot: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleReshape(reshape: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleReduce(hlo: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleSlice(slice: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleDynamicSlice(dynamic_slice: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleSelect(select: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleSort(sort: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} HandleTranspose(transpose: HloInstruction*): Status <b><color:#008080>override</color></b>
+  + {method} ......
+  - {method} OptimizeDotOfConcat(dot: HloInstruction*): StatusOr<HloInstruction*>
+  - {method} FoldConvInputPad(convolution: HloInstruction*): StatusOr<bool>
+  - {method} FoldConvFilterPad(convolution: HloInstruction*): StatusOr<bool>
+  - {method} SimplifyConvToDot(convolution: HloInstruction*): StatusOr<bool>
+  - {method} TryToReorderSliceAndReshape(slice: HloInstruction*): StatusOr<bool>
+  - {method} ......
+  - {field} computation_: HloComputation*
+  - {field} options_: const AlgebraicSimplifierOptions&
+  - {field} simplifier_: AlgebraicSimplifier*
+  - {field} scalar_add_computations_: absl::flat_hash_map<PrimitiveType, HloComputation*>
+}
+
+AlgebraicSimplifier *-- AlgebraicSimplifierOptions
+AlgebraicSimplifierVisitor o-- AlgebraicSimplifierOptions
+AlgebraicSimplifierVisitor o-- AlgebraicSimplifier
+DfsHloRewriteVisitor <|-- AlgebraicSimplifierVisitor
+AlgebraicSimplifierOptions::struct_Metadata -[dashed]-> AlgebraicSimplifierOptions::Metadata  : definition
+DfsHloVisitorWithDefaultBase <|-- DfsHloRewriteVisitor
+DfsHloVisitorBase <|-- DfsHloVisitorWithDefaultBase
+@enduml

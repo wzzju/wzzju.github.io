@@ -1,0 +1,22 @@
+'https://plantuml.com/class-diagram
+@startuml gpu_multi_output_fusion
+!theme cerulean-outline
+
+abstract class HloModulePass
+
+class GpuMultiOutputFusion {
+    - {field} computation_: HloComputation*
+    - {field} reachability_: std::unique_ptr<HloReachabilityMap>
+    + {method} GpuMultiOutputFusion()
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    - {method} FuseSiblings(parent: HloInstruction*, fusion_info_cache: FusionInfoCache*): bool
+    - DoMultiOutputFusion(): StatusOr<bool>
+    - RecomputeReachability(): void
+}
+
+' GpuMultiOutputFusion::Run -[#green,dashed,thickness=1]-> GpuMultiOutputFusion::DoMultiOutputFusion : call
+
+HloModulePass <|-- GpuMultiOutputFusion
+
+@enduml

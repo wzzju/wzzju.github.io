@@ -1,0 +1,1319 @@
+diff --git a/tensorflow/compiler/xla/service/gpu/amdgpu_compiler.cc b/tensorflow/compiler/xla/service/gpu/amdgpu_compiler.cc
+index 11235c8b18a..c5525203476 100644
+--- a/tensorflow/compiler/xla/service/gpu/amdgpu_compiler.cc
++++ b/tensorflow/compiler/xla/service/gpu/amdgpu_compiler.cc
+@@ -74,7 +74,8 @@ std::string GetROCDLDir(const HloModuleConfig& config) {
+ 
+ Status AMDGPUCompiler::OptimizeHloConvolutionCanonicalization(
+     HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-    se::DeviceMemoryAllocator* device_allocator) {
++    se::DeviceMemoryAllocator* device_allocator,
++    const std::unordered_set<std::string>& pass_set) {
+   // Convert convolutions into CustomCalls to MIOpen, then canonicalize them
+   // (PadInsertion).
+   HloPassPipeline pipeline("conv_canonicalization");
+diff --git a/tensorflow/compiler/xla/service/gpu/amdgpu_compiler.h b/tensorflow/compiler/xla/service/gpu/amdgpu_compiler.h
+index 8f982bf49b8..21fca6b5d66 100644
+--- a/tensorflow/compiler/xla/service/gpu/amdgpu_compiler.h
++++ b/tensorflow/compiler/xla/service/gpu/amdgpu_compiler.h
+@@ -35,7 +35,8 @@ class AMDGPUCompiler : public GpuCompiler {
+ 
+   Status OptimizeHloConvolutionCanonicalization(
+       HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-      se::DeviceMemoryAllocator* device_allocator) override;
++      se::DeviceMemoryAllocator* device_allocator,
++      const std::unordered_set<std::string>& pass_set = {}) override;
+ 
+   GpuVersion GetGpuVersion(se::StreamExecutor* stream_exec) override;
+ 
+diff --git a/tensorflow/compiler/xla/service/gpu/gpu_compiler.cc b/tensorflow/compiler/xla/service/gpu/gpu_compiler.cc
+index 0f36dcece34..1720622efd9 100644
+--- a/tensorflow/compiler/xla/service/gpu/gpu_compiler.cc
++++ b/tensorflow/compiler/xla/service/gpu/gpu_compiler.cc
+@@ -19,8 +19,10 @@ limitations under the License.
+ 
+ #include <atomic>
+ #include <functional>
++#include <ostream>
+ #include <string>
+ #include <utility>
++#include <vector>
+ 
+ #include "absl/memory/memory.h"
+ #include "absl/strings/numbers.h"
+@@ -35,14 +37,14 @@ limitations under the License.
+ #include "llvm/IR/Module.h"
+ #include "llvm/IR/Verifier.h"
+ #include "llvm/Transforms/Utils/SplitModule.h"
+-#include "mlir/Dialect/Arithmetic/IR/Arithmetic.h"  // from @llvm-project
+-#include "mlir/Dialect/GPU/Passes.h"  // from @llvm-project
+-#include "mlir/IR/BuiltinOps.h"  // from @llvm-project
+-#include "mlir/InitAllDialects.h"  // from @llvm-project
+-#include "mlir/Pass/PassManager.h"  // from @llvm-project
++#include "mlir/Dialect/Arithmetic/IR/Arithmetic.h"       // from @llvm-project
++#include "mlir/Dialect/GPU/Passes.h"                     // from @llvm-project
++#include "mlir/IR/BuiltinOps.h"                          // from @llvm-project
++#include "mlir/InitAllDialects.h"                        // from @llvm-project
++#include "mlir/Pass/PassManager.h"                       // from @llvm-project
+ #include "mlir/Transforms/GreedyPatternRewriteDriver.h"  // from @llvm-project
+-#include "mlir/Transforms/LocationSnapshot.h"  // from @llvm-project
+-#include "mlir/Transforms/Passes.h"  // from @llvm-project
++#include "mlir/Transforms/LocationSnapshot.h"            // from @llvm-project
++#include "mlir/Transforms/Passes.h"                      // from @llvm-project
+ #include "tensorflow/compiler/mlir/utils/name_utils.h"
+ #include "tensorflow/compiler/mlir/xla/hlo_utils.h"
+ #include "tensorflow/compiler/mlir/xla/type_to_shape.h"
+@@ -161,6 +163,7 @@ limitations under the License.
+ #include "tensorflow/core/platform/env.h"
+ #include "tensorflow/core/platform/logging.h"
+ #include "tensorflow/core/platform/regexp.h"
++#include "tensorflow/core/platform/status.h"
+ #include "tensorflow/core/platform/stream_executor_no_cuda.h"
+ #include "tensorflow/core/platform/subprocess.h"
+ #include "tensorflow/core/platform/threadpool.h"
+@@ -170,13 +173,24 @@ limitations under the License.
+ 
+ #if BEF_EXECUTABLE
+ #include "tensorflow/compiler/mlir/tfrt/transforms/lmhlo_to_gpu/pass_utils.h"
+-#include "tfrt/bef/bef_buffer.h"  // from @tf_runtime
++#include "tfrt/bef/bef_buffer.h"                       // from @tf_runtime
+ #include "tfrt/bef_converter/mlir_to_bef_translate.h"  // from @tf_runtime
+-#endif  // BEF_EXECUTABLE
++#endif                                                 // BEF_EXECUTABLE
+ 
+ namespace xla {
+ namespace gpu {
+ namespace {
++template <class T, class Hash = std::hash<T>, class TEqual = std::equal_to<T>,
++          class Allocator = std::allocator<T>>
++std::ostream& operator<<(
++    std::ostream& os, const std::unordered_set<T, Hash, TEqual, Allocator>& s) {
++  os << "{ ";
++  for (const auto& e : s) {
++    os << e << " ";
++  }
++  os << "}\n";
++  return os;
++}
+ 
+ class GpuBfloat16Support : public BFloat16Support {
+  public:
+@@ -267,6 +281,13 @@ GpuCompiler::GpuCompiler(se::Platform::Id platform_id,
+ Status GpuCompiler::OptimizeHloModule(
+     HloModule* hlo_module, se::StreamExecutor* stream_exec,
+     se::DeviceMemoryAllocator* device_allocator) {
++  std::vector<string> passes;
++  TF_CHECK_OK(tensorflow::ReadStringsFromEnvVar(
++      /*env_var_name=*/"USED_XLA_PASSES", /*default_val=*/"", &passes));
++  std::unordered_set<std::string> pass_set{passes.begin(), passes.end()};
++  LOG(INFO) << "-- The size of the used passes: " << pass_set.size();
++  LOG(INFO) << "-- The used passes in XLA: " << pass_set;
++
+   // Save proto state before optimizations if we want a snapshot.
+   if (DumpingEnabledForHloModule(*hlo_module)) {
+     hlo_proto_ = absl::make_unique<HloProto>();
+@@ -326,9 +347,19 @@ Status GpuCompiler::OptimizeHloModule(
+ 
+   {
+     HloPassPipeline pipeline("optimization");
+-    pipeline.AddInvariantChecker<HloVerifier>(/*layout_sensitive=*/false,
+-                                              /*allow_mixed_precision=*/false);
+-    pipeline.AddPass<AllToAllDecomposer>();
++    if (pass_set.empty() || pass_set.count("HloVerifier")) {
++      pipeline.AddInvariantChecker<HloVerifier>(
++          /*layout_sensitive=*/false,
++          /*allow_mixed_precision=*/false);
++    } else {
++      LOG(INFO) << "---------- Disable HloVerifier ----------";
++    }
++
++    if (pass_set.empty() || pass_set.count("AllToAllDecomposer")) {
++      pipeline.AddPass<AllToAllDecomposer>();
++    } else {
++      LOG(INFO) << "---------- Disable AllToAllDecomposer ----------";
++    }
+ 
+     OpExpanderPass::PatternExtraFilter upcaster_filter =
+         [&](const HloInstruction* instr) {
+@@ -337,48 +368,110 @@ Status GpuCompiler::OptimizeHloModule(
+                       .IsAtLeast(se::CudaComputeCapability::VOLTA) ||
+                  !gpu::IsMatrixMultiplication(*instr);
+         };
++    if (pass_set.empty() || pass_set.count("OperandUpcaster")) {
++      pipeline.AddPass<OperandUpcaster>(upcaster_filter);
++    } else {
++      LOG(INFO) << "---------- Disable OperandUpcaster ----------";
++    }
+ 
+-    pipeline.AddPass<OperandUpcaster>(upcaster_filter);
+-    pipeline.AddPass<ResultCaster>(upcaster_filter);
++    if (pass_set.empty() || pass_set.count("ResultCaster")) {
++      pipeline.AddPass<ResultCaster>(upcaster_filter);
++    } else {
++      LOG(INFO) << "---------- Disable ResultCaster ----------";
++    }
+ 
+     // Expand random number generation.
+-    pipeline.AddPass<RngExpander>();
+-    pipeline.AddPass<RngBitGeneratorExpander>(RandomAlgorithm::RNG_PHILOX);
++    if (pass_set.empty() || pass_set.count("RngExpander")) {
++      pipeline.AddPass<RngExpander>();
++    } else {
++      LOG(INFO) << "---------- Disable RngExpander ----------";
++    }
++
++    if (pass_set.empty() || pass_set.count("RngBitGeneratorExpander")) {
++      pipeline.AddPass<RngBitGeneratorExpander>(RandomAlgorithm::RNG_PHILOX);
++    } else {
++      LOG(INFO) << "---------- Disable RngBitGeneratorExpander ----------";
++    }
+ 
+     // Comparison total order expander
+-    pipeline.AddPass<ComparisonExpander>();
++    if (pass_set.empty() || pass_set.count("ComparisonExpander")) {
++      pipeline.AddPass<ComparisonExpander>();
++    } else {
++      LOG(INFO) << "---------- Disable ComparisonExpander ----------";
++    }
+ 
+     // Remove zero-sized HLO from the input so that other passes don't have to
+     // handle it.
+-    pipeline.AddPass<ZeroSizedHloElimination>();
++    if (pass_set.empty() || pass_set.count("ZeroSizedHloElimination")) {
++      pipeline.AddPass<ZeroSizedHloElimination>();
++    } else {
++      LOG(INFO) << "---------- Disable ZeroSizedHloElimination ----------";
++    }
+ 
+     if (debug_options.xla_gpu_deterministic_ops()) {
+       // Scatter is nondeterministic, so eliminate all Scatters.
+       pipeline.AddPass<ScatterExpander>(ScatterExpander::kEliminateAllScatters);
+     } else {
+       // Only Scatters unsupported on XLA:GPU are eliminated.
+-      pipeline.AddPass<GpuScatterExpander>();
++      if (pass_set.empty() || pass_set.count("GpuScatterExpander")) {
++        pipeline.AddPass<GpuScatterExpander>();
++      } else {
++        LOG(INFO) << "---------- Disable GpuScatterExpander ----------";
++      }
+     }
+     // TODO(phawkins): replace QR and Eigh decompositions with calls to
+     // cuSOLVER.
+-    pipeline.AddPass<QrExpander>();
+-    pipeline.AddPass<EighExpander>();
++    if (pass_set.empty() || pass_set.count("QrExpander")) {
++      pipeline.AddPass<QrExpander>();
++    } else {
++      LOG(INFO) << "---------- Disable QrExpander ----------";
++    }
++
++    if (pass_set.empty() || pass_set.count("EighExpander")) {
++      pipeline.AddPass<EighExpander>();
++    } else {
++      LOG(INFO) << "---------- Disable EighExpander ----------";
++    }
+ 
+-    pipeline.AddPass<DynamicIndexSplitter>();
++    if (pass_set.empty() || pass_set.count("DynamicIndexSplitter")) {
++      pipeline.AddPass<DynamicIndexSplitter>();
++    } else {
++      LOG(INFO) << "---------- Disable DynamicIndexSplitter ----------";
++    }
+ 
+     // TODO(b/64094172): make Call work on GPU instead of inlining.
+-    pipeline.AddPass<CallInliner>();
++    if (pass_set.empty() || pass_set.count("CallInliner")) {
++      pipeline.AddPass<CallInliner>();
++    } else {
++      LOG(INFO) << "---------- Disable CallInliner ----------";
++    }
+ 
+-    pipeline.AddPass<DotDecomposer>();
++    if (pass_set.empty() || pass_set.count("DotDecomposer")) {
++      pipeline.AddPass<DotDecomposer>();
++    } else {
++      LOG(INFO) << "---------- Disable DotDecomposer ----------";
++    }
+ 
+-    pipeline.AddPass<Convolution4DExpander>();
++    if (pass_set.empty() || pass_set.count("Convolution4DExpander")) {
++      pipeline.AddPass<Convolution4DExpander>();
++    } else {
++      LOG(INFO) << "---------- Disable Convolution4DExpander ----------";
++    }
+ 
+     // Expand the sort op to support stable sorting if required.
+-    pipeline.AddPass<StableSortExpander>();
++    if (pass_set.empty() || pass_set.count("StableSortExpander")) {
++      pipeline.AddPass<StableSortExpander>();
++    } else {
++      LOG(INFO) << "---------- Disable StableSortExpander ----------";
++    }
+ 
+     GpuBfloat16Support bf16(/*supports_matrix_multiplication=*/true,
+                             stream_exec);
+-    pipeline.AddPass<BFloat16Normalization>(&bf16);
++    if (pass_set.empty() || pass_set.count("BFloat16Normalization")) {
++      pipeline.AddPass<BFloat16Normalization>(&bf16);
++    } else {
++      LOG(INFO) << "---------- Disable BFloat16Normalization ----------";
++    }
+ 
+     // If cudnn batchnorms are enabled, rewrite batchnorm HLOs to cudnn calls
+     // where possible.  Not every batchnorm op can be implemented as a call to
+@@ -392,35 +485,78 @@ Status GpuCompiler::OptimizeHloModule(
+           /*rewrite_grad_op=*/false);
+       pipeline.AddPass<CudnnBatchNormRewriter>();
+     }
+-    pipeline.AddPass<BatchNormExpander>(
+-        /*rewrite_training_op=*/true,
+-        /*rewrite_inference_op=*/true,
+-        /*rewrite_grad_op=*/true);
+ 
+-    pipeline.AddPass<LogisticExpander>(
+-        /*expansion_type=*/LogisticExpansionType::kExp);
+-    pipeline.AddPass<ConditionalCanonicalizer>();
+-    pipeline.AddPass<DynamicDimensionSimplifier>();
++    if (pass_set.empty() || pass_set.count("BatchNormExpander")) {
++      pipeline.AddPass<BatchNormExpander>(
++          /*rewrite_training_op=*/true,
++          /*rewrite_inference_op=*/true,
++          /*rewrite_grad_op=*/true);
++    } else {
++      pipeline.AddPass<CudnnBatchNormRewriter>();
++      LOG(INFO) << "---------- Disable BatchNormExpander && Use CudnnBatchNorm "
++                   "----------";
++    }
++    if (pass_set.empty() || pass_set.count("LogisticExpander")) {
++      pipeline.AddPass<LogisticExpander>(
++          /*expansion_type=*/LogisticExpansionType::kExp);
++    } else {
++      LOG(INFO) << "---------- Disable LogisticExpander ----------";
++    }
++
++    if (pass_set.empty() || pass_set.count("ConditionalCanonicalizer")) {
++      pipeline.AddPass<ConditionalCanonicalizer>();
++    } else {
++      LOG(INFO) << "---------- Disable ConditionalCanonicalizer ----------";
++    }
++
++    if (pass_set.empty() || pass_set.count("DynamicDimensionSimplifier")) {
++      pipeline.AddPass<DynamicDimensionSimplifier>();
++    } else {
++      LOG(INFO) << "---------- Disable DynamicDimensionSimplifier ----------";
++    }
++
+     auto dynamic_padder_options = DynamicPadderOptions();
+     dynamic_padder_options.shape_check_mode =
+         DynamicDimensionInference::ShapeCheckMode::kCompileTime;
+-    pipeline.AddPass<DynamicPadder>(dynamic_padder_options);
++    if (pass_set.empty() || pass_set.count("DynamicPadder")) {
++      pipeline.AddPass<DynamicPadder>(dynamic_padder_options);
++    } else {
++      LOG(INFO) << "---------- Disable DynamicPadder ----------";
++    }
+ 
+     // Build simplification pipeline.  The passes in here are run to a fixed
+     // point.
+     [&, &pipeline =
+             pipeline.AddPass<HloPassFix<HloPassPipeline>>("simplification")] {
+-      pipeline.AddInvariantCheckerDebug<HloVerifier>(
+-          /*layout_sensitive=*/false,
+-          /*allow_mixed_precision=*/false);
++      if (pass_set.empty() || pass_set.count("HloVerifier")) {
++        pipeline.AddInvariantCheckerDebug<HloVerifier>(
++            /*layout_sensitive=*/false,
++            /*allow_mixed_precision=*/false);
++      } else {
++        LOG(INFO) << "---------- Disable HloVerifier ----------";
++      }
+ 
+       // BatchNormExpander can create zero-sized ops, so zero-sized HLO
+       // elimination has to come after that pass.
+-      pipeline.AddPass<ZeroSizedHloElimination>();
++      if (pass_set.empty() || pass_set.count("ZeroSizedHloElimination")) {
++        pipeline.AddPass<ZeroSizedHloElimination>();
++      } else {
++        LOG(INFO) << "---------- Disable ZeroSizedHloElimination ----------";
++      }
+ 
+-      pipeline.AddPass<GatherExpander>(GatherExpander::kEliminateSimpleGathers);
+-      pipeline.AddPass<ScatterExpander>(
+-          ScatterExpander::kEliminateSimpleScatters);
++      if (pass_set.empty() || pass_set.count("GatherExpander")) {
++        pipeline.AddPass<GatherExpander>(
++            GatherExpander::kEliminateSimpleGathers);
++      } else {
++        LOG(INFO) << "---------- Disable GatherExpander ----------";
++      }
++
++      if (pass_set.empty() || pass_set.count("ScatterExpander")) {
++        pipeline.AddPass<ScatterExpander>(
++            ScatterExpander::kEliminateSimpleScatters);
++      } else {
++        LOG(INFO) << "---------- Disable ScatterExpander ----------";
++      }
+ 
+       AlgebraicSimplifierOptions options({}, ConvIsLowerable);
+       // "slow" minmax means we propagate nan.
+@@ -436,47 +572,109 @@ Status GpuCompiler::OptimizeHloModule(
+       // bitcast(bitcast) with one bitcast. This leads to having to
+       // linearize and then delinearize the index.
+       options.set_replace_transpose_with_bitcast(false);
+-      pipeline.AddPass<AlgebraicSimplifier>(options);
+-      pipeline.AddPass<BitcastDtypesExpander>();
++      if (pass_set.empty() || pass_set.count("AlgebraicSimplifier")) {
++        pipeline.AddPass<AlgebraicSimplifier>(options);
++      } else {
++        LOG(INFO) << "---------- Disable AlgebraicSimplifier ----------";
++      }
++      if (pass_set.empty() || pass_set.count("BitcastDtypesExpander")) {
++        pipeline.AddPass<BitcastDtypesExpander>();
++      } else {
++        LOG(INFO) << "---------- Disable BitcastDtypesExpander ----------";
++      }
+       // AlgebraicSimplifier may add contracting dimensions to a dot.
+-      pipeline.AddPass<DotDecomposer>();
+-      // Only merge "smallish" dots.  This threshold was not set carefully, but
+-      // so far we know that 1mb is too small.
+-      pipeline.AddPass<DotMerger>(/*max_size_to_merge=*/int64_t{16} << 20);
+-      pipeline.AddPass<SortSimplifier>();
+-      pipeline.AddPass<TupleSimplifier>();
+-      pipeline.AddPass<WhileLoopConstantSinking>();
+-      pipeline.AddPass<WhileLoopSimplifier>();
++      if (pass_set.empty() || pass_set.count("DotDecomposer")) {
++        pipeline.AddPass<DotDecomposer>();
++      } else {
++        LOG(INFO) << "---------- Disable DotDecomposer ----------";
++      }
++      // Only merge "smallish" dots.  This threshold was not set carefully,
++      // but so far we know that 1mb is too small.
++      if (pass_set.empty() || pass_set.count("DotMerger")) {
++        pipeline.AddPass<DotMerger>(/*max_size_to_merge=*/int64_t{16} << 20);
++      } else {
++        LOG(INFO) << "---------- Disable DotMerger ----------";
++      }
++      if (pass_set.empty() || pass_set.count("SortSimplifier")) {
++        pipeline.AddPass<SortSimplifier>();
++      } else {
++        LOG(INFO) << "---------- Disable SortSimplifier ----------";
++      }
++      if (pass_set.empty() || pass_set.count("TupleSimplifier")) {
++        pipeline.AddPass<TupleSimplifier>();
++      } else {
++        LOG(INFO) << "---------- Disable TupleSimplifier ----------";
++      }
++      if (pass_set.empty() || pass_set.count("WhileLoopConstantSinking")) {
++        pipeline.AddPass<WhileLoopConstantSinking>();
++      } else {
++        LOG(INFO) << "---------- Disable WhileLoopConstantSinking ----------";
++      }
++      if (pass_set.empty() || pass_set.count("WhileLoopSimplifier")) {
++        pipeline.AddPass<WhileLoopSimplifier>();
++      } else {
++        LOG(INFO) << "---------- Disable WhileLoopSimplifier ----------";
++      }
+ 
+       // TODO(b/134075051): Re-enable after b/134075051 is fixed.
+       // pipeline.AddPass<SliceSinker>();
+-
+-      pipeline.AddPass<ReshapeMover>();
+-      pipeline.AddPass<HloConstantFolding>();
+-      pipeline.AddPass<ConditionalSimplifier>();
+-      pipeline.AddPass<RealImagExpander>();
+-
+-      pipeline.AddPass<TransposeFolding>(
+-          [](const HloInstruction& dot,
+-             const TransposeFolding::OperandIndices& candidate_operands) {
+-            return IsMatrixMultiplication(dot)
+-                       ? candidate_operands
+-                       : TransposeFolding::OperandIndices{};
+-          });
+-      pipeline.AddPass<HloCSE>(/*is_layout_sensitive=*/false);
+-      pipeline.AddPass<HloDCE>();
++      if (pass_set.empty() || pass_set.count("ReshapeMover")) {
++        pipeline.AddPass<ReshapeMover>();
++      } else {
++        LOG(INFO) << "---------- Disable ReshapeMover ----------";
++      }
++      if (pass_set.empty() || pass_set.count("HloConstantFolding")) {
++        pipeline.AddPass<HloConstantFolding>();
++      } else {
++        LOG(INFO) << "---------- Disable HloConstantFolding ----------";
++      }
++      if (pass_set.empty() || pass_set.count("ConditionalSimplifier")) {
++        pipeline.AddPass<ConditionalSimplifier>();
++      } else {
++        LOG(INFO) << "---------- Disable ConditionalSimplifier ----------";
++      }
++      if (pass_set.empty() || pass_set.count("RealImagExpander")) {
++        pipeline.AddPass<RealImagExpander>();
++      } else {
++        LOG(INFO) << "---------- Disable RealImagExpander ----------";
++      }
++      if (pass_set.empty() || pass_set.count("TransposeFolding")) {
++        pipeline.AddPass<TransposeFolding>(
++            [](const HloInstruction& dot,
++               const TransposeFolding::OperandIndices& candidate_operands) {
++              return IsMatrixMultiplication(dot)
++                         ? candidate_operands
++                         : TransposeFolding::OperandIndices{};
++            });
++      } else {
++        LOG(INFO) << "---------- Disable TransposeFolding ----------";
++      }
++      if (pass_set.empty() || pass_set.count("HloCSE")) {
++        pipeline.AddPass<HloCSE>(/*is_layout_sensitive=*/false);
++      } else {
++        LOG(INFO) << "---------- Disable HloCSE ----------";
++      }
++      if (pass_set.empty() || pass_set.count("HloDCE")) {
++        pipeline.AddPass<HloDCE>();
++      } else {
++        LOG(INFO) << "---------- Disable HloDCE ----------";
++      }
+     }();
+ 
+     // Run WhileLoopTripCountAnnotator at the end of the simplification
+     // pipeline, before layout assignment and fusion.  This pass does some
+-    // pattern-matching on while bodies/conditions, and this is where the HLO is
+-    // "nicest".
++    // pattern-matching on while bodies/conditions, and this is where the HLO
++    // is "nicest".
+     //
+     // It's important that we don't make semantic changes (e.g. unrolling) to
+     // any `while` loops after this point, because otherwise the trip-count
+     // annotations added by this pass may not be correct after the
+     // modifications.
+-    pipeline.AddPass<WhileLoopTripCountAnnotator>();
++    if (pass_set.empty() || pass_set.count("WhileLoopTripCountAnnotator")) {
++      pipeline.AddPass<WhileLoopTripCountAnnotator>();
++    } else {
++      LOG(INFO) << "---------- Disable WhileLoopTripCountAnnotator ----------";
++    }
+     TF_RETURN_IF_ERROR(pipeline.Run(hlo_module).status());
+   }
+ 
+@@ -484,9 +682,22 @@ Status GpuCompiler::OptimizeHloModule(
+   // otherwise as well so that all collectives can get these optimizations.
+   {
+     HloPassPipeline collectives_pipeline("collective-optimizations");
+-    collectives_pipeline.AddPass<AllReduceFolder>();
+-    collectives_pipeline.AddPass<ReduceScatterCreator>();
+-    collectives_pipeline.AddPass<AllReduceReassociate>();
++    if (pass_set.empty() || pass_set.count("AllReduceFolder")) {
++      collectives_pipeline.AddPass<AllReduceFolder>();
++    } else {
++      LOG(INFO) << "---------- Disable AllReduceFolder ----------";
++    }
++
++    if (pass_set.empty() || pass_set.count("ReduceScatterCreator")) {
++      collectives_pipeline.AddPass<ReduceScatterCreator>();
++    } else {
++      LOG(INFO) << "---------- Disable ReduceScatterCreator ----------";
++    }
++    if (pass_set.empty() || pass_set.count("AllReduceReassociate")) {
++      collectives_pipeline.AddPass<AllReduceReassociate>();
++    } else {
++      LOG(INFO) << "---------- Disable AllReduceReassociate ----------";
++    }
+ 
+     // Run algebraic simplifier to reshape(broadcast) into a broadcast when
+     // the reshape is just adding a unit dimension. This will help with the
+@@ -497,83 +708,162 @@ Status GpuCompiler::OptimizeHloModule(
+     // "slow" minmax means we propagate nan.
+     options.set_minmax_propagate_nan(
+         !debug_options.xla_gpu_enable_fast_min_max());
++    if (pass_set.empty() || pass_set.count("AlgebraicSimplifier")) {
++      collectives_pipeline.AddPass<AlgebraicSimplifier>(options);
++    } else {
++      LOG(INFO) << "---------- Disable AlgebraicSimplifier ----------";
++    }
+ 
+-    collectives_pipeline.AddPass<AlgebraicSimplifier>(options);
+-
+-    collectives_pipeline.AddPass<AllGatherBroadcastReorder>();
++    if (pass_set.empty() || pass_set.count("AllGatherBroadcastReorder")) {
++      collectives_pipeline.AddPass<AllGatherBroadcastReorder>();
++    } else {
++      LOG(INFO) << "---------- Disable AllGatherBroadcastReorder ----------";
++    }
+     TF_RETURN_IF_ERROR(collectives_pipeline.Run(hlo_module).status());
+   }
+ 
+   // Run target-specific HLO optimization passes for convolution
+   // canonicalization.
+   TF_RETURN_IF_ERROR(OptimizeHloConvolutionCanonicalization(
+-      hlo_module, stream_exec, device_allocator));
++      hlo_module, stream_exec, device_allocator, pass_set));
+ 
+   {
+     // Run layout assignment in a separate pipeline from
+     // "post-layout-assignment" because we want everything after layout
+     // assignment to have a layout-sensitive invariant-checker, but
+     // HloPassPipeline also runs its invariant checker before any passes are
+-    // run, meaning, the pipeline that contains layout assignment cannot contain
+-    // a layout-sensitive verifier!
++    // run, meaning, the pipeline that contains layout assignment cannot
++    // contain a layout-sensitive verifier!
+     HloPassPipeline pipeline("layout assignment");
+     // Layout assignment uses alias analysis, which requires the call graph to
+     // be flattened.
+-    pipeline.AddPass<FlattenCallGraph>();
++    if (pass_set.empty() || pass_set.count("FlattenCallGraph")) {
++      pipeline.AddPass<FlattenCallGraph>();
++    } else {
++      LOG(INFO) << "---------- Disable FlattenCallGraph ----------";
++    }
+     ChannelLayoutConstraints layout_constraints;
+-    pipeline.AddPass<GpuLayoutAssignment>(
+-        hlo_module->mutable_entry_computation_layout(), stream_exec,
+-        &layout_constraints);
++    if (pass_set.empty() || pass_set.count("GpuLayoutAssignment")) {
++      pipeline.AddPass<GpuLayoutAssignment>(
++          hlo_module->mutable_entry_computation_layout(), stream_exec,
++          &layout_constraints);
++    } else {
++      LOG(INFO) << "---------- Disable GpuLayoutAssignment ----------";
++    }
+     TF_RETURN_IF_ERROR(pipeline.Run(hlo_module).status());
+   }
+ 
+   // Run target-specific HLO optimization passes after layout assignment.
+-  TF_RETURN_IF_ERROR(OptimizeHloPostLayoutAssignment(hlo_module, stream_exec,
+-                                                     device_allocator));
++  TF_RETURN_IF_ERROR(OptimizeHloPostLayoutAssignment(
++      hlo_module, stream_exec, device_allocator, pass_set));
+ 
+   {
+     HloPassFix<HloPassPipeline> fusion("fusion");
+     // We try to split variadic ops with many parameters into several such ops
+     // to avoid exceeding the parameter space.
+-    fusion.AddPass<VariadicOpSplitter>();
+-    fusion.AddInvariantCheckerDebug<HloVerifier>(
+-        /*layout_sensitive=*/true,
+-        /*allow_mixed_precision=*/false,
+-        LayoutAssignment::InstructionCanChangeLayout);
+-    fusion.AddPass<GpuInstructionFusion>(/*may_duplicate=*/false);
+-    fusion.AddPass<GpuInstructionFusion>(/*may_duplicate=*/true);
+-    fusion.AddPass<FusionMerger>();
+-    fusion.AddPass<GpuMultiOutputFusion>();
+-    fusion.AddPass<HloCSE>(/*is_layout_sensitive=*/true,
+-                           /*only_fusion_computations=*/true);
+-    fusion.AddPass<HloDCE>();
++    if (pass_set.empty() || pass_set.count("VariadicOpSplitter")) {
++      fusion.AddPass<VariadicOpSplitter>();
++    } else {
++      LOG(INFO) << "---------- Disable VariadicOpSplitter ----------";
++    }
++    if (pass_set.empty() || pass_set.count("HloVerifier")) {
++      fusion.AddInvariantCheckerDebug<HloVerifier>(
++          /*layout_sensitive=*/true,
++          /*allow_mixed_precision=*/false,
++          LayoutAssignment::InstructionCanChangeLayout);
++    } else {
++      LOG(INFO) << "---------- Disable HloVerifier ----------";
++    }
++    if (pass_set.empty() || pass_set.count("GpuInstructionFusion")) {
++      fusion.AddPass<GpuInstructionFusion>(/*may_duplicate=*/false);
++    } else {
++      LOG(INFO) << "---------- Disable GpuInstructionFusion ----------";
++    }
++    if (pass_set.empty() || pass_set.count("GpuInstructionFusion")) {
++      fusion.AddPass<GpuInstructionFusion>(/*may_duplicate=*/true);
++    } else {
++      LOG(INFO) << "---------- Disable GpuInstructionFusion ----------";
++    }
++    if (pass_set.empty() || pass_set.count("FusionMerger")) {
++      fusion.AddPass<FusionMerger>();
++    } else {
++      LOG(INFO) << "---------- Disable FusionMerger ----------";
++    }
++    if (pass_set.empty() || pass_set.count("GpuMultiOutputFusion")) {
++      fusion.AddPass<GpuMultiOutputFusion>();
++    } else {
++      LOG(INFO) << "---------- Disable GpuMultiOutputFusion ----------";
++    }
++    if (pass_set.empty() || pass_set.count("HloCSE")) {
++      fusion.AddPass<HloCSE>(/*is_layout_sensitive=*/true,
++                             /*only_fusion_computations=*/true);
++    } else {
++      LOG(INFO) << "---------- Disable HloCSE ----------";
++    }
++    if (pass_set.empty() || pass_set.count("HloDCE")) {
++      fusion.AddPass<HloDCE>();
++    } else {
++      LOG(INFO) << "---------- Disable HloDCE ----------";
++    }
+     TF_RETURN_IF_ERROR(fusion.Run(hlo_module).status());
+   }
+ 
+   {
+     HloPassFix<HloPassPipeline> horizontal_fusion("horizontal fusion");
+-    horizontal_fusion.AddPass<GpuHorizontalLoopFusion>();
+-    horizontal_fusion.AddPass<GpuHorizontalInputFusion>();
++    if (pass_set.empty() || pass_set.count("GpuHorizontalLoopFusion")) {
++      horizontal_fusion.AddPass<GpuHorizontalLoopFusion>();
++    } else {
++      LOG(INFO) << "---------- Disable GpuHorizontalLoopFusion ----------";
++    }
++    if (pass_set.empty() || pass_set.count("GpuHorizontalInputFusion")) {
++      horizontal_fusion.AddPass<GpuHorizontalInputFusion>();
++    } else {
++      LOG(INFO) << "---------- Disable GpuHorizontalInputFusion ----------";
++    }
+     // FusionBitcastLift must be after InstructionFusion, as it undoes
+     // part of it.
+-    horizontal_fusion.AddPass<FusionBitcastLift>();
+-    horizontal_fusion.AddPass<HloCSE>(/*is_layout_sensitive=*/true,
+-                                      /*only_fusion_computations=*/true);
+-    horizontal_fusion.AddPass<HloDCE>();
++    if (pass_set.empty() || pass_set.count("FusionBitcastLift")) {
++      horizontal_fusion.AddPass<FusionBitcastLift>();
++    } else {
++      LOG(INFO) << "---------- Disable FusionBitcastLift ----------";
++    }
++    if (pass_set.empty() || pass_set.count("HloCSE")) {
++      horizontal_fusion.AddPass<HloCSE>(/*is_layout_sensitive=*/true,
++                                        /*only_fusion_computations=*/true);
++    } else {
++      LOG(INFO) << "---------- Disable HloCSE ----------";
++    }
++    if (pass_set.empty() || pass_set.count("HloDCE")) {
++      horizontal_fusion.AddPass<HloDCE>();
++    } else {
++      LOG(INFO) << "---------- Disable HloDCE ----------";
++    }
+     TF_RETURN_IF_ERROR(horizontal_fusion.Run(hlo_module).status());
+   }
+ 
+   {
+     HloPassPipeline pipeline("post-fusion optimization");
+-    pipeline.AddPass<AllGatherCombiner>(
+-        /*combine_threshold_in_bytes=*/1024 * 1024 * 1024,
+-        /*combine_threshold_count=*/256);
+-    pipeline.AddPass<AllReduceCombiner>(
+-        debug_options.xla_gpu_all_reduce_combine_threshold_bytes(),
+-        /*combine_threshold_count=*/256);
+-    pipeline.AddPass<ReduceScatterCombiner>(
+-        /*combine_threshold_in_bytes=*/30 * 1024 * 1024,
+-        /*combine_threshold_count=*/256);
++    if (pass_set.empty() || pass_set.count("AllGatherCombiner")) {
++      pipeline.AddPass<AllGatherCombiner>(
++          /*combine_threshold_in_bytes=*/1024 * 1024 * 1024,
++          /*combine_threshold_count=*/256);
++    } else {
++      LOG(INFO) << "---------- Disable AllGatherCombiner ----------";
++    }
++    if (pass_set.empty() || pass_set.count("AllReduceCombiner")) {
++      pipeline.AddPass<AllReduceCombiner>(
++          debug_options.xla_gpu_all_reduce_combine_threshold_bytes(),
++          /*combine_threshold_count=*/256);
++    } else {
++      LOG(INFO) << "---------- Disable AllReduceCombiner ----------";
++    }
++    if (pass_set.empty() || pass_set.count("ReduceScatterCombiner")) {
++      pipeline.AddPass<ReduceScatterCombiner>(
++          /*combine_threshold_in_bytes=*/30 * 1024 * 1024,
++          /*combine_threshold_count=*/256);
++    } else {
++      LOG(INFO) << "---------- Disable ReduceScatterCombiner ----------";
++    }
+ 
+     if (debug_options.xla_gpu_all_reduce_contiguous()) {
+       pipeline.AddPass<AllReduceContiguous>();
+@@ -592,8 +882,12 @@ Status GpuCompiler::OptimizeHloModule(
+               /*convert_all_gather=*/false,
+               /*convert_collective_permute=*/false});
+     }
+-
+-    pipeline.AddPass<CollectivesScheduleLinearizer>();
++    if (pass_set.empty() || pass_set.count("CollectivesScheduleLinearizer")) {
++      pipeline.AddPass<CollectivesScheduleLinearizer>();
++    } else {
++      LOG(INFO)
++          << "---------- Disable CollectivesScheduleLinearizer ----------";
++    }
+ 
+     // Now we allow replacing any transposes outside of fusions with bitcasts.
+     AlgebraicSimplifierOptions options;
+@@ -602,7 +896,11 @@ Status GpuCompiler::OptimizeHloModule(
+     // "slow" minmax means we propagate nan.
+     options.set_minmax_propagate_nan(
+         !debug_options.xla_gpu_enable_fast_min_max());
+-    pipeline.AddPass<AlgebraicSimplifier>(options);
++    if (pass_set.empty() || pass_set.count("AlgebraicSimplifier")) {
++      pipeline.AddPass<AlgebraicSimplifier>(options);
++    } else {
++      LOG(INFO) << "---------- Disable AlgebraicSimplifier ----------";
++    }
+ 
+     TF_RETURN_IF_ERROR(pipeline.Run(hlo_module).status());
+   }
+@@ -613,23 +911,23 @@ Status GpuCompiler::OptimizeHloModule(
+ // Modifies the given HLO module so that it will be accepted by IrEmitter.
+ // Unlike optimization passes, the passes are necessary for correctness.
+ Status GpuCompiler::PrepareHloModuleForIrEmitting(HloModule* hlo_module) {
+-  // In some cases, we have to place the result of an instruction in a temporary
+-  // buffer. For instance, the buffer that holds an external parameter is
+-  // assumed immutable at this point, and should not be reused for output
+-  // (b/27180329). Therefore, in that case, we set the output to be a copy of
+-  // the parameter.
++  // In some cases, we have to place the result of an instruction in a
++  // temporary buffer. For instance, the buffer that holds an external
++  // parameter is assumed immutable at this point, and should not be reused
++  // for output (b/27180329). Therefore, in that case, we set the output to be
++  // a copy of the parameter.
+   HloPassPipeline pipeline("GPU-ir-emit-prepare");
+   pipeline.AddInvariantCheckerDebug<HloVerifier>(
+       /*layout_sensitive=*/true,
+       /*allow_mixed_precision=*/false,
+       LayoutAssignment::InstructionCanChangeLayout);
+ 
+-  // Copy insertion should be performed immediately before IR emission to avoid
+-  // inserting unnecessary copies (later pass adds an instruction which
+-  // materializes the value) or missing a necessary copy (later pass removes an
+-  // instruction which materializes a value). DCE must be run immediately before
+-  // (and sometime after) copy insertion, to avoid dead code from interfering
+-  // with the rewrites.
++  // Copy insertion should be performed immediately before IR emission to
++  // avoid inserting unnecessary copies (later pass adds an instruction which
++  // materializes the value) or missing a necessary copy (later pass removes
++  // an instruction which materializes a value). DCE must be run immediately
++  // before (and sometime after) copy insertion, to avoid dead code from
++  // interfering with the rewrites.
+   pipeline.AddPass<HloDCE>();
+   if (hlo_module->config().alias_passthrough_params()) {
+     pipeline.AddPass<AliasPassthroughParams>();
+@@ -642,19 +940,44 @@ Status GpuCompiler::PrepareHloModuleForIrEmitting(HloModule* hlo_module) {
+ 
+ Status GpuCompiler::OptimizeHloPostLayoutAssignment(
+     HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-    se::DeviceMemoryAllocator* device_allocator) {
++    se::DeviceMemoryAllocator* device_allocator,
++    const std::unordered_set<std::string>& pass_set) {
+   HloPassPipeline pipeline("post-layout_assignment");
+-  pipeline.AddInvariantCheckerDebug<HloVerifier>(
+-      /*layout_sensitive=*/true,
+-      /*allow_mixed_precision=*/false,
+-      LayoutAssignment::InstructionCanChangeLayout);
++  if (pass_set.empty() || pass_set.count("HloVerifier")) {
++    pipeline.AddInvariantCheckerDebug<HloVerifier>(
++        /*layout_sensitive=*/true,
++        /*allow_mixed_precision=*/false,
++        LayoutAssignment::InstructionCanChangeLayout);
++  } else {
++    LOG(INFO) << "---------- Disable HloVerifier ----------";
++  }
+ 
+-  pipeline.AddPass<ReductionDegenerateDimRemover>();
+-  pipeline.AddPass<ReductionLayoutNormalizer>();
+-  pipeline.AddPass<ReductionDimensionGrouper>();
+-  pipeline.AddPass<HloPassFix<ReductionSplitter>>();
+-  pipeline.AddPass<HloPassFix<GpuTreeReductionRewriter>>(
+-      stream_exec->GetDeviceDescription().cuda_compute_capability());
++  if (pass_set.empty() || pass_set.count("ReductionDegenerateDimRemover")) {
++    pipeline.AddPass<ReductionDegenerateDimRemover>();
++  } else {
++    LOG(INFO) << "---------- Disable ReductionDegenerateDimRemover ----------";
++  }
++  if (pass_set.empty() || pass_set.count("ReductionLayoutNormalizer")) {
++    pipeline.AddPass<ReductionLayoutNormalizer>();
++  } else {
++    LOG(INFO) << "---------- Disable ReductionLayoutNormalizer ----------";
++  }
++  if (pass_set.empty() || pass_set.count("ReductionDimensionGrouper")) {
++    pipeline.AddPass<ReductionDimensionGrouper>();
++  } else {
++    LOG(INFO) << "---------- Disable ReductionDimensionGrouper ----------";
++  }
++  if (pass_set.empty() || pass_set.count("ReductionSplitter")) {
++    pipeline.AddPass<HloPassFix<ReductionSplitter>>();
++  } else {
++    LOG(INFO) << "---------- Disable ReductionSplitter ----------";
++  }
++  if (pass_set.empty() || pass_set.count("GpuTreeReductionRewriter")) {
++    pipeline.AddPass<HloPassFix<GpuTreeReductionRewriter>>(
++        stream_exec->GetDeviceDescription().cuda_compute_capability());
++  } else {
++    LOG(INFO) << "---------- Disable GpuTreeReductionRewriter ----------";
++  }
+ 
+   // The LayoutAssignment pass may leave behind kCopy instructions which are
+   // duplicate or NOPs, so remove them with algebraic simplification and CSE.
+@@ -673,29 +996,50 @@ Status GpuCompiler::OptimizeHloPostLayoutAssignment(
+   // "slow" minmax means we propagate nan.
+   options.set_minmax_propagate_nan(
+       !hlo_module->config().debug_options().xla_gpu_enable_fast_min_max());
+-  pipeline.AddPass<HloPassFix<AlgebraicSimplifier>>(options);
++  if (pass_set.empty() || pass_set.count("AlgebraicSimplifier")) {
++    pipeline.AddPass<HloPassFix<AlgebraicSimplifier>>(options);
++  } else {
++    LOG(INFO) << "---------- Disable AlgebraicSimplifier ----------";
++  }
+ 
+   // GemmRewriter assumes that all transposes are folded into gemms, but,
+   // since commit 7d529df, this is not always true at this point.
+   // Therefore, rerun transpose folding.
+-  pipeline.AddPass<TransposeFolding>(
+-      [](const HloInstruction& dot,
+-         const TransposeFolding::OperandIndices& candidate_operands) {
+-        return IsMatrixMultiplication(dot) ? candidate_operands
+-                                           : TransposeFolding::OperandIndices{};
+-      },
+-      TransposeFolding::NeverFoldTranspose);
++  if (pass_set.empty() || pass_set.count("TransposeFolding")) {
++    pipeline.AddPass<TransposeFolding>(
++        [](const HloInstruction& dot,
++           const TransposeFolding::OperandIndices& candidate_operands) {
++          return IsMatrixMultiplication(dot)
++                     ? candidate_operands
++                     : TransposeFolding::OperandIndices{};
++        },
++        TransposeFolding::NeverFoldTranspose);
++  } else {
++    LOG(INFO) << "---------- Disable TransposeFolding ----------";
++  }
+   // Rewrite GEMMs into custom calls.
+-  pipeline.AddPass<GemmRewriter>();
++  if (pass_set.empty() || pass_set.count("GemmRewriter")) {
++    pipeline.AddPass<GemmRewriter>();
++  } else {
++    LOG(INFO) << "---------- Disable GemmRewriter ----------";
++  }
+ 
+   // Rewrite GEMMs with broadcasted inputs as strided GEMMs.
+-  pipeline.AddPass<GemmBroadcastFoldingRewriter>();
++  if (pass_set.empty() || pass_set.count("GemmBroadcastFoldingRewriter")) {
++    pipeline.AddPass<GemmBroadcastFoldingRewriter>();
++  } else {
++    LOG(INFO) << "---------- Disable GemmBroadcastFoldingRewriter ----------";
++  }
+ 
+-  // Run conversion again, to catch those matrix multiplications which were not
+-  // rewritten into cuBLAS calls.
++  // Run conversion again, to catch those matrix multiplications which were
++  // not rewritten into cuBLAS calls.
+   GpuBfloat16Support bf16(/*supports_matrix_multiplication=*/false,
+                           stream_exec);
+-  pipeline.AddPass<BFloat16Normalization>(&bf16);
++  if (pass_set.empty() || pass_set.count("BFloat16Normalization")) {
++    pipeline.AddPass<BFloat16Normalization>(&bf16);
++  } else {
++    LOG(INFO) << "---------- Disable BFloat16Normalization ----------";
++  }
+ 
+   // Choose the fastest algorithm for each conv.
+   //
+@@ -722,12 +1066,23 @@ Status GpuCompiler::OptimizeHloPostLayoutAssignment(
+   // the gte(customcall, 0) would probably already be into a fusion node.  We
+   // can't simplify across HloComputation boundaries, so in this case we
+   // wouldn't be able to simplify away the new_tuple bits.
+-  pipeline.AddPass<GpuConvAlgorithmPicker>(stream_exec, device_allocator);
++  if (pass_set.empty() || pass_set.count("GpuConvAlgorithmPicker")) {
++    pipeline.AddPass<GpuConvAlgorithmPicker>(stream_exec, device_allocator);
++  } else {
++    LOG(INFO) << "---------- Disable GpuConvAlgorithmPicker ----------";
++  }
+ 
+   // Clean up new_tuple described above.
+-  pipeline.AddPass<TupleSimplifier>();
+-
+-  pipeline.AddPass<HloCSE>(/*is_layout_sensitive=*/true);
++  if (pass_set.empty() || pass_set.count("TupleSimplifier")) {
++    pipeline.AddPass<TupleSimplifier>();
++  } else {
++    LOG(INFO) << "---------- Disable TupleSimplifier ----------";
++  }
++  if (pass_set.empty() || pass_set.count("HloCSE")) {
++    pipeline.AddPass<HloCSE>(/*is_layout_sensitive=*/true);
++  } else {
++    LOG(INFO) << "---------- Disable HloCSE ----------";
++  }
+   TF_RETURN_IF_ERROR(pipeline.Run(hlo_module).status());
+ 
+   return Status::OK();
+@@ -736,7 +1091,8 @@ Status GpuCompiler::OptimizeHloPostLayoutAssignment(
+ StatusOr<std::unique_ptr<HloModule>> GpuCompiler::RunHloPasses(
+     std::unique_ptr<HloModule> module, se::StreamExecutor* stream_exec,
+     const CompileOptions& options) {
+-  // We dump the post-optimization HLO in RunBackend so no need to dump it here.
++  // We dump the post-optimization HLO in RunBackend so no need to dump it
++  // here.
+   XLA_SCOPED_LOGGING_TIMER("GpuCompiler::RunHloPasses");
+   tensorflow::profiler::TraceMe activity(
+       [&] { return absl::StrCat("HLO Transforms:", module->name()); },
+diff --git a/tensorflow/compiler/xla/service/gpu/gpu_compiler.h b/tensorflow/compiler/xla/service/gpu/gpu_compiler.h
+index 7bcb3796079..46bc3a5bad3 100644
+--- a/tensorflow/compiler/xla/service/gpu/gpu_compiler.h
++++ b/tensorflow/compiler/xla/service/gpu/gpu_compiler.h
+@@ -18,6 +18,7 @@ limitations under the License.
+ 
+ #include <memory>
+ #include <string>
++#include <unordered_set>
+ #include <vector>
+ 
+ #include "mlir/IR/BuiltinOps.h"  // from @llvm-project
+@@ -78,7 +79,8 @@ class GpuCompiler : public LLVMCompiler {
+  protected:
+   virtual Status OptimizeHloPostLayoutAssignment(
+       HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-      se::DeviceMemoryAllocator* device_allocator);
++      se::DeviceMemoryAllocator* device_allocator,
++      const std::unordered_set<std::string>& pass_set = {});
+ 
+  private:
+   Status OptimizeHloModule(HloModule* hlo_module,
+@@ -87,7 +89,8 @@ class GpuCompiler : public LLVMCompiler {
+ 
+   virtual Status OptimizeHloConvolutionCanonicalization(
+       HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-      se::DeviceMemoryAllocator* device_allocator) = 0;
++      se::DeviceMemoryAllocator* device_allocator,
++      const std::unordered_set<std::string>& pass_set) = 0;
+ 
+   virtual HloDataflowAnalysis::CanShareBuffer GetCanShareBuffer() {
+     return
+diff --git a/tensorflow/compiler/xla/service/gpu/nvptx_compiler.cc b/tensorflow/compiler/xla/service/gpu/nvptx_compiler.cc
+index 64ad731f328..7b1a2345104 100644
+--- a/tensorflow/compiler/xla/service/gpu/nvptx_compiler.cc
++++ b/tensorflow/compiler/xla/service/gpu/nvptx_compiler.cc
+@@ -65,27 +65,63 @@ namespace gpu {
+ 
+ Status NVPTXCompiler::OptimizeHloConvolutionCanonicalization(
+     HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-    se::DeviceMemoryAllocator* device_allocator) {
++    se::DeviceMemoryAllocator* device_allocator,
++    const std::unordered_set<std::string>& pass_set) {
+   // Convert convolutions into CustomCalls to cudnn, then canonicalize them
+   // (GpuConvPaddingLegalization). Also expand cuSolver calls.
+   HloPassPipeline pipeline("conv_canonicalization");
+-  pipeline.AddInvariantCheckerDebug<HloVerifier>(
+-      /*layout_sensitive=*/false,
+-      /*allow_mixed_precision=*/false);
+-  pipeline.AddPass<GpusolverRewriter>();
+-  pipeline.AddPass<GpuConvRewriter>();
+-  pipeline.AddPass<CudnnFusedConvRewriter>();
+-  pipeline.AddPass<GpuConvPaddingLegalization>();
+-  pipeline.AddPass<CudnnPadForConvolutions>(
+-      stream_exec->GetDeviceDescription().cuda_compute_capability());
+-  pipeline.AddPass<CudnnVectorizeConvolutions>(
+-      stream_exec->GetDeviceDescription().cuda_compute_capability());
++  if (pass_set.empty() || pass_set.count("HloVerifier")) {
++    pipeline.AddInvariantCheckerDebug<HloVerifier>(
++        /*layout_sensitive=*/false,
++        /*allow_mixed_precision=*/false);
++  } else {
++    LOG(INFO) << "---------- Disable HloVerifier ----------";
++  }
++  if (pass_set.empty() || pass_set.count("GpusolverRewriter")) {
++    pipeline.AddPass<GpusolverRewriter>();
++  } else {
++    LOG(INFO) << "---------- Disable GpusolverRewriter ----------";
++  }
++  if (pass_set.empty() || pass_set.count("GpuConvRewriter")) {
++    pipeline.AddPass<GpuConvRewriter>();
++  } else {
++    LOG(INFO) << "---------- Disable GpuConvRewriter ----------";
++  }
++  if (pass_set.empty() || pass_set.count("CudnnFusedConvRewriter")) {
++    pipeline.AddPass<CudnnFusedConvRewriter>();
++  } else {
++    LOG(INFO) << "---------- Disable CudnnFusedConvRewriter ----------";
++  }
++  if (pass_set.empty() || pass_set.count("GpuConvPaddingLegalization")) {
++    pipeline.AddPass<GpuConvPaddingLegalization>();
++  } else {
++    LOG(INFO) << "---------- Disable GpuConvPaddingLegalization ----------";
++  }
++  if (pass_set.empty() || pass_set.count("CudnnPadForConvolutions")) {
++    pipeline.AddPass<CudnnPadForConvolutions>(
++        stream_exec->GetDeviceDescription().cuda_compute_capability());
++  } else {
++    LOG(INFO) << "---------- Disable CudnnPadForConvolutions ----------";
++  }
++  if (pass_set.empty() || pass_set.count("CudnnVectorizeConvolutions")) {
++    pipeline.AddPass<CudnnVectorizeConvolutions>(
++        stream_exec->GetDeviceDescription().cuda_compute_capability());
++  } else {
++    LOG(INFO) << "---------- Disable CudnnVectorizeConvolutions ----------";
++  }
+   // The conv padding/vectorization passes which we need to get rid of.  They
+   // also leave behind unnecessary tuple/get-tuple-element pairs that
+   // TupleSimplifier fixes.
+-  pipeline.AddPass<CallInliner>();
+-  pipeline.AddPass<TupleSimplifier>();
+-
++  if (pass_set.empty() || pass_set.count("CallInliner")) {
++    pipeline.AddPass<CallInliner>();
++  } else {
++    LOG(INFO) << "---------- Disable CallInliner ----------";
++  }
++  if (pass_set.empty() || pass_set.count("TupleSimplifier")) {
++    pipeline.AddPass<TupleSimplifier>();
++  } else {
++    LOG(INFO) << "---------- Disable TupleSimplifier ----------";
++  }
+   // tf2xla bridge, DepthwiseConvolutionConverter and GpuConvRewriter
+   // introduces reshapes and transposes that can be eliminated using
+   // AlgebraicSimplifier  We run algsimp to a fixed point.
+@@ -103,12 +139,20 @@ Status NVPTXCompiler::OptimizeHloConvolutionCanonicalization(
+   options.set_enable_conv_operand_swap(false);
+   options.set_cudnn_batchnorm_forward_training_metadata(
+       kCudnnBatchNormForwardTrainingCallTarget);
+-  pipeline.AddPass<HloPassFix<AlgebraicSimplifier>>(options);
++  if (pass_set.empty() || pass_set.count("AlgebraicSimplifier")) {
++    pipeline.AddPass<HloPassFix<AlgebraicSimplifier>>(options);
++  } else {
++    LOG(INFO) << "---------- Disable AlgebraicSimplifier ----------";
++  }
+ 
+   // GpuConvRewriter, GpuConvPaddingLegalization and
+   // CudnnConvPadForTensorCores may add instructions which can be simplified
+   // by constant folding.
+-  pipeline.AddPass<HloConstantFolding>();
++  if (pass_set.empty() || pass_set.count("HloConstantFolding")) {
++    pipeline.AddPass<HloConstantFolding>();
++  } else {
++    LOG(INFO) << "---------- Disable HloConstantFolding ----------";
++  }
+   TF_RETURN_IF_ERROR(pipeline.Run(hlo_module).status());
+ 
+   return Status::OK();
+@@ -116,38 +160,59 @@ Status NVPTXCompiler::OptimizeHloConvolutionCanonicalization(
+ 
+ Status NVPTXCompiler::OptimizeHloPostLayoutAssignment(
+     HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-    se::DeviceMemoryAllocator* device_allocator) {
++    se::DeviceMemoryAllocator* device_allocator,
++    const std::unordered_set<std::string>& pass_set) {
+   HloPassPipeline pre_pipeline("nvptx post-layout_assignment part 1");
+ 
+   // This needs to run before GemmRewriter, which is part of
+   // OptimizeHloPostLayoutAssignment().
+   if (stream_exec->GetDeviceDescription().cuda_compute_capability().IsAtLeast(
+           se::CudaComputeCapability::AMPERE)) {
+-    pre_pipeline.AddPass<CublasPadForGemms>(PrimitiveType::BF16,
+-                                            /*pad_to_multiple_of=*/8);
++    if (pass_set.empty() || pass_set.count("CublasPadForGemms")) {
++      pre_pipeline.AddPass<CublasPadForGemms>(PrimitiveType::BF16,
++                                              /*pad_to_multiple_of=*/8);
++    } else {
++      LOG(INFO) << "---------- Disable CublasPadForGemms ----------";
++    }
+   }
+   if (stream_exec->GetDeviceDescription().cuda_compute_capability().IsAtLeast(
+           se::CudaComputeCapability::VOLTA)) {
+     // Pad gemms over S8 to multiples of 4 so cuBLAS can run them.
+-    pre_pipeline.AddPass<CublasPadForGemms>(PrimitiveType::S8,
+-                                            /*pad_to_multiple_of=*/4);
++    if (pass_set.empty() || pass_set.count("CublasPadForGemms")) {
++      pre_pipeline.AddPass<CublasPadForGemms>(PrimitiveType::S8,
++                                              /*pad_to_multiple_of=*/4);
++    } else {
++      LOG(INFO) << "---------- Disable CublasPadForGemms ----------";
++    }
+ 
+     // Pad the dimensions of matrices in dot operations to multiples of 8.
+-    pre_pipeline.AddPass<CublasPadForGemms>(PrimitiveType::F16,
+-                                            /*pad_to_multiple_of=*/8);
++    if (pass_set.empty() || pass_set.count("CublasPadForGemms")) {
++      pre_pipeline.AddPass<CublasPadForGemms>(PrimitiveType::F16,
++                                              /*pad_to_multiple_of=*/8);
++    } else {
++      LOG(INFO) << "---------- Disable CublasPadForGemms ----------";
++    }
+   }
+   // Padding a gemm operand that's a constant results in pad(constant).  Run
+   // constant-folding to simplify this into a new constant.
+-  pre_pipeline.AddPass<HloConstantFolding>();
++  if (pass_set.empty() || pass_set.count("HloConstantFolding")) {
++    pre_pipeline.AddPass<HloConstantFolding>();
++  } else {
++    LOG(INFO) << "---------- Disable HloConstantFolding ----------";
++  }
+   TF_RETURN_IF_ERROR(pre_pipeline.Run(hlo_module).status());
+ 
+   TF_RETURN_IF_ERROR(GpuCompiler::OptimizeHloPostLayoutAssignment(
+-      hlo_module, stream_exec, device_allocator));
++      hlo_module, stream_exec, device_allocator, pass_set));
+ 
+   HloPassPipeline post_pipeline("nvptx post-layout_assignment part 2");
+ 
+   // Find the fastest algorithm for GEMMs.
+-  post_pipeline.AddPass<GemmAlgorithmPicker>(stream_exec, device_allocator);
++  if (pass_set.empty() || pass_set.count("GemmAlgorithmPicker")) {
++    post_pipeline.AddPass<GemmAlgorithmPicker>(stream_exec, device_allocator);
++  } else {
++    LOG(INFO) << "---------- Disable GemmAlgorithmPicker ----------";
++  }
+   TF_RETURN_IF_ERROR(post_pipeline.Run(hlo_module).status());
+ 
+   return Status::OK();
+diff --git a/tensorflow/compiler/xla/service/gpu/nvptx_compiler.h b/tensorflow/compiler/xla/service/gpu/nvptx_compiler.h
+index 88c620e75e1..6c6cd09abfd 100644
+--- a/tensorflow/compiler/xla/service/gpu/nvptx_compiler.h
++++ b/tensorflow/compiler/xla/service/gpu/nvptx_compiler.h
+@@ -40,11 +40,13 @@ class NVPTXCompiler : public GpuCompiler {
+ 
+   Status OptimizeHloConvolutionCanonicalization(
+       HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-      se::DeviceMemoryAllocator* device_allocator) override;
++      se::DeviceMemoryAllocator* device_allocator,
++      const std::unordered_set<std::string>& pass_set = {}) override;
+ 
+   Status OptimizeHloPostLayoutAssignment(
+       HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-      se::DeviceMemoryAllocator* device_allocator) override;
++      se::DeviceMemoryAllocator* device_allocator,
++      const std::unordered_set<std::string>& pass_set = {}) override;
+ 
+   HloDataflowAnalysis::CanShareBuffer GetCanShareBuffer() override;
+ 
+diff --git a/tensorflow/compiler/xla/tests/llvm_compiler_test.cc b/tensorflow/compiler/xla/tests/llvm_compiler_test.cc
+index 81e8a7e4a54..7b8d45a7d58 100644
+--- a/tensorflow/compiler/xla/tests/llvm_compiler_test.cc
++++ b/tensorflow/compiler/xla/tests/llvm_compiler_test.cc
+@@ -43,13 +43,15 @@ class GpuDummyCompiler : public GpuCompiler {
+ 
+   Status OptimizeHloConvolutionCanonicalization(
+       HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-      se::DeviceMemoryAllocator* device_allocator) {
++      se::DeviceMemoryAllocator* device_allocator,
++      const std::unordered_set<std::string>& pass_set = {}) {
+     return Status::OK();
+   }
+ 
+   Status OptimizeHloPostLayoutAssignment(
+       HloModule* hlo_module, se::StreamExecutor* stream_exec,
+-      se::DeviceMemoryAllocator* device_allocator) {
++      se::DeviceMemoryAllocator* device_allocator,
++      const std::unordered_set<std::string>& pass_set = {}) {
+     return Status::OK();
+   }
+ 
+diff --git a/tensorflow/python/eager/benchmarks/resnet50/resnet50_graph_test.py b/tensorflow/python/eager/benchmarks/resnet50/resnet50_graph_test.py
+index 00eabc03a6a..b7f30a8afcf 100644
+--- a/tensorflow/python/eager/benchmarks/resnet50/resnet50_graph_test.py
++++ b/tensorflow/python/eager/benchmarks/resnet50/resnet50_graph_test.py
+@@ -15,12 +15,21 @@
+ """Tests and benchmarks for ResNet50 under graph execution."""
+ 
+ import time
++import os
+ 
+ import numpy as np
+ import tensorflow.compat.v1 as tf
+ 
+ from tensorflow.python.eager.benchmarks.resnet50 import resnet50
++from cupy.cuda import nvtx
++from cupy.cuda import profiler
++from cupy.cuda import runtime
+ 
++# For debugging
++PID = os.getpid()
++print('Program pid:', PID)
++# print('Pause here to enter DBG')
++# os.system("read _")
+ 
+ def data_format():
+   return 'channels_first' if tf.test.is_gpu_available() else 'channels_last'
+@@ -41,27 +50,6 @@ def random_batch(batch_size):
+   one_hot[np.arange(batch_size), labels] = 1.
+   return images, one_hot
+ 
+-
+-class ResNet50GraphTest(tf.test.TestCase):
+-
+-  def testApply(self):
+-    # Use small batches for tests because the OSS version runs
+-    # in constrained GPU environment with 1-2GB of memory.
+-    batch_size = 8
+-    with tf.Graph().as_default():
+-      images = tf.placeholder(tf.float32, image_shape(None))
+-      model = resnet50.ResNet50(data_format())
+-      predictions = model(images, training=False)
+-
+-      init = tf.global_variables_initializer()
+-
+-      with tf.Session() as sess:
+-        sess.run(init)
+-        np_images, _ = random_batch(batch_size)
+-        out = sess.run(predictions, feed_dict={images: np_images})
+-        self.assertAllEqual([batch_size, 1000], out.shape)
+-
+-
+ class ResNet50Benchmarks(tf.test.Benchmark):
+ 
+   def _report(self, label, start, num_iters, batch_size):
+@@ -72,31 +60,8 @@ class ResNet50Benchmarks(tf.test.Benchmark):
+     self.report_benchmark(
+         iters=num_iters, wall_time=avg_time, name=name, extras=extras)
+ 
+-  def benchmark_graph_apply(self):
+-    with tf.Graph().as_default():
+-      images = tf.placeholder(tf.float32, image_shape(None))
+-      model = resnet50.ResNet50(data_format())
+-      predictions = model(images, training=False)
+-
+-      init = tf.global_variables_initializer()
+-
+-      batch_size = 64
+-      with tf.Session() as sess:
+-        sess.run(init)
+-        np_images, _ = random_batch(batch_size)
+-        num_burn, num_iters = (3, 30)
+-        for _ in range(num_burn):
+-          sess.run(predictions, feed_dict={images: np_images})
+-        start = time.time()
+-        for _ in range(num_iters):
+-          # Comparison with the eager execution benchmark in resnet50_test.py
+-          # isn't entirely fair as the time here includes the cost of copying
+-          # the feeds from CPU memory to GPU.
+-          sess.run(predictions, feed_dict={images: np_images})
+-        self._report('apply', start, num_iters, batch_size)
+-
+   def benchmark_graph_train(self):
+-    for batch_size in [16, 32, 64]:
++    for batch_size in [256]:
+       with tf.Graph().as_default():
+         np_images, np_labels = random_batch(batch_size)
+         dataset = tf.data.Dataset.from_tensors((np_images, np_labels)).repeat()
+@@ -105,15 +70,16 @@ class ResNet50Benchmarks(tf.test.Benchmark):
+ 
+         model = resnet50.ResNet50(data_format())
+         logits = model(images, training=True)
+-        loss = tf.compat.v1.losses.softmax_cross_entropy(
+-            logits=logits, onehot_labels=labels)
+-        optimizer = tf.train.GradientDescentOptimizer(learning_rate=1.0)
++        loss = tf.losses.softmax_cross_entropy(
++            logits=logits, onehot_labels=labels,
++            reduction=tf.losses.Reduction.MEAN)
++        optimizer = tf.train.MomentumOptimizer(learning_rate=0.1, momentum=0.9)
+         train_op = optimizer.minimize(loss)
+ 
+         init = tf.global_variables_initializer()
+         with tf.Session() as sess:
+           sess.run(init)
+-          (num_burn, num_iters) = (5, 10)
++          (num_burn, num_iters, num_profile) = (10, 20, 20)
+           for _ in range(num_burn):
+             sess.run(train_op)
+           start = time.time()
+@@ -121,6 +87,15 @@ class ResNet50Benchmarks(tf.test.Benchmark):
+             sess.run(train_op)
+           self._report('train', start, num_iters, batch_size)
+ 
++          runtime.deviceSynchronize()
++          profiler.start()
++          for step in range(num_profile):
++            nvtx.RangePush("Batch " + str(step))
++            res = sess.run([train_op, loss])
++            print(res[1])
++            nvtx.RangePop()
++          profiler.stop()
++
+ 
+ if __name__ == '__main__':
+   tf.test.main()

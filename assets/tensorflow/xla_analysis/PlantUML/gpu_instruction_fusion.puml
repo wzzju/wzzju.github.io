@@ -1,0 +1,42 @@
+'https://plantuml.com/class-diagram
+@startuml gpu_instruction_fusion
+!theme cerulean-outline
+
+abstract class HloModulePass
+
+class InstructionFusion {
+    - {field} is_expensive_: std::function<bool(const HloInstruction& instruction)>
+    - {field} may_duplicate_: bool
+    {field} ......
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    + {static} IsExpensive(instruction: const HloInstruction&): bool
+    + {static} ShouldFuseInPlaceOp(producer: const HloInstruction*, consumer: const HloInstruction*): bool
+    # {method} GetFusionComputations(module: HloModule*): std::vector<HloComputation*>
+    # {method} ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool
+    # {method} ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool
+    # {method} ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind
+    # {method} FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction*
+    # {method} Fuse(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*
+    - {method} AddFusionInstruction(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*
+    {method} ......
+}
+
+class GpuInstructionFusion {
+    - {field} fusion_node_evaluations_: absl::flat_hash_map<const HloInstruction*, FusionNodeIndexingEvaluation>
+    + {method} GpuInstructionFusion(may_duplicate: bool)
+    + {static} {method} IsExpensive(instruction: const HloInstruction&): bool <b><color:#008080>override</color></b>
+    + {method} ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool <b><color:#008080>override</color></b>
+    + {method} ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool <b><color:#008080>override</color></b>
+    + {method} ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind <b><color:#008080>override</color></b>
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    - ShouldFuseInexpensiveChecks(consumer: HloInstruction*, operand_index: int64_t): bool
+    - {method} FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction <b><color:#008080>override</color></b>
+}
+
+GpuInstructionFusion::Run -[#green,dashed,thickness=1]-> InstructionFusion::Run : call
+
+HloModulePass <|-- InstructionFusion
+InstructionFusion <|-- GpuInstructionFusion
+
+@enduml

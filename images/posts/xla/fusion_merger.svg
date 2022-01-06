@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="753.125px" preserveAspectRatio="none" style="width:429px;height:753px;background:#00000000;" version="1.1" viewBox="0 0 429 753" width="429.1667px" zoomAndPan="magnify"><defs/><g><!--MD5=[106a0b1016e6f44db1bbc9f6790d9e67]
+class HloModulePass--><rect codeLine="3" height="50.9949" id="HloModulePass" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="126.0417" x="133.3333" y="17.7083"/><ellipse cx="147.9167" cy="34.8724" fill="#8FB961" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M148.0306,31.5745 L147.1822,35.3038 L148.8851,35.3038 Z M146.932,29.9266 L149.1353,29.9266 L151.5951,39.0391 L149.7945,39.0391 L149.233,36.7869 L146.8221,36.7869 L146.2728,39.0391 L144.4722,39.0391 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="84.375" x="166.6667" y="39.2029">HloModulePass</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="134.375" x2="258.3333" y1="52.0365" y2="52.0365"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="134.375" x2="258.3333" y1="60.3699" y2="60.3699"/><!--MD5=[de76338451b5aeac9fa7bfe3fed846b1]
+class FusionInstructionMerger--><rect codeLine="5" height="409.668" id="FusionInstructionMerger" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="357.2917" x="17.7083" y="331.25"/><ellipse cx="117.7083" cy="348.4141" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M119.6187,352.8392 Q119.1915,353.0589 118.7215,353.1687 Q118.2515,353.2786 117.7327,353.2786 Q115.8895,353.2786 114.919,352.064 Q113.9486,350.8494 113.9486,348.5545 Q113.9486,346.2535 114.919,345.0389 Q115.8895,343.8243 117.7327,343.8243 Q118.2515,343.8243 118.7276,343.9341 Q119.2037,344.044 119.6187,344.2637 L119.6187,346.2657 Q119.1549,345.8384 118.7185,345.6401 Q118.2821,345.4417 117.8182,345.4417 Q116.8294,345.4417 116.3259,346.226 Q115.8223,347.0103 115.8223,348.5545 Q115.8223,350.0926 116.3259,350.8769 Q116.8294,351.6612 117.8182,351.6612 Q118.2821,351.6612 118.7185,351.4628 Q119.1549,351.2644 119.6187,350.8372 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="138.5417" x="142.7083" y="352.7445">FusionInstructionMerger</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="18.75" x2="373.9583" y1="365.5782" y2="365.5782"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="373.9115"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="180.2083" x="42.7083" y="386.0311">computation_: HloComputation*</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="397.8231"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="85.4167" x="42.7083" y="409.9426">changed_: bool</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="421.7346"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="94.7917" x="42.7083" y="433.8542">total_visited_: int</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="445.6462"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="101.0417" x="42.7083" y="457.7657">total_merged_: int</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="469.5577"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="133.3333" x="42.7083" y="481.6772">num_fail_no_users_: int</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="493.4692"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="172.9167" x="42.7083" y="505.5888">num_fail_not_loop_fusion_: int</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="517.3808"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="172.9167" x="42.7083" y="529.5003">num_fail_merge_all_users_: int</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="541.2923"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="242.7083" x="42.7083" y="553.4119">num_fail_expensive_fused_instruction_: int</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="565.2039"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="237.5" x="42.7083" y="577.3234">num_fail_net_bytes_transferred_ratio_: int</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="589.1154"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="223.9583" x="42.7083" y="601.2349">num_fail_inefficient_fusion_emitter_: int</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="613.0269"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="176.0417" x="42.7083" y="625.1465">num_fail_fusion_too_large_: int</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="18.75" x2="373.9583" y1="636.9385" y2="636.9385"/><ellipse cx="29.1667" cy="648.3968" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="320.8333" x="42.7083" y="657.3914">FusionInstructionMerger(computation: HloComputation*)</text><ellipse cx="29.1667" cy="672.3083" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="70.8333" x="42.7083" y="681.3029">Run(): Status</text><ellipse cx="29.1667" cy="696.2199" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="87.5" x="42.7083" y="705.2144">changed(): bool</text><rect fill="#F24D5C" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="717.0064"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="252.0833" x="42.7083" y="729.126">HandleFusion(fusion: HloInstruction*): Status</text><!--MD5=[2d7fe093c102d03c4e28ffb8c8d2e1c1]
+class FusionMerger--><rect codeLine="23" height="98.818" id="FusionMerger" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="330.2083" x="31.25" y="136.4583"/><ellipse cx="148.4375" cy="153.6224" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M150.3479,158.0475 Q149.9207,158.2672 149.4507,158.3771 Q148.9807,158.4869 148.4619,158.4869 Q146.6187,158.4869 145.6482,157.2723 Q144.6777,156.0577 144.6777,153.7628 Q144.6777,151.4618 145.6482,150.2472 Q146.6187,149.0326 148.4619,149.0326 Q148.9807,149.0326 149.4568,149.1425 Q149.9329,149.2523 150.3479,149.472 L150.3479,151.474 Q149.884,151.0468 149.4476,150.8484 Q149.0112,150.65 148.5474,150.65 Q147.5586,150.65 147.0551,151.4343 Q146.5515,152.2186 146.5515,153.7628 Q146.5515,155.3009 147.0551,156.0852 Q147.5586,156.8695 148.5474,156.8695 Q149.0112,156.8695 149.4476,156.6711 Q149.884,156.4728 150.3479,156.0455 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="77.0833" x="173.4375" y="157.9529">FusionMerger</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="32.2917" x2="360.4167" y1="170.7865" y2="170.7865"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="32.2917" x2="360.4167" y1="179.1199" y2="179.1199"/><ellipse cx="42.7083" cy="190.5782" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="241.6667" x="56.25" y="199.5728">Run(module: HloModule*): StatusOr&lt;bool&gt;</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="301.0417" y="199.5728">override</text><ellipse cx="42.7083" cy="214.4897" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="137.5" x="56.25" y="223.4843">name(): absl::string_view</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="196.875" y="223.4843">override</text><!--MD5=[3523f6daddcc212d2981d93a7fc0490e]
+link FusionMerger to FusionInstructionMerger--><path codeLine="28" d="M363.0208,193.75 C388.4896,193.75 401.9896,628.7708 380.3438,672.9583 " fill="none" id="FusionMerger-to-FusionInstructionMerger" style="stroke:#008000;stroke-width:1.0416666666666667;stroke-dasharray:7.0,7.0;"/><polygon fill="#008000" points="376.5625,676.5625,386.2245,673.1133,380.3337,672.9702,380.4768,667.0794,376.5625,676.5625" style="stroke:#008000;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="13.5417" lengthAdjust="spacing" textLength="22.9167" x="388.0208" y="287.0504">call</text><!--MD5=[8fb4f01c26d1a3ae23ad7e2ed93dc5ab]
+reverse link HloModulePass to FusionMerger--><path codeLine="30" d="M196.3542,89.8958 C196.3542,103.4479 196.3542,118.3854 196.3542,132.2604 " fill="none" id="HloModulePass-backto-FusionMerger" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="189.0625,89.6458,196.3542,68.8125,203.6458,89.6458,189.0625,89.6458" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[f8df856b55fd5732eb72e176d5d1f29a]
+@startuml fusion_merger
+!theme cerulean-outline
+
+abstract class HloModulePass
+
+class FusionInstructionMerger {
+    + FusionInstructionMerger(computation: HloComputation*)
+    + Run(): Status
+    + changed(): bool
+    - HandleFusion(fusion: HloInstruction*): Status
+    - computation_: HloComputation*
+    - changed_: bool
+    - total_visited_: int
+    - total_merged_: int
+    - num_fail_no_users_: int
+    - num_fail_not_loop_fusion_: int
+    - num_fail_merge_all_users_: int
+    - num_fail_expensive_fused_instruction_: int
+    - num_fail_net_bytes_transferred_ratio_: int
+    - num_fail_inefficient_fusion_emitter_: int
+    - num_fail_fusion_too_large_: int
+}
+
+class FusionMerger {
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+}
+
+FusionMerger::Run -[#green,dashed,thickness=1]-> FusionInstructionMerger::Run : call
+
+HloModulePass <|- - FusionMerger
+
+@enduml
+
+@startuml fusion_merger
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor transparent
+    FontColor #2FA4E7
+    HyperLinkColor #FD7E14
+    LineColor #2683B9
+    LineThickness 1
+    Margin 10
+    Padding 6
+    Shadowing 0.0
+  }
+  node {
+   Padding 15
+   roundcorner 20
+   BackgroundColor transparent
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  groupHeader {
+    BackgroundColor #E9ECEF
+    FontColor #033C73
+    FontStyle bold
+  }
+  header {
+    LineThickness 0
+  }
+  referenceHeader {
+    BackgroundColor transparent
+    FontColor #343A40
+    FontStyle bold
+  }
+  separator {
+    BackgroundColor #343A40
+    FontColor transparent
+    FontStyle bold
+  }
+  title {
+	FontSize 20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor  transparent
+	FontColor #2FA4E7
+	BorderColor #E9ECEF
+  }
+  nwdiagDiagram {
+	network {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent    
+		LineColor #2FA4E7
+		LineThickness 1.0
+		FontColor #2683B9
+	}
+	server {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	}
+	arrow {
+		FontColor #2683B9
+		LineColor #2683B9
+	}
+	group {
+		BackGroundColor #F8F9FA
+		LineColor $LIGHT_DARK
+		LineThickness 2.0
+		Margin 5
+		Padding 5
+	}
+  }
+  ganttDiagram {
+	task {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+		LineColor #2FA4E7
+		Margin 10
+		Padding 6
+	}
+	note {
+		FontColor #033C73
+		LineColor $INFO_DARK
+		BackGroundColor transparent
+	}
+	separator {
+		LineColor #BABDBF
+		BackGroundColor transparent
+		FontColor #BABDBF
+	}
+	milestone {
+		FontColor #033C73
+		FontSize 16
+		FontStyle italic
+		BackGroundColor #E9ECEF
+		LineColor #BABDBF
+	}
+	timeline {
+		BackgroundColor #E9ECEF
+		FontColor #BABDBF
+	}
+	closed {
+		BackgroundColor $WARNING_DARK
+		FontColor #DD5600
+	}
+  }
+</style>
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            #868E96
+skinparam stereotype {
+    CBackgroundColor #EDF0F2
+    CBorderColor #BABDBF
+    ABackgroundColor #8FB961
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor #D2494E
+    IBorderColor $DANGER_DARK
+    EBackgroundColor #E47833
+    EBorderColor $WARNING_DARK
+    NBackgroundColor #35638F
+    NBorderColor $INFO_DARK
+}
+skinparam title {
+	FontColor	                 #2FA4E7
+	BorderColor	                 #BABDBF
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              transparent
+}
+
+skinparam legend {
+	BackgroundColor transparent
+	BorderColor #BABDBF
+	FontColor #343A40
+}
+
+skinparam swimlane {
+	BorderColor #033C73
+	BorderThickness 2
+	TitleBackgroundColor  #EDF0F2-#E9ECEF
+	TitleFontColor #2FA4E7
+}
+
+
+skinparam activity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BarColor #73A839
+	StartColor #033C73
+	EndColor #033C73
+	DiamondBackgroundColor transparent
+  	DiamondBorderColor #BABDBF
+	DiamondFontColor #BABDBF
+}
+
+
+skinparam participant {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #2FA4E7
+	FontColor #343A40
+}
+
+
+skinparam sequence {
+	BorderColor #2FA4E7
+	TitleFontColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #2FA4E7
+	EndColor #2FA4E7
+	BoxBackgroundColor transparent
+	BoxBorderColor #868E96
+	BoxFontColor #343A40
+	DelayFontColor #343A40
+	LifeLineBorderColor #BABDBF
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor transparent
+	GroupBorderColor #868E96
+	GroupFontColor #343A40
+	GroupHeaderFontColor #033C73
+	DividerBackgroundColor transparent
+    DividerBorderColor #868E96
+    DividerBorderThickness 2
+    DividerFontColor #343A40
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #868E96
+	ReferenceFontColor #343A40
+	ReferenceHeaderFontColor #033C73
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam partition {
+	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam control {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam entity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam boundary {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam agent {
+	BackgroundColor transparent
+	BorderColor #999999
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam artifact {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam component {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam interface {
+	BackgroundColor  transparent
+	BorderColor  #C71C22
+	FontColor #343A40
+}
+
+
+skinparam storage {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+}
+
+
+skinparam node {
+	BackgroundColor transparent
+	BorderColor #343A40
+	FontColor #343A40
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #343A40
+}
+
+
+skinparam database {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam class {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	FontColor #F8F9FA
+	HeaderBackgroundColor #2FA4E7-#2683B9
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #343A40
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam rectangle {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam package {
+	BackgroundColor transparent
+  	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor transparent
+  	BorderColor #033C73
+	FontColor #033C73
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #033C73
+	EndColor #033C73
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam card {
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam file {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam stack {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+
+
+abstract class HloModulePass
+
+class FusionInstructionMerger {
+    + FusionInstructionMerger(computation: HloComputation*)
+    + Run(): Status
+    + changed(): bool
+    - HandleFusion(fusion: HloInstruction*): Status
+    - computation_: HloComputation*
+    - changed_: bool
+    - total_visited_: int
+    - total_merged_: int
+    - num_fail_no_users_: int
+    - num_fail_not_loop_fusion_: int
+    - num_fail_merge_all_users_: int
+    - num_fail_expensive_fused_instruction_: int
+    - num_fail_net_bytes_transferred_ratio_: int
+    - num_fail_inefficient_fusion_emitter_: int
+    - num_fail_fusion_too_large_: int
+}
+
+class FusionMerger {
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+}
+
+FusionMerger::Run -[#green,dashed,thickness=1]-> FusionInstructionMerger::Run : call
+
+HloModulePass <|- - FusionMerger
+
+@enduml
+
+PlantUML version 1.2021.16(Thu Dec 09 01:25:22 CST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: zh
+Country: CN
+--></g></svg>

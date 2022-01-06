@@ -1,0 +1,34 @@
+'https://plantuml.com/class-diagram
+@startuml fusion_merger
+!theme cerulean-outline
+
+abstract class HloModulePass
+
+class FusionInstructionMerger {
+    + FusionInstructionMerger(computation: HloComputation*)
+    + Run(): Status
+    + changed(): bool
+    - HandleFusion(fusion: HloInstruction*): Status
+    - computation_: HloComputation*
+    - changed_: bool
+    - total_visited_: int
+    - total_merged_: int
+    - num_fail_no_users_: int
+    - num_fail_not_loop_fusion_: int
+    - num_fail_merge_all_users_: int
+    - num_fail_expensive_fused_instruction_: int
+    - num_fail_net_bytes_transferred_ratio_: int
+    - num_fail_inefficient_fusion_emitter_: int
+    - num_fail_fusion_too_large_: int
+}
+
+class FusionMerger {
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+}
+
+FusionMerger::Run -[#green,dashed,thickness=1]-> FusionInstructionMerger::Run : call
+
+HloModulePass <|-- FusionMerger
+
+@enduml

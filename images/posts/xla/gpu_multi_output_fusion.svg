@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="385.4167px" preserveAspectRatio="none" style="width:517px;height:385px;background:#00000000;" version="1.1" viewBox="0 0 517 385" width="517.7083px" zoomAndPan="magnify"><defs/><g><!--MD5=[106a0b1016e6f44db1bbc9f6790d9e67]
+class HloModulePass--><rect codeLine="3" height="50.9949" id="HloModulePass" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="126.0417" x="198.4375" y="17.7083"/><ellipse cx="213.0208" cy="34.8724" fill="#8FB961" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M213.1348,31.5745 L212.2864,35.3038 L213.9893,35.3038 Z M212.0361,29.9266 L214.2395,29.9266 L216.6992,39.0391 L214.8987,39.0391 L214.3372,36.7869 L211.9263,36.7869 L211.377,39.0391 L209.5764,39.0391 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" font-style="italic" lengthAdjust="spacing" textLength="84.375" x="231.7708" y="39.2029">HloModulePass</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="199.4792" x2="323.4375" y1="52.0365" y2="52.0365"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="199.4792" x2="323.4375" y1="60.3699" y2="60.3699"/><!--MD5=[6e8478677cc6472aef381057bbe5bc2e]
+class GpuMultiOutputFusion--><rect codeLine="5" height="242.2872" id="GpuMultiOutputFusion" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="487.5" x="17.7083" y="131.25"/><ellipse cx="188.5417" cy="148.4141" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M190.4521,152.8392 Q190.0248,153.0589 189.5549,153.1687 Q189.0849,153.2786 188.5661,153.2786 Q186.7228,153.2786 185.7524,152.064 Q184.7819,150.8494 184.7819,148.5545 Q184.7819,146.2535 185.7524,145.0389 Q186.7228,143.8243 188.5661,143.8243 Q189.0849,143.8243 189.561,143.9341 Q190.037,144.044 190.4521,144.2637 L190.4521,146.2657 Q189.9882,145.8384 189.5518,145.6401 Q189.1154,145.4417 188.6515,145.4417 Q187.6628,145.4417 187.1592,146.226 Q186.6557,147.0103 186.6557,148.5545 Q186.6557,150.0926 187.1592,150.8769 Q187.6628,151.6612 188.6515,151.6612 Q189.1154,151.6612 189.5518,151.4628 Q189.9882,151.2644 190.4521,150.8372 Z " fill="#000000"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="127.0833" x="213.5417" y="152.7445">GpuMultiOutputFusion</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="18.75" x2="504.1667" y1="165.5782" y2="165.5782"/><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="173.9115"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="180.2083" x="42.7083" y="186.0311">computation_: HloComputation*</text><rect fill="none" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="197.8231"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="289.5833" x="42.7083" y="209.9426">reachability_: std::unique_ptr&lt;HloReachabilityMap&gt;</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="18.75" x2="504.1667" y1="221.7346" y2="221.7346"/><ellipse cx="29.1667" cy="233.193" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="135.4167" x="42.7083" y="242.1875">GpuMultiOutputFusion()</text><ellipse cx="29.1667" cy="257.1045" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="241.6667" x="42.7083" y="266.099">Run(module: HloModule*): StatusOr&lt;bool&gt;</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="287.5" y="266.099">override</text><ellipse cx="29.1667" cy="281.016" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="137.5" x="42.7083" y="290.0106">name(): absl::string_view</text><text fill="#008080" font-family="&quot;Verdana&quot;" font-size="11.4583" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="183.3333" y="290.0106">override</text><rect fill="#F24D5C" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="301.8026"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="451.0417" x="42.7083" y="313.9221">FuseSiblings(parent: HloInstruction*, fusion_info_cache: FusionInfoCache*): bool</text><rect fill="#F24D5C" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="325.7141"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="227.0833" x="42.7083" y="337.8337">DoMultiOutputFusion(): StatusOr&lt;bool&gt;</text><rect fill="#F24D5C" height="6.25" style="stroke:#C82930;stroke-width:1.0416666666666667;" width="6.25" x="26.0417" y="349.6257"/><text fill="#343A40" font-family="&quot;Verdana&quot;" font-size="11.4583" lengthAdjust="spacing" textLength="167.7083" x="42.7083" y="361.7452">RecomputeReachability(): void</text><!--MD5=[7813dd70215d10b60599628c9674c4df]
+reverse link HloModulePass to GpuMultiOutputFusion--><path codeLine="18" d="M261.4583,89.8021 C261.4583,102.2292 261.4583,116.3125 261.4583,130.8438 " fill="none" id="HloModulePass-backto-GpuMultiOutputFusion" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="254.1667,89.6979,261.4583,68.8646,268.75,89.6979,254.1667,89.6979" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[46b98ef17788cfed2201d2ef6eb6d7ff]
+@startuml gpu_multi_output_fusion
+!theme cerulean-outline
+
+abstract class HloModulePass
+
+class GpuMultiOutputFusion {
+    - {field} computation_: HloComputation*
+    - {field} reachability_: std::unique_ptr<HloReachabilityMap>
+    + {method} GpuMultiOutputFusion()
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    - {method} FuseSiblings(parent: HloInstruction*, fusion_info_cache: FusionInfoCache*): bool
+    - DoMultiOutputFusion(): StatusOr<bool>
+    - RecomputeReachability(): void
+}
+
+' GpuMultiOutputFusion::Run -[#green,dashed,thickness=1]-> GpuMultiOutputFusion::DoMultiOutputFusion : call
+
+HloModulePass <|- - GpuMultiOutputFusion
+
+@enduml
+
+@startuml gpu_multi_output_fusion
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor transparent
+    FontColor #2FA4E7
+    HyperLinkColor #FD7E14
+    LineColor #2683B9
+    LineThickness 1
+    Margin 10
+    Padding 6
+    Shadowing 0.0
+  }
+  node {
+   Padding 15
+   roundcorner 20
+   BackgroundColor transparent
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  groupHeader {
+    BackgroundColor #E9ECEF
+    FontColor #033C73
+    FontStyle bold
+  }
+  header {
+    LineThickness 0
+  }
+  referenceHeader {
+    BackgroundColor transparent
+    FontColor #343A40
+    FontStyle bold
+  }
+  separator {
+    BackgroundColor #343A40
+    FontColor transparent
+    FontStyle bold
+  }
+  title {
+	FontSize 20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor  transparent
+	FontColor #2FA4E7
+	BorderColor #E9ECEF
+  }
+  nwdiagDiagram {
+	network {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent    
+		LineColor #2FA4E7
+		LineThickness 1.0
+		FontColor #2683B9
+	}
+	server {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	}
+	arrow {
+		FontColor #2683B9
+		LineColor #2683B9
+	}
+	group {
+		BackGroundColor #F8F9FA
+		LineColor $LIGHT_DARK
+		LineThickness 2.0
+		Margin 5
+		Padding 5
+	}
+  }
+  ganttDiagram {
+	task {
+			FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+		LineColor #2FA4E7
+		Margin 10
+		Padding 6
+	}
+	note {
+		FontColor #033C73
+		LineColor $INFO_DARK
+		BackGroundColor transparent
+	}
+	separator {
+		LineColor #BABDBF
+		BackGroundColor transparent
+		FontColor #BABDBF
+	}
+	milestone {
+		FontColor #033C73
+		FontSize 16
+		FontStyle italic
+		BackGroundColor #E9ECEF
+		LineColor #BABDBF
+	}
+	timeline {
+		BackgroundColor #E9ECEF
+		FontColor #BABDBF
+	}
+	closed {
+		BackgroundColor $WARNING_DARK
+		FontColor #DD5600
+	}
+  }
+</style>
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            #868E96
+skinparam stereotype {
+    CBackgroundColor #EDF0F2
+    CBorderColor #BABDBF
+    ABackgroundColor #8FB961
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor #D2494E
+    IBorderColor $DANGER_DARK
+    EBackgroundColor #E47833
+    EBorderColor $WARNING_DARK
+    NBackgroundColor #35638F
+    NBorderColor $INFO_DARK
+}
+skinparam title {
+	FontColor	                 #2FA4E7
+	BorderColor	                 #BABDBF
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              transparent
+}
+
+skinparam legend {
+	BackgroundColor transparent
+	BorderColor #BABDBF
+	FontColor #343A40
+}
+
+skinparam swimlane {
+	BorderColor #033C73
+	BorderThickness 2
+	TitleBackgroundColor  #EDF0F2-#E9ECEF
+	TitleFontColor #2FA4E7
+}
+
+
+skinparam activity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BarColor #73A839
+	StartColor #033C73
+	EndColor #033C73
+	DiamondBackgroundColor transparent
+  	DiamondBorderColor #BABDBF
+	DiamondFontColor #BABDBF
+}
+
+
+skinparam participant {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #2FA4E7
+	FontColor #343A40
+}
+
+
+skinparam sequence {
+	BorderColor #2FA4E7
+	TitleFontColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #2FA4E7
+	EndColor #2FA4E7
+	BoxBackgroundColor transparent
+	BoxBorderColor #868E96
+	BoxFontColor #343A40
+	DelayFontColor #343A40
+	LifeLineBorderColor #BABDBF
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor transparent
+	GroupBorderColor #868E96
+	GroupFontColor #343A40
+	GroupHeaderFontColor #033C73
+	DividerBackgroundColor transparent
+    DividerBorderColor #868E96
+    DividerBorderThickness 2
+    DividerFontColor #343A40
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #868E96
+	ReferenceFontColor #343A40
+	ReferenceHeaderFontColor #033C73
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam partition {
+	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam control {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam entity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam boundary {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam agent {
+	BackgroundColor transparent
+	BorderColor #999999
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam artifact {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam component {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam interface {
+	BackgroundColor  transparent
+	BorderColor  #C71C22
+	FontColor #343A40
+}
+
+
+skinparam storage {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+}
+
+
+skinparam node {
+	BackgroundColor transparent
+	BorderColor #343A40
+	FontColor #343A40
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #343A40
+}
+
+
+skinparam database {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam class {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	FontColor #F8F9FA
+	HeaderBackgroundColor #2FA4E7-#2683B9
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #343A40
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam rectangle {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam package {
+	BackgroundColor transparent
+  	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor transparent
+  	BorderColor #033C73
+	FontColor #033C73
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #033C73
+	EndColor #033C73
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam card {
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam file {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam stack {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+
+
+abstract class HloModulePass
+
+class GpuMultiOutputFusion {
+    - {field} computation_: HloComputation*
+    - {field} reachability_: std::unique_ptr<HloReachabilityMap>
+    + {method} GpuMultiOutputFusion()
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    - {method} FuseSiblings(parent: HloInstruction*, fusion_info_cache: FusionInfoCache*): bool
+    - DoMultiOutputFusion(): StatusOr<bool>
+    - RecomputeReachability(): void
+}
+
+
+HloModulePass <|- - GpuMultiOutputFusion
+
+@enduml
+
+PlantUML version 1.2021.16(Thu Dec 09 01:25:22 CST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: zh
+Country: CN
+--></g></svg>

@@ -1,0 +1,27 @@
+'https://plantuml.com/class-diagram
+@startuml gpu_conv_algorithm_picker
+!theme cerulean-outline
+
+class GpuConvAlgorithmPicker::ReferenceResult {
+  + algorithm: stream_executor::dnn::AlgorithmDesc
+  + buffer: stream_executor::DeviceMemoryBase
+}
+
+class GpuConvAlgorithmPicker {
+    - {field} stream_exec_: se::StreamExecutor*
+    - {field} allocator_: se::DeviceMemoryAllocator*
+    - {field} struct_ReferenceResult
+    + {method} GpuConvAlgorithmPicker(stream_exec: se::StreamExecutor*, allocator: se::DeviceMemoryAllocator*)
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    - {method} RunOnComputation(computation: HloComputation*): StatusOr<bool>
+    - {method} RunOnInstruction(instr: HloInstruction*): StatusOr<bool>
+    - {method} PickBestAlgorithm(instr: const HloCustomCallInstruction*): StatusOr<tensorflow::AutotuneResult>
+    - {method} AutotuneOneConvRunner(const GpuConvConfig&, const HloCustomCallInstruction*, ...): StatusOr<tensorflow::AutotuneResult>
+    - {method} PickBestAlgorithmNoCacheCuda(const HloCustomCallInstruction*, ...): StatusOr<tensorflow::AutotuneResult>
+    - {method} PickBestAlgorithmNoCacheRocm(const HloCustomCallInstruction*, ...): StatusOr<tensorflow::AutotuneResult>
+}
+
+GpuConvAlgorithmPicker::struct_ReferenceResult -[#green,dashed,thickness=1]-> GpuConvAlgorithmPicker::ReferenceResult : definition
+
+@enduml

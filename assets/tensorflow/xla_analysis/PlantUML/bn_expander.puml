@@ -1,0 +1,66 @@
+'https://plantuml.com/class-diagram
+@startuml batch_norm_expander
+!theme cerulean-outline
+
+abstract class HloModulePass
+
+class BatchNormExpander {
+    - rewrite_training_op_: bool
+    - rewrite_inference_op_: bool
+    - rewrite_grad_op_: bool
+    + {method} BatchNormExpander(rewrite_training_op: bool, rewrite_inference_op, rewrite_grad_op: bool)
+    + {method} name(): absl::string_view <b><color:#008080>override</color></b>
+    + {method} Run(module: HloModule*): StatusOr<bool> <b><color:#008080>override</color></b>
+}
+
+Interface DfsHloVisitorBase {
+    + {method} HandleElementwiseUnary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleElementwiseBinary(hlo: HloInstruction*): Status (<color:Red>return unimplemented error</color>)
+    + {method} HandleSqrt(hlo: HloInstruction*): Status
+    + {method} HandleMultiply(hlo: HloInstruction*): Status
+    + {abstract} HandleBatchNormTraining(hlo: HloInstruction*): Status
+    + {abstract} HandleDot(hlo: HloInstruction*): Status
+    + {abstract} HandleConvolution(hlo: HloInstruction*): Status
+    + {abstract} FinishVisit(hlo: HloInstruction*): Status
+    + {method} ......
+}
+DfsHloVisitorBase::HandleSqrt -[#green,dashed,thickness=1]-> DfsHloVisitorBase::HandleElementwiseUnary : call
+DfsHloVisitorBase::HandleMultiply -[#red,dotted,thickness=1]-> DfsHloVisitorBase::HandleElementwiseBinary
+
+abstract class DfsHloVisitorWithDefaultBase {
+    + {abstract} DefaultAction(hlo_instruction: HloInstruction*): Status
+    + {method} HandleElementwiseUnary: <b><color:#008080>override</color></b>
+    + {method} HandleElementwiseBinary: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+    + {method} HandleDot: <b><color:#008080>override</color></b>
+    + {method} HandleConvolution: <b><color:#008080>override</color></b>
+    + {method} FinishVisit: <b><color:#008080>override</color></b>
+    + {method} ......
+}
+
+class DfsHloRewriteVisitor {
+    + {method} RunOnModule(module: HloModule*): StatusOr<bool>
+    + {method} DefaultAction: <b><color:#008080>override</color></b> (<color:Red>do nothing</color>)
+    # {method} ReplaceWithNewInstruction(old_instruction: HloInstruction*, new_instruction: std::unique_ptr<HloInstruction>): Status
+    # {method} ReplaceInstruction(old_instruction: HloInstruction*, new_instruction: HloInstruction*): Status
+    - {field} changed_: bool
+
+}
+
+class BatchNormExpanderVisitor {
+    - rewrite_training_op_: bool
+    - rewrite_inference_op_: bool
+    - rewrite_grad_op_: bool
+    + {method} HandleBatchNormTraining: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormInference: <b><color:#008080>override</color></b>
+    + {method} HandleBatchNormGrad: <b><color:#008080>override</color></b>
+    + {static} Run(computation: HloComputation*, rewrite_training_op: bool, rewrite_inference_op: bool, rewrite_grad_op: bool): bool
+}
+
+BatchNormExpander::Run -[#green,dashed,thickness=1]-> BatchNormExpanderVisitor::Run : call
+
+HloModulePass <|-- BatchNormExpander
+DfsHloRewriteVisitor <|-- BatchNormExpanderVisitor
+DfsHloVisitorWithDefaultBase <|-- DfsHloRewriteVisitor
+DfsHloVisitorBase <|-- DfsHloVisitorWithDefaultBase
+@enduml

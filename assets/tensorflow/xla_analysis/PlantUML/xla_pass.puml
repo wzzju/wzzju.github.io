@@ -1,0 +1,320 @@
+' https://plantuml.com/class-diagram
+' https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html
+@startuml HLO-Passes-UML
+skinparam groupInheritance 6
+left to right direction
+'top to bottom direction
+!theme cerulean-outline
+
+' Create from the analysis of GpuCompiler::OptimizeHloModule
+' https://github.com/tensorflow/tensorflow/blob/f386883f9f5995aa0f6e0988e29dd67f809271e5/tensorflow/compiler/xla/service/gpu/gpu_compiler.cc#L267
+' https://github.com/tensorflow/tensorflow/blob/f386883f9f5995aa0f6e0988e29dd67f809271e5/tensorflow/compiler/xla/service/gpu/gpu_compiler.cc#L745
+
+interface HloPassInterface {
+    + {abstract} name(): absl::string_view
+    + {abstract} Run(module: HloModule*): StatusOr<bool>
+    + {abstract} RunOnModuleGroup(module_group: HloModuleGroup*): StatusOr<bool>
+    + {method} RunOnChangedComputations(module: HloModule*, run_state: RunState*): Status
+    + {method} IsPassPipeline(): bool
+}
+
+abstract class HloModulePass {
+    + {method} RunOnModuleGroup: <b><color:#008080>override</color></b>
+    + {method} UpdateLayout(shape: Shape*): void
+}
+
+abstract class HloModuleGroupPass {
+    + {method} Run: <b><color:#008080>override</color></b> (<color:red>prohibit</color>)
+}
+' note left of HloModuleGroupPass::Run
+' Calling the <b>Run</b> method will return an error:
+' Module group pass cannot be run on a module.
+' end note
+
+abstract class OpExpanderPass {
+    + {field} PatternExtraFilter: std::function<bool(const HloInstruction*)>
+    # {field} extra_filter_: PatternExtraFilter
+    + {method} Run: <b><color:#008080>override</color></b>
+    # {method} InstructionMatchesPattern(instruction: HloInstruction*): bool
+    # {method} ExpandInstruction(instruction: HloInstruction*): HloInstruction*
+}
+
+class HloPassFix<typename Pass, is_base_of<HloPassInterface, Pass>, HloPassFix extends Pass> {
+    + {method} Run: <b><color:#008080>override</color></b>
+    + {method} RunOnModuleGroup: <b><color:#008080>override</color></b>
+    + {method} RunOnChangedComputations: <b><color:#008080>override</color></b>
+    - {method} RunToFixPoint(module: HloModule*, run_state: RunState*): Status
+    - {method} RunOnChangedComputationsOnce(module: HloModule*, run_state: RunState*): Status
+}
+
+class HloPassPipeline {
+    - {field} passes_: std::vector<std::unique_ptr<HloPassInterface>>
+    - {field} invariant_checkers_: std::vector<std::unique_ptr<HloPassInterface>>
+    + {method} name: <b><color:#008080>override</color></b>
+    + {method} Run: <b><color:#008080>override</color></b>
+    + {method} RunOnModuleGroup: <b><color:#008080>override</color></b>
+    + {method} IsPassPipeline: <b><color:#008080>override</color></b>
+    + {method} AddPass(args: Args&&...): T&
+    + {method} AddInvariantChecker(args: Args&&...): T&
+    + {method} PassesSize(): int
+    + {method} GetPass(index: int): HloPassInterface&
+}
+
+' GpuCompiler::OptimizeHloModule
+class HloVerifier
+
+' optimization pipeline
+class AllToAllDecomposer{
+    - decompose_to_tuple_: bool
+    - min_array_rank_: int64_t
+}
+class OperandUpcaster
+class ResultCaster
+note top of ResultCaster
+ResultCaster should run
+after OperandUpcaster.
+end note
+
+class RngExpander
+class RngBitGeneratorExpander
+class ZeroSizedHloElimination
+note top of ZeroSizedHloElimination: Replaces zero sized Hlos\nwith a zero sized constant\nliteral.
+class GpuScatterExpander
+class ScatterExpander
+class QrExpander
+class EighExpander
+class DynamicIndexSplitter
+class CallInliner
+class DotDecomposer
+class Convolution4DExpander
+class StableSortExpander
+class BFloat16Normalization
+note right of BFloat16Normalization: Add F32 <-> BF16 conversions\nfor HLO instructions that don't\nsupport BF16 input/output or\nmixedprecision
+class BatchNormExpander {
+    - rewrite_training_op_: bool
+    - rewrite_inference_op_: bool
+    - rewrite_grad_op_: bool
+}
+note right of BatchNormExpander: `rewrite_inference_op_`\nis always true for GPU.\n All three of them are set\nto true by default for GPU.
+class CudnnBatchNormRewriter
+class LogisticExpander
+class ConditionalCanonicalizer
+class DynamicDimensionSimplifier
+class DynamicPadder
+class GatherExpander
+' AlgebraicSimplifier is important
+class AlgebraicSimplifier
+class BitcastDtypesExpander
+class DotDecomposer
+class DotMerger
+class SortSimplifier
+class TupleSimplifier
+class WhileLoopConstantSinking
+class WhileLoopSimplifier
+class SliceSinker
+class ReshapeMover
+class HloConstantFolding
+class ConditionalSimplifier
+class RealImagExpander
+class TransposeFolding
+note right of TransposeFolding: Fold transpose operators\ninto Dot operators.
+class HloCSE
+class HloDCE
+class WhileLoopTripCountAnnotator
+
+' collective optimizations pipeline
+class AllReduceFolder
+class ReduceScatterCreator
+class AllReduceReassociate
+class AllGatherBroadcastReorder
+
+' target-specific HLO optimization passes for convolution canonicalization
+' conv canonicalization pipeline
+class GpusolverRewriter
+class GpuConvRewriter
+class GpuConvPaddingLegalization
+
+' layout assignment optimization passes
+class FlattenCallGraph
+class LayoutAssignment
+class GpuLayoutAssignment
+
+' target-specific HLO optimization passes after layout assignment
+' post layout_assignment pipeline
+class ReductionDegenerateDimRemover
+class ReductionLayoutNormalizer
+class ReductionDimensionGrouper
+class ReductionSplitter
+class GpuTreeReductionRewriter
+' AlgebraicSimplifier
+' TransposeFolding
+class GemmRewriter
+class GemmBroadcastFoldingRewriter
+note right of GemmBroadcastFoldingRewriter: Rewrite GEMMs with broadcasted\ninputs as strided GEMMs.
+class GpuConvAlgorithmPicker
+
+' fusion optimization pipeline
+class VariadicOpSplitter
+note right of VariadicOpSplitter: Split variadic ops with many\nparameters into several.
+' split variadic ops with many parameters into several such ops to avoid exceeding the parameter space.
+
+' fusion is needed to learn about in detail
+class InstructionFusion {
+    - {field} is_expensive_: std::function<bool(const HloInstruction& instruction)>
+    - {field} may_duplicate_: bool
+    {field} ......
+    + {method} Run: <b><color:#008080>override</color></b>
+    + {method} name: <b><color:#008080>override</color></b>
+    + {static} IsExpensive(instruction: const HloInstruction&): bool
+    + {static} ShouldFuseInPlaceOp(producer: const HloInstruction*, consumer: const HloInstruction*): bool
+    # {method} GetFusionComputations(module: HloModule*): std::vector<HloComputation*>
+    # {method} ShouldFuse(consumer: HloInstruction*, operand_index: int64_t): bool
+    # {method} ShouldFuseIntoMultiOutput(consumer: HloInstruction*, operand_index: int64_t): bool
+    # {method} ChooseKind(producer: const HloInstruction*, consumer: const HloInstruction*): FusionKind
+    # {method} FuseInstruction(fusion_instruction: HloInstruction*, producer: HloInstruction*): HloInstruction*
+    # {method} Fuse(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*
+    - {method} AddFusionInstruction(producer: HloInstruction*, consumer: HloInstruction*): HloInstruction*
+    {method} ......
+}
+
+class GpuInstructionFusion {
+    + {static} {method} IsExpensive: <b><color:#008080>override</color></b>
+    + {method} ShouldFuse: <b><color:#008080>override</color></b>
+    + {method} ShouldFuseIntoMultiOutput: <b><color:#008080>override</color></b>
+    + {method} ChooseKind: <b><color:#008080>override</color></b>
+    + {method} Run: <b><color:#008080>override</color></b>
+    - {method} FuseInstruction: <b><color:#008080>override</color></b>
+}
+' GpuInstructionFusion: may_duplicate=false
+' GpuInstructionFusion: may_duplicate=true
+class FusionMerger
+class GpuMultiOutputFusion
+
+' horizontal fusion pipeline: important
+class GpuHorizontalLoopFusion
+class GpuHorizontalInputFusion
+' FusionBitcastLift must be after InstructionFusion
+class FusionBitcastLift
+
+' post-fusion optimization pipeline
+class AllGatherCombiner
+class AllReduceCombiner
+class ReduceScatterCombiner
+' AllReduceBlueConnect&AllReduceContiguous&AsyncCollectiveCreator are optional
+class AllReduceContiguous
+class AllReduceBlueConnect
+class AsyncCollectiveCreator
+class CollectivesScheduleLinearizer
+
+' spmd partitioner pipeline
+class ShardingPropagation
+class SpmdPartitioner
+class GpuSpmdPartitioner
+class ShardingRemover
+
+' GpuCompiler::PrepareHloModuleForIrEmitting
+' Modifies the given HLO module so that it will be accepted by IrEmitter.
+' Unlike optimization passes, the passes are necessary for correctness.
+' GPU ir emit prepare pipeline
+package "Just for correctness" #E3F2FD {
+    class AliasPassthroughParams
+    class LoopScheduleLinearizer
+    class GpuCopyInsertion
+    class GpuSanitizeConstantNames
+}
+
+HloPassInterface <|-- HloModulePass
+HloPassInterface <|-- HloModuleGroupPass
+HloPassInterface <|-- HloPassPipeline
+
+HloModulePass <|-- HloVerifier #line:DarkCyan
+HloModulePass <|-- OpExpanderPass #line:DarkCyan
+OpExpanderPass <|-- AllToAllDecomposer #line:SteelBlue
+OpExpanderPass <|-- OperandUpcaster #line:SteelBlue
+OpExpanderPass <|-- ResultCaster #line:SteelBlue
+' ResultCaster <.. OperandUpcaster
+OpExpanderPass <|-- RngExpander #line:SteelBlue
+OpExpanderPass <|-- RngBitGeneratorExpander #line:SteelBlue
+OpExpanderPass <|-- ZeroSizedHloElimination #line:SteelBlue
+OpExpanderPass <|-- ScatterExpander #line:SteelBlue
+ScatterExpander <|-- GpuScatterExpander #line:Cyan
+OpExpanderPass <|-- QrExpander #line:SteelBlue
+OpExpanderPass <|-- EighExpander #line:SteelBlue
+HloModulePass <|-- DynamicIndexSplitter #line:DarkCyan
+HloModulePass <|-- CallInliner #line:DarkCyan
+HloModulePass <|-- DotDecomposer #line:DarkCyan
+OpExpanderPass <|-- Convolution4DExpander #line:SteelBlue
+OpExpanderPass <|-- StableSortExpander #line:SteelBlue
+HloModulePass <|-- BFloat16Normalization #line:DarkCyan
+HloModulePass <|-- BatchNormExpander #line:DarkCyan
+HloModulePass <|-- CudnnBatchNormRewriter #line:DarkCyan
+OpExpanderPass <|-- LogisticExpander #line:SteelBlue
+HloModulePass <|-- ConditionalCanonicalizer #line:DarkCyan
+HloModulePass <|-- DynamicDimensionSimplifier #line:DarkCyan
+HloModulePass <|-- DynamicPadder #line:DarkCyan
+HloPassPipeline <|-- HloPassFix #line:Red
+AlgebraicSimplifier <|-- HloPassFix #line:Red
+ReductionSplitter <|-- HloPassFix #line:Red
+GpuTreeReductionRewriter <|-- HloPassFix #line:Red
+OpExpanderPass <|-- GatherExpander #line:SteelBlue
+HloModulePass <|-- AlgebraicSimplifier #line:DarkCyan
+OpExpanderPass <|-- BitcastDtypesExpander #line:SteelBlue
+HloModulePass <|-- DotDecomposer #line:DarkCyan
+HloModulePass <|-- DotMerger #line:DarkCyan
+HloModulePass <|-- SortSimplifier #line:DarkCyan
+HloModulePass <|-- TupleSimplifier #line:DarkCyan
+HloModulePass <|-- WhileLoopConstantSinking #line:DarkCyan
+HloModulePass <|-- WhileLoopSimplifier #line:DarkCyan
+HloModulePass <|-- SliceSinker #line:DarkCyan
+HloModulePass <|-- ReshapeMover #line:DarkCyan
+HloModulePass <|-- HloConstantFolding #line:DarkCyan
+HloModulePass <|-- ConditionalSimplifier #line:DarkCyan
+OpExpanderPass <|-- RealImagExpander #line:SteelBlue
+HloModulePass <|-- TransposeFolding #line:DarkCyan
+HloModulePass <|-- HloCSE #line:DarkCyan
+HloModulePass <|-- HloDCE #line:DarkCyan
+HloModulePass <|-- WhileLoopTripCountAnnotator #line:DarkCyan
+HloModulePass <|-- AllReduceFolder #line:DarkCyan
+HloModulePass <|-- ReduceScatterCreator #line:DarkCyan
+HloModulePass <|-- AllReduceReassociate #line:DarkCyan
+HloModulePass <|-- AllGatherBroadcastReorder #line:DarkCyan
+HloModulePass <|-- GpusolverRewriter #line:DarkCyan
+HloModulePass <|-- GpuConvRewriter #line:DarkCyan
+HloModulePass <|-- GpuConvPaddingLegalization #line:DarkCyan
+HloModulePass <|-- FlattenCallGraph #line:DarkCyan
+HloModulePass <|-- LayoutAssignment #line:DarkCyan
+LayoutAssignment <|-- GpuLayoutAssignment #line:DarkTurquoise
+HloModulePass <|-- ReductionDegenerateDimRemover #line:DarkCyan
+HloModulePass <|-- ReductionLayoutNormalizer #line:DarkCyan
+HloModulePass <|-- ReductionDimensionGrouper #line:DarkCyan
+HloModulePass <|-- ReductionSplitter #line:DarkCyan
+HloModulePass <|-- GpuTreeReductionRewriter #line:DarkCyan
+HloModulePass <|-- GemmRewriter #line:DarkCyan
+HloModulePass <|-- GemmBroadcastFoldingRewriter #line:DarkCyan
+HloModulePass <|-- GpuConvAlgorithmPicker #line:DarkCyan
+HloModulePass <|-- VariadicOpSplitter #line:DarkCyan
+HloModulePass <|-- InstructionFusion #line:DarkCyan
+InstructionFusion <|-- GpuInstructionFusion #line:c77182
+HloModulePass <|-- FusionMerger #line:DarkCyan
+HloModulePass <|-- GpuMultiOutputFusion #line:DarkCyan
+HloModulePass <|-- GpuHorizontalLoopFusion #line:DarkCyan
+HloModulePass <|-- GpuHorizontalInputFusion #line:DarkCyan
+HloModulePass <|-- FusionBitcastLift #line:DarkCyan
+HloModulePass <|-- AllGatherCombiner #line:DarkCyan
+HloModulePass <|-- AllReduceCombiner #line:DarkCyan
+HloModulePass <|-- ReduceScatterCombiner #line:DarkCyan
+HloModulePass <|-- AllReduceContiguous #line:DarkCyan
+HloModulePass <|-- AllReduceBlueConnect #line:DarkCyan
+HloModulePass <|-- AsyncCollectiveCreator #line:DarkCyan
+HloModulePass <|-- CollectivesScheduleLinearizer #line:DarkCyan
+HloModulePass <|-- ShardingPropagation #line:DarkCyan
+HloModulePass <|-- SpmdPartitioner #line:DarkCyan
+SpmdPartitioner <|-- GpuSpmdPartitioner #line:7fe994
+HloModulePass <|-- ShardingRemover #line:DarkCyan
+
+HloModulePass <|-- AliasPassthroughParams #line:DarkCyan
+HloModulePass <|-- LoopScheduleLinearizer #line:DarkCyan
+HloModulePass <|-- GpuCopyInsertion #line:DarkCyan
+HloModulePass <|-- GpuSanitizeConstantNames #line:DarkCyan
+
+@enduml
