@@ -52,7 +52,7 @@ plt.savefig('images/line.eps', format='eps') # 保存图形到指定格式
 ```
 
 
-![png](/assets/matplotlib/output_8_0.png)
+![png](/images/posts/matplotlib/output_8_0.png)
 
 
 #### 条形图
@@ -74,7 +74,7 @@ plt.show()
 ```
 
 
-![png](/assets/matplotlib/output_10_0.png)
+![png](/images/posts/matplotlib/output_10_0.png)
 
 #### 柱状图
 
@@ -100,7 +100,7 @@ plt.legend()
 plt.savefig('images/bar.eps', format='eps',dpi=1000)
 ```
 
-![png](/assets/matplotlib/output_34_0.png)
+![png](/images/posts/matplotlib/output_34_0.png)
 
 #### 折线图
 
@@ -120,7 +120,7 @@ plt.show()
 ```
 
 
-![png](/assets/matplotlib/output_12_0.png)
+![png](/images/posts/matplotlib/output_12_0.png)
 
 
 #### 散点图
@@ -142,7 +142,7 @@ plt.show()
 ```
 
 
-![png](/assets/matplotlib/output_14_0.png)
+![png](/images/posts/matplotlib/output_14_0.png)
 
 
 #### 饼状图
@@ -167,7 +167,7 @@ plt.show()
 ```
 
 
-![png](/assets/matplotlib/output_16_0.png)
+![png](/images/posts/matplotlib/output_16_0.png)
 
 
 #### 箱形图
@@ -194,7 +194,7 @@ plt.show()
 ```
 
 
-![png](/assets/matplotlib/output_19_0.png)
+![png](/images/posts/matplotlib/output_19_0.png)
 
 
 ## 二、图像的调整
@@ -251,7 +251,7 @@ plt.show()
 ```
 
 
-![png](/assets/matplotlib/output_28_0.png)
+![png](/images/posts/matplotlib/output_28_0.png)
 
 
 #### 5、生成网格
@@ -275,7 +275,7 @@ plt.show()
 ```
 
 
-![png](/assets/matplotlib/output_30_0.png)
+![png](/images/posts/matplotlib/output_30_0.png)
 
 
 #### 6、生成图例
@@ -301,5 +301,5 @@ plt.show()
 ```
 
 
-![png](/assets/matplotlib/output_32_0.png)
+![png](/images/posts/matplotlib/output_32_0.png)
 
