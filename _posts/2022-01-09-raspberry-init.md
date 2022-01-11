@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Raspberry Pi无显示屏开发流程
+title: Raspberry Pi无显示屏设备开发流程
 date: 2022-01-09
 comments: true
 categories: [ "RaspberryPi" ]

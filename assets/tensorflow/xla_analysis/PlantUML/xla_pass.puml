@@ -259,7 +259,6 @@ GpuTreeReductionRewriter <|-- HloPassFix #line:Red
 OpExpanderPass <|-- GatherExpander #line:SteelBlue
 HloModulePass <|-- AlgebraicSimplifier #line:DarkCyan
 OpExpanderPass <|-- BitcastDtypesExpander #line:SteelBlue
-HloModulePass <|-- DotDecomposer #line:DarkCyan
 HloModulePass <|-- DotMerger #line:DarkCyan
 HloModulePass <|-- SortSimplifier #line:DarkCyan
 HloModulePass <|-- TupleSimplifier #line:DarkCyan
