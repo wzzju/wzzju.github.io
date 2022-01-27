@@ -354,7 +354,8 @@ a.sidebar-nav-item:focus {
   padding-left: 0;
   list-style: none;
 }
-.related-posts h3 {
+.related-posts li h3 a {
+  color: #999;
   margin-top: 0;
 }
 .related-posts li small {
@@ -362,13 +363,12 @@ a.sidebar-nav-item:focus {
   color: #999;
 }
 .related-posts li a:hover {
-  color: #268bd2;
+  color: #0085a1;
   text-decoration: none;
 }
 .related-posts li a:hover small {
   color: inherit;
 }
-
 
 /*
  * Pagination
