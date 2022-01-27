@@ -1,7 +1,9 @@
 ---
 layout: post
-title: Raspberry Pi无显示屏设备开发流程
+title: Raspberry Pi初始化开发流程
+subtitle: 无显示屏设备
 date: 2022-01-09
+author: YuChen
 comments: true
 categories: [ "RaspberryPi" ]
 ---

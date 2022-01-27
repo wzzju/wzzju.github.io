@@ -116,6 +116,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
   font-size: 200%;
 }
+.masthead-title a:hover,
+.masthead-title a:focus {
+  /*text-decoration: underline;*/
+  color: rgba(255, 255, 255, 0.8);
+}
 .masthead-title small {
   font-size: 75%;
   font-weight: 400;
