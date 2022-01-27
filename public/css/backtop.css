@@ -2,6 +2,6 @@
 a:hover{text-decoration:none;}/*鼠标悬浮时链接无下划线*/
 /* 返回顶部模块样式控制 */
 #backTop{position:fixed; right:15px; bottom:100px; z-index:100; width:49px; height:66px; overflow:hidden;}
-#backTop a{display:block; width:49px; height:66px; padding:20% 10%; color:#FFFFFF; font-size:14px; text-align:center; background:url(/public/images/backtop.png) no-repeat;}
+#backTop a{display:block; width:49px; height:66px; padding:20% 10%; color:#FFFFFF; font-size:14px; text-align:center; background:url(/public/images/backtop.gif) no-repeat;}
 #backTop a:hover{color:#FFFFFF; background:#6CA6CD;}
 #backTop a:hover span{display:block;}
