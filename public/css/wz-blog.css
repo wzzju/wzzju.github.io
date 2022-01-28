@@ -173,3 +173,60 @@ select {
     font-size: 18px;
   }
 }
+
+/* Scroll To Top CSS Begin*/
+#scroll-to-top {
+  display: block;
+  position: fixed;
+  font-size: 22px;
+  font-weight: bold;
+  bottom: 25px;
+  right: 10%;
+  opacity: 0;
+  z-index: 99;
+  text-align: center;
+  transform: translateY(30%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+@media (max-width: 600px) {
+  #scroll-to-top {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  #scroll-to-top {
+    right: 5%;
+    bottom: 15px;
+  }
+}
+
+#scroll-to-top :last-child {
+  transition: transform 0.7s ease-in-out;
+}
+
+#scroll-to-top :last-child:active, #scroll-to-top :last-child:hover {
+  transform: translateY(-10%);
+}
+
+#scroll-to-top span {
+  cursor: pointer;
+  color: #1a1d24;
+}
+
+#scroll-to-top span:hover .up-arrow, #scroll-to-top span:active .up-arrow {
+  color: #00adb5;
+}
+/* Scroll To Top CSS End*/
+
+/* Progress Bar CSS Begin*/
+#progress-bar {
+  background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet var(--scroll), transparent 0);
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 3px;
+  z-index: 1;
+}
+/* Progress Bar CSS End */
