@@ -6,7 +6,7 @@ layout: null
 	"data" : [
 	 {% for post in site.posts %}
 	{
-		"title" : "{{ post.title }} - {{ post.date|date_to_string }}",
+		"title" : "{{ post.title }}{% if post.subtitle %} - {{ post.subtitle }}{% endif %} - {{ post.date|date_to_string }}",
 		"url" : "{{ post.url }}"
 	}
 	{% if forloop.rindex != 1  %}
