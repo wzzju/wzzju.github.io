@@ -177,14 +177,14 @@ select {
 /* Search Tool CSS Begin*/
 #search-target-blog {
   position: fixed;
-  bottom: 25px;
+  bottom: 3%;
   right: 2%;
 }
 
 @media (max-width: 600px) {
   #search-target-blog {
-    right: 7%;
-    bottom: 10px;
+    right: 6%;
+    bottom: 2%;
   }
 }
 /* Search Tool CSS End */
@@ -195,7 +195,7 @@ select {
   position: fixed;
   font-size: 22px;
   font-weight: bold;
-  bottom: 25px;
+  bottom: 3%;
   right: 10%;
   opacity: 0;
   z-index: 99;
@@ -213,7 +213,7 @@ select {
 @media (max-width: 600px) {
   #scroll-to-top {
     right: 5%;
-    bottom: 45px;
+    bottom: 8%;
   }
 }
 
