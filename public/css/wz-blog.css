@@ -183,7 +183,7 @@ select {
 
 @media (max-width: 600px) {
   #search-target-blog {
-    right: 7%;
+    right: 8%;
     bottom: 2%;
   }
 }
@@ -213,7 +213,7 @@ select {
 @media (max-width: 600px) {
   #scroll-to-top {
     right: 5%;
-    bottom: 10%;
+    bottom: 12%;
   }
 }
 
