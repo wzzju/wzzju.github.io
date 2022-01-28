@@ -1,6 +1,6 @@
 ---
 layout: post
-title: C++11之统一初始化
+title: C++11统一初始化
 date: 2017-11-26
 comments: true
 categories: [ "C++11" ]
