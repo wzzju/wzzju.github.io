@@ -183,8 +183,8 @@ select {
 
 @media (max-width: 600px) {
   #search-target-blog {
-    right: 5%;
-    bottom: 20px;
+    right: 7%;
+    bottom: 10px;
   }
 }
 /* Search Tool CSS End */
@@ -213,7 +213,7 @@ select {
 @media (max-width: 600px) {
   #scroll-to-top {
     right: 5%;
-    bottom: 40px;
+    bottom: 45px;
   }
 }
 
