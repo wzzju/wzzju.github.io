@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .masthead-title a:hover,
 .masthead-title a:focus {
-  /*text-decoration: underline;*/
+  text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
 }
 .masthead-title small {
