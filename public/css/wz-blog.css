@@ -255,13 +255,14 @@ select {
 }
 
 .toc {
-	font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
-	color: #7a8288;
-	background-color: #fff;
-	border: 1px solid #f2f3f3;
-	border-radius: 4px;
-	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.125);
-	box-shadow: 0 1px 1px rgba(0,0,0,0.125)
+  margin: 1rem 0rem;
+  font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+  color: #7a8288;
+  background-color: #fff;
+  border: 1px solid #f2f3f3;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.125);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.125)
 }
 
 .toc .menu-title {
