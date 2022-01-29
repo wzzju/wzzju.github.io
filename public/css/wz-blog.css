@@ -266,7 +266,7 @@ select {
 
 .toc .menu-title {
 	color: #fff;
-	font-size: .85em;
+	font-size: 1em;
   font-weight: bold;
 	background: #216377;
 	border-top-left-radius: 4px;
@@ -283,7 +283,7 @@ select {
 	padding: 0;
 	width: 100%;
 	list-style: none;
-	font-size: .75em
+	font-size: 1em
 }
 
 @media (min-width: 64em) {
@@ -296,6 +296,7 @@ select {
 	display: block;
 	padding: 0.25rem 0.75rem;
 	color: #2f7d95;
+  font-size: 1em;
 	font-weight: bold;
 	line-height: 1.5;
 	border-bottom: 1px solid #f2f3f3
@@ -307,24 +308,24 @@ select {
 }
 
 .toc-menu li ul>li a {
-	padding-left: 1.25rem;
+	padding-left: 0rem;
 	font-weight: normal
 }
 
 .toc-menu li ul li ul>li a {
-	padding-left: 1.75rem
+	padding-left: 0rem
 }
 
 .toc-menu li ul li ul li ul>li a {
-	padding-left: 2.25rem
+	padding-left: 0rem
 }
 
 .toc-menu li ul li ul li ul li ul>li a {
-	padding-left: 2.75rem
+	padding-left: 0rem
 }
 
 .toc-menu li ul li ul li ul li ul li ul>li a {
-	padding-left: 3.25rem
+	padding-left: 0rem
 }
 
 .side-right {
