@@ -267,7 +267,7 @@ select {
 
 .toc .menu-title {
 	color: #fff;
-	font-size: 1.2em;
+	font-size: 1em;
   font-weight: bold;
 	background: #216377;
 	border-top-left-radius: 4px;
@@ -284,7 +284,7 @@ select {
 	padding: 0;
 	width: 100%;
 	list-style: none;
-	font-size: .9em
+	font-size: .8em
 }
 
 .toc-menu a {
@@ -303,10 +303,10 @@ select {
 
 @media (max-width: 600px) {
   .toc .menu-title {
-    font-size: 1.1em;
+    font-size: .95em;
   }
   .toc-menu {
-    font-size: .85em
+    font-size: .75em
   }
 }
 
