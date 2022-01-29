@@ -266,7 +266,7 @@ select {
 
 .toc .menu-title {
 	color: #fff;
-	font-size: 1em;
+	font-size: 1.2em;
   font-weight: bold;
 	background: #216377;
 	border-top-left-radius: 4px;
@@ -283,20 +283,13 @@ select {
 	padding: 0;
 	width: 100%;
 	list-style: none;
-	font-size: 1em
-}
-
-@media (min-width: 64em) {
-	.toc-menu {
-		font-size: .6875em
-	}
+	font-size: .9em
 }
 
 .toc-menu a {
 	display: block;
 	padding: 0.25rem 0.75rem;
 	color: #2f7d95;
-  font-size: 1em;
 	font-weight: bold;
 	line-height: 1.5;
 	border-bottom: 1px solid #f2f3f3
@@ -305,6 +298,15 @@ select {
 .toc-menu a:hover {
   text-decoration: underline;
 	color: #1ab7ea
+}
+
+@media (max-width: 600px) {
+  .toc .menu-title {
+    font-size: 1.1em;
+  }
+  .toc-menu {
+    font-size: .85em
+  }
 }
 
 .toc-menu li ul>li a {
