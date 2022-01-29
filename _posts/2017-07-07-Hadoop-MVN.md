@@ -6,7 +6,8 @@ comments: true
 categories: [ "Hadoop", "Maven" ]
 ---
 
-###### 1.执行如下命令创建maven工程：
+###### 1.执行如下命令创建maven工程
+
 ```bash
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DgroupId=top.wzzju.temperature -DartifactId=temperature
 ```
@@ -92,7 +93,7 @@ vim pom.xml
 
 ```
 
-###### 3.根据自己的MapReduce工作进行修改源码：
+###### 3.根据自己的MapReduce工作进行修改源码
 
 ```bash
 cd temperature

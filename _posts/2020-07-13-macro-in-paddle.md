@@ -27,7 +27,7 @@ gcc -E -P paddle/fluid/operators/fsp_op.cc -I. | clang-format --style=Google >./
 
 ```
 
-#### Paddle `fsp_op`算子注册方式的宏展开代码
+## Paddle `fsp_op`算子注册方式的宏展开代码
 
 ```cpp
 namespace ops = paddle::operators;

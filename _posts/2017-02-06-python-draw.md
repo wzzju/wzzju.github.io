@@ -30,7 +30,7 @@ Numpy是Python开源的数值计算扩展，可用来存储和处理大型矩阵
 ```
 
 
-#### 直方图
+### 直方图
 
 
 ```python
@@ -55,7 +55,7 @@ plt.savefig('images/line.eps', format='eps') # 保存图形到指定格式
 ![png](/images/posts/matplotlib/output_8_0.png)
 
 
-#### 条形图
+### 条形图
 
 
 ```python
@@ -76,7 +76,7 @@ plt.show()
 
 ![png](/images/posts/matplotlib/output_10_0.png)
 
-#### 柱状图
+### 柱状图
 
 ```python
 import matplotlib.pyplot as plt
@@ -102,7 +102,7 @@ plt.savefig('images/bar.eps', format='eps',dpi=1000)
 
 ![png](/images/posts/matplotlib/output_34_0.png)
 
-#### 折线图
+### 折线图
 
 
 ```python
@@ -123,7 +123,7 @@ plt.show()
 ![png](/images/posts/matplotlib/output_12_0.png)
 
 
-#### 散点图
+### 散点图
 
 
 ```python
@@ -145,7 +145,7 @@ plt.show()
 ![png](/images/posts/matplotlib/output_14_0.png)
 
 
-#### 饼状图
+### 饼状图
 
 
 ```python
@@ -170,7 +170,7 @@ plt.show()
 ![png](/images/posts/matplotlib/output_16_0.png)
 
 
-#### 箱形图
+### 箱形图
 
 主要用于显示数据的分散情况。图形分为上边缘、上四分位数、中位数、下四分位数、下边缘。外面的点是异常值。
 
@@ -199,7 +199,7 @@ plt.show()
 
 ## 二、图像的调整
 
-#### 1、20余种点形状
+### 1、20余种点形状
 
 > `"."  point     ","  pixel     "o" circle      "v" triangle_down`
 
@@ -211,17 +211,17 @@ plt.show()
 
 > `"+"  plus     "x"  x      "D"  diamond      "d"  thin_diamond`
 
-#### 2、8种內建默认颜色的缩写
+### 2、8种內建默认颜色的缩写
 
 > `b:blue         g:green       r:red       c:cyan`
 
 > `m:magenta      y:yellow      k:black     w:white`
 
-#### 3、4种线性
+### 3、4种线性
 
 > `- 实线     --虚线      -.点划线   ：点线`
 
-#### 4、一张图上绘制子图
+### 4、一张图上绘制子图
 
 
 ```python
@@ -254,7 +254,7 @@ plt.show()
 ![png](/images/posts/matplotlib/output_28_0.png)
 
 
-#### 5、生成网格
+### 5、生成网格
 
 
 ```python
@@ -278,7 +278,7 @@ plt.show()
 ![png](/images/posts/matplotlib/output_30_0.png)
 
 
-#### 6、生成图例
+### 6、生成图例
 
 
 ```python

@@ -8,7 +8,7 @@ categories: [ "Linux" ]
 
 ### 一. 解压与压缩[^compress]
 
-##### 1.1 常见压缩格式及对应解压方法
+#### 1.1 常见压缩格式及对应解压方法
 ```
 .tar 
 解包：tar xvf FileName.tar
@@ -104,7 +104,7 @@ categories: [ "Linux" ]
 sEx只是调用相关程序，本身并无压缩、解压功能，请注意！
 ```
 
-##### 1.2 gzip 命令介绍
+#### 1.2 gzip 命令介绍
 gzip [选项] 压缩（解压缩）的文件名该命令的各选项含义如下：   
 
 * -c 将输出写到标准输出上，并保留原有文件。
@@ -115,7 +115,7 @@ gzip [选项] 压缩（解压缩）的文件名该命令的各选项含义如下
 * -v 对每一个压缩和解压的文件，显示文件名和压缩比。
 * -num 用指定的数字 num 调整压缩的速度，-1 或 --fast 表示最快压缩方法（低压缩比），-9 或--best表示最慢压缩方法（高压缩比）。系统缺省值为 6。  
 
-##### 1.3 gzip指令实例：   
+#### 1.3 gzip指令实例：   
 
 * gzip *       #把当前目录下的每个文件压缩成 .gz 文件。
 * gzip -dv *   #把当前目录下每个压缩的文件解压，并列出详细的信息。
@@ -136,7 +136,7 @@ sha256sum -c gpslogger-78.zip.SHA256
 
 **注意:** 检查校验和时，源文件(gpslogger-78.zip)和校验和文件(gpslogger-78.zip.SHA256)要放在同一目录下。
 
-##### 3.1 PGP校验
+#### 3.1 PGP校验
 
 * 从文件（如Keybase.io）导入PGP的公钥（PGP Public Key）或者直接使用命令` gpg --recv-key 公钥值`（公钥值如76CBE9A9）。  
 * 验证完整性和签名的命令如下：
@@ -159,13 +159,13 @@ df -hl
 
 ### 六. 查看System.map中的符号信息的方法如下
 
-##### 6.1第一种方法
+#### 6.1第一种方法
 
 ```bash
 sudo cat /boot/System.map-$(uname -r) | grep "vmap_area_list"
 ```
 
-##### 6.2第二种方法
+#### 6.2第二种方法
 
 ```bash
 cd /proc
@@ -174,7 +174,7 @@ sudo cat kallsyms | grep "vmap_area_list"
 
 **注意，在第二种方法中若是不加上sudo，输出的地址将全是0。**
 
-##### 6.3第三种方法
+#### 6.3第三种方法
 
 ```bash
  nm vmlinux | grep "vmap_area_list"
@@ -183,7 +183,7 @@ sudo cat kallsyms | grep "vmap_area_list"
 
 ### 七. Ubuntu系统安装软件
 
-##### 7.1 离线deb软件包的安装方法如下：
+#### 7.1 离线deb软件包的安装方法如下：
 
 ```bash
 sudo  dpkg  -i  package.deb
@@ -204,7 +204,7 @@ dpkg -c package.deb	列出 deb 包的内容
 dpkg –configure package	配置包
 ```
 
-###### 7.1.1 范例：在Ubuntu LTS 14.04下安装OpenJDK
+##### 7.1.1 范例：在Ubuntu LTS 14.04下安装OpenJDK
 
 1)从[archive.ubuntu.com](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/)下载64位deb包:
 
@@ -236,7 +236,7 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 ```
 
-##### 7.2 使用apt安装和卸载软件
+#### 7.2 使用apt安装和卸载软件
 
 * 查找软件
 
@@ -286,7 +286,7 @@ apt-get upgrade
 apt-cache search softname1 softname2 softname3……
 ```
 
-###### 7.2.1 范例：使用apt在Ubuntu 版本大于15.04平台下安装OpenJDK
+##### 7.2.1 范例：使用apt在Ubuntu 版本大于15.04平台下安装OpenJDK
 
 1)使用apt命令安装
 
@@ -318,7 +318,7 @@ mount -o ro,remount /system
 
 ### 九.远程命令
 
-##### 1）远程登录
+#### 1）远程登录
 
 ```bash
 # 基本用法
@@ -329,7 +329,7 @@ ssh host
 ssh -p 2222 user@host
 ```
 
-##### 2）建立ssh通道
+#### 2）建立ssh通道
 
 ```bash
 # 通过localhost:1234直接访问远程的ip:port
@@ -340,7 +340,7 @@ ssh -L 127.0.0.1:1234:127.0.0.1:8888 username@address_of_remote
 ssh -L 2000:localhost:3000 username@address_of_remote
 ```
 
-##### 3）远程复制文件
+#### 3）远程复制文件
 
 ```bash
 # 上传文件
@@ -357,7 +357,7 @@ scp -P 2222 user@host:/dir   要拷贝到的地方
 
 ### 十. 使用update-alternatives切换默认程序
 
-##### 设置默认gcc
+#### 设置默认gcc
 
 ```shell
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/local/gcc-8.2/bin/gcc 82 --slave /usr/bin/g++ g++ /usr/local/gcc-8.2/bin/g++
@@ -365,7 +365,7 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 10 --slave /
 ```
 
 
-##### 设置默认cmake
+#### 设置默认cmake
 
 ```shell
 sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/cmake-3.5.0-Linux-x86_64/bin/cmake 305 --slave /usr/bin/ctest ctest /usr/local/cmake-3.5.0-Linux-x86_64/bin/ctest --slave /usr/bin/ccmake ccmake /usr/local/cmake-3.5.0-Linux-x86_64/bin/ccmake --slave /usr/bin/cmake-gui cmake-gui /usr/local/cmake-3.5.0-Linux-x86_64/bin/cmake-gui --slave /usr/bin/cpack cpack /usr/local/cmake-3.5.0-Linux-x86_64/bin/cpack
