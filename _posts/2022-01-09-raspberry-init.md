@@ -8,19 +8,6 @@ comments: true
 categories: [ "RaspberryPi" ]
 ---
 
-- [1. 工具准备](#1-工具准备)
-- [2. 预设SD卡](#2-预设sd卡)
-  - [2.1 开启SSH服务](#21-开启ssh服务)
-  - [2.2 显示设置](#22-显示设置)
-  - [2.3 WiFi连接预设](#23-wifi连接预设)
-- [3. 设置树莓派系统](#3-设置树莓派系统)
-  - [3.1 设置apt中国源](#31-设置apt中国源)
-  - [3.2 设置pip中国源](#32-设置pip中国源)
-- [4. 开启VNC服务](#4-开启vnc服务)
-  - [4.1 设置开机自启VNC服务](#41-设置开机自启vnc服务)
-- [5. 安装Wiring Pi库](#5-安装wiring-pi库)
-- [参考资料](#参考资料)
-
 ## 1. 工具准备
 
 * 在[software/operating-systems](https://www.raspberrypi.com/software/operating-systems)上下载`Raspberry Pi OS with desktop`的torrent文件，并使用[qBittorrent](https://github.com/qbittorrent/qBittorrent/tags)工具打开得到的torrent文件以下载raspios-xx.zip文件，解压后可得到对应的raspios-xx.img文件。
