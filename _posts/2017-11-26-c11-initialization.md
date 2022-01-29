@@ -3,6 +3,7 @@ layout: post
 title: C++11统一初始化
 date: 2017-11-26
 comments: true
+toc: true
 categories: [ "C++11" ]
 ---
 

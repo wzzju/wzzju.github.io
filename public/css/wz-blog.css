@@ -245,3 +245,167 @@ select {
   z-index: 1;
 }
 /* Progress Bar CSS End */
+
+.menu-title {
+	margin: 0;
+	padding: 0.5rem 0.75rem;
+	font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+	font-size: 1em;
+	font-weight: bold
+}
+
+.toc {
+	font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+	color: #7a8288;
+	background-color: #fff;
+	border: 1px solid #f2f3f3;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.125);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.125)
+}
+
+.toc .menu-title {
+	color: #fff;
+	font-size: .85em;
+  font-weight: bold;
+	background: #216377;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px
+}
+
+.toc .active a {
+	background-color: #e2e4e5;
+	color: #3d4144
+}
+
+.toc-menu {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+	font-size: .75em
+}
+
+@media (min-width: 64em) {
+	.toc-menu {
+		font-size: .6875em
+	}
+}
+
+.toc-menu a {
+	display: block;
+	padding: 0.25rem 0.75rem;
+	color: #2f7d95;
+	font-weight: bold;
+	line-height: 1.5;
+	border-bottom: 1px solid #f2f3f3
+}
+
+.toc-menu a:hover {
+  text-decoration: underline;
+	color: #1ab7ea
+}
+
+.toc-menu li ul>li a {
+	padding-left: 1.25rem;
+	font-weight: normal
+}
+
+.toc-menu li ul li ul>li a {
+	padding-left: 1.75rem
+}
+
+.toc-menu li ul li ul li ul>li a {
+	padding-left: 2.25rem
+}
+
+.toc-menu li ul li ul li ul li ul>li a {
+	padding-left: 2.75rem
+}
+
+.toc-menu li ul li ul li ul li ul li ul>li a {
+	padding-left: 3.25rem
+}
+
+.side-right {
+	margin-bottom: 1em
+}
+
+@media (min-width: 64em) {
+	.side-right {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 200px;
+		margin-right: -200px;
+		padding-left: 1em;
+		z-index: 10
+	}
+
+	.side-right.sticky {
+		clear: both;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 2em;
+		float: right
+	}
+
+	.side-right.sticky::after {
+		clear: both;
+		content: "";
+		display: table
+	}
+
+	.side-right.sticky .toc .toc-menu {
+		overflow-y: auto;
+		max-height: calc(100vh - 7em)
+	}
+}
+
+@media (min-width: 80em) {
+	.side-right {
+		width: 300px;
+		margin-right: -300px
+	}
+}
+
+@media (min-width: 64em) {
+	.splash .side-right {
+		position: relative;
+		float: right;
+		margin-right: 0
+	}
+}
+
+@media (min-width: 80em) {
+	.splash .side-right {
+		margin-right: 0
+	}
+}
+
+.wide .side-right {
+	margin-bottom: 1em
+}
+
+@media (min-width: 64em) {
+	.wide .side-right {
+		position: initial;
+		top: initial;
+		right: initial;
+		width: initial;
+		margin-right: initial;
+		padding-left: initial;
+		z-index: initial
+	}
+
+	.wide .side-right.sticky {
+		float: none
+	}
+}
+
+@media (min-width: 80em) {
+	.wide .side-right {
+		width: initial;
+		margin-right: initial
+	}
+}

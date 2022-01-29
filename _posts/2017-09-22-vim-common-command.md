@@ -3,6 +3,7 @@ layout: post
 title: VIM常用命令
 date: 2017-09-22
 comments: true
+toc: true
 categories: [ "VIM" ]
 ---
 

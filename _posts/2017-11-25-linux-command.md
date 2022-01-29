@@ -3,6 +3,7 @@ layout: post
 title: "Linux常用命令总结"
 date: 2017-11-25
 comments: true
+toc: true
 categories: [ "Linux" ]
 ---
 

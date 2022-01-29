@@ -3,6 +3,7 @@ layout: post
 title: git常用功能总结
 date: 2020-05-17
 comments: true
+toc: true
 categories: [ "git" ]
 ---
 

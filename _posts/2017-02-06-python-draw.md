@@ -3,6 +3,7 @@ layout: post
 title: "使用Python绘制图表(转)"
 date: 2017-02-06
 comments: true
+toc: true
 categories: [ "Python" ]
 ---
 

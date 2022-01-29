@@ -11,7 +11,14 @@ layout: default
 </div>
 
 <div class="post">
-  {% include toc.html html=content %}
+  {% if page.toc %}
+    <aside class="side-right sticky">
+      <nav class="toc">
+        <h4 class="menu-title"><i class="fa fa-paperclip"></i> 目录 </h4>
+        {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc-menu" %}
+      </nav>
+    </aside>
+  {% endif %}
   {% include anchor_headings.html html=content anchorBody="#" %}
   <!--Substitute `{{ content }}` with the above `anchor_headings.html`.-->
   {% include share.html %}

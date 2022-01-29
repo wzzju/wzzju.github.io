@@ -3,6 +3,7 @@ layout: post
 title: Paddle框架Op注册机制
 date: 2020-07-13
 comments: true
+toc: true
 categories: [ "Framework" ]
 ---
 

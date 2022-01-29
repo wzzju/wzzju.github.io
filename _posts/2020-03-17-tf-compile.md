@@ -3,6 +3,7 @@ layout: post
 title: 使用gdb调试并阅读TensorFlow源码
 date: 2020-03-17
 comments: true
+toc: true
 categories: [ "TensorFlow" ]
 ---
 
