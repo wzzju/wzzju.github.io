@@ -165,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-size: .875rem; /* 15px */
   color: rgba(255,255,255,.6);
-  background-color: #708090;
+  background-color: #216377;
 }
 @media (min-width: 30rem) {
   .sidebar {
@@ -198,7 +198,8 @@ h1, h2, h3, h4, h5, h6 {
 a.sidebar-nav-item:hover,
 a.sidebar-nav-item:focus {
   text-decoration: none;
-  background-color: #63B8FF;
+  color: #000000;
+  background-color: #1AB7EA;
   border-color: transparent;
 }
 
@@ -226,7 +227,7 @@ a.sidebar-nav-item:focus {
   display: block;
   width: 2.2rem;
   padding: .5rem .65rem;
-  color: #708090;
+  color: #216377;
   background-color: #FFFFFF;
   border-radius: 4px;
   cursor: pointer;
@@ -249,7 +250,7 @@ a.sidebar-nav-item:focus {
 .sidebar-toggle:active,
 #sidebar-checkbox:checked ~ .wrap .sidebar-toggle {
   color: #FFFFFF;
-  background-color: #708090;
+  background-color: #216377;
 }
 
 @media (min-width: 30.1rem) {
