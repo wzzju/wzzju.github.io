@@ -25,6 +25,31 @@ layout: default
   {% include comments.html %}
 </div>
 
+<div class="pagination">
+  {% if page.previous.url %}
+    <a class="pagination-item older" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+      <b>前一篇</b><br>
+      <span><small><font color=#999>{{page.previous.title}}</font></small></span>
+    </a>
+  {% else %}
+    <span class="pagination-item older">
+      <b>前一篇</b><br>
+      <small>您来到了没有知识的荒原 :(</small>
+    </span>
+  {% endif %}
+  {% if page.next.url %}
+    <a class="pagination-item newer" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+      <b>后一篇</b><br>
+      <span><small><font color=#999>{{page.next.title}}</font></small></span>
+    </a>
+  {% else %}
+    <span class="pagination-item newer">
+      <b>后一篇</b><br>
+      <small>您来到了没有知识的荒原 :(</small>
+    </span>
+  {% endif %}
+</div>
+
 <div class="related">
   <h2>更多文章</h2>
   <ul class="related-posts">

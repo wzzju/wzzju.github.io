@@ -21,17 +21,17 @@ layout: default
 
 <div class="pagination">
   {% if paginator.next_page %}
-    <a class="pagination-item older" href="/page{{paginator.next_page}}">前一页</a>
+    <a class="pagination-item older" href="/page{{paginator.next_page}}"><b>前一页</b></a>
   {% else %}
-    <span class="pagination-item older">前一页</span>
+    <span class="pagination-item older"><b>前一页</b></span>
   {% endif %}
   {% if paginator.previous_page %}
     {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="/">后一页</a>
+      <a class="pagination-item newer" href="/"><b>后一页</b></a>
     {% else %}
-      <a class="pagination-item newer" href="/page{{paginator.previous_page}}">后一页</a>
+      <a class="pagination-item newer" href="/page{{paginator.previous_page}}"><b>后一页</b></a>
     {% endif %}
   {% else %}
-    <span class="pagination-item newer">后一页</span>
+    <span class="pagination-item newer"><b>后一页</b></span>
   {% endif %}
 </div>

@@ -255,7 +255,7 @@ source stl-views-1.0.3.gdb
 
 ## 8. 安装GDB 8.3并高亮显示源码
 
-### 8.1 安装支持source-highlight的GDB 8.3
+### 8.1 安装支持source-highlight的GDB
 
 * 源码编译并安装source-highlight
 
