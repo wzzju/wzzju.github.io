@@ -7,7 +7,7 @@ flag: bookmark
 {% assign sorted_categories = site.categories | sort %}
 <div id='tag_cloud' class='tags'>
     {% for cat in sorted_categories %}
-    <a href="#{{ cat[0] }}" title="{{ cat[0] }}" rel="{{ cat[1].size }}">{{ cat[0] }}({{ cat[1].size }}) </a> {% endfor %}
+    <a href="#{{ cat[0] }}" title="{{ cat[0] }}" rel="{{ cat[1].size }}">{{ cat[0] }}<sup>{{ cat[1].size }}</sup> </a> {% endfor %}
 </div>
 {% for category in sorted_categories %}
 <h3>{{ category | first }}</h3>
