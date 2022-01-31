@@ -267,7 +267,7 @@ select {
 
 .toc .menu-title {
   color: #fff;
-  font-size: 1.2em;
+  font-size: 1.25em;
   font-weight: bold;
   background: #216377;
   border-top-left-radius: 4px;
@@ -290,7 +290,7 @@ select {
   display: block;
   padding: 0.25rem 0.5rem;
   color: #2f7d95;
-  font-size: .9em;
+  font-size: 1em;
   font-weight: bold;
   line-height: 1.5;
   border-bottom: 1px solid #f2f3f3
@@ -309,19 +309,19 @@ select {
 }
 
 .toc-menu li ul>li a {
-  font-size: .85em;
+  font-size: .875em;
   font-weight: normal
 }
 
 @media (max-width: 600px) {
   .toc .menu-title {
-    font-size: 1.1em;
+    font-size: 1.125em;
   }
   .toc-menu {
-    font-size: .85em
+    font-size: .875em
   }
   .toc-menu li ul>li a {
-    font-size: .8em;
+    font-size: .75em;
     font-weight: normal
   }
 }

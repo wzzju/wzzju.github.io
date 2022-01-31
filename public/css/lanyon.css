@@ -172,6 +172,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: .75rem; /* 14px */
   }
 }
+@media (max-width: 600px) {
+  .sidebar {
+    font-size: .625rem; /* 13px */
+  }
+}
 
 /* Sidebar content */
 .sidebar a {
