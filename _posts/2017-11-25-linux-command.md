@@ -7,9 +7,9 @@ toc: true
 categories: [ "Linux" ]
 ---
 
-### 一. 解压与压缩[^compress]
+### 解压与压缩[^compress]
 
-#### 1.1 常见压缩格式及对应解压方法
+#### 常见压缩格式及对应解压方法
 ```
 .tar 
 解包：tar xvf FileName.tar
@@ -105,7 +105,7 @@ categories: [ "Linux" ]
 sEx只是调用相关程序，本身并无压缩、解压功能，请注意！
 ```
 
-#### 1.2 gzip 命令介绍
+#### gzip 命令介绍
 gzip [选项] 压缩（解压缩）的文件名该命令的各选项含义如下：   
 
 * -c 将输出写到标准输出上，并保留原有文件。
@@ -116,20 +116,20 @@ gzip [选项] 压缩（解压缩）的文件名该命令的各选项含义如下
 * -v 对每一个压缩和解压的文件，显示文件名和压缩比。
 * -num 用指定的数字 num 调整压缩的速度，-1 或 --fast 表示最快压缩方法（低压缩比），-9 或--best表示最慢压缩方法（高压缩比）。系统缺省值为 6。  
 
-#### 1.3 gzip指令实例：   
+#### gzip指令实例：   
 
 * gzip *       #把当前目录下的每个文件压缩成 .gz 文件。
 * gzip -dv *   #把当前目录下每个压缩的文件解压，并列出详细的信息。
 * gzip -l *    #详细显示例1中每个压缩的文件的信息，并不解压。
 * gzip usr.tar #压缩 tar 备份文件 usr.tar，此时压缩文件的扩展名为.tar.gz。  
 
-### 二. 求某个文件的SHA256(256-bit) 校验和
+### 求某个文件的SHA256校验和
 
 ```bash
 sha256sum gpslogger-78.zip > gpslogger-78.zip.SHA256
 ```
 
-### 三. 检查 SHA256(256-bit) 校验和
+### 检查SHA256校验和
 
 ```bash
 sha256sum -c gpslogger-78.zip.SHA256
@@ -137,7 +137,7 @@ sha256sum -c gpslogger-78.zip.SHA256
 
 **注意:** 检查校验和时，源文件(gpslogger-78.zip)和校验和文件(gpslogger-78.zip.SHA256)要放在同一目录下。
 
-#### 3.1 PGP校验
+#### PGP校验
 
 * 从文件（如Keybase.io）导入PGP的公钥（PGP Public Key）或者直接使用命令` gpg --recv-key 公钥值`（公钥值如76CBE9A9）。  
 * 验证完整性和签名的命令如下：
@@ -146,27 +146,27 @@ sha256sum -c gpslogger-78.zip.SHA256
 gpg --verify ~/Downloads/gpslogger-71.apk.asc
 ```
 
-### 四. 查看文件大小（目录下所有文件）
+### 查看目录中所有文件大小总和
 
 ```bash
 du -sh
 ```
 
-### 五. 查看磁盘情况
+### 查看磁盘情况
 
 ```bash
 df -hl
 ```
 
-### 六. 查看System.map中的符号信息的方法如下
+### 查看System.map中的符号信息
 
-#### 6.1第一种方法
+#### 第一种方法
 
 ```bash
 sudo cat /boot/System.map-$(uname -r) | grep "vmap_area_list"
 ```
 
-#### 6.2第二种方法
+#### 第二种方法
 
 ```bash
 cd /proc
@@ -175,16 +175,16 @@ sudo cat kallsyms | grep "vmap_area_list"
 
 **注意，在第二种方法中若是不加上sudo，输出的地址将全是0。**
 
-#### 6.3第三种方法
+#### 第三种方法
 
 ```bash
  nm vmlinux | grep "vmap_area_list"
 ```
 如果是自己编译内核，则会拥有内核镜像文件vmlinux（make后生成的）。  
 
-### 七. Ubuntu系统安装软件
+### Ubuntu系统安装软件
 
-#### 7.1 离线deb软件包的安装方法如下：
+#### 离线deb软件包的安装方法
 
 ```bash
 sudo  dpkg  -i  package.deb
@@ -205,17 +205,15 @@ dpkg -c package.deb	列出 deb 包的内容
 dpkg –configure package	配置包
 ```
 
-##### 7.1.1 范例：在Ubuntu LTS 14.04下安装OpenJDK
+##### 范例
+在Ubuntu LTS 14.04下安装OpenJDK：
 
-1)从[archive.ubuntu.com](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/)下载64位deb包:
-
-* [openjdk-8-jre-headless_8u45-b14-1_amd64.deb](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/openjdk-8-jre-headless_8u45-b14-1_amd64.deb) with SHA256   0f5aba8db39088283b51e00054813063173a4d8809f70033976f83e214ab56c0
-* [openjdk-8-jre_8u45-b14-1_amd64.deb](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/openjdk-8-jre_8u45-b14-1_amd64.deb) with SHA256   9ef76c4562d39432b69baf6c18f199707c5c56a5b4566847df908b7d74e15849
-* [openjdk-8-jdk_8u45-b14-1_amd64.deb](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/openjdk-8-jdk_8u45-b14-1_amd64.deb) with SHA256   6e47215cf6205aa829e6a0a64985075bd29d1f428a4006a80c9db371c2fc3c4c
-
-2)利用`sha256sum -c`命令检查校验和  
-
-3）安装deb软件包
+1. 从[archive.ubuntu.com](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/)下载64位deb包:
+   * [openjdk-8-jre-headless_8u45-b14-1_amd64.deb](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/openjdk-8-jre-headless_8u45-b14-1_amd64.deb) with SHA256   0f5aba8db39088283b51e00054813063173a4d8809f70033976f83e214ab56c0
+   * [openjdk-8-jre_8u45-b14-1_amd64.deb](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/openjdk-8-jre_8u45-b14-1_amd64.deb) with SHA256   9ef76c4562d39432b69baf6c18f199707c5c56a5b4566847df908b7d74e15849
+   * [openjdk-8-jdk_8u45-b14-1_amd64.deb](http://archive.ubuntu.com/ubuntu/pool/universe/o/openjdk-8/openjdk-8-jdk_8u45-b14-1_amd64.deb) with SHA256   6e47215cf6205aa829e6a0a64985075bd29d1f428a4006a80c9db371c2fc3c4c
+2. 利用`sha256sum -c`命令检查校验和  
+3. 安装deb软件包
 
 ```bash
 sudo apt-get update
@@ -237,7 +235,7 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 ```
 
-#### 7.2 使用apt安装和卸载软件
+#### 使用apt安装和卸载软件
 
 * 查找软件
 
@@ -287,39 +285,36 @@ apt-get upgrade
 apt-cache search softname1 softname2 softname3……
 ```
 
-##### 7.2.1 范例：使用apt在Ubuntu 版本大于15.04平台下安装OpenJDK
+##### 范例
 
-1)使用apt命令安装
+使用apt在Ubuntu 版本大于15.04平台下安装OpenJDK：
 
-```bash
-sudo apt-get update
-sudo apt-get install openjdk-8-jdk
-```
+1. 使用apt命令安装
+  ```bash
+  sudo apt-get update
+  sudo apt-get install openjdk-8-jdk
+  ```
+2. 更新默认Java 版本(可选)
+  ```bash
+  sudo update-alternatives --config java
+  sudo update-alternatives --config javac
+  ```
 
-2）更新默认Java 版本(可选)
+### 解决Android文件系统只读问题
 
-```bash
-sudo update-alternatives --config java
-sudo update-alternatives --config javac
-```
+解除`Read only file system on Android`限制的方法：
+1. Simply change ro to rw and add the remount option（root权限）
+  ```bash
+  mount -o rw,remount /system
+  ```
+2. Once you are done making changes, you should remount with the original readonly（root权限）.
+  ```bash
+  mount -o ro,remount /system
+  ```
 
-### 八.解决Read only file system on Android问题
+### 远程命令
 
-1）Simply change ro to rw and add the remount option（root权限）
-
-```bash
-mount -o rw,remount /system
-```
-
-2)Once you are done making changes, you should remount with the original readonly（root权限）.
-
-```bash
-mount -o ro,remount /system
-```
-
-### 九.远程命令
-
-#### 1）远程登录
+#### 远程登录
 
 ```bash
 # 基本用法
@@ -330,7 +325,7 @@ ssh host
 ssh -p 2222 user@host
 ```
 
-#### 2）建立ssh通道
+#### 建立ssh通道
 
 ```bash
 # 通过localhost:1234直接访问远程的ip:port
@@ -341,7 +336,7 @@ ssh -L 127.0.0.1:1234:127.0.0.1:8888 username@address_of_remote
 ssh -L 2000:localhost:3000 username@address_of_remote
 ```
 
-#### 3）远程复制文件
+#### 远程复制文件
 
 ```bash
 # 上传文件
@@ -356,7 +351,7 @@ scp user@host:/dir/文件名 要拷贝到的地方
 scp -P 2222 user@host:/dir   要拷贝到的地方
 ```
 
-### 十. 使用update-alternatives切换默认程序
+### update-alternatives切换默认程序
 
 #### 设置默认gcc
 
@@ -373,7 +368,7 @@ sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/cmake-3.5.0-L
 sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/cmake-3.10.0-Linux-x86_64/bin/cmake 310 --slave /usr/bin/ctest ctest /usr/local/cmake-3.10.0-Linux-x86_64/bin/ctest --slave /usr/bin/ccmake ccmake /usr/local/cmake-3.10.0-Linux-x86_64/bin/ccmake --slave /usr/bin/cmake-gui cmake-gui /usr/local/cmake-3.10.0-Linux-x86_64/bin/cmake-gui --slave /usr/bin/cpack cpack /usr/local/cmake-3.10.0-Linux-x86_64/bin/cpack
 ```
 
-### 十一. 从apt安装gcc-10
+### 从apt安装gcc-10
 
 * 编辑`/etc/apt/sources.list`，加入如下语句：
 
@@ -397,10 +392,42 @@ gpg -a --export 04EE7237B7D453EC | sudo apt-key add -
 sudo apt install gcc-10 g++-10
 ```
 
-### 十二. 使用grep和xargs过滤文件
+### 使用grep和xargs过滤文件
 
 ```bash
 ls | grep -v -E "\.py$|doc" | xargs -I {} mv {} ./doc
+```
+
+### Ubuntu一行命令换apt源
+```shell
+sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirrors.163.com\/ubuntu\//g' /etc/apt/sources.list && apt update
+```
+
+### sed命令批量替换字符串
+
+```shell
+sed -i "s/原字符串/新字符串/g" `grep 原字符串 -rl 所在目录`
+# demo: sed -i "s/CHECK(/CHECK_CUDA(/g" `grep CHECK\( -rl .`
+
+grep "CHECK_CUDA(" . -nr
+
+# -i 表示inplace edit，就地修改文件
+# -r 表示搜索子目录
+# -l 表示输出匹配的文件名
+# -n 表示输出匹配的行号
+```
+
+### 使用正则表达式查找特定文件
+
+```shell
+find ~/.cache/bazel/ -path "*external/org_tensorflow" | grep "_bazel_root/[A-Za-z0-9]*/external/org_tensorflow$"
+```
+
+### shell脚本默认参数设置
+
+```shell
+SAVE_FILE=xla_pass_${1:-'unspecified'}.csv
+GPU_ID=${2:-'0'}
 ```
 
 ### 参考资料
@@ -409,6 +436,8 @@ ls | grep -v -E "\.py$|doc" | xargs -I {} mv {} ./doc
 * [Ubuntu中用apt安装和卸载软件](http://blog.csdn.net/ludonghai715/article/details/5657724)
 * [Ubuntu .deb包安装方法](http://blog.csdn.net/zhaoyang22/article/details/4235596)
 * [Installing newer GCC versions in Ubuntu](https://tuxamito.com/wiki/index.php/Installing_newer_GCC_versions_in_Ubuntu)
+* [每天一个linux命令（39）：grep 命令](https://www.cnblogs.com/peida/archive/2012/12/17/2821195.html)
+* [linux find -regex 使用正则表达式](https://www.cnblogs.com/jiangzhaowei/p/5451173.html)
 
 [^compress]: 内容引自[inux下解压命令大全](http://www.cnblogs.com/eoiioe/archive/2008/09/20/1294681.html)
 [^gpgerr]: [What's the best way to install apt packages from Debian Stretch on Raspbian Jessie?](https://unix.stackexchange.com/questions/274053/whats-the-best-way-to-install-apt-packages-from-debian-stretch-on-raspbian-jess)

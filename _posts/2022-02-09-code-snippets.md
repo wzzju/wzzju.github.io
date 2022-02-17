@@ -13,7 +13,7 @@ categories: [ "C++" ]
 #include <cstdlib>
 #include <ctime>
 
-// `int rand(void)` returns a pseudo-random integer
+// "int rand(void)" returns a pseudo-random integer
 // value between 0 and RAND_MAX (0 and RAND_MAX included).
 // RAND_MAX is a constant whose default value
 // may vary between implementations, but it is
