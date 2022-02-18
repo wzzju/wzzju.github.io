@@ -7,9 +7,10 @@ toc: true
 categories: [ "Linux" ]
 ---
 
-### 解压与压缩[^compress]
+### 常见压缩格式的解压与压缩
 
-#### 常见压缩格式及对应解压方法
+常见压缩格式以及它们对应的解压方法介绍如下[^compress]：
+
 ```
 .tar 
 解包：tar xvf FileName.tar
@@ -116,7 +117,7 @@ gzip [选项] 压缩（解压缩）的文件名该命令的各选项含义如下
 * -v 对每一个压缩和解压的文件，显示文件名和压缩比。
 * -num 用指定的数字 num 调整压缩的速度，-1 或 --fast 表示最快压缩方法（低压缩比），-9 或--best表示最慢压缩方法（高压缩比）。系统缺省值为 6。  
 
-#### gzip指令实例：   
+#### gzip指令实例
 
 * gzip *       #把当前目录下的每个文件压缩成 .gz 文件。
 * gzip -dv *   #把当前目录下每个压缩的文件解压，并列出详细的信息。
@@ -137,7 +138,7 @@ sha256sum -c gpslogger-78.zip.SHA256
 
 **注意:** 检查校验和时，源文件(gpslogger-78.zip)和校验和文件(gpslogger-78.zip.SHA256)要放在同一目录下。
 
-#### PGP校验
+### PGP校验
 
 * 从文件（如Keybase.io）导入PGP的公钥（PGP Public Key）或者直接使用命令` gpg --recv-key 公钥值`（公钥值如76CBE9A9）。  
 * 验证完整性和签名的命令如下：
@@ -430,6 +431,159 @@ SAVE_FILE=xla_pass_${1:-'unspecified'}.csv
 GPU_ID=${2:-'0'}
 ```
 
+### 查看C++ name mangling函数名称
+
+C++允许函数重载，因此编译器存在name mangling机制，这样显示的函数名称将难以理解。可以使用`c++filt`命令对name mangling后的名称进行转换，示例如下：
+
+```shell
+nm ./build/libcinnapi.so | c++filt | grep CinnBuilder::Add
+# 0000000001b30348 T cinn::frontend::CinnBuilder::Add(cinn::frontend::Variable const&, cinn::frontend::Variable const&)
+c++filt _ZN6paddle8platform18RecordedCudaMallocEPPvmi
+# paddle::platform::RecordedCudaMalloc(void**, unsigned long, int)
+```
+
+### 查看C/C++二进制文件符号表
+
+`nm`命令可以用于查看一个二进制文件中的符号表，其常用的options列举如下：
+* `-A`：在每个符号信息的前面打印所在对象文件名称
+* `-C`：输出demangle的符号名称，等价于`nm main | c++filt`命令，对于c++编译出来的对象文件建议加上`-C`
+* `-D`：打印动态符号
+* `-l`：使用对象文件中的调试信息打印出所在源文件及行号，**须确保作用的对象文件中带有符号调式信息**
+* `-n`：按照地址/符号值来排序
+* `-u`：打印出那些未定义的符号
+
+下文结合示例给出部分符合类型的解释说明[^symbol]。
+
+```cpp
+#include <cstdio>
+
+int g1;
+int g2 = 0;
+
+static int g3;
+static int g4 = 0;
+
+const int g5 = 0;
+
+static const int g6 = 0;
+
+void func1() {}
+static void func2() {}
+void overload(int i) {}
+void overload(float i) {}
+
+int main(int argc, char *argv[]) {
+  static int st = 0;
+
+  int t1;
+  int t2 = 0;
+
+  const int t3 = 0;
+
+  printf("Hello, world!\n");
+
+  return 0;
+}
+```
+
+对于每一个符号，`nm`命令列出其值(the symbol value)、类型（the symbol type）和名字(the symbol name)：
+
+```shell
+0000000000404030 B __bss_start
+0000000000404030 b completed.7344
+0000000000404020 D __data_start
+0000000000404020 W data_start
+0000000000401080 t deregister_tm_clones
+0000000000401070 T _dl_relocate_static_pie
+00000000004010f0 t __do_global_dtors_aux
+0000000000403dd8 d __do_global_dtors_aux_fini_array_entry
+0000000000404028 D __dso_handle
+0000000000403de0 d _DYNAMIC
+0000000000404030 D _edata
+0000000000404048 B _end
+00000000004011f4 T _fini
+0000000000401120 t frame_dummy
+0000000000403dd0 d __frame_dummy_init_array_entry
+00000000004021f4 r __FRAME_END__
+0000000000404034 B g1
+0000000000404038 B g2
+0000000000404000 d _GLOBAL_OFFSET_TABLE_
+                 w __gmon_start__
+000000000040201c r __GNU_EH_FRAME_HDR
+0000000000401000 T _init
+0000000000403dd8 d __init_array_end
+0000000000403dd0 d __init_array_start
+0000000000402000 R _IO_stdin_used
+00000000004011f0 T __libc_csu_fini
+0000000000401180 T __libc_csu_init
+                 U __libc_start_main@@GLIBC_2.2.5
+0000000000401146 T main
+                 U puts@@GLIBC_2.2.5
+00000000004010b0 t register_tm_clones
+0000000000401040 T _start
+0000000000404030 D __TMC_END__
+0000000000401122 T _Z5func1v
+000000000040113a T _Z8overloadf
+0000000000401130 T _Z8overloadi
+000000000040403c b _ZL2g3
+0000000000404040 b _ZL2g4
+0000000000402004 r _ZL2g5
+0000000000402008 r _ZL2g6
+0000000000401129 t _ZL5func2v
+0000000000404044 b _ZZ4mainE2st
+```
+
+|符号类型|解释|
+|:---:|:---|
+|A|该符号的值是绝对的，在后续的链接中将不再改变。<br>常出现在中断向量表中，表示中断向量函数在中断向量表中的位置|
+|B|全局非初始化数据段(bss段)的符号，其值表示该符号在bss段中的偏移，如`g1`|
+|D|该符号放在普通的数据段中，通常是那些已经初始化的全局变量|
+|b|全局static的符号，如`g3`(`_ZL2g3`)|
+|r|const型只读的变量(readonly)，如`g5`(`_ZL2g5`)|
+|I|该符号是对另一个符号的间接引用|
+|N|debugging符号|
+|T|位于代码区的符号，通常是那些全局非静态函数，比如本文件里的函数，<br>如`main`和`func1`(`_Z5func1v`)|
+|t|位于代码区的符号，一般是static函数，如`func2`(`_ZL5func2v`)|
+|U|该符号在本文件未定义过，需要自其他对象文件中链接进来，如调用glibc库的`puts@@GLIBC_2.2.5`函数|
+|W|未明确指定的弱链接符号，与其链接的其他对象文件中有它的定义就用上，<br>否则就使用一个系统特别指定的默认值|
+|?|该符号类型没有定义|
+|<img width=66/><!-- 使得`符号类型`不换行 -->|局部变量在符号表中是不存在的|
+
+### 查看文件类型信息
+
+> `file`命令可用于识别文件类型，也可用于辨别一些文件的编码格式。与windows通过扩展名来确定文件类型相比，`file`主要通过查看文件的头部信息来获取文件类型。
+
+#### 查看二进制文件的处理器架构
+查看一个可执行二进制文件所属处理器架构的方法如下：
+```shell
+file main
+# main: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, with debug_info, not stripped
+```
+
+#### 查看文本文件的编码格式
+查看一个文本文件的编码格式方法如下：
+```shell
+file main.cc
+# main.cc: C source, ASCII text
+file demo.py
+# demo.py: Python script, ASCII text executable
+```
+
+### 查看elf格式文件信息
+
+* `readelf -h`用于读取指定elf文件的头信息
+  ```shell
+  readelf -h main
+  # ELF Header:
+  #   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
+  #   Class:                             ELF64
+  #   Data:                              2's complement, little endian
+  #   ...
+  ```
+
+* `readelf -s`用于查看指定elf文件的符号表，示例：`readelf -s main`
+  - 全局变量、静态全局变量、静态局部变量、全局函数名都会出现在符号表中,而局部变量不会被保存在符号表中
+
 ### 参考资料
 
 * [Establishing a Build Environment](http://source.android.com/source/initializing.html)
@@ -441,3 +595,4 @@ GPU_ID=${2:-'0'}
 
 [^compress]: 内容引自[inux下解压命令大全](http://www.cnblogs.com/eoiioe/archive/2008/09/20/1294681.html)
 [^gpgerr]: [What's the best way to install apt packages from Debian Stretch on Raspbian Jessie?](https://unix.stackexchange.com/questions/274053/whats-the-best-way-to-install-apt-packages-from-debian-stretch-on-raspbian-jess)
+[^symbol]: [C/C++ -- Lib库文件nm调试之符号表](https://blog.csdn.net/GugeMichael/article/details/8215738)

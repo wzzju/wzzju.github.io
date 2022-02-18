@@ -255,6 +255,8 @@ source stl-views-1.0.3.gdb
 
 ## 8. 安装GDB 8.3并高亮显示源码
 
+> 推荐使用附录中的命令行方式安装`gdb-10`，其自带源码高亮功能。
+
 ### 8.1 安装支持source-highlight的GDB
 
 * 源码编译并安装source-highlight
@@ -320,9 +322,13 @@ update-alternatives --install /usr/bin/gdb gdb /usr/local/gdb83/bin/gdb 83 --sla
   ```
   然而这样打包得到的`whl`包只能在python3.7环境中进行安装，所以编译时使用python3.7是最好的选择。
 
-## 10 附录（docker容器中的一些配置文件）
+## 附录
 
-### 10.1. apt软件包中国源(`/etc/apt/sources.list`的内容)
+下面对本文所使用的docker容器中的一些配置文件进行记录。
+
+### apt软件包中国源
+
+修改`/etc/apt/sources.list`文件，修改后内容如下：
 
 ```bash
 deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties
@@ -344,7 +350,9 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
 deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse
 ```
 
-### 10.2. pip中国源(`~/.pip/pip.conf`内容)
+### pip中国源
+
+修改`~/.pip/pip.conf`文件，修改后内容如下：
 
 ```bash
 [global]
@@ -352,20 +360,21 @@ trusted-host = mirrors.aliyun.com
 index-url = https://mirrors.aliyun.com/pypi/simple
 ```
 
-## 11 Ubuntu 18.04 LTS系统安装gdb10和python3.7-dbg
+### 安装gdb10和python3.7-dbg
+
+执行如下命令在Ubuntu 18.04 LTS系统中安装gdb10和python3.7-dbg：
 
 ```bash
-# 安装gdb10
-apt-get install software-properties-common && \
-    apt-get update && \
+# 安装gdb10：使用该命令安装的gdb10自带源码高亮功能
+apt-get install software-properties-common &&            \
+    apt-get update &&                                    \
     add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
-    apt-get update -y && \
+    apt-get update -y &&                                 \
     apt install gdb -y
 
 # 安装python3.7-dbg
 apt install python3.7-dbg
 # /usr/share/gdb/auto-load/usr/bin/python3.7m-gdb.py即为所需libpython.py
-
 ```
 
 ## 参考资料
