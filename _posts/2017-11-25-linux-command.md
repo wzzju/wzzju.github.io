@@ -369,7 +369,7 @@ sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/cmake-3.5.0-L
 sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/cmake-3.10.0-Linux-x86_64/bin/cmake 310 --slave /usr/bin/ctest ctest /usr/local/cmake-3.10.0-Linux-x86_64/bin/ctest --slave /usr/bin/ccmake ccmake /usr/local/cmake-3.10.0-Linux-x86_64/bin/ccmake --slave /usr/bin/cmake-gui cmake-gui /usr/local/cmake-3.10.0-Linux-x86_64/bin/cmake-gui --slave /usr/bin/cpack cpack /usr/local/cmake-3.10.0-Linux-x86_64/bin/cpack
 ```
 
-### 从apt安装gcc-10
+### 使用apt安装gcc-10
 
 * 编辑`/etc/apt/sources.list`，加入如下语句：
 
@@ -547,7 +547,7 @@ int main(int argc, char *argv[]) {
 |U|该符号在本文件未定义过，需要自其他对象文件中链接进来，如调用glibc库的`puts@@GLIBC_2.2.5`函数|
 |W|未明确指定的弱链接符号，与其链接的其他对象文件中有它的定义就用上，<br>否则就使用一个系统特别指定的默认值|
 |?|该符号类型没有定义|
-|<img width=66/><!-- 使得`符号类型`不换行 -->|局部变量在符号表中是不存在的|
+|<img width=66/>|局部变量在符号表中是不存在的|
 
 ### 查看文件类型信息
 
