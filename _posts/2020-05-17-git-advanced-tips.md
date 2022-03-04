@@ -191,6 +191,24 @@ git config --global i18n.logoutputencoding utf-8
 export LESSCHARSET=utf-8
 ```
 
+### 14. git代理设置
+* 根据socks端口配置git代理，所需执行命令如下：
+  ```shell
+  git config --global http.proxy socks5://127.0.0.1:port
+  git config --global http.https://github.com.proxy socks5://127.0.0.1:port
+  ```
+* 配置好代理后，建议也进行如下两个配置：
+  ```shell
+  git config --global http.version HTTP/1.1
+  git config --global http.postBuffer 524288000
+  ```
+* 使用`git config --global --list`查看代理是否配置成功
+* 取消git代理设置，所需执行命令如下：
+  ```shell
+  git config --global --unset http.proxy
+  git config --global --unset http.https://github.com.proxy
+  ```
+
 ## 参考资料
 
 * [How to squash commits in git after they have been pushed?](https://stackoverflow.com/questions/5667884/how-to-squash-commits-in-git-after-they-have-been-pushed)
