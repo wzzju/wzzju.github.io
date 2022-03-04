@@ -177,6 +177,20 @@ git fetch upstream release/1.7:newBranch
 
 详见[二分法调试脚本](/assets/tools/binary_search_debug.py)。
 
+### 13. git diff中文乱码
+```shell
+# 显示status编码
+git config --global core.quotepath false
+# 图形界面编码
+git config --global gui.encoding utf-8
+# 提交信息编码
+git config --global i18n.commit.encoding utf-8
+# 输出log编码
+git config --global i18n.logoutputencoding utf-8
+# git log默认使用less分页，对less命令进行utf-8编码
+export LESSCHARSET=utf-8
+```
+
 ## 参考资料
 
 * [How to squash commits in git after they have been pushed?](https://stackoverflow.com/questions/5667884/how-to-squash-commits-in-git-after-they-have-been-pushed)
@@ -185,4 +199,4 @@ git fetch upstream release/1.7:newBranch
 * [Closing issues via commit messages](https://help.github.com/articles/closing-issues-via-commit-messages)
 * [git push文档](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force)
 * [Git 更安全的强制推送，--force-with-lease](https://blog.csdn.net/WPwalter/article/details/80371264)
-
+* [修复git diff正文中文乱码](https://www.jianshu.com/p/fc8162ed1e3d)
