@@ -20,6 +20,10 @@ layout: default
     </aside>
   {% endif %}
   {% include anchor_headings.html html=content anchorBody="#" %}
+  {% comment %}
+    If you don't need anchors, you can just use `{{ content }}`
+    instead of `anchor_headings.html`.
+  {% endcomment %}
   {% include share.html %}
   {% include comments.html %}
 </div>
