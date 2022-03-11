@@ -1,438 +1,444 @@
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
-  color: #268bd2;
-  text-decoration: none;
+	color: #268bd2;
+	text-decoration: none;
 }
 /* `:focus` is linked to `:hover` for basic accessibility */
 a:hover,
 a:focus {
-  text-decoration: underline;
-  color: #0085a1;
+	text-decoration: underline;
+	color: #0085a1;
 }
 
-.ui{
-    position:relative;
-    left:50%;
-    float:left;
-    list-style: none;
-    margin:10px;
-    padding:10px;
- }
-.ui li{
-    position:relative;
-    right:50%;
-    float:left;
-    margin:4px 12px;
+.ui {
+	position: relative;
+	left: 50%;
+	float: left;
+	list-style: none;
+	margin: 10px;
+	padding: 10px;
 }
 
-.ui li a{
-    display: inline-block;
+.ui li {
+	position: relative;
+	right: 50%;
+	float: left;
+	margin: 4px 12px;
+}
+
+.ui li a {
+	display: inline-block;
 }
 
 .dropdown-menu {
-    display:block;
-    float:left;
-    width:100%;
-    padding:0;
-    margin:0;
-    list-style-type:none;
-    background:#216377;
+	display: block;
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	background: #216377;
 }
 
 .dropdown-menu > li {
-    display:block;
-    margin:0;
-    padding:0;
-    position:relative;
+	display: block;
+	margin: 0;
+	padding: 0;
+	position: relative;
 }
 
 .dropdown-menu > li > a, .dropdown-menu ul > li > a {
-    display:block;
-    background:#216377;
-    color:#fff;
-    padding:.5em 1em;
-    text-decoration:none;
+	display: block;
+	background: #216377;
+	color: #fff;
+	padding: .5em 1em;
+	text-decoration: none;
 }
 
 .dropdown-menu > li > a {
-    border-right:1px solid #ccc;
+	border-right: 1px solid #ccc;
 }
 
 .dropdown-menu ul > li > a {
-    padding-right:3em;
-    border-top:1px solid #bbb;
+	padding-right: 3em;
+	border-top: 1px solid #bbb;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu ul > li > a:hover {
-    background:#3FC4FF;
-    color:#000;
+	background: #3FC4FF;
+	color: #000;
 }
 
 .dropdown-menu ul {
-    display:block;
-    opacity:0;
-    position:absolute;
-    list-style-type:none;
-    padding:0;
-    margin:0;
-    z-index:1;
-    white-space:nowrap;
-
-    transition:         opacity 0s 1s, z-index 0s 1s;
-    -o-transition:      opacity 0s 1s, z-index 0s 1s;
-    -ms-transition:     opacity 0s 1s, z-index 0s 1s;
-    -moz-transition:    opacity 0s 1s, z-index 0s 1s;
-    -webkit-transition: opacity 0s 1s, z-index 0s 1s;
+	display: block;
+	opacity: 0;
+	position: absolute;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	z-index: 1;
+	white-space: nowrap;
+	transition: opacity 0s 1s, z-index 0s 1s;
+	-o-transition: opacity 0s 1s, z-index 0s 1s;
+	-ms-transition: opacity 0s 1s, z-index 0s 1s;
+	-moz-transition: opacity 0s 1s, z-index 0s 1s;
+	-webkit-transition: opacity 0s 1s, z-index 0s 1s;
 }
 
 .dropdown-menu > li:hover > ul {
-    opacity:1;
-    z-index:3;
-    display:block;
-
-    transition:         opacity, z-index;
-    -o-transition:      opacity, z-index;
-    -ms-transition:     opacity, z-index;
-    -moz-transition:    opacity, z-index;
-    -webkit-transition: opacity, z-index;
+	opacity: 1;
+	z-index: 3;
+	display: block;
+	transition: opacity, z-index;
+	-o-transition: opacity, z-index;
+	-ms-transition: opacity, z-index;
+	-moz-transition: opacity, z-index;
+	-webkit-transition: opacity, z-index;
 }
 
 .dropdown-menu:hover ul {
-    opacity:0;
-    z-index:1;
-    display:none;
-
-    transition:         none;
-    -o-transition:      none;
-    -ms-transition:     none;
-    -moz-transition:    none;
-    -webkit-transition: none;
+	opacity: 0;
+	z-index: 1;
+	display: none;
+	transition: none;
+	-o-transition: none;
+	-ms-transition: none;
+	-moz-transition: none;
+	-webkit-transition: none;
 }
 
 select {
-    -webkit-appearance: none;
-    margin-top: 15px;
-    color: #337ab7;
-    border-color: #337ab7;
-    padding: 0em 0.4em;
-    background: white;
+	-webkit-appearance: none;
+	margin-top: 15px;
+	color: #337ab7;
+	border-color: #337ab7;
+	padding: 0em 0.4em;
+	background: white;
 }
 
 .post-content-preview {
-  font-size: 13px;
-  font-style: italic;
-  color: #a3a3a3;
+	font-size: 13px;
+	font-style: italic;
+	color: #a3a3a3;
 }
+
 .post-content-preview:hover {
-  color: #0085a1;
+	color: #0085a1;
 }
+
 @media only screen and (min-width: 768px) {
-  .post-content-preview {
-    font-size: 14px;
-  }
+	.post-content-preview {
+		font-size: 14px;
+	}
 }
 
 .post-preview > a > .post-title {
-  font-size: 21px;
-  line-height: 1.3;
-  margin-top: 30px;
-  margin-bottom: 8px;
+	font-size: 21px;
+	line-height: 1.3;
+	margin-top: 30px;
+	margin-bottom: 8px;
 }
+
 .post-preview > a > .post-title:hover {
-    color: #0085a1;
+	color: #0085a1;
 }
 
 .post-preview > .post-meta {
-  font-family: 'Lora', 'Times New Roman', serif;
-  color: #808080;
-  font-size: 16px;
-  font-style: italic;
-  margin-top: 0;
+	font-family: 'Lora', 'Times New Roman', serif;
+	color: #808080;
+	font-size: 16px;
+	font-style: italic;
+	margin-top: 0;
 }
+
 .post-preview > .post-meta > a {
-  text-decoration: none;
-  color: #404040;
+	text-decoration: none;
+	color: #404040;
 }
+
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
-  color: #0085a1;
-  text-decoration: underline;
+	color: #0085a1;
+	text-decoration: underline;
 }
 
-
 @media only screen and (min-width: 768px) {
-  .post-preview {
-    margin-left: 20px;
-  }
-  .post-preview > a > .post-title {
-    font-size: 26px;
-    line-height: 1.3;
-    margin-bottom: 10px;
-  }
-  .post-preview .post-meta {
-    font-size: 18px;
-  }
+	.post-preview {
+		margin-left: 20px;
+	}
+
+	.post-preview > a > .post-title {
+		font-size: 26px;
+		line-height: 1.3;
+		margin-bottom: 10px;
+	}
+
+	.post-preview .post-meta {
+		font-size: 18px;
+	}
 }
 
 /* Search Tool CSS Begin*/
 #search-target-blog {
-  position: fixed;
-  bottom: 3%;
-  right: 2%;
+	position: fixed;
+	bottom: 3%;
+	right: 2%;
 }
 
 @media (max-width: 600px) {
-  #search-target-blog {
-    right: 8%;
-    bottom: 2%;
-  }
+	#search-target-blog {
+		right: 8%;
+		bottom: 2%;
+	}
 }
 /* Search Tool CSS End */
 
 /* Scroll To Top CSS Begin*/
 #scroll-to-top {
-  display: block;
-  position: fixed;
-  font-size: 22px;
-  font-weight: bold;
-  bottom: 3%;
-  right: 10%;
-  opacity: 0;
-  z-index: 99;
-  text-align: center;
-  transform: translateY(30%);
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	display: block;
+	position: fixed;
+	font-size: 22px;
+	font-weight: bold;
+	bottom: 3%;
+	right: 10%;
+	opacity: 0;
+	z-index: 99;
+	text-align: center;
+	transform: translateY(30%);
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 @media (max-width: 600px) {
-  #scroll-to-top {
-    font-size: 20px;
-  }
+	#scroll-to-top {
+		font-size: 20px;
+	}
 }
 
 @media (max-width: 600px) {
-  #scroll-to-top {
-    right: 5%;
-    bottom: 12%;
-  }
+	#scroll-to-top {
+		right: 5%;
+		bottom: 12%;
+	}
 }
 
 #scroll-to-top :last-child {
-  transition: transform 0.7s ease-in-out;
+	transition: transform 0.7s ease-in-out;
 }
 
 #scroll-to-top :last-child:active, #scroll-to-top :last-child:hover {
-  transform: translateY(-10%);
+	transform: translateY(-10%);
 }
 
 #scroll-to-top span {
-  cursor: pointer;
-  color: #1a1d24;
+	cursor: pointer;
+	color: #1a1d24;
 }
 
 #scroll-to-top span:hover .up-arrow, #scroll-to-top span:active .up-arrow {
-  color: #00adb5;
+	color: #00adb5;
 }
 /* Scroll To Top CSS End*/
 
 /* Progress Bar CSS Begin*/
 #progress-bar {
-  background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet var(--scroll), transparent 0);
-  position: fixed;
-  overflow: hidden;
-  width: 100%;
-  height: 3px;
-  z-index: 1;
+	background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet var(--scroll), transparent 0);
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+	height: 3px;
+	z-index: 1;
 }
 /* Progress Bar CSS End */
 
 .menu-title {
-  margin: 0;
-  padding: 0.5rem 0.5rem;
-  font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
-  font-size: 1em;
-  font-weight: bold
+	margin: 0;
+	padding: 0.5rem 0.5rem;
+	font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+	font-size: 1em;
+	font-weight: bold
 }
 
 .toc {
-  margin: 1rem 0rem;
-  font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
-  color: #7a8288;
-  background-color: #fff;
-  border: 1px solid #f2f3f3;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.125);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.125)
+	margin: 1rem 0rem;
+	font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+	color: #7a8288;
+	background-color: #fff;
+	border: 1px solid #f2f3f3;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.125);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.125)
 }
 
 .toc .menu-title {
-  color: #fff;
-  font-size: 1.25em;
-  font-weight: bold;
-  background: #216377;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px
+	color: #fff;
+	font-size: 1.25em;
+	font-weight: bold;
+	background: #216377;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px
 }
 
 .toc .active a {
-  background-color: #e2e4e5;
-  color: #3d4144
+	background-color: #e2e4e5;
+	color: #3d4144
 }
 
 .toc-menu {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
 }
 
 .toc-menu a {
-  display: block;
-  padding: 0.25rem 0.5rem;
-  color: #2f7d95;
-  font-size: 1em;
-  font-weight: bold;
-  line-height: 1.5;
-  border-bottom: 1px solid #f2f3f3
+	display: block;
+	padding: 0.25rem 0.5rem;
+	color: #2f7d95;
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 1.5;
+	border-bottom: 1px solid #f2f3f3
 }
 
 .toc-menu a:hover {
-  text-decoration: underline;
-  color: #1ab7ea
+	text-decoration: underline;
+	color: #1ab7ea
 }
 
 .toc-menu li ul {
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  padding-left: 1.0rem;
-  list-style: none
+	margin-top: 0rem;
+	margin-bottom: 0rem;
+	padding-left: 1.0rem;
+	list-style: none
 }
 
 .toc-menu li ul>li a {
-  font-size: .875em;
-  font-weight: normal
+	font-size: .875em;
+	font-weight: normal
 }
 
 @media (max-width: 600px) {
-  .toc .menu-title {
-    font-size: 1.125em;
-  }
-  .toc-menu {
-    font-size: .875em
-  }
-  .toc-menu li ul>li a {
-    font-size: .75em;
-    font-weight: normal
-  }
+	.toc .menu-title {
+		font-size: 1.125em;
+	}
+
+	.toc-menu {
+		font-size: .875em
+	}
+
+	.toc-menu li ul>li a {
+		font-size: .75em;
+		font-weight: normal
+	}
 }
 
 .toc-menu li ul li ul {
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  padding-left: 1.0rem;
-  list-style: none
+	margin-top: 0rem;
+	margin-bottom: 0rem;
+	padding-left: 1.0rem;
+	list-style: none
 }
 
 .toc-menu li ul li ul li ul {
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  padding-left: 1.0rem;
-  list-style: none
+	margin-top: 0rem;
+	margin-bottom: 0rem;
+	padding-left: 1.0rem;
+	list-style: none
 }
 
 .toc-menu li ul li ul li ul li ul {
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  padding-left: 1.0rem;
-  list-style: none
+	margin-top: 0rem;
+	margin-bottom: 0rem;
+	padding-left: 1.0rem;
+	list-style: none
 }
 
 .toc-menu li ul li ul li ul li ul li ul {
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  padding-left: 1.0rem;
-  list-style: none
+	margin-top: 0rem;
+	margin-bottom: 0rem;
+	padding-left: 1.0rem;
+	list-style: none
 }
 
 .side-right {
-  margin-bottom: 1em
+	margin-bottom: 1em
 }
 
 @media (min-width: 64em) {
-  .side-right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 200px;
-    margin-right: -200px;
-    padding-left: 1em;
-    z-index: 10
-  }
+	.side-right {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 200px;
+		margin-right: -200px;
+		padding-left: 1em;
+		z-index: 10
+	}
 
-  .side-right.sticky {
-    clear: both;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 2em;
-    float: right
-  }
+	.side-right.sticky {
+		clear: both;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 2em;
+		float: right
+	}
 
-  .side-right.sticky::after {
-    clear: both;
-    content: "";
-    display: table
-  }
+	.side-right.sticky::after {
+		clear: both;
+		content: "";
+		display: table
+	}
 
-  .side-right.sticky .toc .toc-menu {
-    overflow-y: auto;
-    max-height: calc(100vh - 7em)
-  }
+	.side-right.sticky .toc .toc-menu {
+		overflow-y: auto;
+		max-height: calc(100vh - 7em)
+	}
 }
 
 @media (min-width: 80em) {
-  .side-right {
-    width: 300px;
-    margin-right: -300px
-  }
+	.side-right {
+		width: 300px;
+		margin-right: -300px
+	}
 }
 
 @media (min-width: 64em) {
-  .splash .side-right {
-    position: relative;
-    float: right;
-    margin-right: 0
-  }
+	.splash .side-right {
+		position: relative;
+		float: right;
+		margin-right: 0
+	}
 }
 
 @media (min-width: 80em) {
-  .splash .side-right {
-    margin-right: 0
-  }
+	.splash .side-right {
+		margin-right: 0
+	}
 }
 
 .wide .side-right {
-  margin-bottom: 1em
+	margin-bottom: 1em
 }
 
 @media (min-width: 64em) {
-  .wide .side-right {
-    position: initial;
-    top: initial;
-    right: initial;
-    width: initial;
-    margin-right: initial;
-    padding-left: initial;
-    z-index: initial
-  }
+	.wide .side-right {
+		position: initial;
+		top: initial;
+		right: initial;
+		width: initial;
+		margin-right: initial;
+		padding-left: initial;
+		z-index: initial
+	}
 
-  .wide .side-right.sticky {
-    float: none
-  }
+	.wide .side-right.sticky {
+		float: none
+	}
 }
 
 @media (min-width: 80em) {
-  .wide .side-right {
-    width: initial;
-    margin-right: initial
-  }
+	.wide .side-right {
+		width: initial;
+		margin-right: initial
+	}
 }
