@@ -3,7 +3,7 @@
 
   {% include head.html %}
 
-  <body>
+  <body ontouchstart="">
 
     {% include sidebar.html %}
 
@@ -19,14 +19,14 @@
           </h3>
         </div>
       </div>
-
-      <div class="container content">
-        {{ content }}
-      </div>
     </div>
-  </body>
 
-  {% include footer.html %}
-  {% include cb-search-tool.html %}
+    {{ content }}
+
+    {% include footer.html %}
+
+    {% include cb-search-tool.html %}
+
+  </body>
 
 </html>

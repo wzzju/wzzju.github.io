@@ -2,60 +2,74 @@
 layout: default
 ---
 
-<div class="intro-header">
-  <div class="post-heading">
-    <h1>{{ page.title }}</h1>
-    <h2 class="subheading">{{ page.subtitle }}</h2>
-    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.author.name }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+<header class="intro-header">
+  <div class="bs-container">
+    <div class="bs-row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>{{ page.title }}</h1>
+          <h2 class="subheading">{{ page.subtitle }}</h2>
+          <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.author.name }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</header>
 
-<div class="post">
-  {% if page.toc %}
-    <aside class="side-right sticky">
-      <nav class="toc">
-        <h4 class="menu-title"><i class="fa fa-paperclip"></i> 目录 </h4>
-        {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc-menu" %}
-      </nav>
-    </aside>
-  {% endif %}
-  {% include anchor_headings.html html=content anchorBody="#" %}
-  {% comment %}
-    If you don't need anchors, you can just use `{{ content }}`
-    instead of `anchor_headings.html`.
-  {% endcomment %}
-  {% include share.html %}
-  {% include comments.html %}
-</div>
+<!-- Post Content -->
+<article> 
+  <div class="bs-container">
+    <div class="bs-row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-2
+                  col-md-10 col-md-offset-1
+                  post-container">
+        {{ content }}
 
-<div class="pagination">
-  {% if page.previous.url %}
-    <a class="pagination-item older" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-      <b>前一篇</b><br>
-      <span><small><font color=#999>{{page.previous.title}}</font></small></span>
-    </a>
-  {% else %}
-    <span class="pagination-item older">
-      <b>前一篇</b><br>
-      <small>您来到了没有知识的荒原 :(</small>
-    </span>
-  {% endif %}
-  {% if page.next.url %}
-    <a class="pagination-item newer" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-      <b>后一篇</b><br>
-      <span><small><font color=#999>{{page.next.title}}</font></small></span>
-    </a>
-  {% else %}
-    <span class="pagination-item newer">
-      <b>后一篇</b><br>
-      <small>您来到了没有知识的荒原 :(</small>
-    </span>
-  {% endif %}
-</div>
+        {% include share.html %}
+        <hr style="visibility: hidden;"/>
+        <ul class="pager">
+            {% if page.previous.url %}
+            <li class="previous">
+                <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                Previous<br>
+                <span><small>{{page.previous.title}}</small></span>
+                </a>
+            </li>
+            {% endif %}
+            {% if page.next.url %}
+            <li class="next">
+                <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+                Next<br>
+                <span><small>{{page.next.title}}</small></span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <hr style="visibility: hidden;"/>
+        {% include comments.html %}
+        <hr/>
+      </div> 
+      <!-- Side Catalog Container -->
+      {% if page.toc %}
+      <div class="col-lg-2 col-lg-offset-0
+                  visible-lg-block
+                  sidebar-container
+                  catalog-container"> 
+        <div class="side-catalog">
+          <hr class="hidden-sm hidden-xs" />
+          <h6><a class="catalog-toggle" href="#">目录</a></h6>
+          <div class="catalog-body"></div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div> 
+</article>
 
-<div class="related">
-  <h2>更多文章</h2>
-  <ul class="related-posts">
+<div class="bs-container">
+  <ul class="col-lg-8 col-lg-offset-2 related-posts">
+    <h2>更多文章</h2>
     {% for post in site.related_posts limit:3 %}
       <li>
         <h3>
