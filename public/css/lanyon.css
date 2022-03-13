@@ -134,6 +134,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Style and "hide" the sidebar */
 .sidebar {
   position: fixed;
+  z-index: 1;
   top: 0;
   bottom: 0;
   left: -15rem;
@@ -143,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-size: .875rem; /* 15px */
   color: rgba(255,255,255,.6);
-  background-color: #216377;
+  background-color: rgba(36,100,122,0.96);
 }
 @media (min-width: 30rem) {
   .sidebar {
@@ -205,7 +206,7 @@ a.sidebar-nav-item:focus {
   display: block;
   width: 2.2rem;
   padding: .5rem .65rem;
-  color: #216377;
+  color: rgba(36,100,122,0.96);
   background-color: #FFFFFF;
   border-radius: 4px;
   cursor: pointer;
@@ -228,7 +229,7 @@ a.sidebar-nav-item:focus {
 .sidebar-toggle:active,
 #sidebar-checkbox:checked ~ .wrap .sidebar-toggle {
   color: #FFFFFF;
-  background-color: #216377;
+  background-color: rgba(36,100,122,0.96);
 }
 
 @media (min-width: 30.1rem) {
