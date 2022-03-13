@@ -5,7 +5,7 @@ $(".catalog-toggle").click((function (e) {
 }));
 
 // Navigation Scripts to Show Header on Scroll-Up
-$(document).ready(function ($) {
+jQuery(document).ready(function ($) {
   var MQL = 1170;
 
   // primary navigation slide-in effect
