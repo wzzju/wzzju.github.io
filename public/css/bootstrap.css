@@ -1561,34 +1561,34 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-.bs-container {
+.container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
 @media (min-width: 768px) {
-  .bs-container {
+  .container {
     width: 750px;
   }
 }
 @media (min-width: 992px) {
-  .bs-container {
+  .container {
     width: 970px;
   }
 }
 @media (min-width: 1200px) {
-  .bs-container {
+  .container {
     width: 1170px;
   }
 }
-.bs-container-fluid {
+.container-fluid {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
-.bs-row {
+.row {
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -4110,18 +4110,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     max-height: 200px;
   }
 }
-.bs-container > .navbar-header,
-.bs-container-fluid > .navbar-header,
-.bs-container > .navbar-collapse,
-.bs-container-fluid > .navbar-collapse {
+.container > .navbar-header,
+.container-fluid > .navbar-header,
+.container > .navbar-collapse,
+.container-fluid > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px;
 }
 @media (min-width: 768px) {
-  .bs-container > .navbar-header,
-  .bs-container-fluid > .navbar-header,
-  .bs-container > .navbar-collapse,
-  .bs-container-fluid > .navbar-collapse {
+  .container > .navbar-header,
+  .container-fluid > .navbar-header,
+  .container > .navbar-collapse,
+  .container-fluid > .navbar-collapse {
     margin-right: 0;
     margin-left: 0;
   }
@@ -4172,8 +4172,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
 }
 @media (min-width: 768px) {
-  .navbar > .bs-container .navbar-brand,
-  .navbar > .bs-container-fluid .navbar-brand {
+  .navbar > .container .navbar-brand,
+  .navbar > .container-fluid .navbar-brand {
     margin-left: -15px;
   }
 }
@@ -4855,19 +4855,19 @@ a.badge:focus {
 .jumbotron > hr {
   border-top-color: #d5d5d5;
 }
-.bs-container .jumbotron,
-.bs-container-fluid .jumbotron {
+.container .jumbotron,
+.container-fluid .jumbotron {
   border-radius: 6px;
 }
-.jumbotron .bs-container {
+.jumbotron .container {
   max-width: 100%;
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding: 48px 0;
   }
-  .bs-container .jumbotron,
-  .bs-container-fluid .jumbotron {
+  .container .jumbotron,
+  .container-fluid .jumbotron {
     padding-right: 60px;
     padding-left: 60px;
   }
@@ -6273,12 +6273,12 @@ button.close {
 .clearfix:after,
 .dl-horizontal dd:before,
 .dl-horizontal dd:after,
-.bs-container:before,
-.bs-container:after,
-.bs-container-fluid:before,
-.bs-container-fluid:after,
-.bs-row:before,
-.bs-row:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after,
 .btn-toolbar:before,
@@ -6304,9 +6304,9 @@ button.close {
 }
 .clearfix:after,
 .dl-horizontal dd:after,
-.bs-container:after,
-.bs-container-fluid:after,
-.bs-row:after,
+.container:after,
+.container-fluid:after,
+.row:after,
 .form-horizontal .form-group:after,
 .btn-toolbar:after,
 .btn-group-vertical > .btn-group:after,

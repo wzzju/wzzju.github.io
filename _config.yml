@@ -39,17 +39,8 @@ github:
 # ---------------- #
 #      Comments    #
 # ---------------- #
-# support provider: disqus, gitment, gitalk
+# support provider: gitalk
 comments_provider: gitalk
-disqus:
-    username: yuchen112358
-# https://imsun.net/posts/gitment-introduction/
-gitment:
-    owner: wzzju
-    repo: blog-comments
-    oauth:
-        client_id: 19e95a40843e60c10539
-        client_secret: e54ae9b5f55a2e3b51e8ec897b80c918f335736b
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: wzzju
@@ -58,5 +49,3 @@ gitalk:
     clientID: 481f0b89289da9b8a42b
     # clientSecret: a65b7ee305064fff7a4da078236e1e12461096a1
     clientSecret: de311da8682c03b7482085293c3f03a558a9389c
-# 在使用其它评论组件时可点击显示 Disqus
-lazy_load_disqus : false
