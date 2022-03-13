@@ -1,14 +1,53 @@
 <footer class="footer">
   {% include scroll-to-top.html %}
-  <HR>
-  <ul class="ui">
-    <li>
-      <a href="https://weibo.com/u/6833407977" target="_blank"><i class="fa fa-weibo fa-lg"></i></a>
-    </li>
-    <li>
-      <a href="https://github.com/wzzju" target="_blank"><i class="fa fa-github fa-lg"></i></a>
-    </li>
-  </ul>
+  <div class="bs-container">
+    <div class="bs-row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          {% if site.github_username %}
+          <li>
+            <a target="_blank" href="https://github.com/{{ site.github_username }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {% endif %}
+          {% if site.facebook_username %}
+          <li>
+            <a target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {% endif %}
+          {% if site.weibo_username %}
+          <li>
+            <a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {% endif %}
+          {% if site.zhihu_username %}
+          <li>
+            <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa  fa-stack-1x fa-inverse">知</i>
+              </span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <!-- jQuery -->
@@ -17,11 +56,26 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ "/public/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
 
-<!--fastClick.js -->
+{% if page.flag == 'bookmark' %}
+<!-- jquery.tagcloud.js -->
+<script src='{{ "/public/js/jquery.tagcloud.js" | prepend: site.baseurl }}'></script>
 <script>
-  async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-      var $nav = document.querySelector("nav");
-      if($nav) FastClick.attach($nav);
+  $(document).ready(function() {
+    $.fn.tagcloud.defaults = {
+      color: { start: '#bbbbee', end: '#2f93b4' },
+    };
+    $('#tag_cloud a').tagcloud();
+    });
+</script>
+<script src='{{ "/public/js/categories.js" | prepend: site.baseurl }}'></script>
+{% endif %}
+
+<!--fastClick.js -->
+<script src="http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var $nav = document.querySelector("nav");
+    if($nav) FastClick.attach($nav);
   })
 </script>
 

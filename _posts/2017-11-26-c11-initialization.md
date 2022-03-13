@@ -4,7 +4,7 @@ title: C++11统一初始化
 date: 2017-11-26
 comments: true
 toc: false
-categories: [ "C++11" ]
+categories: [ "C++", "C++11" ]
 ---
 
 在C++11之前，我们多值填充初始化一个vector列表，需要书写如下的冗余代码：
