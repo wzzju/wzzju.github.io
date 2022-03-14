@@ -14,7 +14,7 @@ encoding:         "utf-8"
 # ---------------- #
 markdown:         kramdown
 kramdown:
-    input:        GFM
+  input:          GFM
 highlighter:      rouge
 paginate:         5
 plugins:             [jekyll-paginate, jekyll-gist, jekyll-sitemap, jekyll-feed, jemoji]
@@ -24,12 +24,12 @@ safe: false
 
 author:
   name:           'YuChen'
-  url:            https://weibo.com/u/6833407977
+  url:            http://weibo.com/wzzju
 
-github_username:    wzzju
-weibo_username:     wzzju
-facebook_username:  wzzju
-zhihu_username:     yuchen112358
+github_username:   wzzju
+weibo_username:    wzzju
+facebook_username: wzzju
+zhihu_username:    yuchen112358
 
 # Custom vars
 version:          2.0.0
@@ -43,9 +43,9 @@ github:
 comments_provider: gitalk
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: wzzju
-    repo: blog-comments
-    # clientID: e5a8aeb6ac781df840ff
-    clientID: 481f0b89289da9b8a42b
-    # clientSecret: a65b7ee305064fff7a4da078236e1e12461096a1
-    clientSecret: de311da8682c03b7482085293c3f03a558a9389c
+  owner: wzzju
+  repo: blog-comments
+  # clientID: e5a8aeb6ac781df840ff
+  clientID: 481f0b89289da9b8a42b
+  # clientSecret: a65b7ee305064fff7a4da078236e1e12461096a1
+  clientSecret: de311da8682c03b7482085293c3f03a558a9389c
