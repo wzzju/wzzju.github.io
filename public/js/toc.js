@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
 
   // primary navigation slide-in effect
   if ($(window).width() > MQL) {
-      var bannerHeight = $('.wrap').height();
+      var bannerHeight = $("#catalog-hr").offset().top
       $(window).on('scroll', {
               previousTop: 0
           },
@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
               this.previousTop = currentTop;
               // adjust the appearance of side-catalog
               $catalog.show()
-              if (currentTop > (bannerHeight + 41)) {
+              if (currentTop > (bannerHeight - 10)) {
                   $catalog.addClass('fixed')
               } else {
                   $catalog.removeClass('fixed')
