@@ -261,10 +261,10 @@ a.sidebar-nav-item:focus {
 .wrap,
 .sidebar,
 .sidebar-toggle {
-    -webkit-backface-visibility: hidden;
-       -moz-backface-visibility: hidden;
-        -ms-backface-visibility: hidden;
-            backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+          backface-visibility: hidden;
   -webkit-perspective: 1000;
      -moz-perspective: 1000;
       -ms-perspective: 1000;
@@ -289,6 +289,7 @@ a.sidebar-nav-item:focus {
   visibility: visible;
 }
 #sidebar-checkbox:checked ~ .wrap {
+  z-index: 2;
   left: 15rem;
 }
 

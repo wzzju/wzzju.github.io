@@ -7,14 +7,14 @@ toc: true
 categories: [ "Hadoop", "Maven" ]
 ---
 
-###### 1.执行如下命令创建maven工程
+### 1.执行如下命令创建maven工程
 
 ```bash
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DgroupId=top.wzzju.temperature -DartifactId=temperature
 ```
 一路回车，直到maven项目创建完成。
 
-###### 2.修改pom.xml文件
+### 2.修改pom.xml文件
 
 ```bash
 cd temperature
@@ -94,7 +94,7 @@ vim pom.xml
 
 ```
 
-###### 3.根据自己的MapReduce工作进行修改源码
+### 3.根据自己的MapReduce工作进行修改源码
 
 ```bash
 cd temperature
@@ -222,14 +222,14 @@ public class Temperature extends Configured implements Tool {
 
 ```
 
-###### 4.编译和打包命令
+### 4.编译和打包命令
 
 ```bash
 cd temperature
 mvn clean install
 ```
 
-###### 5.在hadoop上执行
+### 5.在hadoop上执行
 
 ```bash
 cd temperature
@@ -239,20 +239,20 @@ hadoop jar target/temperature-1.0-SNAPSHOT.jar /yuchen/root/*.txt /yuchen/root/t
 hadoop jar target/temperature-1.0-SNAPSHOT.jar /yuchen/root/input.txt /yuchen/root/temerature_out
 ```
 
-###### 6.查看运行结果
+### 6.查看运行结果
 
 ```bash
 hadoop fs -ls /yuchen/root/temerature_out
 hadoop fs -cat  /yuchen/root/temerature_out/part-r-00000
 ```
 
-###### 7.vim命令
+### 7.vim命令
 
 * `Shift+g`跳转到最后
 * `gg`跳转到第一行
 * `Ctrl+r`重做（redo）
 
-###### 8. maven命令
+### 8. maven命令
 
 * 打包：`mvn package`
 * 编译：`mvn compile`
@@ -266,7 +266,7 @@ hadoop fs -cat  /yuchen/root/temerature_out/part-r-00000
 * 生成eclipse工程文件：`mvn eclipse:eclipse`
 * 运行jar包：`java -cp target/mrdemo-1.0-SNAPSHOT.jar top.wzzju.App`
 
-###### 9. 使用python运行MapReduce程序命令
+### 9. 使用python运行MapReduce程序命令
 
 ```bash
 export STREAM=$HADOOP_PREFIX/share/hadoop/tools/lib/hadoop-streaming-2.6.0.jar
@@ -274,7 +274,7 @@ export STREAM=$HADOOP_PREFIX/share/hadoop/tools/lib/hadoop-streaming-2.6.0.jar
 hadoop jar $STREAM -files ./mapper.py,./reducer.py -mapper ./mapper.py -reducer ./reducer.py -input /yuchen/root/zen10.txt -output /yuchen/root/zen_out
 ```
 
-###### 10.参考资料
+### 10.参考资料
 
 * [Hadoop 2 (2.2.0) setup on Debian](https://tuttlem.github.io/2014/01/09/hadoop-2-2-2-0-setup-on-debian.html)
 
