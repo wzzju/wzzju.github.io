@@ -6,7 +6,7 @@ layout: null
 	"data" : [
 	 {% for post in site.posts %}
 	{
-		"title" : "{{ post.title }}{% if post.subtitle %} - {{ post.subtitle }}{% endif %} - {{ post.date|date_to_string }}",
+		"title" : "{{ post.title }}{% if post.subtitle %} - {{ post.subtitle }}{% endif %} - {{ post.date|date_to_string }} - {% for tag in post.categories %}{% if forloop.rindex != 1 %}{{ tag }} / {% else %}{{ tag }}{% endif %}{% endfor %}",
 		"url" : "{{ post.url }}"
 	}
 	{% if forloop.rindex != 1  %}
