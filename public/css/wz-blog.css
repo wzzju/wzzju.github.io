@@ -1,35 +1,3 @@
-/* No `:visited` state is required by default (browsers will use `a`) */
-a {
-	color: #268bd2;
-	text-decoration: none;
-}
-/* `:focus` is linked to `:hover` for basic accessibility */
-a:hover,
-a:focus {
-	text-decoration: underline;
-	color: #0085a1;
-}
-
-.ui {
-	position: relative;
-	left: 50%;
-	float: left;
-	list-style: none;
-	margin: 10px;
-	padding: 10px;
-}
-
-.ui li {
-	position: relative;
-	right: 50%;
-	float: left;
-	margin: 4px 12px;
-}
-
-.ui li a {
-	display: inline-block;
-}
-
 .dropdown-menu {
 	display: block;
 	float: left;
@@ -64,7 +32,9 @@ a:focus {
 	border-top: 1px solid #bbb;
 }
 
-.dropdown-menu > li > a:hover, .dropdown-menu ul > li > a:hover {
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:focus,
+.dropdown-menu > .active > a:hover {
 	background: #3FC4FF;
 	color: #000;
 }
@@ -105,77 +75,6 @@ a:focus {
 	-ms-transition: none;
 	-moz-transition: none;
 	-webkit-transition: none;
-}
-
-select {
-	-webkit-appearance: none;
-	margin-top: 15px;
-	color: #337ab7;
-	border-color: #337ab7;
-	padding: 0em 0.4em;
-	background: white;
-}
-
-.post-content-preview {
-	font-size: 13px;
-	font-style: italic;
-	color: #a3a3a3;
-}
-
-.post-content-preview:hover {
-	color: #0085a1;
-}
-
-@media only screen and (min-width: 768px) {
-	.post-content-preview {
-		font-size: 14px;
-	}
-}
-
-.post-preview > a > .post-title {
-	font-size: 21px;
-	line-height: 1.3;
-	margin-top: 30px;
-	margin-bottom: 8px;
-}
-
-.post-preview > a > .post-title:hover {
-	color: #0085a1;
-}
-
-.post-preview > .post-meta {
-	font-family: 'Lora', 'Times New Roman', serif;
-	color: #808080;
-	font-size: 16px;
-	font-style: italic;
-	margin-top: 0;
-}
-
-.post-preview > .post-meta > a {
-	text-decoration: none;
-	color: #404040;
-}
-
-.post-preview > .post-meta > a:hover,
-.post-preview > .post-meta > a:focus {
-	color: #0085a1;
-	text-decoration: underline;
-}
-
-@media only screen and (min-width: 768px) {
-	.post-preview {
-		margin-left: 20px;
-	}
-
-	.post-preview > a > .post-title {
-		font-size: 26px;
-		line-height: 1.3;
-		margin-bottom: 10px;
-	}
-
-	.post-preview .post-meta {
-		font-size: 18px;
-	}
 }
 
 /* Search Tool CSS Begin*/

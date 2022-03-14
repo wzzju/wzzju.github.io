@@ -18,6 +18,7 @@ title: $@
 date: $DATE_SLUG
 comments: true
 toc: true
+mathjax: false
 categories: [ "" ]
 ---
 

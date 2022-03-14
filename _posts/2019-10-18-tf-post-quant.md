@@ -4,6 +4,7 @@ title: TF训练后量化原理解析
 date: 2019-10-18
 comments: true
 toc: true
+mathjax: true
 categories: [ "TensorFlow", "Quantization" ]
 ---
 
