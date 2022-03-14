@@ -38,7 +38,7 @@ layout: default
             <li class="previous">
                 <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
                 Previous<br>
-                <span><small>{{page.previous.title}}</small></span>
+                <span>{{page.previous.title}}</span>
                 </a>
             </li>
             {% endif %}
@@ -46,7 +46,7 @@ layout: default
             <li class="next">
                 <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
                 Next<br>
-                <span><small>{{page.next.title}}</small></span>
+                <span>{{page.next.title}}</span>
                 </a>
             </li>
             {% endif %}

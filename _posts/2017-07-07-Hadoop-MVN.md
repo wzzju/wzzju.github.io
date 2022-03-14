@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: "使用Maven构建Hadoop MapReduce工程"
+title: "使用Maven构建Hadoop项目"
 date: 2017-07-07
 comments: true
 toc: true
