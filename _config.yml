@@ -17,6 +17,7 @@ encoding: "utf-8"
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
 # document: http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
+highlighter: rouge
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
   syntax_highlighter_opts:
@@ -25,7 +26,7 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
-highlighter: rouge
+
 paginate: 10
 plugins: [jekyll-paginate, jekyll-gist, jekyll-sitemap, jekyll-feed, jemoji]
 # Permalinks
