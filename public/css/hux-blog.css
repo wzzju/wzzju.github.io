@@ -338,7 +338,7 @@ pre.highlight {
 }
 .highlight .k,
 .language-coq .highlight .err {
-  color: #c678dd;
+  color: #cc7832;
 }
 .highlight .l {
   color: #98c379;
@@ -375,22 +375,22 @@ pre.highlight {
   font-weight: 700;
 }
 .highlight .kc {
-  color: #c678dd;
+  color: #cc7832;
 }
 .highlight .kd {
-  color: #c678dd;
+  color: #cc7832;
 }
 .highlight .kn {
-  color: #c678dd;
+  color: #cc7832;
 }
 .highlight .kp {
-  color: #c678dd;
+  color: #cc7832;
 }
 .highlight .kr {
-  color: #c678dd;
+  color: #cc7832;
 }
 .highlight .kt {
-  color: #c678dd;
+  color: #cc7832;
 }
 .highlight .ld {
   color: #98c379;
@@ -548,9 +548,15 @@ pre.highlight {
   table-layout: fixed;
 }
 .highlighter-rouge .highlight table > tbody > tr > td {
+  background-color: #282c34;
   margin: 0;
   border: 0;
   padding: 0;
+}
+.rouge-table {
+  border: 0px;
+  margin-bottom: 0rem;
+  margin-top: 0rem;
 }
 .highlighter-rouge .highlight table > tbody > tr > td > pre {
   padding: 14px;

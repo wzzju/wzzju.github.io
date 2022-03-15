@@ -2,40 +2,50 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url:              https://wzzju.github.io
-date_format:      "ordinal"
-title:            北冥有鱼
-tagline:          '记录生活点滴，分享学习心得'
-description:      '自助者天助之 自弃者天弃之'
-keywords:         ["AI", "DeepLearning", "Android", "人工智能", "深度学习", "编程", "教程", "学习", "文章" ]
-encoding:         "utf-8"
+url: https://wzzju.github.io
+date_format: "ordinal"
+title: 北冥有鱼
+tagline: '记录生活点滴，分享学习心得'
+description: '自助者天助之 自弃者天弃之'
+keywords: ["AI", "DeepLearning", "Android", "人工智能", "深度学习", "编程", "教程", "学习", "文章" ]
+encoding: "utf-8"
 # ---------------- #
 #      Jekyll      #
 # ---------------- #
-markdown:         kramdown
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
 kramdown:
-  input:          GFM
-highlighter:      rouge
-paginate:         5
-plugins:             [jekyll-paginate, jekyll-gist, jekyll-sitemap, jekyll-feed, jemoji]
+  input: GFM                            # use Github Flavored Markdown !important
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+highlighter: rouge
+paginate: 10
+plugins: [jekyll-paginate, jekyll-gist, jekyll-sitemap, jekyll-feed, jemoji]
 # Permalinks
-permalink:        /:year/:month/:day/:title.html
+permalink: /:year/:month/:day/:title.html
 safe: false
 
 author:
-  name:           'YuChen'
-  url:            http://weibo.com/wzzju
+  name: 'YuChen'
+  url: http://weibo.com/wzzju
 
-github_username:   wzzju
-weibo_username:    wzzju
+github_username: wzzju
+weibo_username: wzzju
 facebook_username: wzzju
-zhihu_username:    yuchen112358
+zhihu_username: yuchen112358
 
 # Custom vars
-version:          2.0.0
+version: 2.0.0
 
 github:
-  repo:           https://github.com/wzzju/wzzju.github.io
+  repo: https://github.com/wzzju/wzzju.github.io
 # ---------------- #
 #      Comments    #
 # ---------------- #
