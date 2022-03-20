@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  {% include head.html %}
+
+  <body ontouchstart="">
+
+    {% include sidebar.html %}
+    <div class="wrap">
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    </div>
+
+    <style type="text/css">
+      header.intro-header {
+        height: 500px;
+        overflow: hidden;
+      }
+
+      header iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    </style>
+
+    <!-- Post Content -->
+    <article>
+      <!-- slide  -->
+      <header class="intro-header style-text" >
+        <iframe src="{{page.iframe}}"></iframe>
+      </header>
+
+      <!-- Post Title -->
+      <div class="intro-header style-text">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>{{ page.title }}</h1>
+                <h2 class="subheading">{{ page.subtitle }}</h2>
+                <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.author.name }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post Content -->
+      <div class="container"> 
+      <div class="row"> 
+        <!-- Post Container --> 
+        <div class="post-container
+                  col-lg-8 col-lg-offset-2
+                  col-md-10 col-md-offset-1 ">
+
+          {{ content }}
+
+          {% include share.html %}
+
+          <hr style="visibility: hidden;"/>
+          <ul class="pager">
+              {% if page.previous.url %}
+              <li class="previous">
+                  <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                  Previous<br>
+                  <span>{{page.previous.title}}</span>
+                  </a>
+              </li>
+              {% endif %}
+              {% if page.next.url %}
+              <li class="next">
+                  <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+                  Next<br>
+                  <span>{{page.next.title}}</span>
+                  </a>
+              </li>
+              {% endif %}
+          </ul>
+          <hr style="visibility: hidden;"/>
+
+          {% include comments.html %}
+
+          <hr/>
+        </div>
+      </div> 
+      </div> 
+    </article>
+
+    <div class="container">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <h2>更多文章</h2>
+        <ul class="related-posts">
+          {% for post in site.related_posts limit:3 %}
+          <li>
+            <h3>
+              <a href="{{ post.url }}">
+                {{ post.title }}
+                <small>{{ post.date | date_to_string }}</small>
+              </a>
+            </h3>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- resize header to fullscreen keynotes --> 
+    <script>
+      var $header = document.getElementsByTagName("header")[0];
+      function resize() {
+        /*
+         * leave 100px for showing the title
+         */
+        $header.style.height = (window.innerHeight - 100) + 'px';
+      }
+      document.addEventListener('DOMContentLoaded', function(){
+          resize();
+      })
+      window.addEventListener('load', function() {
+          resize();
+      })
+      window.addEventListener('resize', function() {
+          resize();
+      })
+      resize();
+    </script>
+
+    {% if page.mathjax %}
+    <!-- add support for mathjax -->
+    {% include mathjax-support.html %}
+    {% endif %}
+
+    {% include footer.html %}
+
+  </body>
+</html>
