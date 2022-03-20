@@ -1,9 +1,9 @@
 ---
-layout:     keynote
-title:      "使用slidev创建幻灯片"
-subtitle:   "基于markdown编写幻灯片"
-date:       2022-03-20
-iframe:     "/talks/slide-template/"
+layout: keynote
+title: "使用slidev创建幻灯片"
+subtitle: "基于markdown编写幻灯片"
+date: 2022-03-20
+iframe: "/talks/slide-template/"
 comments: true
 mathjax: false
 categories: [ "Slides" ]
@@ -27,15 +27,15 @@ npm init slidev@latest
 # 2）按Enter键选择yes，继续
 # 3）agent选择npm，直接按Enter键即可
 ```
-* 执行完上述命令后，`slidev`会在本地`3030`端口上启动服务，使用浏览器访问`http://localhost:3030/`即可
-* 接下来我们只需要编辑`slide-template`目录下的`slides.md`文件即可制作幻灯片，`slides.md`的内容样例详见此[链接](/talks/src/slide-template.md)
+* 执行完上述命令后，`slidev`会在本地`3030`端口上启动服务，使用浏览器访问`http://localhost:3030/`即可进行预览
+* 接下来我们只需要编辑`slide-template`目录下的`slides.md`文件即可制作幻灯片
 
 ## 2. 启动已经存在的slidev项目
 
 * 使用`npx slidev`命令可以启动已经存在的slidev项目，示例如下：
 ```shell
 # 进入上面已创建的slidev项目目录
-cd slides/slide-template
+cd slides-project/slide-template
 # 重新启动slidev项目
 npx slidev
 ```
@@ -55,6 +55,8 @@ cp -r dist ~/Study/Blog/wzzju.github.io/talks/slide-template
 ```shell
 cp slides.md ~/Study/Blog/wzzju.github.io/talks/src/slide-template.md
 ```
+
+> **因为slidev项目的build产物比较多且大，不利于jekyll页面的生成，建议一直复用`slide-template`项目，而每次只将`slides.md`源文件保存在`talks/src`目录下。后续，按需根据markdown源码文件构建相应幻灯片并用其替换`talks/slide-template`目录下的文件。**
 
 ## 4. 快捷键功能
 
