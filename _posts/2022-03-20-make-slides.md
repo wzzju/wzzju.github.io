@@ -83,13 +83,30 @@ cp -r ${slidev项目路径}/public wzzju.github.io/talks/slide-src/${slidev项�
 download: true
 ---
 ```
-之后在执行`npx slidev build`命令时便也会将幻灯片渲染为pdf格式文件，并在`SPA`页面中显示下载按钮。
 
-> 第一次渲染为pdf文件时，可能会出现错误，执行如下命令即可修复：
-> ```shell
-> npm i -D playwright-chromium
-> npx playwright install
-> ```
+然后，使用如下命令安装渲染PDF所需的软件包：
+```shell
+npm i -D playwright-chromium
+npx playwright install
+```
+
+最后，执行`npx slidev build --base /talks/slide-template/`命令。这会在生成`SPA`网页的同时，也会将幻灯片渲染为pdf格式文件，并在`SPA`页面中提供下载按钮。
+
+### 3.2 单独导出PDF文件
+
+* 安装`playwright-chromium`：
+```shell
+npm i -D playwright-chromium
+```
+* 导出pdf格式幻灯片：
+```shell
+slidev export
+```
+* 默认导出pdf文件时，会禁用动画效果，如果需要将美步点击都生成一页文档，可以使用如下命令：
+```shell
+# slidev >= v0.21
+slidev export --with-clicks
+```
 
 ## 4. 快捷键功能
 
@@ -108,3 +125,4 @@ download: true
 * [Slidev Installation](https://sli.dev/guide/install.html)
 * [Slidev Static Hosting](https://sli.dev/guide/hosting.html)
 * [Slidev Directory Structure](https://sli.dev/custom/directory-structure.html#public)
+* [Slidev Exporting PDF](https://sli.dev/guide/exporting.html#pdf)
