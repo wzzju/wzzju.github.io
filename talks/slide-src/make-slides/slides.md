@@ -4,13 +4,13 @@ theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 # background: https://source.unsplash.com/collection/94734566/1920x1080
-background: /talks/img/bg-31.jpeg
+background: /images/background/bg.jpeg
 # apply any windi css classes to the current slide
 class: 'text-center'
 # https://sli.dev/custom/highlighters.html
 highlighter: shiki
 # show line numbers in code blocks
-lineNumbers: false
+lineNumbers: true
 # some information about the slides, markdown enabled
 info: |
   ## Slidev Starter Template
@@ -20,6 +20,7 @@ info: |
 # persist drawings in exports and build
 drawings:
   persist: false
+download: true
 ---
 
 # Slide Template
@@ -95,7 +96,7 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
 
 ---
 layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+image: /images/post/olimpia.jpg
 ---
 
 # Code
@@ -188,9 +189,9 @@ theme: seriph
 ---
 ```
 
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
+<img border="rounded" src="/images/post/theme-default.png">
 
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
+<img border="rounded" src="/images/post/theme-seriph.png">
 
 </div>
 
