@@ -40,6 +40,17 @@ cd slides-project/slide-template
 npx slidev
 ```
 
+### 2.1 图片资源显示
+
+作为幻灯片背景图、内容图等文件资源位于`wzzju.github.io/talks/img/`目录下，本地预览时需要先进入slidev项目根目录，并其内创建img软链接。示例如下：
+```shell
+# 进入slidev项目根目录
+cd slides-project/slide-template
+# 创建img软链接
+ln -s ../../talks/img img
+```
+引用`img/`目录下的文件只需要使用类似`../img/background/bg-16.jpeg`的路径即可。
+
 ## 3. slidev项目部署
 * 使用如下命令可将slidev项目编译成`Single Page Application`，其中将base路径设置为`/talks/slidev项目名`，示例如下
 ```shell
