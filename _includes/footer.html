@@ -16,9 +16,7 @@
 <script src="{{ "/public/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
 
 <!-- cb-search-tool.html should be included after jquery.min.js -->
-{% if page.layout != 'keynote' %}
 {% include cb-search-tool.html %}
-{% endif %}
 
 {% if page.flag == 'bookmark' %}
 <!-- jquery.tagcloud.js -->
