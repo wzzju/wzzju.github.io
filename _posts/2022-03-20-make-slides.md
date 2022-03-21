@@ -5,8 +5,9 @@ subtitle: "基于markdown编写幻灯片"
 date: 2022-03-20
 iframe: "/talks/slide-template/"
 comments: true
+toc: true
 mathjax: false
-categories: [ "Slides" ]
+categories: [ "Slides", "Slidev" ]
 ---
 
 ## 1. slidev安装与项目初始化
