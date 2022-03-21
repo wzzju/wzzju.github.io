@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <h2>更多文章</h2>
+    <ul class="related-posts">
+      {% for post in site.related_posts limit:3 %}
+      <li>
+        <h3>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h3>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% if page.mathjax %}
+<!-- add support for mathjax -->
+{% include mathjax-support.html %}
+{% endif %}

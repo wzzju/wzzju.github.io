@@ -6,6 +6,7 @@
   <body ontouchstart="">
 
     {% include sidebar.html %}
+
     <div class="wrap">
       <label for="sidebar-checkbox" class="sidebar-toggle"></label>
     </div>
@@ -23,19 +24,23 @@
       }
     </style>
 
-    <!-- Post Content -->
-    <article>
-      <!-- slide  -->
-      <header class="intro-header style-text" >
-        <iframe src="{{page.iframe}}"></iframe>
-      </header>
+    <!-- slide  -->
+    <header class="intro-header style-text" >
+      <iframe src="{{page.iframe}}"></iframe>
+    </header>
 
+    <article>
       <!-- Post Title -->
       <div class="intro-header style-text">
         <div class="container">
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="post-heading">
+                <div class="tags">
+                  {% for tag in page.categories %}
+                  <a class="tag" href="{{ site.baseurl }}/categories?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+                  {% endfor %}
+                </div>
                 <h1>{{ page.title }}</h1>
                 <h2 class="subheading">{{ page.subtitle }}</h2>
                 <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.author.name }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
@@ -45,77 +50,11 @@
         </div>
       </div>
 
-      <!-- Post Content -->
-      <div class="container"> 
-        <div class="row">
-          <!-- Post Container -->
-          <div class="col-lg-8 col-lg-offset-2
-                      col-md-10 col-md-offset-1
-                      post-container">
+      {% include post-content.html %}
 
-            {{ content }}
-
-            {% include share.html %}
-
-            <hr style="visibility: hidden;"/>
-            <ul class="pager">
-                {% if page.previous.url %}
-                <li class="previous">
-                    <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                    Previous<br>
-                    <span>{{page.previous.title}}</span>
-                    </a>
-                </li>
-                {% endif %}
-                {% if page.next.url %}
-                <li class="next">
-                    <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                    Next<br>
-                    <span>{{page.next.title}}</span>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
-            <hr style="visibility: hidden;"/>
-
-            {% include comments.html %}
-
-            <hr/>
-          </div>
-          <!-- Side Catalog Container -->
-          {% if page.toc %}
-          <div class="col-lg-2 col-lg-offset-0
-                      visible-lg-block
-                      sidebar-container
-                      catalog-container">
-            <div class="side-catalog">
-              <hr class="hidden-sm hidden-xs" id="catalog-hr"/>
-              <h6><a class="catalog-toggle" href="#">目录</a></h6>
-              <div class="catalog-body"></div>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-      </div> 
     </article>
 
-    <div class="container">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <h2>更多文章</h2>
-        <ul class="related-posts">
-          {% for post in site.related_posts limit:3 %}
-          <li>
-            <h3>
-              <a href="{{ post.url }}">
-                {{ post.title }}
-                <small>{{ post.date | date_to_string }}</small>
-              </a>
-            </h3>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+    {% include related.html %}
 
     <!-- resize header to fullscreen keynotes --> 
     <script>
@@ -137,11 +76,6 @@
       })
       resize();
     </script>
-
-    {% if page.mathjax %}
-    <!-- add support for mathjax -->
-    {% include mathjax-support.html %}
-    {% endif %}
 
     {% include footer.html %}
 
