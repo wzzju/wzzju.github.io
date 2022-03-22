@@ -101,12 +101,12 @@ npm i -D playwright-chromium
 ```
 * 导出pdf格式幻灯片：
 ```shell
-slidev export
+npx slidev export
 ```
 * 默认导出pdf文件时，会禁用动画效果，如果需要将美步点击都生成一页文档，可以使用如下命令：
 ```shell
 # slidev >= v0.21
-slidev export --with-clicks
+npx slidev export --with-clicks
 ```
 
 ## 4. 快捷键功能

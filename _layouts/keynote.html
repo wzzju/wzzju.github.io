@@ -21,7 +21,7 @@ layout: default
 
 <!-- Slide Content -->
 <header class="frame-header">
-  <iframe src="{{page.iframe}}"></iframe>
+  <iframe id="slide-frame" src="{{page.iframe}}"></iframe>
 </header>
 
 <article>
@@ -40,20 +40,33 @@ layout: default
 <!-- resize header to fullscreen keynotes --> 
 <script>
   var $header = document.getElementsByTagName("header")[0];
+  var $frame = document.getElementById('slide-frame');
+  var $frameUrl = $frame.src
+
+  function refreshFrame() {
+    // avoid the showing error when returning from other pages
+    $frame.contentWindow.location.replace($frameUrl);
+  }
+
   function resize() {
     /*
-      * leave 100px for showing the title
-      */
+     * leave 110px for showing the title
+     */
     $header.style.height = (window.innerHeight - 110) + 'px';
   }
-  document.addEventListener('DOMContentLoaded', function(){
-      resize();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    refreshFrame();
+    resize();
   })
+
   window.addEventListener('load', function() {
-      resize();
+    resize();
   })
+
   window.addEventListener('resize', function() {
-      resize();
+    resize();
   })
+
   resize();
 </script>
