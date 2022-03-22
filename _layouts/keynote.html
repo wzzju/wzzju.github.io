@@ -18,29 +18,15 @@ layout: default
 </style>
 
 <!-- Slide Content -->
-<header class="intro-header style-text" >
+<header class="intro-header">
   <iframe src="{{page.iframe}}"></iframe>
 </header>
 
 <article>
-  <!-- Post Title -->
   <div class="intro-header style-text">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <div class="post-heading">
-            <div class="tags">
-              {% for tag in page.categories %}
-              <a class="tag" href="{{ site.baseurl }}/categories?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
-              {% endfor %}
-            </div>
-            <h1>{{ page.title }}</h1>
-            <h2 class="subheading">{{ page.subtitle }}</h2>
-            <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.author.name }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    {% include post-title.html %}
+
   </div>
 
   {% include post-content.html %}
