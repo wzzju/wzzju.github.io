@@ -1,83 +1,71 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+---
+layout: default
+---
 
-  {% include head.html %}
+{% include wrap.html short=true %}
 
-  <body ontouchstart="">
+<style type="text/css">
+  header.intro-header {
+    height: 500px;
+    overflow: hidden;
+  }
 
-    {% include sidebar.html %}
+  header iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
 
-    <div class="wrap">
-      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    </div>
+<!-- Slide Content -->
+<header class="intro-header style-text" >
+  <iframe src="{{page.iframe}}"></iframe>
+</header>
 
-    <style type="text/css">
-      header.intro-header {
-        height: 500px;
-        overflow: hidden;
-      }
-
-      header iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-    </style>
-
-    <!-- slide  -->
-    <header class="intro-header style-text" >
-      <iframe src="{{page.iframe}}"></iframe>
-    </header>
-
-    <article>
-      <!-- Post Title -->
-      <div class="intro-header style-text">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-              <div class="post-heading">
-                <div class="tags">
-                  {% for tag in page.categories %}
-                  <a class="tag" href="{{ site.baseurl }}/categories?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
-                  {% endfor %}
-                </div>
-                <h1>{{ page.title }}</h1>
-                <h2 class="subheading">{{ page.subtitle }}</h2>
-                <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.author.name }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
-              </div>
+<article>
+  <!-- Post Title -->
+  <div class="intro-header style-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-heading">
+            <div class="tags">
+              {% for tag in page.categories %}
+              <a class="tag" href="{{ site.baseurl }}/categories?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+              {% endfor %}
             </div>
+            <h1>{{ page.title }}</h1>
+            <h2 class="subheading">{{ page.subtitle }}</h2>
+            <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.author.name }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      {% include post-content.html %}
+  {% include post-content.html %}
 
-    </article>
+</article>
 
-    {% include related.html %}
+{% include related-posts.html %}
 
-    <!-- resize header to fullscreen keynotes --> 
-    <script>
-      var $header = document.getElementsByTagName("header")[0];
-      function resize() {
-        /*
-         * leave 100px for showing the title
-         */
-        $header.style.height = (window.innerHeight - 100) + 'px';
-      }
-      document.addEventListener('DOMContentLoaded', function(){
-          resize();
-      })
-      window.addEventListener('load', function() {
-          resize();
-      })
-      window.addEventListener('resize', function() {
-          resize();
-      })
+<!-- resize header to fullscreen keynotes --> 
+<script>
+  var $header = document.getElementsByTagName("header")[0];
+  function resize() {
+    /*
+      * leave 100px for showing the title
+      */
+    $header.style.height = (window.innerHeight - 100) + 'px';
+  }
+  document.addEventListener('DOMContentLoaded', function(){
       resize();
-    </script>
-
-    {% include footer.html %}
-
-  </body>
-</html>
+  })
+  window.addEventListener('load', function() {
+      resize();
+  })
+  window.addEventListener('resize', function() {
+      resize();
+  })
+  resize();
+</script>
