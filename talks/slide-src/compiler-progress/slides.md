@@ -141,3 +141,61 @@ ul ul li {
   list-style: none;
 }
 </style>
+
+---
+
+<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
+
+<div>
+<img src='https://g.gravizo.com/svg?
+digraph G {
+   node_30[label="A"]
+   node_33[label="C"]
+   node_39[label="F"]
+   node_41[label="elementwise_add_3"]
+   node_38[label="matmul_2"]
+   node_32[label="transpose_0"]
+   node_35[label="transpose_1"]
+   node_31[label="var_40"]
+   node_34[label="var_42"]
+   node_36[label="var_43"]
+   node_37[label="var_44"]
+   node_40[label="var_46"]
+   node_30->node_32
+   node_31->node_38
+   node_32->node_31
+   node_33->node_35
+   node_34->node_38
+   node_35->node_34
+   node_36->node_41
+   node_38->node_37
+   node_38->node_36
+   node_39->node_41
+   node_41->node_40
+} // end G
+' style='height: 500px;margin-left: 200px'/>
+</div>
+
+<div>
+
+<arrow x1="520" y1="300" x2="620" y2="300" color="#0085a1" width="3" arrowSize="1" />
+
+</div>
+
+<div>
+<img src='https://g.gravizo.com/svg?
+digraph G {
+   node_42[label="A"]
+   node_43[label="C"]
+   node_44[label="F"]
+   node_46[label="cublas_gemm_0"]
+   node_45[label="var_46"]
+   node_42->node_46
+   node_43->node_46
+   node_44->node_46
+   node_46->node_45
+} // end G
+' style='height: 100%;'/>
+</div>
+
+</div>
