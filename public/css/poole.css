@@ -117,8 +117,10 @@ img {
 
 /* Tables */
 table {
+  margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
+  table-layout: fixed;
   border: 1px solid #e5e5e5;
   border-collapse: collapse;
 }
@@ -126,6 +128,7 @@ td,
 th {
   padding: .25rem .5rem;
   border: 1px solid #e5e5e5;
+  word-wrap: break-word;
 }
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
