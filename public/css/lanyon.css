@@ -274,6 +274,10 @@ a.sidebar-nav-item:focus {
   color: #303030;
   margin-top: 0;
 }
+.page-flag {
+  color: #a9b7c6;
+  margin-top: 0;
+}
 
 /* Related posts */
 .related {
