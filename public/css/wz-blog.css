@@ -78,17 +78,38 @@
 }
 
 /* Search Tool CSS Begin*/
-#search-target-blog {
+#search-target-blog > a {
+	z-index: 100;
 	color: #00adb5;
 	position: fixed;
 	bottom: 6%;
 	right: 3%;
 }
+#search-target-blog > a:focus,
+#search-target-blog > a:hover {
+	color: #0085a1;
+}
+
+#search-blog-close > a {
+	color: #00adb5;
+	position: fixed;
+	top: 2%;
+	right: 6%;
+}
+#search-blog-close > a:focus,
+#search-blog-close > a:hover {
+	color: #0085a1;
+}
 
 @media (max-width: 600px) {
-	#search-target-blog {
+	#search-target-blog > a {
 		right: 6%;
 		bottom: 4%;
+	}
+
+	#search-blog-close > a {
+		top: 2%;
+		right: 3%;
 	}
 }
 /* Search Tool CSS End */

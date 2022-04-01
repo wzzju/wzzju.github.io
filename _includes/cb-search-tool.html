@@ -2,13 +2,17 @@
       opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
     <input type="text" autocomplete="off" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 日期 标签" >
 
-    <div style="color: #00adb5; position: fixed; top: 2%; right: 3%;">
-        <i class="fa fa-window-close fa-2x" id="cb-close-btn"></i>
+    <div id="search-blog-close">
+        <a href="javascript:void(0)" title="关闭">
+            <i class="fa fa-window-close fa-2x" id="cb-close-btn"></i>
+        </a>
     </div>
 </div>
 
 <div id="search-target-blog">
-    <i class="fa fa-search fa-2x" id="cb-search-btn"  title="双击ctrl试一下"></i>
+    <a href="javascript:void(0)" title="双击ctrl试一下">
+        <i class="fa fa-search fa-2x" id="cb-search-btn"></i>
+    </a>
 </div>
 
 <link rel="stylesheet" href="{{ "/search/css/cb-search.css" | prepend: site.baseurl }}">
