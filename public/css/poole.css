@@ -142,11 +142,12 @@ tbody tr:nth-child(odd) th {
  */
 
 .lead {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   font-size: 1.25rem;
   font-weight: 300;
 }
 .lead > a {
-  color: #268bd2;
+  color: #337ab7;
   text-decoration: none;
 }
 .lead > a:hover,

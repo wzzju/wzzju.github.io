@@ -1706,7 +1706,6 @@ img::-moz-selection {
   width: 100%;
   bottom: 0;
   padding-bottom: 20px;
-  opacity: 0.6;
   color: #fff;
 }
 .page-fullscreen footer .copyright {

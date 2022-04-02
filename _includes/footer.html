@@ -18,7 +18,7 @@
 <!-- cb-search-tool.html should be included after jquery.min.js -->
 {% include cb-search-tool.html %}
 
-{% if page.flag == 'bookmark' %}
+{% if page.flag == 'tags' %}
 <!-- jquery.tagcloud.js -->
 <script src='{{ "/public/js/jquery.tagcloud.js" | prepend: site.baseurl }}'></script>
 <script>
