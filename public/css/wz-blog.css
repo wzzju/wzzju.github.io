@@ -80,36 +80,33 @@
 /* Search Tool CSS Begin*/
 #search-target-blog > a {
 	z-index: 100;
-	color: #00adb5;
+	color: rgba(0, 0, 0, 0.8);
 	position: fixed;
-	bottom: 6%;
-	right: 3%;
+	bottom: 32px;
+	right: 32px;
 }
+
 #search-target-blog > a:focus,
 #search-target-blog > a:hover {
 	color: #0085a1;
 }
 
 #search-blog-close > a {
-	color: #00adb5;
+	color: #ff5d5b;
 	position: fixed;
-	top: 2%;
-	right: 6%;
+	top: 15px;
+	right: 15%;
 }
+
 #search-blog-close > a:focus,
 #search-blog-close > a:hover {
 	color: #0085a1;
 }
 
-@media (max-width: 600px) {
-	#search-target-blog > a {
-		right: 6%;
-		bottom: 4%;
-	}
-
+@media (max-width: 768px) {
 	#search-blog-close > a {
-		top: 2%;
-		right: 3%;
+		top: 15px;
+		right: 2%;
 	}
 }
 /* Search Tool CSS End */
@@ -117,28 +114,29 @@
 /* Scroll To Top CSS Begin*/
 #scroll-to-top {
 	display: block;
-	position: fixed;
-	font-size: 22px;
-	font-weight: bold;
-	bottom: 3%;
-	right: 10%;
 	opacity: 0;
+	cursor: pointer;
+	position: fixed;
+	bottom: 15px;
+	right: 100px;
 	z-index: 99;
 	text-align: center;
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+	padding: 12px 4px;
+	background: --light-color;
+	color: #d5d5d5;
+	color: var(--text-body);
+	box-shadow: 0 0 20px 5px rgba(62,60,85,.16);
 	transform: translateY(30%);
 	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 	#scroll-to-top {
-		font-size: 20px;
-	}
-}
-
-@media (max-width: 600px) {
-	#scroll-to-top {
-		right: 4%;
-		bottom: 12%;
+		right: 22px;
+		bottom: 82px;
 	}
 }
 
@@ -146,17 +144,18 @@
 	transition: transform 0.7s ease-in-out;
 }
 
-#scroll-to-top :last-child:active, #scroll-to-top :last-child:hover {
-	transform: translateY(-10%);
+#scroll-to-top :last-child:active,
+#scroll-to-top :last-child:hover {
+	transform: translateY(-20%);
 }
 
-#scroll-to-top span {
-	cursor: pointer;
-	color: #1a1d24;
+#scroll-to-top svg path {
+	fill: rgba(0, 0, 0, 0.8);
 }
 
-#scroll-to-top span:hover .up-arrow, #scroll-to-top span:active .up-arrow {
-	color: #00adb5;
+#scroll-to-top svg:hover path,
+#scroll-to-top svg:active path {
+  fill: #0085a1;
 }
 /* Scroll To Top CSS End*/
 
