@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refer to https://developer.download.nvidia.cn/compute/DCGM/docs/nvidia-smi-367.38.pdf
+# nvidia-smi --id=5 --query-compute-apps=used_memory --format=csv -lms 100
+# nvidia-smi --id=3 --query-gpu=utilization.gpu --format=csv,nounits --loop-ms=100 --filename=utilization.csv
+
 profile_name=${1:-'./perf_profile/laplace2d_static_0412_cinn_10layers.nsys-rep'}
 # gpukernsum / gpumemtimesum / gpumemsizesum / gpusum / cudaapitrace / gputrace
 target=${2:-'gpukernsum'}
