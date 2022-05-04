@@ -28,10 +28,22 @@ kramdown:
 paginate: 10
 # Permalinks
 permalink: pretty
-exclude: ["README.md", "new-post.sh", "run-docker.sh", "slides-project", "talks/slide-src", "talks/slide-bgs"]
-
+# Exclude files from the _site directory
+exclude:
+  - README.md
+  - new-post.sh
+  - run-docker.sh
+  - slides-project/
+  - talks/slide-src/
+  - talks/slide-bgs/
+  - assets/exclusion/
 # Gem settings
-plugins: [jekyll-paginate, jekyll-gist, jekyll-sitemap, jekyll-feed, jemoji]
+plugins:
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-sitemap
+  - jekyll-feed
+  - jemoji
 
 author:
   name: 'YuChen'
