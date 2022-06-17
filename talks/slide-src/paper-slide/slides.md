@@ -38,8 +38,7 @@ wangzhen @ 2022.06.17
   - 灵活性也带来了一些性能差距，尤其是对新模型而言
 
 * 深度学习编译器可以弥补灵活性与性能之间的鸿沟
-  - XLA
-  - TVM
+  - XLA / TVM
 
 * 当前最先进的深度学习编译器均是面向静态shape的
   - shape在编译期是静态可知的
@@ -251,7 +250,6 @@ shape.tie_eq(s0, s1)
 
 <img border="rounded" src="/images/speedup_fig.png" width="900">
 
-
 ---
 
 # 实验评估
@@ -268,7 +266,6 @@ shape.tie_eq(s0, s1)
 </div>
 
 <img border="rounded" src="/images/speedup_fig.png" width="900">
-
 
 ---
 layout: center
