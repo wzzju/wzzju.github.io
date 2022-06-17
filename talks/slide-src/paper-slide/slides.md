@@ -26,7 +26,7 @@ download: true
 EuroMLSys ’21, April 26, 2021, Online, United Kingdom
 
 ## 论文分享 
-wangzhen @ 2022.06.17
+yuchen @ 2022.06.17
 
 ---
 
@@ -210,23 +210,25 @@ shape.tie_eq(s0, s1)
   <div class="right">
     <img src="/images/pass_pipeline.png">
   </div>
-</div>   
+</div>
 
 <style>
-  .box{
-    width:100%;
-    margin:0 auto;
-    overflow:hidden;
+  .box {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
   }
-  .box .left{
-    width:30%;
-    height:400px;
-    float:left;
+
+  .box .left {
+    width: 30%;
+    height: 400px;
+    float: left;
   }
-  .box .right{
-    width:70%;
-    height:400px;
-    float:left;
+
+  .box .right {
+    width: 70%;
+    height: 400px;
+    float: left;
   }
 </style>
 
@@ -275,3 +277,106 @@ class: text-center
 # Thanks
 
 [Learn More](https://github.com/alibaba/BladeDISC)
+
+---
+
+# Two Cols
+
+<div class="box">
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+
+<style>
+  .box {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .box .left {
+    width: 30%;
+    height: 400px;
+    float: left;
+    background-color: #3399CC;
+  }
+
+  .box .right {
+    width: 70%;
+    height: 400px;
+    float: left;
+    background-color: #4FC3F7;
+  }
+</style>
+
+---
+
+# Three Cols
+
+<div class="box">
+  <div class="left"></div>
+  <div class="center"></div>
+  <div class="right"></div>
+</div>
+
+<style>
+  .box {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .box .left {
+    width: 200px;
+    height: 400px;
+    background-color: #3498DB;
+    position: absolute;
+  }
+
+  .box .center {
+    height: 400px;
+    background-color: #4FC3F7;
+    margin: 0 300px 0 200px;
+  }
+
+  .box .right {
+    width: 300px;
+    height: 400px;
+    background-color: #E3F2FD;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+</style>
+
+---
+
+# Three Rows
+
+<div class="box">
+  <div class="header"></div>
+  <div class="main"></div>
+  <div class="footer"></div>
+</div>
+
+<style>
+  .box {
+    height: 100%;
+    margin:0 auto;
+  }
+
+  .box .header {
+    height: 120px;
+    background-color: #3498DB;
+  }
+
+  .box .main {
+    height: 200px;
+    background-color: #4FC3F7;
+  }
+
+  .box .footer {
+    height: 100px;
+    background-color: #E3F2FD;
+  }
+</style>
