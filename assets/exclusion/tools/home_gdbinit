@@ -1596,7 +1596,8 @@ class Variables:
             lines.sort()
         return lines
 
-class Stack(Dashboard.Module):
+# class Stack(Dashboard.Module):
+class Stack:
     '''Show the current stack trace including the function name and the file location, if available.
 
 Optionally list the frame arguments and locals too.'''
