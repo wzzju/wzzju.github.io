@@ -371,6 +371,8 @@ apt-get install software-properties-common &&            \
     add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
     apt-get update -y &&                                 \
     apt install gdb -y
+# 若遇到ModuleNotFoundError: No module named 'apt_pkg'问题，只需
+# 将/usr/bin/add-apt-repository中的`!/usr/bin/python3`改为`!/usr/bin/python3.6`
 
 # 安装python3.7-dbg
 apt install python3.7-dbg
