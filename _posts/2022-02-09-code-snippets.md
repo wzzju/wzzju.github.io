@@ -87,6 +87,53 @@ LDBL_MIN = 2.22507e-308
 LDBL_MAX = 1.79769e+308
 ```
 
+## 字符串分割
+
+* 【分割最精准】使用正则表达式分割字符串，且分割的结果中包括空白字符
+
+```cpp
+void split(const string& str, const string& del, vector<string>& vals) {
+  regex reg(del);
+  // -1表示返回未匹配的部分
+  vals.assign(sregex_token_iterator(str.begin(), str.end(), reg, -1),
+              sregex_token_iterator());
+}
+```
+> **注意：**
+>
+> 1) 假设分割符为`#`：对于字符串`"#1#2##3#"`，使用上述基于正则表达式的字符串分割函数split所得结果为`{,1,2,,3}`，结果size为5。**最前面有一个空串，最后面却没有空串，中间存在空串。**
+>
+> 2）假设分割符为`#`：对于空串`""`，使用上述基于正则表达式的字符串分割函数split所得结果为`{}`，结果size为1，**即包括一个空串**。
+
+
+* 分割的结果中包括空白字符
+
+```cpp
+// There will be blanks in the result.
+void split(const string& str, char del, vector<string>& vals) {
+  istringstream is(str);
+  string val;
+  while (getline(is, val, del)) {
+    vals.emplace_back(move(val));
+  }
+}
+```
+
+* 分割的结果中不包括空白字符，且目标串str中不含有del中的任何字符
+
+```cpp
+// There is no blank in the result.
+void split(const string& str, const string& del, vector<string>& vals) {
+  auto beg = str.find_first_not_of(del, 0);
+  auto end = str.find_first_of(del, beg);
+  while (beg != string::npos || end != string::npos) {
+    vals.emplace_back(str.substr(beg, end - beg));
+    beg = str.find_first_not_of(del, end);
+    end = str.find_first_of(del, beg);
+  }
+}
+```
+
 ## Map方式调用成员方法
 
 * (1)和(2)提供了两种以Map的方式存储成员方法，以便后续替代`if`/`switch`的形式进行调用。
