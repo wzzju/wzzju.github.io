@@ -68,7 +68,7 @@ comments_provider: gitalk
 gitalk:
   owner: wzzju
   repo: blog-comments
-  # clientID: e5a8aeb6ac781df840ff
   clientID: 481f0b89289da9b8a42b
-  # clientSecret: a65b7ee305064fff7a4da078236e1e12461096a1
   clientSecret: 7869eb5965cde657634acbe4bd5a598c5cd350cf
+  perPage: 50
+  proxy: https://blog-comments.wzzju.workers.dev/?https://github.com/login/oauth/access_token
