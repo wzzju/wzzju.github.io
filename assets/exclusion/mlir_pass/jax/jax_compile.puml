@@ -1,0 +1,48 @@
+@startuml jax_compile
+!theme reddress-lightblue
+
+' title 编译可执行文件
+
+actor _xla_callable_uncached as caller
+participant "XlaComputation.compile" as xc
+participant "XlaCompiledComputation.from_xla_computation" as xcc
+participant "compile_or_get_cached" as cgc
+participant "backend_compile" as bc
+participant "PyClient::CompileMlir" as pc
+participant "ParseMlirModuleString" as pms
+participant "PjRtStreamExecutorClient::Compile" as pjrt
+participant "MlirToXlaComputation" as mtx
+autonumber
+caller->xc:调用compile方法
+activate xc
+xc->xcc:调用from_xla_computation方法，\n用于构建一个XlaCompiledComputation对象
+activate xcc
+xcc->cgc:调用compile_or_get_cached方法，\n其会调用mlir.module_to_string将\nmlir.Module转为字符串，接着使用\n所提供的后端将mlir.Module字符表示\n进行编译
+activate cgc
+cgc->bc:进行后端编译
+activate bc
+bc->pc:python调用c++函数\nbackend.compile
+activate pc
+pc->pms:将字符串表示的mlir.Module解析为mlir::ModuleOp
+activate pms
+pms-->pc:返回mlir::ModuleOp
+deactivate pms
+pc->pjrt:编译mlir::ModuleOp
+activate pjrt
+pjrt->mtx:将mlir::ModuleOp转换为\nc++定义的XlaComputation
+activate mtx
+mtx-->pjrt:返回XlaComputation对象
+deactivate mtx
+pjrt-->pc:后续与tf中使用xla机制类似，即调用LocalClient::Compile、\nLocalService::CompileExecutables、GpuCompiler::RunHloPasses、\nGpuCompiler::RunBackend等方法将XlaComputation对象编译可执行二进制文件，\n并转为父类PjRtExecutable指针返回
+deactivate pjrt
+pc-->bc:将编译得到的可执行二进制文件\n包装在PyExecutable类型对象中返回
+deactivate pc
+bc-->cgc:返回编译得到的PyExecutable对象
+deactivate bc
+cgc-->xcc:使用functools.partial将\n编译得到的PyExecutable\n对象绑定到_execute_compiled\n或者_execute_replicated函数\n参数中，partial的结果将作为所\n构建XlaCompiledComputation\n对象的unsafe_call属性，返回构建\n的XlaCompiledComputation对象
+deactivate cgc
+xcc-->xc:返回XlaCompiledComputation对象
+deactivate xcc
+xc-->caller:将XlaCompiledComputation\n对象的unsafe_call属性\n作为其调用返回值
+deactivate xc
+@enduml

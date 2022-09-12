@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="896px" preserveAspectRatio="none" style="width:1885px;height:896px;background:#FFFFFF;" version="1.1" viewBox="0 0 1885 896" width="1885px" zoomAndPan="magnify"><defs/><g><rect fill="#E0E0E0" height="692.7969" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="162" y="107.7373"/><rect fill="#E0E0E0" height="40.7373" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="568" y="148.4746"/><rect fill="#E0E0E0" height="434.7417" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="568" y="284.6865"/><rect fill="#E0E0E0" height="27.3687" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="745" y="216.5806"/><rect fill="#E0E0E0" height="353.2671" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="895" y="312.0552"/><rect fill="#E0E0E0" height="285.1611" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="1182" y="339.4238"/><rect fill="#E0E0E0" height="176.9492" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="1414" y="366.7925"/><rect fill="#E0E0E0" height="27.3687" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="1648" y="407.5298"/><rect fill="#E0E0E0" height="27.3687" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="1809.5" y="475.6357"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="21" x2="21" y1="78.3687" y2="818.5342"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="166.5" x2="166.5" y1="78.3687" y2="818.5342"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="573" x2="573" y1="78.3687" y2="818.5342"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="750" x2="750" y1="78.3687" y2="818.5342"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="900" x2="900" y1="78.3687" y2="818.5342"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1186.5" x2="1186.5" y1="78.3687" y2="818.5342"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1418.5" x2="1418.5" y1="78.3687" y2="818.5342"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1653" x2="1653" y1="78.3687" y2="818.5342"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1814" x2="1814" y1="78.3687" y2="818.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="26" x="5" y="76.0591">User</text><ellipse cx="21" cy="13.5" fill="#2A86E2" rx="8" ry="8" style="stroke:#1A66C2;stroke-width:0.5;"/><path d="M21,21.5 L21,48.5 M8,29.5 L34,29.5 M21,48.5 L8,63.5 M21,48.5 L34,63.5 " fill="none" style="stroke:#1A66C2;stroke-width:0.5;"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="26" x="5" y="828.5933">User</text><ellipse cx="21" cy="839.4028" fill="#2A86E2" rx="8" ry="8" style="stroke:#1A66C2;stroke-width:0.5;"/><path d="M21,847.4028 L21,874.4028 M8,855.4028 L34,855.4028 M21,874.4028 L8,889.4028 M21,874.4028 L34,889.4028 " fill="none" style="stroke:#1A66C2;stroke-width:0.5;"/><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="145" x="94.5" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="131" x="101.5" y="68.0591">CompiledFunction::Call</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="145" x="94.5" y="817.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="131" x="101.5" y="835.5933">CompiledFunction::Call</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="144" x="501" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="130" x="508" y="68.0591">jax:api.py:_cpp_jit闭包</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="144" x="501" y="817.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="130" x="508" y="835.5933">jax:api.py:_cpp_jit闭包</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="190" x="655" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="176" x="662" y="68.0591">tf:jax_jit.cc:ComputeSignature</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="190" x="655" y="817.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="176" x="662" y="835.5933">tf:jax_jit.cc:ComputeSignature</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="78" x="861" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="64" x="868" y="68.0591">xla.xla_call</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="78" x="861" y="817.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="64" x="868" y="835.5933">xla.xla_call</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="149" x="1112.5" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="135" x="1119.5" y="68.0591">_xla_callable_uncached</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="149" x="1112.5" y="817.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="135" x="1119.5" y="835.5933">_xla_callable_uncached</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="119" x="1359.5" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="105" x="1366.5" y="68.0591">lower_xla_callable</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="119" x="1359.5" y="817.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="105" x="1366.5" y="835.5933">lower_xla_callable</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="174" x="1566" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="160" x="1573" y="68.0591">jax.interpreters.partial_eval</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="174" x="1566" y="817.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="160" x="1573" y="835.5933">jax.interpreters.partial_eval</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="129" x="1750" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="115" x="1757" y="68.0591">jax.interpreters.mlir</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="129" x="1750" y="817.5342"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="115" x="1757" y="835.5933">jax.interpreters.mlir</text><rect fill="#E0E0E0" height="692.7969" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="162" y="107.7373"/><rect fill="#E0E0E0" height="40.7373" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="568" y="148.4746"/><rect fill="#E0E0E0" height="434.7417" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="568" y="284.6865"/><rect fill="#E0E0E0" height="27.3687" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="745" y="216.5806"/><rect fill="#E0E0E0" height="353.2671" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="895" y="312.0552"/><rect fill="#E0E0E0" height="285.1611" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="1182" y="339.4238"/><rect fill="#E0E0E0" height="176.9492" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="1414" y="366.7925"/><rect fill="#E0E0E0" height="27.3687" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="1648" y="407.5298"/><rect fill="#E0E0E0" height="27.3687" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="1809.5" y="475.6357"/><polygon fill="#000000" points="150,103.7373,160,107.7373,150,111.7373,154,107.7373" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="21" x2="156" y1="107.7373" y2="107.7373"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="28" y="103.4277">1</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="110" x="40" y="103.4277">调用被@jit装饰的函数</text><polygon fill="#000000" points="556,144.4746,566,148.4746,556,152.4746,560,148.4746" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="562" y1="148.4746" y2="148.4746"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="179" y="137.4807">2</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="215" x="191" y="130.7964">调用TryToPopulateDefaultDevice方法，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="228" x="191" y="144.165">方法内部再调用python函数get_device_info</text><polygon fill="#000000" points="183,185.2119,173,189.2119,183,193.2119,179,189.2119" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="177" x2="572" y1="189.2119" y2="189.2119"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="189" y="178.218">3</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="123" x="201" y="171.5337">设置default_device_，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="128" x="201" y="184.9023">类型为xla::PjRtDevice*</text><polygon fill="#000000" points="733,212.5806,743,216.5806,733,220.5806,737,216.5806" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="739" y1="216.5806" y2="216.5806"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="179" y="212.271">4</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="175" x="191" y="212.271">根据device和arguments计算签名</text><polygon fill="#000000" points="183,239.9492,173,243.9492,183,247.9492,179,243.9492" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="177" x2="749" y1="243.9492" y2="243.9492"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="189" y="239.6396">5</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="118" x="201" y="239.6396">arguments.signature</text><polygon fill="#000000" points="556,280.6865,566,284.6865,556,288.6865,560,284.6865" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="562" y1="284.6865" y2="284.6865"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="179" y="273.6926">6</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="117" x="191" y="267.0083">调用cache_miss_，即</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="149" x="191" y="280.377">调用python函数cache_miss</text><polygon fill="#000000" points="883,308.0552,893,312.0552,883,316.0552,887,312.0552" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="578" x2="889" y1="312.0552" y2="312.0552"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="585" y="307.7456">7</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="4" x="597" y="307.7456"> </text><polygon fill="#000000" points="1170,335.4238,1180,339.4238,1170,343.4238,1174,339.4238" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="905" x2="1176" y1="339.4238" y2="339.4238"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="912" y="335.1143">8</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="4" x="924" y="335.1143"> </text><polygon fill="#000000" points="1402,362.7925,1412,366.7925,1402,370.7925,1406,366.7925" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="1192" x2="1408" y1="366.7925" y2="366.7925"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="1199" y="362.4829">9</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="4" x="1211" y="362.4829"> </text><polygon fill="#000000" points="1636,403.5298,1646,407.5298,1636,411.5298,1640,407.5298" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="1424" x2="1642" y1="407.5298" y2="407.5298"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="1431" y="396.5359">10</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="165" x="1451" y="389.8516">trace_to_jaxpr_final，tracing</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="185" x="1451" y="403.2202">并转换被@jit装饰的函数为Jaxpr对象</text><polygon fill="#000000" points="1435,430.8984,1425,434.8984,1435,438.8984,1431,434.8984" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="1429" x2="1652" y1="434.8984" y2="434.8984"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="1441" y="430.5889">11</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="4" x="1461" y="430.5889"> </text><polygon fill="#000000" points="1797.5,471.6357,1807.5,475.6357,1797.5,479.6357,1801.5,475.6357" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="1424" x2="1803.5" y1="475.6357" y2="475.6357"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="1431" y="464.6418">12</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="146" x="1451" y="457.9575">lower_jaxpr_to_module，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="172" x="1451" y="471.3262">将Jaxpr对象lower为mlir.Module</text><polygon fill="#000000" points="1435,499.0044,1425,503.0044,1435,507.0044,1431,503.0044" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="1429" x2="1813.5" y1="503.0044" y2="503.0044"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="1441" y="498.6948">13</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="4" x="1461" y="498.6948"> </text><polygon fill="#000000" points="1203,539.7417,1193,543.7417,1203,547.7417,1199,543.7417" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="1197" x2="1418" y1="543.7417" y2="543.7417"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="1209" y="532.7478">14</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="171" x="1229" y="526.0635">使用mlir.Module构建python端的</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="178" x="1229" y="539.4321">XlaComputation对象，并将其返回</text><polygon fill="#000000" points="916,620.585,906,624.585,916,628.585,912,624.585" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="910" x2="1186" y1="624.585" y2="624.585"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="922" y="593.5381">15</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="199" x="942" y="566.8008">调用XlaComputation的compile()方法</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="198" x="942" y="580.1694">得到XlaCompiledComputation对象，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="227" x="942" y="593.5381">并将其unsafe_call属性值返回，unsafe_call</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="201" x="942" y="606.9067">是一个绑定了可执行文件的partial函数，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="233" x="942" y="620.2754">返回的unsafe_call也会被LRU cache进行缓存</text><polygon fill="#000000" points="589,661.3223,579,665.3223,589,669.3223,585,665.3223" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="583" x2="899" y1="665.3223" y2="665.3223"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="595" y="654.3284">16</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="273" x="615" y="647.644">执行XlaCompiledComputation对象的unsafe_call，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="88" x="615" y="661.0127">并将计算结果返回</text><polygon fill="#000000" points="183,715.4282,173,719.4282,183,723.4282,179,719.4282" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="177" x2="572" y1="719.4282" y2="719.4282"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="189" y="701.75">17</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="293" x="209" y="688.3813">通过LRU cache获取最近绑定了可执行文件的partial函数，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="317" x="209" y="701.75">再从其函数参数中获取编译得到的可执行文件xla_executable，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="352" x="209" y="715.1187">并将其封装到_FastpathData对象中，计算结果out和该对象会一并返回</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="172" x2="214" y1="760.1655" y2="760.1655"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="214" x2="214" y1="760.1655" y2="773.1655"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="173" x2="214" y1="773.1655" y2="773.1655"/><polygon fill="#000000" points="183,769.1655,173,773.1655,183,777.1655,179,773.1655" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="179" y="749.1716">18</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="235" x="199" y="742.4873">调用PopulateCacheEntry方法，对编译得到的</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="191" x="199" y="755.856">可执行文件、设备、pytree等进行缓存</text><polygon fill="#000000" points="32,796.5342,22,800.5342,32,804.5342,28,800.5342" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="26" x2="166" y1="800.5342" y2="800.5342"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="16" x="38" y="796.2246">19</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="58" y="796.2246">返回计算结果</text><!--MD5=[6667a3509e0444dc3d9fd1990d34ba90]
+@startuml jit call miss
+!theme reddress-lightblue
+
+' title Jax jit首次编译流程
+
+actor User as user
+participant "CompiledFunction::Call" as cf
+participant "jax:api.py:_cpp_jit闭包" as cppJit
+participant "tf:jax_jit.cc:ComputeSignature" as cs
+participant "xla.xla_call" as xlaCall
+participant "_xla_callable_uncached" as xlaCallUncached
+participant "lower_xla_callable" as xlaLower
+participant "jax.interpreters.partial_eval" as pe
+participant "jax.interpreters.mlir" as mlir
+
+autonumber
+user->cf:调用被@jit装饰的函数
+activate cf
+
+cf->cppJit:调用TryToPopulateDefaultDevice方法，\n方法内部再调用python函数get_device_info
+activate cppJit
+cppJit- ->cf:设置default_device_，\n类型为xla::PjRtDevice*
+deactivate cppJit
+cf->cs:根据device和arguments计算签名
+activate cs
+cs- ->cf:arguments.signature
+deactivate cs
+cf->cppJit:调用cache_miss_，即\n调用python函数cache_miss
+activate cppJit
+cppJit->xlaCall
+activate xlaCall
+xlaCall->xlaCallUncached
+activate xlaCallUncached
+xlaCallUncached->xlaLower
+activate xlaLower
+xlaLower->pe:trace_to_jaxpr_final，tracing\n并转换被@jit装饰的函数为Jaxpr对象
+activate pe
+pe- ->xlaLower
+deactivate pe
+xlaLower->mlir:lower_jaxpr_to_module，\n将Jaxpr对象lower为mlir.Module
+activate mlir
+mlir- ->xlaLower
+deactivate mlir
+xlaLower- ->xlaCallUncached:使用mlir.Module构建python端的\nXlaComputation对象，并将其返回
+deactivate xlaLower
+xlaCallUncached- ->xlaCall:调用XlaComputation的compile()方法\n得到XlaCompiledComputation对象，\n并将其unsafe_call属性值返回，unsafe_call\n是一个绑定了可执行文件的partial函数，\n返回的unsafe_call也会被LRU cache进行缓存
+deactivate xlaCallUncached
+xlaCall- ->cppJit:执行XlaCompiledComputation对象的unsafe_call，\n并将计算结果返回
+deactivate xlaCall
+cppJit- ->cf:通过LRU cache获取最近绑定了可执行文件的partial函数，\n再从其函数参数中获取编译得到的可执行文件xla_executable，\n并将其封装到_FastpathData对象中，计算结果out和该对象会一并返回
+deactivate cppJit
+cf- ->cf:调用PopulateCacheEntry方法，对编译得到的\n可执行文件、设备、pytree等进行缓存
+cf- ->user:返回计算结果
+deactivate cf
+@enduml
+
+@startuml jit call miss
+
+
+
+skinparam stereotypeCBackgroundColor 1a66c2
+skinparam backgroundColor fff
+
+
+
+
+
+
+
+skinparam circledCharacter {
+  radius 8
+  fontSize 11
+  fontName Verdana
+}
+
+skinparam class {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+
+  attributeFontColor 333
+  attributeFontSize 11
+  attributeIconSize 11
+}
+
+
+skinparam actor {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam participant {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam collections {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam SequenceBox{
+    backgroundColor e0e0e0
+  borderColor cccccc
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam interface {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam component {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam node {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam database {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam queue {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam usecase {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam activity {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam sequence {
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+
+  lifeLineBorderColor 2a86e2
+  lifeLineBackgroundColor e0e0e0
+}
+
+skinparam boundary {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam control {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam entity {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam state {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+  startColor 2a86e2
+  endColor 1a66c2
+}
+
+
+skinparam object {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+
+skinparam note {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam cloud {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam rectangle {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam storage {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+actor User as user
+participant "CompiledFunction::Call" as cf
+participant "jax:api.py:_cpp_jit闭包" as cppJit
+participant "tf:jax_jit.cc:ComputeSignature" as cs
+participant "xla.xla_call" as xlaCall
+participant "_xla_callable_uncached" as xlaCallUncached
+participant "lower_xla_callable" as xlaLower
+participant "jax.interpreters.partial_eval" as pe
+participant "jax.interpreters.mlir" as mlir
+
+autonumber
+user->cf:调用被@jit装饰的函数
+activate cf
+
+cf->cppJit:调用TryToPopulateDefaultDevice方法，\n方法内部再调用python函数get_device_info
+activate cppJit
+cppJit- ->cf:设置default_device_，\n类型为xla::PjRtDevice*
+deactivate cppJit
+cf->cs:根据device和arguments计算签名
+activate cs
+cs- ->cf:arguments.signature
+deactivate cs
+cf->cppJit:调用cache_miss_，即\n调用python函数cache_miss
+activate cppJit
+cppJit->xlaCall
+activate xlaCall
+xlaCall->xlaCallUncached
+activate xlaCallUncached
+xlaCallUncached->xlaLower
+activate xlaLower
+xlaLower->pe:trace_to_jaxpr_final，tracing\n并转换被@jit装饰的函数为Jaxpr对象
+activate pe
+pe- ->xlaLower
+deactivate pe
+xlaLower->mlir:lower_jaxpr_to_module，\n将Jaxpr对象lower为mlir.Module
+activate mlir
+mlir- ->xlaLower
+deactivate mlir
+xlaLower- ->xlaCallUncached:使用mlir.Module构建python端的\nXlaComputation对象，并将其返回
+deactivate xlaLower
+xlaCallUncached- ->xlaCall:调用XlaComputation的compile()方法\n得到XlaCompiledComputation对象，\n并将其unsafe_call属性值返回，unsafe_call\n是一个绑定了可执行文件的partial函数，\n返回的unsafe_call也会被LRU cache进行缓存
+deactivate xlaCallUncached
+xlaCall- ->cppJit:执行XlaCompiledComputation对象的unsafe_call，\n并将计算结果返回
+deactivate xlaCall
+cppJit- ->cf:通过LRU cache获取最近绑定了可执行文件的partial函数，\n再从其函数参数中获取编译得到的可执行文件xla_executable，\n并将其封装到_FastpathData对象中，计算结果out和该对象会一并返回
+deactivate cppJit
+cf- ->cf:调用PopulateCacheEntry方法，对编译得到的\n可执行文件、设备、pytree等进行缓存
+cf- ->user:返回计算结果
+deactivate cf
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 18:55:52 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: zh
+Country: CN
+--></g></svg>

@@ -1,0 +1,24 @@
+@startuml jax2xla
+!theme reddress-lightblue
+
+' title Jax @jit装饰器作用流程
+
+actor User as user
+participant "@jit" as atJit
+participant "_cpp_jit" as cppJit
+participant "jax_jit.jit" as jitlibJit
+
+autonumber
+user->atJit:使用@jit装饰器
+activate atJit
+atJit->cppJit:env JAX_CPP_JIT=true并且未启用动态shape
+activate cppJit
+cppJit->jitlibJit:调用tf:jax_jit.cc中定义的jit函数
+activate jitlibJit
+jitlibJit-->cppJit:返回CompiledFunction类型对象，\n其内包装了python中定义的cache_miss\n和get_device_info函数，以及python中\n定义的CompiledFunctionCache对象
+deactivate jitlibJit
+cppJit-->atJit:根据@jit装饰的python函数信息对\nCompiledFunction类型对象进行调整
+deactivate cppJit
+atJit-->user:返回调整后的CompiledFunction类型对象
+deactivate atJit
+@enduml

@@ -1,0 +1,319 @@
+@startuml torch_mlir_analysis
+!theme reddress-lightblue
+
+' title torch-mlir Sequence Diagram
+
+actor Python as python
+participant "pybind11" as pybind11
+participant "CAPI" as capi
+participant "InitAll" as init
+participant "Dialect/Torch" as dialectTorch
+participant "Dialect/TorchConversion" as dialectConversion
+participant "Conversion" as conversion
+participant "RefBackend" as backend
+participant "externals/torch-mlir-dialects" as tmd
+participant "ModuleBuilder" as builder
+participant "IValueImporter" as ivImporter
+participant "NodeImporter" as nodeImporter
+participant "MLIR" as mlir
+' https://github.com/llvm/torch-mlir/blob/main/python/torch_mlir/__init__.py#L122
+' https://github.com/llvm/llvm-project/blob/main/mlir/lib/Bindings/Python/Pass.cpp#L58
+rnote over python
+  1. 注册与torch相关的MLIR转换和优化Pass
+  import torch
+  import torch_mlir
+  class TanhModule(torch.nn.Module):
+    def forward(self, a):
+        return torch.tanh(a)
+  compiled = torch_mlir.compile(TanhModule(), torch.ones(3),
+        output_type=torch_mlir.OutputType.LINALG_ON_TENSORS)
+endrnote
+
+autonumber 1.1
+python->pybind11:PYBIND11_MODULE(_torchMlir, m)
+activate pybind11
+pybind11->capi:torchMlirRegisterAllPasses()
+activate capi
+capi->init:mlir::torch::registerAllPasses()\n注册与torch相关的MLIR转换和优化Pass
+activate init
+init->dialectTorch:mlir::torch::registerTorchPasses()\n注册优化TorchDialect IR的Pass
+activate dialectTorch
+dialectTorch-->init
+deactivate dialectTorch
+init->dialectConversion:mlir::torch::registerTorchConversionPasses()\n注册把TorchDialect Convert为LinalgDialect的Pass
+activate dialectConversion
+dialectConversion-->init
+deactivate dialectConversion
+init->conversion:mlir::torch::registerConversionPasses()
+activate conversion
+conversion-->init
+deactivate conversion
+init->backend:mlir::torch::RefBackend::registerRefBackendPasses()
+activate backend
+backend-->init
+deactivate backend
+init->tmd:mlir::torch::TMTensor::registerPasses()
+activate tmd
+tmd-->init
+deactivate tmd
+init-->capi
+deactivate init
+capi-->pybind11
+deactivate capi
+pybind11-->python
+deactivate pybind11
+
+autonumber inc A
+rnote over python
+  2. 注册torch-mlir使用到的所有Dialects
+  from torch_mlir.dialects.torch.importer.jit_ir import ModuleBuilder
+  mb = ModuleBuilder() # 节选自torch_mlir.compile函数定义
+endrnote
+
+python->pybind11
+activate pybind11
+pybind11->builder:创建ModuleBuilder类型对象
+activate builder
+builder->capi:torchMlirRegisterAllDialects(context)
+activate capi
+capi->init:mlir::torch::registerAllDialects(registry)\n注册如下Dialects：\nmlir::torch::Torch::TorchDialect\nmlir::torch::TorchConversion::TorchConversionDialect\nmlir::torch::TMTensor::TMTensorDialect
+
+note right of dialectTorch #aqua
+def Torch_AtenTanhOp : Torch_Op<"aten.tanh", [
+    AllowsTypeRefinement,
+    HasValueSemantics,
+    ReadOnly
+  ]> {
+  let summary = "Generated op for `aten::tanh : (Tensor) -> (Tensor)`";
+  let arguments = (ins
+    AnyTorchTensorType:$self
+  );
+  let results = (outs
+    AnyTorchTensorType:$result
+  );
+  let hasCustomAssemblyFormat = 1;
+  let extraClassDefinition = [{
+    ParseResult AtenTanhOp::parse(OpAsmParser &parser, OperationState &result) {
+      return parseDefaultTorchOp(parser, result, 1, 1);
+    }
+    void AtenTanhOp::print(OpAsmPrinter &printer) {
+      printDefaultTorchOp(printer, *this, 1, 1);
+    }
+  }];
+}
+end note
+
+activate init
+note right of init #aqua
+注册TorchDialect/TorchConversionDialect/TMTensorDialect
+TorchDialect中的Op定义已经通过torch_ods_gen.py生成到
+GeneratedTorchOps.td文件中
+end note
+init-->capi
+deactivate init
+capi-->builder
+deactivate capi
+builder-->pybind11
+deactivate builder
+pybind11-->python
+deactivate pybind11
+
+autonumber inc A
+rnote over python
+  3. 将torchscript IR转换为TorchDialect IR
+  mb.import_module(scripted._c, class_annotator) # 节选自torch_mlir.compile函数定义
+endrnote
+
+python->pybind11:import_module()
+activate pybind11
+pybind11->builder:importModule()\n变量torchscript IR并创建对应的TorchDialect Op
+activate builder
+
+note right of builder #aqua
+举例，torchscript IR节点：
+%1: Float(3:4, 4:1) = aten::mm(%4, %2, %3)
+end note
+
+builder->ivImporter:importIValue()
+activate ivImporter
+ivImporter->mlir:IValueImporter::importIValue调用\nIValueImporter::rawImportIValue，\n接着调用createMlirOperation和\ncreateMlirOperationAtEnd\n以创建对应的TorchDialect Op
+activate mlir
+mlir-->ivImporter
+deactivate mlir
+ivImporter->nodeImporter:IValueImporter::importIValue调用\nIValueImporter::rawImportIValue，\n接着调用IValueImporter::importModule，\n再调用importCompilationUnit，\n接着调用importJitFunctionAsFuncOp，\n最后调用importBlock，即进入NodeImporter
+activate nodeImporter
+nodeImporter->mlir:调用createMlirOperation和\ncreateMlirOperationAtEnd\n创建对应的TorchDialect Op
+activate mlir
+
+note right of nodeImporter #aqua
+转换为TorchDialect IR，对应的Op：
+%1 = torch.aten.mm %arg0, %arg1:
+!torch.vtensor<[?,?], f32>, !torch.vtensor<[?,?], f32>
+-> !torch.vtensor<[?,2], f32> 
+end note
+
+mlir-->nodeImporter
+deactivate mlir
+nodeImporter-->ivImporter
+deactivate nodeImporter
+ivImporter-->builder
+deactivate ivImporter
+builder-->pybind11
+deactivate builder
+pybind11-->python
+deactivate pybind11
+
+rnote over python
+  4. 对TorchDialect IR执行各种Pass优化(即Transforms)
+  run_pipeline_with_repro_report(mb.module,
+      "torchscript-module-to-torch-backend-pipeline",
+      "Lowering TorchScript IR -> Torch Backend IR") # 节选自torch_mlir.compile函数定义
+endrnote
+
+autonumber inc A
+python->pybind11: def run_pipeline_with_repro_report(module, pipeline, description):\n\tpm = PassManager.parse(pipeline)\n\tpm.run(module)
+activate pybind11
+pybind11->mlir:mlir::PassManager::run(Operation *op)
+activate mlir
+mlir->mlir:SymbolDCE
+mlir->dialectTorch:PrepareForGlobalizeObjectGraph
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:GlobalizeObjectGraph
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->mlir:Inliner
+mlir->dialectTorch:AdjustCallingConventions
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->mlir:Canonicalizer
+mlir->dialectTorch:InlineGlobalSlots
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:ReduceOpVariants
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:MaximizeValueSemantics
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:RefinePublicReturn
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:VerifyConversionToValueSemantics
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:ReifyShapeCalculations
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:SimplifyShapeCalculations
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:DropShapeCalculations
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:RefineTypes
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+mlir->dialectTorch:DecomposeComplexOps
+activate dialectTorch
+dialectTorch-->mlir
+deactivate dialectTorch
+
+note right of dialectTorch #aqua
+对TorchDialect IR执行
+各种Pass优化(即Transforms)
+end note
+
+mlir-->pybind11
+deactivate mlir
+pybind11-->python
+deactivate pybind11
+
+
+rnote over python
+  5. 将TorchDialect IR降低到Linalg-on-Tensors IR
+  if output_type == OutputType.LINALG_ON_TENSORS:
+      run_pipeline_with_repro_report(
+          mb.module,
+          "torch-backend-to-linalg-on-tensors-backend-pipeline",
+          "Lowering Torch Backend IR -> Linalg-on-Tensors Backend IR")
+      return mb.module # 节选自torch_mlir.compile函数定义
+endrnote
+
+autonumber inc A
+python->pybind11: def run_pipeline_with_repro_report(module, pipeline, description):\n\tpm = PassManager.parse(pipeline)\n\tpm.run(module)
+activate pybind11
+pybind11->mlir:mlir::PassManager::run(Operation *op)
+activate mlir
+mlir->dialectConversion:VerifyInvariantsBeforeBackendLowering
+activate dialectConversion
+dialectConversion-->mlir
+deactivate dialectConversion
+mlir->conversion:ConvertTorchToTMTensor
+activate conversion
+conversion-->mlir
+deactivate conversion
+mlir->conversion:ConvertTorchToLinalg，将TorchDialect转为LinalgDialect
+activate conversion
+
+' autonumber stop
+autonumber 5.7.1
+conversion->conversion:runOnOperation()
+conversion->mlir:ConversionTarget::addLegalDialect<linalg::LinalgDialect, \n\tfunc::FuncDialect, cf::ControlFlowDialect, \n\tmath::MathDialect, tensor::TensorDialect,\n\tarith::ArithmeticDialect>();\nConversionTarget::addLegalOp\n\t<TorchConversion::GetNextSeedOp>();\n指定TorchDialect作为Conversion的目标Dialect
+conversion->conversion:populateXXX(populateLinearPatternsAndLegality/\n\tpopulatePoolingPatternsAndLegality/\n\tpopulateRandomPatternsAndLegality/\n\tpopulateReductionPatternsAndLegality/...)
+conversion->mlir:ConversionTarget::addIllegalOp();\nRewritePatternSet.add();\n指定TorchDialect中的illegal Op\n并添加匹配这些Op的ConversionPattern
+conversion->mlir:applyPartialConversion(getOperation(),\n\ttarget, std::move(patterns));\n使用MLIR提供Pattern Rewriting System对\n设置的illegal Op做Pattern匹配和重写，\n完成部分lowering
+mlir->conversion:ConvertAtenMmOp
+
+note right of conversion #aqua
+匹配到torch.aten.mm Op会被rewrite为Linalg中的MamulOp
+%9 = linalg.matmul ins(%0, %1: tensor<?x?xf32>, tensor<?x?xf32>) outs(%8: tensor<?x?xf32>) -> tensor<?x?xf32>
+end note
+
+mlir->conversion:ConvertXXXOp(如：\n\tConvertAtenLinearOp/\n\tConvertAtenConvolutionOp/\n\tConvertAtenMaxPool2dOp/\n\tConvertAtenAvgPool2dOp/...)\n匹配TorchDialect中的其他illegal Op，\n并重写为Linalg中的Op
+
+' autonumber resume
+autonumber 5.8
+conversion-->mlir
+deactivate conversion
+mlir->conversion:ConvertTorchToSCF
+activate conversion
+conversion-->mlir
+deactivate conversion
+mlir->conversion:ConvertTorchToStd
+activate conversion
+conversion-->mlir
+deactivate conversion
+mlir->mlir:mlir::memref::ExpandOps
+mlir->mlir:Canonicalizer
+mlir->mlir:mlir::memref::\nResolveShapedTypeResultDims
+mlir->mlir:CSE
+mlir->dialectConversion:FuncBackendTypeConversion
+activate dialectConversion
+dialectConversion-->mlir
+deactivate dialectConversion
+mlir->dialectConversion:FinalizingBackendTypeConversion
+activate dialectConversion
+dialectConversion-->mlir
+deactivate dialectConversion
+mlir->dialectConversion:VerifyLinalgOnTensorsBackendContractPass
+activate dialectConversion
+dialectConversion-->mlir
+deactivate dialectConversion
+mlir-->pybind11
+deactivate mlir
+pybind11-->python
+deactivate pybind11
+@enduml

@@ -1,0 +1,55 @@
+@startuml jit_call_miss
+!theme reddress-lightblue
+
+' title Jax jit首次编译流程
+
+actor User as user
+participant "CompiledFunction::Call" as cf
+participant "jax:api.py:_cpp_jit闭包" as cppJit
+participant "tf:jax_jit.cc:ComputeSignature" as cs
+participant "xla.xla_call" as xlaCall
+participant "_xla_callable_uncached" as xlaCallUncached
+participant "lower_xla_callable" as xlaLower
+participant "jax.interpreters.partial_eval" as pe
+participant "jax.interpreters.mlir" as mlir
+
+autonumber
+user->cf:调用被@jit装饰的函数
+activate cf
+
+cf->cppJit:调用TryToPopulateDefaultDevice方法，\n方法内部再调用python函数get_device_info
+activate cppJit
+cppJit-->cf:设置default_device_，\n类型为xla::PjRtDevice*
+deactivate cppJit
+cf->cs:根据device和arguments计算签名
+activate cs
+cs-->cf:arguments.signature
+deactivate cs
+cf->cppJit:调用cache_miss_，即\n调用python函数cache_miss
+activate cppJit
+cppJit->xlaCall
+activate xlaCall
+xlaCall->xlaCallUncached
+activate xlaCallUncached
+xlaCallUncached->xlaLower
+activate xlaLower
+xlaLower->pe:trace_to_jaxpr_final，tracing\n并转换被@jit装饰的函数为Jaxpr对象
+activate pe
+pe-->xlaLower
+deactivate pe
+xlaLower->mlir:lower_jaxpr_to_module，\n将Jaxpr对象lower为mlir.Module
+activate mlir
+mlir-->xlaLower
+deactivate mlir
+xlaLower-->xlaCallUncached:使用mlir.Module构建python端的\nXlaComputation对象，并将其返回
+deactivate xlaLower
+xlaCallUncached-->xlaCall:调用XlaComputation的compile()方法\n得到XlaCompiledComputation对象，\n并将其unsafe_call属性值返回，unsafe_call\n是一个绑定了可执行文件的partial函数，\n返回的unsafe_call也会被LRU cache进行缓存
+deactivate xlaCallUncached
+xlaCall-->cppJit:执行XlaCompiledComputation对象的unsafe_call，\n并将计算结果返回
+deactivate xlaCall
+cppJit-->cf:通过LRU cache获取最近绑定了可执行文件的partial函数，\n再从其函数参数中获取编译得到的可执行文件xla_executable，\n并将其封装到_FastpathData对象中，计算结果out和该对象会一并返回
+deactivate cppJit
+cf-->cf:调用PopulateCacheEntry方法，对编译得到的\n可执行文件、设备、pytree等进行缓存
+cf-->user:返回计算结果
+deactivate cf
+@enduml

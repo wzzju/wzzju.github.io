@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="393px" preserveAspectRatio="none" style="width:845px;height:393px;background:#FFFFFF;" version="1.1" viewBox="0 0 845 393" width="845px" zoomAndPan="magnify"><defs/><g><rect fill="#E0E0E0" height="190.3179" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="267" y="107.7373"/><rect fill="#E0E0E0" height="135.5806" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="550" y="135.106"/><rect fill="#E0E0E0" height="67.4746" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="802" y="162.4746"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="21" x2="21" y1="78.3687" y2="316.0552"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="272" x2="272" y1="78.3687" y2="316.0552"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="554.5" x2="554.5" y1="78.3687" y2="316.0552"/><line style="stroke:#2A86E2;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="806.5" x2="806.5" y1="78.3687" y2="316.0552"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="26" x="5" y="76.0591">User</text><ellipse cx="21" cy="13.5" fill="#2A86E2" rx="8" ry="8" style="stroke:#1A66C2;stroke-width:0.5;"/><path d="M21,21.5 L21,48.5 M8,29.5 L34,29.5 M21,48.5 L8,63.5 M21,48.5 L34,63.5 " fill="none" style="stroke:#1A66C2;stroke-width:0.5;"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="26" x="5" y="326.1143">User</text><ellipse cx="21" cy="336.9238" fill="#2A86E2" rx="8" ry="8" style="stroke:#1A66C2;stroke-width:0.5;"/><path d="M21,344.9238 L21,371.9238 M8,352.9238 L34,352.9238 M21,371.9238 L8,386.9238 M21,371.9238 L34,386.9238 " fill="none" style="stroke:#1A66C2;stroke-width:0.5;"/><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="36" x="254" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="22" x="261" y="68.0591">@jit</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="36" x="254" y="315.0552"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="22" x="261" y="333.1143">@jit</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="59" x="525.5" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="45" x="532.5" y="68.0591">_cpp_jit</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="59" x="525.5" y="315.0552"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="45" x="532.5" y="333.1143">_cpp_jit</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="65" x="774.5" y="50"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="51" x="781.5" y="68.0591">jax_jit.jit</text><rect fill="#CCCCCC" height="27.3687" rx="2.5" ry="2.5" style="stroke:#AAAAAA;stroke-width:0.5;" width="65" x="774.5" y="315.0552"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="51" x="781.5" y="333.1143">jax_jit.jit</text><rect fill="#E0E0E0" height="190.3179" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="267" y="107.7373"/><rect fill="#E0E0E0" height="135.5806" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="550" y="135.106"/><rect fill="#E0E0E0" height="67.4746" style="stroke:#2A86E2;stroke-width:1.0;" width="10" x="802" y="162.4746"/><polygon fill="#000000" points="255,103.7373,265,107.7373,255,111.7373,259,107.7373" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="21" x2="261" y1="107.7373" y2="107.7373"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="28" y="103.4277">1</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="77" x="40" y="103.4277">使用@jit装饰器</text><polygon fill="#000000" points="538,131.106,548,135.106,538,139.106,542,135.106" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="277" x2="544" y1="135.106" y2="135.106"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="284" y="130.7964">2</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="242" x="296" y="130.7964">env JAX_CPP_JIT=true并且未启用动态shape</text><polygon fill="#000000" points="790,158.4746,800,162.4746,790,166.4746,794,162.4746" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="560" x2="796" y1="162.4746" y2="162.4746"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="567" y="158.165">3</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="164" x="579" y="158.165">调用tf:jax_jit.cc中定义的jit函数</text><polygon fill="#000000" points="571,225.9492,561,229.9492,571,233.9492,567,229.9492" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="565" x2="806" y1="229.9492" y2="229.9492"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="577" y="205.5867">4</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="177" x="589" y="185.5337">返回CompiledFunction类型对象，</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="204" x="589" y="198.9023">其内包装了python中定义的cache_miss</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="206" x="589" y="212.271">和get_device_info函数，以及python中</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="190" x="589" y="225.6396">定义的CompiledFunctionCache对象</text><polygon fill="#000000" points="288,266.6865,278,270.6865,288,274.6865,284,270.6865" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="282" x2="554" y1="270.6865" y2="270.6865"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="294" y="259.6926">5</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="171" x="306" y="253.0083">根据@jit装饰的python函数信息对</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="188" x="306" y="266.377">CompiledFunction类型对象进行调整</text><polygon fill="#000000" points="32,294.0552,22,298.0552,32,302.0552,28,298.0552" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="26" x2="271" y1="298.0552" y2="298.0552"/><text fill="#333333" font-family="Verdana" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="8" x="38" y="293.7456">6</text><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="210" x="50" y="293.7456">返回调整后的CompiledFunction类型对象</text><!--MD5=[98fdfe6662072672815b7030dc14e5b0]
+@startuml jax2xla
+!theme reddress-lightblue
+
+' title Jax @jit装饰器作用流程
+
+actor User as user
+participant "@jit" as atJit
+participant "_cpp_jit" as cppJit
+participant "jax_jit.jit" as jitlibJit
+
+autonumber
+user->atJit:使用@jit装饰器
+activate atJit
+atJit->cppJit:env JAX_CPP_JIT=true并且未启用动态shape
+activate cppJit
+cppJit->jitlibJit:调用tf:jax_jit.cc中定义的jit函数
+activate jitlibJit
+jitlibJit- ->cppJit:返回CompiledFunction类型对象，\n其内包装了python中定义的cache_miss\n和get_device_info函数，以及python中\n定义的CompiledFunctionCache对象
+deactivate jitlibJit
+cppJit- ->atJit:根据@jit装饰的python函数信息对\nCompiledFunction类型对象进行调整
+deactivate cppJit
+atJit- ->user:返回调整后的CompiledFunction类型对象
+deactivate atJit
+@enduml
+
+@startuml jax2xla
+
+
+
+skinparam stereotypeCBackgroundColor 1a66c2
+skinparam backgroundColor fff
+
+
+
+
+
+
+
+skinparam circledCharacter {
+  radius 8
+  fontSize 11
+  fontName Verdana
+}
+
+skinparam class {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+
+  attributeFontColor 333
+  attributeFontSize 11
+  attributeIconSize 11
+}
+
+
+skinparam actor {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam participant {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam collections {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam SequenceBox{
+    backgroundColor e0e0e0
+  borderColor cccccc
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam interface {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam component {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam node {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam database {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam queue {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam usecase {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam activity {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam sequence {
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+
+  lifeLineBorderColor 2a86e2
+  lifeLineBackgroundColor e0e0e0
+}
+
+skinparam boundary {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam control {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam entity {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam state {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+  startColor 2a86e2
+  endColor 1a66c2
+}
+
+
+skinparam object {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+
+skinparam note {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam cloud {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam rectangle {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam storage {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+actor User as user
+participant "@jit" as atJit
+participant "_cpp_jit" as cppJit
+participant "jax_jit.jit" as jitlibJit
+
+autonumber
+user->atJit:使用@jit装饰器
+activate atJit
+atJit->cppJit:env JAX_CPP_JIT=true并且未启用动态shape
+activate cppJit
+cppJit->jitlibJit:调用tf:jax_jit.cc中定义的jit函数
+activate jitlibJit
+jitlibJit- ->cppJit:返回CompiledFunction类型对象，\n其内包装了python中定义的cache_miss\n和get_device_info函数，以及python中\n定义的CompiledFunctionCache对象
+deactivate jitlibJit
+cppJit- ->atJit:根据@jit装饰的python函数信息对\nCompiledFunction类型对象进行调整
+deactivate cppJit
+atJit- ->user:返回调整后的CompiledFunction类型对象
+deactivate atJit
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 18:55:52 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: zh
+Country: CN
+--></g></svg>
