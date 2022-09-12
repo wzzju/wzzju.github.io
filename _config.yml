@@ -63,7 +63,7 @@ github:
 # ---------------- #
 #      Comments    #
 # ---------------- #
-comments_provider: livere
+comments_provider: utteranc
 # https://github.com/gitalk/gitalk#install
 gitalk:
   owner: wzzju
@@ -71,8 +71,14 @@ gitalk:
   clientID: 481f0b89289da9b8a42b
   clientSecret: 7869eb5965cde657634acbe4bd5a598c5cd350cf
   perPage: 50
+  labels: reader-comments
   proxy: https://blog-comments.wzzju.workers.dev/?https://github.com/login/oauth/access_token
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 livere:
   livere_uid: MTAyMC81NzIwOC8zMzY3Mg==
+# https://utteranc.es
+utteranc:
+  repo: wzzju/blog-comments
+  theme: preferred-color-scheme
+  label: reader-comments

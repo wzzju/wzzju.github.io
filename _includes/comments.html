@@ -12,7 +12,7 @@
           repo: '{{ site.gitalk.repo }}',
           owner: '{{ site.gitalk.owner }}',
           admin: ['{{ site.gitalk.owner }}'],
-          labels: ['reader-comments'],
+          labels: ['{{ site.gitalk.labels }}'],
           perPage: ['{{ site.gitalk.perPage }}'],
           proxy: ['{{ site.gitalk.proxy }}'],
           id: location.pathname,      // Ensure uniqueness and length less than 50
@@ -37,5 +37,15 @@
         </script>
       <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
       </div>
+    {% when 'utteranc' %}
+      <script id="utterances"
+              src="https://utteranc.es/client.js"
+              issue-term="title"
+              repo="{{ site.utteranc.repo }}"
+              theme="{{ site.utteranc.theme }}"
+              label="{{ site.utteranc.label }}"
+              crossorigin="anonymous"
+              async>
+      </script>
   {% endcase %}
 {% endif %}
