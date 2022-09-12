@@ -63,7 +63,7 @@ github:
 # ---------------- #
 #      Comments    #
 # ---------------- #
-comments_provider: utteranc
+comments_provider: livere
 # https://github.com/gitalk/gitalk#install
 gitalk:
   owner: wzzju
