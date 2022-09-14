@@ -1,7 +1,7 @@
 ---
 layout: post
-title: XLA功能原理分析
-date: 2021-12-12
+title: XLA编译执行原理分析
+date: 2021-06-12
 comments: true
 toc: true
 mathjax: false
@@ -92,12 +92,16 @@ if __name__ == '__main__':
 #!/usr/bin/env bash
 set -ex
 
-CUDA_VISIBLE_DEVICES=0                                                                                                                        \
-TF_CPP_MIN_LOG_LEVEL=0                                                                                                                        \
-TF_CPP_VMODULE=cuda_driver=2                                                                                                                  \
-TF_DUMP_GRAPH_PREFIX="./graph_dump_path"                                                                                                      \
-TF_XLA_FLAGS="--tf_xla_clustering_debug"                                                                                                      \
-XLA_FLAGS="--xla_dump_to=./xla_scope_output --xla_dump_hlo_pass_re=.* --xla_dump_hlo_as_text --xla_dump_hlo_as_html --xla_dump_hlo_snapshots" \
+CUDA_VISIBLE_DEVICES=0                      \
+TF_CPP_MIN_LOG_LEVEL=0                      \
+TF_CPP_VMODULE=cuda_driver=2                \
+TF_DUMP_GRAPH_PREFIX="./graph_dump_path"    \
+TF_XLA_FLAGS="--tf_xla_clustering_debug"    \
+XLA_FLAGS="--xla_dump_to=./xla_scope_output
+           --xla_dump_hlo_pass_re=.*
+           --xla_dump_hlo_as_text
+           --xla_dump_hlo_as_html
+           --xla_dump_hlo_snapshots"        \
 python -u scope_xla.py
 ```
 
@@ -112,7 +116,7 @@ python -u scope_xla.py
 
 # XLA中使用NVTX
 
-* 修改[tensorflow/core/profiler/internal/gpu/nvtx_utils.h](https://github.com/tensorflow/tensorflow/blob/2a44ee90/tensorflow/core/profiler/backends/gpu/nvtx_utils.h#L53)文件，在` NVTXRangeTracker`类定义下方添加如下内容：
+* 修改[tensorflow/core/profiler/internal/gpu/nvtx_utils.h](https://github.com/tensorflow/tensorflow/blob/2a44ee90/tensorflow/core/profiler/backends/gpu/nvtx_utils.h#L53)文件，在`namespace tensorflow::profiler`命名空间中添加如下内容：
 
 ```cpp
 class RecordEvent {
@@ -126,7 +130,7 @@ void ProfilerRangePush(const std::string& name);
 void ProfilerRangePop();
 ```
 
-* 修改[tensorflow/core/profiler/internal/gpu/nvtx_utils.cc](https://github.com/tensorflow/tensorflow/blob/2a44ee90/tensorflow/core/profiler/backends/gpu/nvtx_utils.cc#L27)文件，添加如下内容：
+* 修改[tensorflow/core/profiler/internal/gpu/nvtx_utils.cc](https://github.com/tensorflow/tensorflow/blob/2a44ee90/tensorflow/core/profiler/backends/gpu/nvtx_utils.cc#L27)文件，在`namespace tensorflow::profiler`命名空间中添加如下内容：
 
 ```cpp
 RecordEvent::RecordEvent(const std::string& name) {
@@ -165,7 +169,90 @@ tensorflow::profiler::ProfilerRangePop();
 ```
 
 * 在源码中引入nvtx打tag功能后，需要更改对应源码编译所需的BUILD文件，在其中加入`//tensorflow/core/profiler/lib:profiler_backends`编译依赖。举例说明如下：
-  - 在[tensorflow/compiler/xla/python/jax_jit.cc](https://github.com/tensorflow/tensorflow/blob/2a44ee90/tensorflow/compiler/xla/python/jax_jit.cc)中使用nvtx打tag后，需要在[tensorflow/compiler/xla/python/BUILD](https://github.com/tensorflow/tensorflow/blob/2a44ee90/tensorflow/compiler/xla/python/BUILD#L381)文件内容`cc_library(name = "jax_jit", srcs = ["jax_jit.cc"], ..., deps = [...])`的deps域中添加一行`"//tensorflow/core/profiler/lib:profiler_backends",`编译依赖。
+  - 在[tensorflow/compiler/xla/service/gpu/gpu_executable.cc](https://github.com/tensorflow/tensorflow/blob/2a44ee90/tensorflow/compiler/xla/service/gpu/gpu_executable.cc#L349)中使用nvtx打tag后，需要在[tensorflow/compiler/xla/service/gpu/BUILD](https://github.com/tensorflow/tensorflow/blob/2a44ee90/tensorflow/compiler/xla/service/gpu/BUILD#L645)文件内容`cc_library(name = "gpu_executable", srcs = [..., "gpu_executable.cc", ...], ..., deps = [...])`的deps域中添加一行`"//tensorflow/core/profiler/lib:profiler_backends",`编译依赖。
+
+## 使用NVTX标识XLA执行过程
+
+> 需要使用`pip install cupy-cuda11x`安装cupy。
+
+* 代码示例
+
+```python
+# nvtx_xla.py
+import numpy as np
+from tensorflow.python.client import timeline
+from tensorflow.python.compiler.xla import jit
+import tensorflow.compat.v1 as tf
+
+from cupy.cuda import nvtx
+from cupy.cuda import profiler
+from cupy.cuda import runtime
+
+tf.disable_v2_behavior()
+
+def nn_block(input_tensor_0):
+    op_0_0 = tf.square(input_tensor_0)
+    op_1_1 = tf.matmul(op_0_0, op_0_0)
+    op_1_0 = tf.subtract(op_1_1, op_1_1)
+    op_2_0 = tf.add(op_1_0, op_1_1)
+    return op_2_0
+
+def nn(input_tensor_0):
+    for i in range(0, 1):
+        tmp = input_tensor_0
+        input_tensor_0 = nn_block(tmp)
+    return input_tensor_0
+
+def test_nvtx():
+  x = tf.placeholder(tf.float32, [None, 2])
+  with jit.experimental_jit_scope(compile_ops=True):
+    output = nn(x)
+
+  run_metadata = tf.RunMetadata()
+  with tf.Session() as sess:
+    tf.global_variables_initializer().run(session=sess)
+    # init run
+    data = np.array([[1, 2],
+                     [3, 4]])
+    res = sess.run(output,
+             feed_dict={x: data},
+             options=tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE),
+             run_metadata=run_metadata)
+    print(res)
+    # profile start
+    runtime.deviceSynchronize()
+    profiler.start()
+    for i in range(10):
+      data = np.random.randint(5, size=(2, 2))
+      nvtx.RangePush("Epoch " + str(i))
+      res = sess.run(output,
+               feed_dict={x: data},
+               options=tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE),
+               run_metadata=run_metadata)
+      nvtx.RangePop()
+    profiler.stop()
+    # profile end
+
+if __name__ == '__main__':
+  test_nvtx()
+```
+
+* 执行脚本
+
+```shell
+#!/usr/bin/env bash
+set -ex
+
+CUDA_VISIBLE_DEVICES=0                                        \
+TF_CPP_MIN_LOG_LEVEL=0                                        \
+nsys profile -t cuda,nvtx,osrt,cudnn,cublas                   \
+     -o profile_out --force-overwrite=true                    \
+     --capture-range=cudaProfilerApi --capture-range-end=stop \
+     python -u nvtx_xla.py
+```
+
+* 执行效果
+![profile](/images/posts/xla/profile.png)
 
 # XLA Client元算子
 
