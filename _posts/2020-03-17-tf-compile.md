@@ -366,13 +366,12 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 
 ```bash
 # 安装gdb10：使用该命令安装的gdb10自带源码高亮功能
-apt-get install software-properties-common &&            \
-    apt-get update &&                                    \
-    add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
-    apt-get update -y &&                                 \
-    apt install gdb -y
+apt install software-properties-common
 # 若遇到ModuleNotFoundError: No module named 'apt_pkg'问题，只需
 # 将/usr/bin/add-apt-repository中的`!/usr/bin/python3`改为`!/usr/bin/python3.6`
+add-apt-repository ppa:ubuntu-toolchain-r/test -y
+apt update -y
+apt install gdb -y
 
 # 安装python3.7-dbg
 apt install python3.7-dbg
