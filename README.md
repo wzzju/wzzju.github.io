@@ -1,5 +1,5 @@
-声明：本博客模板参考于[Cogs and Levers](https://github.com/tuttlem/tuttlem.github.io)、[Hux Blog
-](https://github.com/huxpro/huxpro.github.io)以及[Jun711 blog](https://github.com/Jun711/jun711.github.io)。站内文章搜索工具参考于[jekyll-search](https://github.com/androiddevelop/jekyll-search)。
+声明：本博客模板参考自 [Cogs and Levers](https://github.com/tuttlem/tuttlem.github.io) 、[Hux Blog
+](https://github.com/huxpro/huxpro.github.io) 以及 [Jun711 blog](https://github.com/Jun711/jun711.github.io) 。站内文章搜索工具参考于 [jekyll-search](https://github.com/androiddevelop/jekyll-search) 。
 
 * 运行`./new-post.sh Blog Title`脚本创建新博客。
 * 运行`run-docker.sh`脚本开启本地预览（启动预览容器）。
@@ -12,7 +12,7 @@ jekyll可用配置选项说明:
 
 ```bash
 jekyll serve
-# => 开发服务将会运行在http://localhost:4000/
+# => 开发服务将会运行在http://localhost:4000
 # 自动生成更新会被开启，如果不想开启请使用`--no-watch`。
 
 jekyll serve --no-watch
