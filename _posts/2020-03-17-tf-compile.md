@@ -9,19 +9,19 @@ categories: [ "TensorFlow", "gdb" ]
 
 ## 1. 环境准备
 
-* docker镜像: `paddlepaddle/paddle:latest-gpu-cuda10.0-cudnn7-dev`
+* docker镜像: `registry.baidubce.com/paddlepaddle/paddle:latest-dev-cuda11.4.1-cudnn8-gcc82`
 * 容器创建命令：
-  ```bash
-  nvidia-docker run --ulimit core=-1 --privileged=true --security-opt seccomp=unconfined --name tf-wz --net=host -d -v $PWD/.ccache:/root/.ccache -v $PWD/.cache:/root/.cache -v $PWD:/work -v /ssd3/datasets:/work/dataset -it paddlepaddle/paddle:latest-gpu-cuda10.0-cudnn7-dev /bin/bash
+  ```shell
+  nvidia-docker run --ulimit core=-1 --cap-add SYS_ADMIN --security-opt seccomp=unconfined --name tf-wz --shm-size="8g" --net=host -d -v $PWD/.ccache:/root/.ccache -v $PWD/.cache:/root/.cache -v $PWD/.tmp:/tmp -v $PWD:/work -v /ssd3/datasets:/work/datasets -it registry.baidubce.com/paddlepaddle/paddle:latest-dev-cuda11.4.1-cudnn8-gcc82 /bin/bash
   ```
 
   > 不使用`nvidia-docker`命令创建容器的方法（此文不使用，仅记录）：
 
-  ```bash
+  ```shell
   export CUDA_SO="$(\ls /usr/lib64/libcuda* | xargs -I{} echo '-v {}:{}') $(\ls /usr/lib64/libnvidia* | xargs -I{} echo '-v {}:{}')"
   export DEVICES=$(\ls /dev/nvidia* | xargs -I{} echo '--device {}:{}')
 
-  sudo /usr/bin/docker run ${CUDA_SO} ${DEVICES} --ulimit core=-1 --privileged=true --security-opt seccomp=unconfined --name tf-wz --net=host -d -v /usr/bin/nvidia-smi:/usr/bin/nvidia-smi -v $PWD/.ccache:/root/.ccache -v $PWD/.cache:/root/.cache -v $PWD:/work -it paddlepaddle/paddle:latest-gpu-cuda10.0-cudnn7-dev /bin/bash
+  sudo /usr/bin/docker run ${CUDA_SO} ${DEVICES} --ulimit core=-1 --cap-add SYS_ADMIN --security-opt seccomp=unconfined --name tf-wz --shm-size="8g" --net=host -d -v /usr/bin/nvidia-smi:/usr/bin/nvidia-smi -v $PWD/.ccache:/root/.ccache -v $PWD/.cache:/root/.cache -v $PWD/.tmp:/tmp -v $PWD:/work -it registry.baidubce.com/paddlepaddle/paddle:latest-dev-cuda11.4.1-cudnn8-gcc82 /bin/bash
   # 进入容器再设置一下环境变量：export LD_LIBRARY_PATH=/usr/lib64:/usr/local/lib:$LD_LIBRARY_PATH
   ```
 
@@ -33,7 +33,7 @@ categories: [ "TensorFlow", "gdb" ]
 
 ## 2. 获取TensorFlow源码
 
-```bash
+```shell
 git clone  https://github.com/tensorflow/tensorflow.git
 # 切换到r1.14分支
 
@@ -43,7 +43,7 @@ git checkout study_r1.14
 
 ## 3. 安装bazel-0.24.1(对应于tf r1.14)
 
-```bash
+```shell
 # https://github.com/bazelbuild/bazel/releases
 wget https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-installer-linux-x86_64.sh
 chmod +x bazel-0.24.1-installer-linux-x86_64.sh
@@ -54,13 +54,13 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 
 * 安装python3-dbg（python的debuginfo包）
 
-  ```bash
+  ```shell
   apt install python3-dbg
   ```
 
 * 创建虚环境
 
-  ```bash
+  ```shell
   mkvirtualenv --python=python3.7 tf-study
   # workon tf-study
   ```
@@ -69,7 +69,7 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 
 * 安装TensorFlow编译依赖包（python包）
 
-  ```bash
+  ```shell
   pip install numpy==1.18.5
   pip install -U pip six wheel setuptools mock 'future>=0.17.1'
   pip install -U keras_applications --no-deps
@@ -78,7 +78,7 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 
 * 进行编译选项配置
 
-  ```bash
+  ```shell
   export PATH=/root/bin:$PATH
   ./configure
   # 根据提示进行配置，主要是遇到“是否编译cuda时”选择“y”，其他默认选择即可。
@@ -88,7 +88,7 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 
   参考[此文](http://jcf94.com/2018/01/13/2018-01-13-tfunpacking/)，为了编译带调试信息的TensorFlow，需要执行如下编译命令：
 
-  ```bash
+  ```shell
   bazel build -c opt --config=cuda --copt="-g" --cxxopt="-g" //tensorflow/tools/pip_package:build_pip_package
   # tf 2.x: bazel build -c opt --config=cuda --copt="-g" --cxxopt="-g" --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" //tensorflow/tools/pip_package:build_pip_package
   ```
@@ -96,13 +96,13 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 
 ## 5. 构建`whl`软件包
 
-```bash
+```shell
 ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 ```
 
 ## 6. 安装`whl`软件包
 
-```bash
+```shell
 pip install -U /tmp/tensorflow_pkg/tensorflow-*.whl
 ```
 
@@ -310,7 +310,7 @@ update-alternatives --install /usr/bin/gdb gdb /usr/local/gdb83/bin/gdb 83 --sla
 * Q: 运行`build_pip_package`命令时出现`OverflowError: Size does not fit in an unsigned int`错误。
   A: 需要使用python3.7+进行打包。操作命令如下：
 
-  ```bash
+  ```shell
   which python3.7 # /usr/local/bin/python3.7
   # 编辑tools/python_bin_path.sh，将其内容修改为：
   # export PYTHON_BIN_PATH="/usr/local/bin/python3.7"
@@ -330,7 +330,7 @@ update-alternatives --install /usr/bin/gdb gdb /usr/local/gdb83/bin/gdb 83 --sla
 
 修改`/etc/apt/sources.list`文件，修改后内容如下：
 
-```bash
+```shell
 deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties
 deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted
 deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties
@@ -354,7 +354,7 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse
 
 修改`~/.pip/pip.conf`文件，修改后内容如下：
 
-```bash
+```shell
 [global]
 trusted-host = mirrors.aliyun.com
 index-url = https://mirrors.aliyun.com/pypi/simple
@@ -364,7 +364,7 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 
 执行如下命令在Ubuntu 18.04 LTS系统中安装gdb10和python3.7-dbg：
 
-```bash
+```shell
 # 安装gdb10：使用该命令安装的gdb10自带源码高亮功能
 apt install software-properties-common
 # 若遇到ModuleNotFoundError: No module named 'apt_pkg'问题，只需
