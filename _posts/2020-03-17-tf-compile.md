@@ -52,12 +52,6 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 
 ## 4. 编译TensorFlow
 
-* 安装python3-dbg（python的debuginfo包）
-
-  ```shell
-  apt install python3-dbg
-  ```
-
 * 创建虚环境
 
   ```shell
@@ -108,7 +102,16 @@ pip install -U /tmp/tensorflow_pkg/tensorflow-*.whl
 
 ## 7. gdb调试python代码方法
 
-### 7.1 设置python脚本启动断点
+### 7.1 安装python-debuginfo包
+
+  ```shell
+  # apt install python3-dbg
+  apt install -y python3.7-dbg
+  ```
+
+  安装完成后，`/usr/share/gdb/auto-load/usr/bin/python3.7m-gdb.py`即为后续调试python脚本所需的`libpython.py`。
+
+### 7.2 设置python脚本启动断点
 
 在要调的 python 代码前面加上如下一段代码，用于获取待调试的python脚本进程号并暂停脚本运行，点击查看[示例](/assets/tensorflow/test_debug.py)。
 
@@ -126,7 +129,7 @@ os.system("read _")
 
 > `os.system("read _")`相当于人为地打了一处断点，设置完python调试命令后，在gdb模式中输入`c`指令（可在输入`c`指令前设置一些C/C++文件中的断点，如`break TF_NewBuffer`），然后再在python脚本运行窗口中按Enter键即可让python程序继续运行。
 
-### 7.2 加载python调试指令
+### 7.3 加载python调试指令
 
 * 方法一：
 
@@ -211,7 +214,7 @@ set history save on
 set auto-load safe-path /
 ```
 
-### 7.3 gdb调试时注意事项：
+### 7.4 gdb调试时注意事项：
 
 * 运行python脚本不能在tensorflow源码根目录下，否则会出错。但是需要在tensorflow源码根目录下存放一个对应的软连接文件(`ln -s python脚本文件 tensorflow/python脚本文件`)，以便使用`py-list`时可以查看脚本源码内容。
 * 执行`gdb -p PID`命令最佳方案：**在tensorflow源码根目录下运行gdb**。否则，需要在gdb模式下使用`set directories /work/study/tf-learn/tensorflow/`指令设置tensorflow源码根目录路径。
@@ -220,9 +223,9 @@ set auto-load safe-path /
     - 需要加上命名空间，写法如`b tensorflow::DirectSession::Run`；
     - 对于带有匿名命名空间的断点设置写法示例：`b tensorflow::(anonymous namespace)::ExecutorState::ScheduleReady`，其第二个命名空间为`namespace {}`。
 
-### 7.4 使用GDB dashboard
+### 7.5 使用GDB dashboard
 
-#### 7.4.1 设置GDB dashboard
+#### 7.5.1 设置GDB dashboard
 执行如下命令，在home目录下设置dashboard配置文件(下载`.gdbinit`文件到home目录)：
 ```shell
 rm -f ~/.gdbinit
@@ -234,7 +237,7 @@ set auto-load safe-path /
 ```
 [点击此处](/assets/tools/home_gdbinit)下载修改后的主目录`.gdbinit`文件。
 
-#### 7.4.2 打印stl容器的内容
+#### 7.5.2 打印stl容器的内容
 从[https://sourceware.org/gdb/wiki/STLSupport](https://sourceware.org/gdb/wiki/STLSupport)网站下载[stl-views-1.0.3.gdb](/assets/tools/stl-views-1.0.3.gdb)文件并将其放到所在工作目录下。然后，修改所在工作目录下的`.gdbinit`内容如下(即增加`source stl-views-1.0.3.gdb`语句)：
 
 ```python
@@ -358,24 +361,6 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse
 [global]
 trusted-host = mirrors.aliyun.com
 index-url = https://mirrors.aliyun.com/pypi/simple
-```
-
-### 安装gdb10和python3.7-dbg
-
-执行如下命令在Ubuntu 18.04 LTS系统中安装gdb10和python3.7-dbg：
-
-```shell
-# 安装gdb10：使用该命令安装的gdb10自带源码高亮功能
-apt install software-properties-common
-# 若遇到ModuleNotFoundError: No module named 'apt_pkg'问题，只需
-# 将/usr/bin/add-apt-repository中的`!/usr/bin/python3`改为`!/usr/bin/python3.6`
-add-apt-repository ppa:ubuntu-toolchain-r/test -y
-apt update -y
-apt install gdb -y
-
-# 安装python3.7-dbg
-apt install python3.7-dbg
-# /usr/share/gdb/auto-load/usr/bin/python3.7m-gdb.py即为所需libpython.py
 ```
 
 ## 参考资料
